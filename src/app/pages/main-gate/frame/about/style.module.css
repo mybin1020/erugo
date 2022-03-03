@@ -1,0 +1,96 @@
+.ground {
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.ground::-webkit-scrollbar {
+    width: 2px;
+}
+
+.ground:hover {
+    cursor: default;
+}
+
+
+.about-box{
+    position: relative;
+    width: 100%;
+    height:11.4vh;
+}
+.about-content-text,.img1,.img2,.img3,.img4,.img5,.img6,.img7,.img8,.img9{
+    position: absolute;
+    top:50%;
+    transform: translateY(-50%);
+    width:5vw;
+    right: 0;
+}
+.about-content-text{
+    width: 50%;
+    height:11.5vh;
+    font-size: 0.1rem;
+}
+.about-content-text{
+    overflow:hidden;
+}
+.img1,.img2,.img3,.img4,.img5,.img6,.img7,.img8,.img9{
+    border-radius: 3px;
+    left:0vw;
+    width:50%;
+    height:11vh;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.img10{
+    border-radius: 3px;
+    left:0vw;
+    width:100%;
+    height:11.5vh;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.img1 {
+    background-image: url(./images/1.png);
+}
+.img2{
+    background-image: url(./images/2.png);
+}
+.img3{
+    background-image: url(./images/3.png);
+}
+.img4{
+    background-image: url(./images/4.png);
+}
+.img5{
+    background-image: url(./images/5.png);
+}
+.img6{
+    background-image: url(./images/6.png);
+}
+.img7{
+    background-image: url(./images/7.png);
+}
+.img8{
+    background-image: url(./images/8.jpg);
+}
+.img9{
+    background-image: url(./images/9.png);
+}
+.img10{
+    background-image: url(./images/10.png);
+}
+.mySwiper{
+    width: 100%;
+    height:100%;
+}
+.swiper-slide{
+    font-size: 1px;
+}
+
+/* .swiper-pagination-bullet-active {
+    background-color: #000 !important;
+} */
+/* about */
