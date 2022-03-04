@@ -1,0 +1,98 @@
+
+.buyland-box{
+    position: relative;
+    width: 100%;
+    height:95%;
+    border-top:0.5vh solid white;
+    border-bottom: 0.5vh solid white;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+.buyland-content-text,.img1,.img2,.img3,.img4,.img5,.img6,.img7,.img8{
+    position: absolute;
+    top:50%;
+    transform: translateY(-50%);
+    right: 0;
+}
+.buyland-content-text{
+    right:1vh;
+    width: 100%;
+    height:100%;
+    padding: 5px;
+    font-size:1vw;
+    overflow: hidden;
+}
+.buyland-content-text>div{
+    position: absolute;
+    right: 0;
+    padding:5px;
+    width: 50%;
+    white-space: normal;
+}
+.img1,.img2,.img3,.img4,.img5,.img6,.img7,.img8{
+    left:0vw;
+    width:48%;
+    height:100%;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-left:0.3vw;
+}
+.grap1,.grap2{
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 100%;
+    height:7vh;
+}
+
+.img1 {
+    background-image: url(./images/1.png);
+}
+.img2{
+    background-image: url(./images/2.png);
+}
+.img3{
+    background-image: url(./images/3.png);
+}
+.img4{
+    background-image: url(./images/4.jpg);
+}
+.img5{
+    background-image: url(./images/5.jpg);
+}
+.img6{
+    background-image: url(./images/6.jpg);
+}
+.img7{
+    background-image: url(./images/7.jpg);
+}
+.grap1{
+    background-image: url(./images/grap1.png);
+}
+.grap2{
+    background-image: url(./images/grap2.png);
+}
+.mySwiper{
+    width: 100%;
+    height:100%;
+}
+.swiperBuyland{
+    position: absolute;
+    right: 0;
+    width:50%;
+}
+.swiperland{
+    width: 10vw;
+}
+.buyland-swiper-text{
+    width: 85%;
+}
+.swiper-slide{
+    width: 100%;
+    font-size: 1px;
+}
+
+
+
+
+/* buyland */

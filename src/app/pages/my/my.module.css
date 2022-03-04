@@ -1,0 +1,125 @@
+.background {
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+}
+
+.background::-webkit-scrollbar {
+    width: 8px;
+}
+
+.background::-webkit-scrollbar-thumb{
+    background-color: rgba(80, 80, 80, 1);
+}
+
+.background::-webkit-scrollbar-track {
+    background-color: rgba(180, 180, 180, 1);
+}
+
+.body {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0;
+}
+
+.body-inner-wrapper {
+    width: 1000px;
+}
+
+.data-display-wrapper {
+    width: 33.3333%;
+}
+
+.splitter {
+    width: 100%;
+    height: 1px;
+    border-bottom: 1px solid rgba(180, 180, 180, 1);
+    margin: 20px 4px 20px 4px;
+}
+
+.change-information {
+    width:300px;
+    height: 60px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.change-information-text {
+    width:200px;
+    height: 60px;
+    display: flex;
+    justify-content: flex-start;
+    padding-left: 10px;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.change-information-arrow {
+    width:30px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.change-information-arrow:hover {
+    cursor: pointer;
+}
+
+.exchange-wrapper {
+    width: 250%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: -10px;
+}
+
+.exchange-icon {
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size:30px;
+}
+
+.exchange-input {
+    width: 353.333px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.withdrawal{
+    width: 100%;
+    height: 38px;
+    border: 1px solid #ff1010;
+    border-radius: 10px;
+    margin-left: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    color: #ff1010;
+    margin-bottom: 60px;
+}
+
+.withdrawal:hover{
+    cursor: pointer;
+}
+
+.input {
+    color: rgb(225, 122, 24);
+    border-style: solid;
+    border-color: rgb(225, 122, 24);
+    border-width: 1px;
+}
+
+.input:focus {
+    border-style: solid;
+    border-color: rgb(225, 122, 24);
+    border-width: 2px;
+}

@@ -1,0 +1,12 @@
+.input {
+    color: rgb(225, 122, 24);
+    border-style: solid;
+    border-color: gray;
+    border-width: 1px;
+}
+
+.input:focus {
+    border-style: solid;
+    border-color: rgb(225, 122, 24);
+    border-width: 2px;
+}

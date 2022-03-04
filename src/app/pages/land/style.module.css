@@ -1,0 +1,49 @@
+.body {
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+}
+
+.map-wrapper {
+    width: 500px;
+    height: 410px;
+    background-image: url(../../images/map.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: relative;
+    -webkit-mask:
+    /*                        X    Y   / wwidth height */
+    linear-gradient(#000 0 0) 120px 60px/100px 100px, /* control the clipped part here*/
+    linear-gradient(rgba(0,0,0,0.2) 0 0); /* control the opacity here */
+    -webkit-mask-repeat:no-repeat;
+    border: 2px solid gray;
+}
+
+.menu {
+    width: calc(100% - 540px);
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 60px;
+    flex-direction: column;
+    padding: 40px;
+}
+
+.menu-item {
+    width: 300px;
+    height: 50px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-right: 40px;
+    border-bottom: 1px solid gray;
+}
+
+.menu-item:hover {
+    cursor: pointer;
+}
