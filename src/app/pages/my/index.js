@@ -139,7 +139,7 @@ const MyPage = ({
                             <DataRow tag={'Wallet'} >{walletAddress}</DataRow>
                             <DataRow tag={'Ethereum'} >{ether}</DataRow>
                             <DataRow tag={'Erugo Coin'} >{coin}</DataRow>
-                            <DataRow tag={'Point'} >{points.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}</DataRow>
+                            <DataRow tag={'Point'} >{points}</DataRow>
                         </div>
                     </div>
                     <Splitter color={'#e17a18'} width={'1px'} height={'30px'} />
