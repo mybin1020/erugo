@@ -4,18 +4,12 @@
 }
 .character{
     position:absolute;
-    background-image: url(./images/Going-character.png);
-    left: 50px;
-    width:18%;
-    height:50vh;
-    background-position: center;
-    background-size: contain;
-    background-repeat: no-repeat;
+    left: 30px;
+    width:45%;
 }
 .character>img{
     position: absolute;
-    top:50%;
-    transform: translateY(-50%);
+    transform: translateY(40%);
 }
 #imgSize {
     position: absolute;
@@ -27,6 +21,15 @@
     background-color:rgba(255,255,255,0.8);
 }
 
+.big-bg > p {
+    display: inline-block;
+    margin-left: 40%;
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    color:#64c9dc;
+    border: 3px solid #64c9dc;
+}
 
 .right{
     right: 0;
@@ -119,15 +122,17 @@
     height: 4.5vh;
 }
 .xtComInfo{
-    top:50%;
-    right: -50%;
-    width: 1.5vw;
-    height: 1.5vh;
+    position: absolute;
+    top:12%;
+    right:30%;
+    width: 1vw;
+    height: 1.8vh;
     background-image: url('./images/help.png');
     background-repeat: no-repeat;
     border: none;
     background-color: transparent;
     cursor: pointer;
+
 }
 .amountCheck{
     position: absolute;
@@ -154,7 +159,7 @@
     height: 50%;
 }
 .box-bottom {
-   
+    transform: translateY(30%);
     color:white;
     height: 5vh;
     width: 90%;
@@ -162,8 +167,10 @@
 }
 
 .box-bottom > p {
+    margin-top: 1vh;
     font-weight: bold;
-    font-size: 20px;
+    font-size: 15px;
+    text-align: center;
     color: #64c9dc;
 }
 

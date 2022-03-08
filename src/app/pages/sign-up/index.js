@@ -83,11 +83,11 @@ const SignUp = ({ setLoading, setLoadingMsg, currentFrame, setCurrentFrame }) =>
             style={{
                 width: '100vw',
                 height: '100vh',
-                display: 'flex', justifyContent: "center", alignItems: "center"
+                display: 'flex', justifyContent: "center"
             }}
         >
             <div style={{ width: '640px', height: '100%', overflowY: 'auto', padding: '20px' }}>
-                <div style={{ width: '100%', height: '200px', display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '10px' }}>
+                <div style={{ width: '100%', height: '200px', display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '10px'}}>
                     <div style={{ fontSize: '46px' }}>ERUGO WORLD</div>
                     <div
                         style={{

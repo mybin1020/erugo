@@ -75,14 +75,14 @@ const MyPage2 = ({
 const characterName = ["dei", "ego", "el", "going"];
 function ExchangeCharacter(inputNum) {
   if (inputNum >= 1 && inputNum < 10) {
-    return inputNum;
+    return characterName[0];
   }
   if (inputNum >= 10 && inputNum < 100) {
-    return inputNum;
+    return characterName[1];
   }
   if (inputNum >= 100 && inputNum < 1000) {
-    return inputNum;
-  } else return inputNum;
+    return characterName[2];
+  } else return characterName[3];
 }
 
 
@@ -137,6 +137,8 @@ const ExchangeCoin = () => {
   );
 }
 
+
+// page 
 const MyPage = ({
   menubar,
   footer,
@@ -182,7 +184,7 @@ const MyPage = ({
           <Col md={2} lg={2} xxl={2}>
             <div className={Style["character"]}>
               
-              <img src={require("./images/dei.png")} alt="" />
+              <img className={Style["character"]} src={require(`./images/${ExchangeCharacter(coin)}.png`).default} alt="" />
             </div>
           </Col>
           <Col md={5} lg={5} xxl={5}>
@@ -287,7 +289,6 @@ const MyPage = ({
           <Col xs={5} md={5} lg={5} xxl={5}>
             <div className={Style["mypage-box"]}>
               <div className={Style["big-bg"]}>
-                {/* <div className={Style["address"]}> */}
                 <div className={Style["box"]}>
                   <span
                     className={Style["input-content"]}
@@ -339,13 +340,11 @@ const MyPage = ({
                 </div>
                 <div className={Style["bg-down"]}>
                   <div className={Style["box-bottom"]}>
-                    <p>CURRENT EXCHANGE RATE : 1 Erugo Coin = 3000 Point </p>
                       <ExchangeCoin/>
                       <ExchangeCoin/>
+                      <p>CURRENT EXCHANGE RATE : 1 Erugo Coin = 3000 Point </p>
                   </div>
                 </div>
-                      
-                {/* </div> */}
                 <button className={Style["logout-btn"]}>
 
             로그아웃
@@ -353,95 +352,6 @@ const MyPage = ({
               </div>
             </div>
           </Col>
-
-          {/* <div className={Style["mypage-box"]}>
-
-
-    <div className={Style["bg-right"]}>
-      <div className={Style["input-left"]}>
-        <div className={Style["input-content"]}>
-          <div className={Style["input-box"]}>
-            <span className={Style["xtcom"]}>XT.COM</span>
-            <input value={"TX(transaction hash)값"} id="xtcom"></input>
-          </div>
-
-          <div className={Style["xtScale"]}>
-            <button
-              data-tip
-              data-for="info"
-              id="xtComInfo"
-              className={Style["xtComInfo"]}
-              onClick={() => {
-                history.push("#");
-
-              }}
-            >
-              <ReactTooltip id="info" place="left" effect="solid">
-                <span>자세한 설명은 클릭</span>
-              </ReactTooltip>
-            </button>
-            <input type="checkbox" className={Style['amountCheck']} onClick={accountCheckHandler}/>
-          </div>
-          
-        </div>
-        <textarea autofocus class={Style['dotted-box']} placeholder={'xt거래소에서 EWC를 송금하는 방법에 대한 설명'}></textarea>
-      </div>
-      <div className={Style["bg-down"]}>
-        <div className={Style["bottom"]}>
-          <p>CURRENT EXCHANGE RATE : 1 Erugo Coin = 3000 Point </p>
-          
-          <div className={Style["exchange-box"]}>
-            <div className={Style["exRugo"]}>
-              <div className={Style["rugo-div"]} data-tip
-              data-for="sw-ewcInfo">SW EWC</div>
-              <ReactTooltip id="sw-ewcInfo" place="left" effect="solid">
-                <span>SecurityWallet의 EWC개수</span>
-              </ReactTooltip>
-              <input type="text" id="rugo" value={""} />
-              
-            </div>
-            <div className={Style["change-icon"]}></div>
-            <div className={Style["exErugoCoin"]}>
-              <div className={Style["rugo-div"]} data-tip
-              data-for="ew-ewcInfo">EW EWC</div>
-              <ReactTooltip id="ew-ewcInfo" place="left" effect="solid">
-                <span>Erugo World의 EWC(Point)개수</span>
-              </ReactTooltip>
-              <input type="text" id="rugo" value={""} />
-            </div>
-            <button className={Style["exchange"]}>Exchange</button>
-          </div>
-          <br></br>
-          <div className={Style["exchange-box"]}>
-            <div className={Style["exRugo"]}>
-              <div className={Style["rugo-div"]} data-tip
-              data-for="ew-ewcInfo2">EW EWC</div>
-              <ReactTooltip id="ew-ewcInfo2" place="left" effect="solid">
-                <span>Erugo World의 EWC(Point)개수</span>
-              </ReactTooltip>
-              <input type="text" id="rugo" value={""} />
-            </div>
-            <div className={Style["change-icon"]}></div>
-            <div className={Style["exErugoCoin"]}>
-              <div className={Style["rugo-div"]} data-tip
-              data-for="rugo">EW Rugo</div>
-              <ReactTooltip id="rugo" place="left" effect="solid">
-                <span>Erugo World의 Rugo</span>
-              </ReactTooltip>
-              <input type="text" id="rugo" value={""} />
-            </div>
-            <button className={Style["exchange"]}>Exchange</button>
-          </div>
-          <button className={Style["logout-btn"]}>
-
-            로그아웃
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-</div> */}
         </Row>
       </Container>
     </>
