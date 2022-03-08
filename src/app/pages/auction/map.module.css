@@ -1,9 +1,11 @@
 .background {
     width: 100vw;
     height: 100vh;
-    background-image: url('map-bg.png');
+    /* background-image: url('map-bg.png'); */
+    /* color: white; */
     background-repeat: no-repeat;
     background-size: cover;
+    background-color: white;
 }
 
 .background::-webkit-scrollbar {

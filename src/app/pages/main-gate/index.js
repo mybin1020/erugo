@@ -25,7 +25,7 @@ const stopOrderList = [
     'frame-style-7th-stop',
     'frame-style-8th-stop'
 ]
-const TopMenu = ({ isLogin, onClick }) => {
+const TopMenu = ({ isLogin, onClick, languageCode, setLanguageCode }) => {
     const history = useHistory()
     return (
         <div className={Style['top-menu-background']} style={{ backgroundImage: 'url(/images/frame/top-menu.png)' }}>
@@ -114,8 +114,22 @@ const TopMenu = ({ isLogin, onClick }) => {
                     }
                 ></div>
                 <div
-                    style={{ backgroundImage: 'url(/images/frame/top-button/button0.png)' }} className={`${Style['lang-button']} pointer`}>
-
+                    style={{ 
+                        color:'white', backgroundImage: 'url(/images/frame/top-button/button0.png)' ,
+                        display:'flex',justifyContent:'center', alignItems:'center', fontWeight:'bold'
+                    }} 
+                    className={`${Style['lang-button']} pointer`}
+                    onClick={
+                        () => {
+                            if(languageCode === 'ko'){
+                                setLanguageCode('eng')
+                            }else{
+                                setLanguageCode('ko')
+                            }
+                        }
+                    }
+                >
+                    {languageCode}
                 </div>
             </div>
         </div>
@@ -186,7 +200,8 @@ const MainGate = ({
     currentFrame, setCurrentFrame, setUserUUID, setLoading, setWallet, setPoints,
     menubar, footer, points, userUUID, walletAddress,
     email, name, phone, ether, coin, exchangeRate,
-    setEmail, setName, setPhone, setEther, setCoin, setExchangeRate, setTempCoin, setTempPoint, tempCoin, tempPoint
+    setEmail, setName, setPhone, setEther, setCoin, setExchangeRate, setTempCoin, setTempPoint, tempCoin, tempPoint,
+    language, setLanguage, languageCode, setLanguageCode
 }) => {
     const aboutFrame = useRef(undefined)
     const [frameOrder, setFrameOrderList] = useState(animationOrderList)
@@ -196,7 +211,8 @@ const MainGate = ({
     const [buttonDownStartPoint, setButtonDownStartPoint] = useState({ startPoint: undefined })
 
     const isLogin = (sessionStorage.getItem('userUUID') ? true : false)
-
+    console.log(language)
+    console.log(languageCode)
     useEffect(() => {
         setTimeout(() => {
             if (currentFrame === 'about') {
@@ -275,6 +291,8 @@ const MainGate = ({
             <div className={wrapperSlide === -10 ? Style['main-wrapper'] : Style['main-wrapper-dark']}>
                 <TopMenu
                     isLogin={isLogin}
+                    languageCode={languageCode}
+                    setLanguageCode={setLanguageCode}
                     onClick={
                         (frame) => {
                             if (frame === 'about') {
@@ -379,7 +397,9 @@ const MainGate = ({
                             }
                             frameShowIdx={0}
                             frameHideIdx={1}
-                        ><About /> </Frame>
+                        >
+                            <About language={language[languageCode] || {}}/> 
+                        </Frame>
                         <Frame
                             first={currentFrame ? false : true}
                             frameName={'home'}
@@ -410,7 +430,7 @@ const MainGate = ({
                             }
                             frameShowIdx={2}
                             frameHideIdx={3}
-                        ><Home /></Frame>
+                        ><Home  language={language[languageCode] || {}}/></Frame>
                         <Frame
                             first={currentFrame ? false : true}
                             frameName={'auction'}
@@ -441,7 +461,7 @@ const MainGate = ({
                             }
                             frameShowIdx={4}
                             frameHideIdx={5}
-                        ><Auction /></Frame>
+                        ><Auction  language={language[languageCode] || {}}/></Frame>
                         <Frame
                             first={currentFrame ? false : true}
                             frameName={'buyland'}
@@ -472,7 +492,7 @@ const MainGate = ({
                             }
                             frameShowIdx={6}
                             frameHideIdx={7}
-                        ><BuyLand /></Frame>
+                        ><BuyLand  language={language[languageCode] || {}}/></Frame>
                         <Frame
                             first={currentFrame ? false : true}
                             frameName={'login'}
@@ -505,6 +525,7 @@ const MainGate = ({
                             frameHideIdx={9}
                         >
                             <LogIn
+                                language={language[languageCode] || {}}
                                 isLogin={isLogin}
                                 setPoints={setPoints}
                                 setLoading={setLoading}
@@ -606,6 +627,7 @@ const MainGate = ({
                             frameHideIdx={11}
                         >
                             <MyPage
+                                language={language[languageCode] || {}}
                                 menubar={menubar}
                                 footer={footer}
                                 points={points}
@@ -710,7 +732,7 @@ const MainGate = ({
                             }
                             frameShowIdx={14}
                             frameHideIdx={15}
-                        ><Market /></Frame>
+                        ><Market language={language[languageCode] || {}}/></Frame>
                     </div>
                 </div>
                 <div className={Style['bottom']}></div>

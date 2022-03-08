@@ -1133,7 +1133,7 @@ const dpOthers = (display) => {
                 <div style={{ width: '89%', transform: 'translateY(150%)', display: 'flex', justifyContent: 'flex-end', alignItems: "center", gap: '20px' }}>
                                 <div data-tip
               data-for="myland">
-                                    Highest bidPrice
+                                    최고 입찰가입니다
                                     <ReactTooltip id="myland" place="top" effect="solid" backgroundColor="rgba(225, 122, 24, 0.7)">
                 <span>최고 입찰가입니다</span>
               </ReactTooltip>
@@ -1159,7 +1159,7 @@ const dpOthers = (display) => {
                                 </div>
                                 <div data-tip
               data-for="selectedrange">
-                                    Selected Range
+                                    현재 선택된 땅
                                     <ReactTooltip id="selectedrange" place="top" effect="solid" backgroundColor="rgba(225, 122, 24, 0.7)">
                 <span>옥션에 참여하기 위해 클릭한 땅입니다</span>
               </ReactTooltip>
@@ -1171,7 +1171,7 @@ const dpOthers = (display) => {
 
                             <div data-tip
               data-for="abletopurchase">
-                                    Selected for Auction
+                                    선택된 땅
                                     <ReactTooltip id="abletopurchase" place="top" effect="solid" backgroundColor="rgba(225, 122, 24, 0.7)">
                 <span>옥션에 참여하기 위해 선택한 땅입니다</span>
               </ReactTooltip>
@@ -1182,7 +1182,7 @@ const dpOthers = (display) => {
 
                                 <div data-tip
               data-for="posterior">
-                                    Posterior bidPrice
+                                    후순위 입찰가
                                     <ReactTooltip id="posterior" place="top" effect="solid" backgroundColor="rgba(225, 122, 24, 0.7)">
                 <span>후순위 입찰가 입니다</span>
               </ReactTooltip>
