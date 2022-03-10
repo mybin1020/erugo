@@ -1,5 +1,6 @@
 import {React, useEffect, useRef} from "react";
 import Style from './style.module.css'
+import { useHistory } from "react-router-dom";
 
 // swiper bundle styles
 import 'swiper/swiper-bundle.min.css'
@@ -15,13 +16,15 @@ import SwiperCore, {
 // install Swiper modules
 SwiperCore.use([Mousewheel,Pagination]);
 const About = ({ language }) => {
-    
+    const history = useHistory();
     console.log(language)
     useEffect(() => {
         
         console.log('componentDidMount[Function]');
     }, []);
-    
+    onclick = () => {
+        history.push('/main-enterance')
+    }
     return (
         <>
           

@@ -24,11 +24,7 @@ const Home = () => {
         slidesPerView={1}
         spaceBetween={30}
         mousewheel={true}
-        observer={true}
-        observeParents={true}
         pagination={{clickable: true}}
-        onSwiper={(swiper) => console.log(swiper)}
-        onSlideChange={() => console.log('slide change')}
         className={Style['mySwiper']}
       >
 
