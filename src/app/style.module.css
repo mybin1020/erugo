@@ -1,0 +1,18 @@
+.background {
+    width: 100vw;
+    height: 100vh;
+}
+
+.company {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo {
+    background-image: url(./images/logo.jpg);
+    width: 40px;
+    height: 40px;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
