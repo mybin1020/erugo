@@ -14,7 +14,7 @@ import Slide from '../components/slide'
 SwiperCore.use([Mousewheel, Pagination, Navigation]);
 
 // cityzenship 으로 바뀜
-const Home = ({}) => {
+const Home = () => {
     
 
   return (
@@ -24,12 +24,12 @@ const Home = ({}) => {
         slidesPerView={1}
         spaceBetween={30}
         mousewheel={true}
-        updateOnWindowResize={true}
-        pagination={true}
-        colors={"white"}
+        observer={true}
+        observeParents={true}
+        pagination={{clickable: true}}
         onSwiper={(swiper) => console.log(swiper)}
-        onSlideChange={() => console.log("slide change")}
-        className={`${Style.mySwiper} ${Style.swiperBuyland}`}
+        onSlideChange={() => console.log('slide change')}
+        className={Style['mySwiper']}
       >
 
         <SwiperSlide className={Style["swiper-slide"]}>

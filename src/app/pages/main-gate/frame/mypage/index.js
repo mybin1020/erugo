@@ -234,6 +234,7 @@ const MyPage = ({
             <div className={Style["character"]}>
               <img className={Style["character-img"]} src={require(`./images/${ExchangeCharacter(coin)}.png`).default} alt="" />
             </div>
+            <div className={Style['bg-white']}></div>
           </Col>
           <Col md={5} lg={5} xxl={5}>
             <div className={Style["mypage-box"]}>
@@ -392,7 +393,7 @@ const MyPage = ({
                       data-for="sw-change"
                     >
                       SecurityWallet 충전하기
-                    </span>
+                    </span>{/*언어변수값 들어갈곳*/}
                     <ReactTooltip
                       id="sw-change"
                       place="top"
@@ -400,7 +401,7 @@ const MyPage = ({
                     >
                       <span>SecurityWallet에 있는 EWC를 ErugoWorld EWC로 충전시키기</span>{/*언어변수값 들어갈곳*/}
                     </ReactTooltip>
-                  </div>{/*언어변수값 들어갈곳*/}
+                  </div>
                   <ExchangeEwcCoin/>
                   <div className={Style["line2"]}></div>
                 </div>
@@ -412,7 +413,7 @@ const MyPage = ({
                       data-for="rugo-change"
                     >
                       RUGO로 변환하기
-                    </span>
+                    </span>{/*언어변수값 들어갈곳*/}
                     <ReactTooltip
                       id="rugo-change"
                       place="top"
@@ -439,6 +440,7 @@ const MyPage = ({
               </div>
             </div>
           </Col>
+          
         </Row>
       </Container>
     </>

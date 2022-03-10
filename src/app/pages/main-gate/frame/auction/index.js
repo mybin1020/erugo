@@ -42,12 +42,12 @@ const Auction = () => {
             </div>
             <Swiper 
                 direction={"vertical"}
-                slidesPerView={0.5}
+                slidesPerView={1}
                 spaceBetween={30}
                 mousewheel={true}
-                updateOnWindowResize={true}
-                pagination={true}
-                colors={'white'}
+                observer={true}
+                observeParents={true}
+                pagination={{clickable: true}}
                 onSwiper={(swiper) => console.log(swiper)}
                 onSlideChange={() => console.log('slide change')}
                 className={Style['mySwiper']}
