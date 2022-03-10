@@ -15,14 +15,7 @@ import SwiperCore, {
 // install Swiper modules
 SwiperCore.use([Mousewheel,Pagination]);
 const About = ({ language }) => {
-    // const swiper = useRef(false);
-    // useEffect(() => {
-    //    if(!swiper.current) {
-    //        swiper.current = true;
-    //    } else {
-    //        console.log('componentDidUpdate[Function]');
-    //    }
-    // },[]);
+    
     console.log(language)
     useEffect(() => {
         
@@ -31,18 +24,13 @@ const About = ({ language }) => {
     
     return (
         <>
-            {/* <h2>{language['market-header-1']}</h2>
-            <h4>{language['market-body']}</h4> */}
+          
             <Swiper 
                 direction={"vertical"}
                 slidesPerView={1}
-                spaceBetween={30}
+                spaceBetween={50}
                 mousewheel={true}
-                observer={true}
-                observeParents={true}
                 pagination={{clickable: true}}
-                onSwiper={(swiper) => console.log(swiper)}
-                onSlideChange={() => console.log('slide change')}
                 className={Style['mySwiper']}
             >
                 <SwiperSlide className={Style['swiper-slide']}>

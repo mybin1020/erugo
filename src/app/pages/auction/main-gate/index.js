@@ -35,9 +35,7 @@ const TopMenu = () => {
                 <div className={`${Style['top-menu-button']} ${Style['my-page-button']} pointer`}></div>
                 <div className={`${Style['top-menu-button']} ${Style['sign-up-button']} pointer`}></div>
                 <div className={`${Style['top-menu-button']} ${Style['market-button']} pointer`}></div>
-                <div className={`${Style['lang-button']} pointer`}>
-
-                </div>
+                <div className={`${Style['top-menu-button']}${Style['lang-button']} pointer`}></div>
             </div>
         </div>
     )

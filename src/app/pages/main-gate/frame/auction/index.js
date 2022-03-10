@@ -1,11 +1,6 @@
 import {React, useEffect, useRef} from "react";
 import Style from './style.module.css'
 import { useHistory } from 'react-router-dom'
-import Slider from '../components/slide'
-
-// Import css files
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 
 // swiper bundle styles
 import 'swiper/swiper-bundle.min.css'

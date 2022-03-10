@@ -329,7 +329,6 @@ const App = () => {
                             walletAddress={wallet}
                             setPoints={setPoints}
                             setLoading={setLoading}
-                            setPoints={setPoints}
                             setUserUUID={setUserUUID}
                             email={email}
                             name={name}
@@ -487,15 +486,15 @@ const App = () => {
                 <div style={{ backgroundImage: 'url(/images/frame/top-menu.png)' }}></div>
                 <div style={{ backgroundImage: 'url(/images/frame/logo.png)' }}></div>
 
-                <div style={{ backgroundImage: 'url(/images/frame/top-button/about.png)' }}></div>
-                <div style={{ backgroundImage: 'url(/images/frame/top-button/auction.png)' }}></div>
-                <div style={{ backgroundImage: 'url(/images/frame/top-button/button0.png)' }}></div>
-                <div style={{ backgroundImage: 'url(/images/frame/top-button/buyland.png)' }}></div>
-                <div style={{ backgroundImage: 'url(/images/frame/top-button/home.png)' }}></div>
-                <div style={{ backgroundImage: 'url(/images/frame/top-button/log-in.png)' }}></div>
-                <div style={{ backgroundImage: 'url(/images/frame/top-button/market.png)' }}></div>
-                <div style={{ backgroundImage: 'url(/images/frame/top-button/my-page.png)' }}></div>
-                <div style={{ backgroundImage: 'url(/images/frame/top-button/sign-up.png)' }}></div>
+                <div style={{ backgroundImage: 'url(/images/top-button/about.png)' }}></div>
+                <div style={{ backgroundImage: 'url(/images/top-button/auction.png)' }}></div>
+                <div style={{ backgroundImage: 'url(/images/top-button/button0.png)' }}></div>
+                <div style={{ backgroundImage: 'url(/images/top-button/buyland.png)' }}></div>
+                <div style={{ backgroundImage: 'url(/images/top-button/home.png)' }}></div>
+                <div style={{ backgroundImage: 'url(/images/top-button/log-in.png)' }}></div>
+                <div style={{ backgroundImage: 'url(/images/top-button/market.png)' }}></div>
+                <div style={{ backgroundImage: 'url(/images/top-button/my-page.png)' }}></div>
+                <div style={{ backgroundImage: 'url(/images/top-button/sign-up.png)' }}></div>
 
                 <div style={{ backgroundImage: 'url(/images/frame/frame/about.png)' }}></div>
                 <div style={{ backgroundImage: 'url(/images/frame/frame/auction.png)' }}></div>
@@ -509,7 +508,7 @@ const App = () => {
                 <div style={{ backgroundImage: 'url(/images/detail-frame/about.png)' }}></div>
                 <div style={{ backgroundImage: 'url(/images/detail-frame/auction.png)' }}></div>
                 <div style={{ backgroundImage: 'url(/images/detail-frame/buyland.png)' }}></div>
-                <div style={{ backgroundImage: 'url(/images/detail-frame/home.png)' }}></div>
+                <div style={{ backgroundImage: 'url(/images/detail-frame/citizenship.png)' }}></div>
                 <div style={{ backgroundImage: 'url(/images/detail-frame/login.png)' }}></div>
                 <div style={{ backgroundImage: 'url(/images/detail-frame/market.png)' }}></div>
                 <div style={{ backgroundImage: 'url(/images/detail-frame/signup.png)' }}></div>
