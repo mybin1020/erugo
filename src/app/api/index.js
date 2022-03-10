@@ -23,7 +23,6 @@ const getData = ({ path, method, data, callback }) => {
             callback(e)
         })
 }
-
 export const requestLogin = ({ email, password, callback }) => {
     getData({
         path: '/users/login',
@@ -253,6 +252,72 @@ export const getMyBidListOnMapPage = ({blockX, blockY, applicant, callback}) => 
         path:'/users/auction/bid-list-on-map',
         data:{
             blockX, blockY, applicant
+        },
+        callback
+    })
+}
+export const getOwnedLandList = ({userUUID, mapId, blockX, blockY, callback}) => {
+    getData({
+        path: '/users/owned-list',
+        data: {
+            uuid: userUUID,
+            mapId: mapId,
+            blockX: blockX,
+            blockY: blockY
+        },
+        callback
+    })
+}
+export const updateMyLandState = ({userUUID, forSale, salePrice, gridId, callback}) => {
+    getData({
+        path:'/users/update-my-land-state',
+        data:{
+            forSale, salePrice, userUUID, gridId
+        },
+        callback
+    })
+}
+export const buyNewLand = ({uuid, price, tbIndex, callback}) => {
+    getData({
+        path:'/users/buy-new-land',
+        data:{
+            uuid, price, tbIndex
+        },
+        callback
+    })
+}
+export const buyInMarket = ({uuid, price, tbIndex, callback}) => {
+    getData({
+        path:'/users/buy-in-market',
+        data:{
+            uuid, price, tbIndex
+        },
+        callback
+    })
+}
+export const purchaseProposal = ({uuid, owner, price, tbIndex, callback}) => {
+    getData({
+        path:'/users/purchase-proposal',
+        data:{
+            uuid, price, tbIndex, owner
+        },
+        callback
+    })
+}
+export const getGridInfo = ({tbIndex, callback}) => {
+    getData({
+        path:'/users/get-grid-info',
+        data:{
+            tbIndex
+        },
+        callback
+    })
+}
+export const proposalAccept = ({ oldOwner, newOwner, tbIndex, price, callback }) => {
+    getData({
+        path:'/users/proposal-accept',
+        data:{
+            tbIndex, oldOwner, newOwner, price
         },
         callback
     })

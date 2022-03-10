@@ -3,6 +3,7 @@ import Style from './style.module.css'
 import classNames from 'classnames'
 import { getMyBidList, withdrawalBid } from '../../api'
 import { lang } from '../../data/lang'
+import { useHistory } from 'react-router-dom'
 
 const TableHeader = () => {
     return (
@@ -15,7 +16,8 @@ const TableHeader = () => {
         </div>
     )
 }
-const TableRow = ({ bidPrice, registerTime, location, applicantIdx, withDrawalHandler, tbIdx }) => {
+const TableRow = ({ bidPrice, registerTime, location, applicantIdx, withDrawalHandler, tbIdx, blockX, blockY, gridX, gridY }) => {
+    const history = useHistory()
     return (
         <div
             style={{
@@ -43,6 +45,11 @@ const TableRow = ({ bidPrice, registerTime, location, applicantIdx, withDrawalHa
                         justifyContent: 'center', alignItems: 'center',
                         color: 'rgb(226, 121,22)', fontSize: '12px'
                     }}
+                    onClick={
+                        () => {
+                            history.push(`/auction?blockX=${blockX}&blockY=${blockY}&gridX=${gridX}&gridY=${gridY}`)
+                        }
+                    }
                 >
                     Go
                 </div>
@@ -87,6 +94,10 @@ const Table = ({ bidList = [], withDrawalHandler }) => {
                 applicantIdx={bid.applicantIdx}
                 withDrawalHandler={withDrawalHandler}
                 tbIdx={bid.tbIdx}
+                blockX={bid.blockX}
+                blockY={bid.blockY}
+                gridX={bid.gridX}
+                gridY={bid.gridY}
             />
         )
     })

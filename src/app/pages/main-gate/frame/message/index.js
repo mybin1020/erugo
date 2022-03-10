@@ -6,6 +6,10 @@ import Style from './style.module.css'
 const Message = ({ menubar, footer, userUUID, isLogin }) => {
     
     return (
+      <>
+        <div className={Style['message-font']}>
+          Coordinated Universal Time(UTC)
+        </div>
         <div style={{width:'100%', height:'100%', isLogin}}>
           {
             isLogin ?
@@ -16,8 +20,9 @@ const Message = ({ menubar, footer, userUUID, isLogin }) => {
           />
           :
           undefined
-}
+          }
         </div>
+      </>
     )
 }
 

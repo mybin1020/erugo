@@ -8,7 +8,7 @@ import { TiArrowRightThick, TiDelete } from 'react-icons/ti'
 import { AiOutlineLeft } from 'react-icons/ai'
 import { BsFillCaretDownFill, BsFillCaretUpFill, BsTrash } from 'react-icons/bs'
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
-import { getAuctionClose, getMapBlockData, getMyBidListOnMapPage } from '../../api'
+import { buyInMarket, buyNewLand, getAuctionClose, getMapBlockData, getMyBidListOnMapPage, getMyLandList, getOwnedLandList, purchaseProposal, updateMyLandState } from '../../api'
 import { getPointAmount, applyAuction, getMinBid, getMaxBidList } from '../../api'
 import { lang } from '../../data/lang'
 import { getGrids } from './components/grids'
@@ -206,7 +206,7 @@ const onClickHandler = (e) => {
     if (mouseAction.leftButtonDown && mouseAction.mouseMove) {
         mouseAction.leftButtonDown = false
         mouseAction.mouseMove = false
-    } else if (mouseAction.leftButtonDown && !mouseAction.mouseMove && !clickIsBlocked) {
+    } else if (mouseAction.leftButtonDown && !mouseAction.mouseMove && !clickIsBlocked && grids[`${e.gridX}-${e.gridY}`].available) {
         clickIsBlocked = true
         document.body.style.cursor = 'wait'
         mouseAction.leftButtonDown = false
@@ -459,7 +459,9 @@ const InforRow = ({ gridX, gridY, maxBid, onDeleteHandler, onBidPriceChangeHandl
         </div>
     )
 }
-const PurchaseProposal = () => {
+const PurchaseProposal = ({ userUUID }) => {
+    const [price, setPrice] = useState(0)
+    const land = grids[`${selectedPoint.gridX}-${selectedPoint.gridY}`]
     return (
         <React.Fragment>
             <div
@@ -476,18 +478,46 @@ const PurchaseProposal = () => {
                 <div style={{ width: 'calc(33.333%)', display: 'flex', justifyContent: "center", alignItems: 'center', color: '#e17a18' }}>Purchase Proposal</div>
                 <div style={{ width: 'calc(33.333%)', display: 'flex', justifyContent: "center", alignItems: 'center', color: '#e17a18' }}>Price</div>
                 <div style={{ width: 'calc(33.333%)', display: 'flex', justifyContent: "center", alignItems: 'center', color: '#e17a18' }}>
-                    <input type="text" />
+                    <input
+                        type="text"
+                        value={price}
+                        onChange={
+                            (e) => {
+                                setPrice(e.target.value)
+                            }
+                        }
+                    />
                 </div>
             </div>
             <div style={{ width: '100%', maxHeight: '400px', overflowY: 'auto', borderLeft: '1px solid #e17a18', borderRight: '1px solid #e17a18', borderBottom: '1px solid #e17a18' }}>
-                
+
             </div>
             <div style={{ width: '100%', height: '60px', display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '15px' }}>
                 <div
                     className="pointer" style={{ padding: '4px 16px', backgroundColor: 'white', fontSize: '12px', color: '#172a4d', borderRadius: '4px', fontWeight: '800' }}
                     onClick={
                         () => {
-
+                            purchaseProposal({
+                                uuid: userUUID,
+                                owner: land.owner,
+                                price: price,
+                                tbIndex: land.tbIndex,
+                                callback: (err, response) => {
+                                    if (err) {
+                                        console.log(err)
+                                    } else {
+                                        console.log(response)
+                                        if (response.result === 'success') {
+                                            land.setSelected(false)
+                                            unfoldInfo(false)
+                                            selectedAreaHandler({ exist: false })
+                                            selectedPoint.gridX = undefined
+                                            selectedPoint.gridY = undefined
+                                            window.alert('Update Success!')
+                                        }
+                                    }
+                                }
+                            })
                         }
                     }
                 >
@@ -497,7 +527,8 @@ const PurchaseProposal = () => {
         </React.Fragment>
     )
 }
-const BuyNewLand = () => {
+const BuyNewLand = ({ userUUID }) => {
+    const land = grids[`${selectedPoint.gridX}-${selectedPoint.gridY}`]
     return (
         <React.Fragment>
             <div
@@ -513,17 +544,49 @@ const BuyNewLand = () => {
             >
                 <div style={{ width: 'calc(33.333%)', display: 'flex', justifyContent: "center", alignItems: 'center', color: '#e17a18' }}>Buy New Land</div>
                 <div style={{ width: 'calc(33.333%)', display: 'flex', justifyContent: "center", alignItems: 'center', color: '#e17a18' }}>Price</div>
-                <div style={{ width: 'calc(33.333%)', display: 'flex', justifyContent: "center", alignItems: 'center', color: '#e17a18' }}>200</div>
+                <div style={{ width: 'calc(33.333%)', display: 'flex', justifyContent: "center", alignItems: 'center', color: '#e17a18' }}>
+                    {land.defaultPrice}
+                </div>
             </div>
             <div style={{ width: '100%', maxHeight: '400px', overflowY: 'auto', borderLeft: '1px solid #e17a18', borderRight: '1px solid #e17a18', borderBottom: '1px solid #e17a18' }}>
-                
+
             </div>
             <div style={{ width: '100%', height: '60px', display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '15px' }}>
                 <div
                     className="pointer" style={{ padding: '4px 16px', backgroundColor: 'white', fontSize: '12px', color: '#172a4d', borderRadius: '4px', fontWeight: '800' }}
                     onClick={
                         () => {
+                            buyNewLand({
+                                uuid: userUUID,
+                                price: land.defaultPrice,
+                                tbIndex: land.tbIndex,
+                                callback: (err, response) => {
+                                    if (err) {
+                                        console.log(response)
+                                    } else {
+                                        console.log(response)
+                                        if (response.result === 'success') {
+                                            if (userUUID !== response.myNewLand.owner) return
+                                            let myNewLand = response.myNewLand
+                                            let forSale = myNewLand.forSale === 'yes' ? true : false
+                                            land.setMyLand(1)
+                                            land.myLand = 1
+                                            land.price = myNewLand.price
+                                            land.setForSales(forSale)
+                                            land.forSale = forSale
+                                            land.salePrice = myNewLand.salePrice
 
+
+                                            land.setSelected(false)
+                                            unfoldInfo(false)
+                                            selectedAreaHandler({ exist: false })
+                                            selectedPoint.gridX = undefined
+                                            selectedPoint.gridY = undefined
+                                            window.alert('Update Success!')
+                                        }
+                                    }
+                                }
+                            })
                         }
                     }
                 >
@@ -533,7 +596,8 @@ const BuyNewLand = () => {
         </React.Fragment>
     )
 }
-const BuyInMarket = () => {
+const BuyInMarket = ({ userUUID }) => {
+    const land = grids[`${selectedPoint.gridX}-${selectedPoint.gridY}`]
     return (
         <React.Fragment>
             <div
@@ -549,17 +613,49 @@ const BuyInMarket = () => {
             >
                 <div style={{ width: 'calc(33.333%)', display: 'flex', justifyContent: "center", alignItems: 'center', color: '#e17a18' }}>Market</div>
                 <div style={{ width: 'calc(33.333%)', display: 'flex', justifyContent: "center", alignItems: 'center', color: '#e17a18' }}>Price</div>
-                <div style={{ width: 'calc(33.333%)', display: 'flex', justifyContent: "center", alignItems: 'center', color: '#e17a18' }}>200</div>
+                <div style={{ width: 'calc(33.333%)', display: 'flex', justifyContent: "center", alignItems: 'center', color: '#e17a18' }}>
+                    {land.salePrice}
+                </div>
             </div>
             <div style={{ width: '100%', maxHeight: '400px', overflowY: 'auto', borderLeft: '1px solid #e17a18', borderRight: '1px solid #e17a18', borderBottom: '1px solid #e17a18' }}>
-                
+
             </div>
             <div style={{ width: '100%', height: '60px', display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '15px' }}>
                 <div
                     className="pointer" style={{ padding: '4px 16px', backgroundColor: 'white', fontSize: '12px', color: '#172a4d', borderRadius: '4px', fontWeight: '800' }}
                     onClick={
                         () => {
+                            buyInMarket({
+                                uuid: userUUID,
+                                price: land.salePrice,
+                                tbIndex: land.tbIndex,
+                                callback: (err, response) => {
+                                    if (err) {
+                                        console.log(err)
+                                    } else {
+                                        console.log(response)
+                                        if (response.result === 'success') {
+                                            if (userUUID !== response.myNewLand.owner) return
+                                            let myNewLand = response.myNewLand
+                                            let forSale = myNewLand.forSale === 'yes' ? true : false
+                                            land.setMyLand(1)
+                                            land.myLand = 1
+                                            land.price = myNewLand.price
+                                            land.setForSales(forSale)
+                                            land.forSale = forSale
+                                            land.salePrice = myNewLand.salePrice
 
+
+                                            land.setSelected(false)
+                                            unfoldInfo(false)
+                                            selectedAreaHandler({ exist: false })
+                                            selectedPoint.gridX = undefined
+                                            selectedPoint.gridY = undefined
+                                            window.alert('Update Success!')
+                                        }
+                                    }
+                                }
+                            })
                         }
                     }
                 >
@@ -569,8 +665,9 @@ const BuyInMarket = () => {
         </React.Fragment>
     )
 }
-const MyLandState = () => {
-    const [forSale, setForSale] = useState(false)
+const MyLandState = ({ userUUID }) => {
+    const [forSale, setForSale] = useState(grids[`${selectedPoint.gridX}-${selectedPoint.gridY}`].forSale)
+    const [salePrice, setSalePrice] = useState(grids[`${selectedPoint.gridX}-${selectedPoint.gridY}`].salePrice)
     return (
         <React.Fragment>
             <div
@@ -599,9 +696,11 @@ const MyLandState = () => {
                     border: '1px solid #e17a18', color: '#e17a18', paddingRight: '10px'
                 }}
             >
-                <div style={{ width: 'calc(33.333%)', display: 'flex', justifyContent: "center", alignItems: 'center', color: '#e17a18' }}>0</div>
-                <div style={{ width: 'calc(33.333%)', display: 'flex', justifyContent: "center", alignItems: 'center', color: '#e17a18' }}>10</div>
-                <div style={{ width: 'calc(33.333%)', display: 'flex', justifyContent: "center", alignItems: 'center', color: '#e17a18' }}>200</div>
+                <div style={{ width: 'calc(33.333%)', display: 'flex', justifyContent: "center", alignItems: 'center', color: '#e17a18' }}>{selectedPoint.gridX}</div>
+                <div style={{ width: 'calc(33.333%)', display: 'flex', justifyContent: "center", alignItems: 'center', color: '#e17a18' }}>{selectedPoint.gridY}</div>
+                <div style={{ width: 'calc(33.333%)', display: 'flex', justifyContent: "center", alignItems: 'center', color: '#e17a18' }}>
+                    {grids[`${selectedPoint.gridX}-${selectedPoint.gridY}`].price}
+                </div>
             </div>
             <div
                 style={{
@@ -616,22 +715,31 @@ const MyLandState = () => {
             >
                 <div style={{ width: 'calc(25%)', display: 'flex', justifyContent: "center", alignItems: 'center', color: '#e17a18' }}>For Sale</div>
                 <div style={{ width: 'calc(15%)', display: 'flex', justifyContent: "center", alignItems: 'center', color: '#e17a18' }}>
-                    <input 
-                    type="checkbox" 
-                    checked={forSale}
-                    onChange={
-                        (e) => {
-                            setForSale(e.target.checked)
+                    <input
+                        type="checkbox"
+                        checked={forSale}
+                        onChange={
+                            (e) => {
+                                setForSale(e.target.checked)
+                                if (e.target.checked === false) {
+                                    setSalePrice(0)
+                                }
+                            }
                         }
-                    }
                     />
                 </div>
                 <div style={{ width: 'calc(30%)', display: 'flex', justifyContent: "center", alignItems: 'center', color: '#e17a18' }}>Sale Price</div>
                 <div style={{ width: 'calc(30%)', display: 'flex', justifyContent: "center", alignItems: 'center', color: '#e17a18' }}>
-                    <input 
-                    type="text" 
-                    style={{width:'100%'}}
-                    disabled={!forSale}
+                    <input
+                        type="text"
+                        style={{ width: '100%' }}
+                        disabled={!forSale}
+                        value={salePrice}
+                        onChange={
+                            (e) => {
+                                setSalePrice(e.target.value)
+                            }
+                        }
                     />
                 </div>
             </div>
@@ -640,11 +748,35 @@ const MyLandState = () => {
                     className="pointer" style={{ padding: '4px 16px', backgroundColor: 'white', fontSize: '12px', color: '#172a4d', borderRadius: '4px', fontWeight: '800' }}
                     onClick={
                         () => {
+                            updateMyLandState({
+                                userUUID: userUUID,
+                                forSale: forSale ? 'yes' : 'no',
+                                salePrice: salePrice,
+                                gridId: grids[`${selectedPoint.gridX}-${selectedPoint.gridY}`].tbIndex,
+                                callback: (err, response) => {
+                                    if (err) {
+                                        console.log(err)
+                                    } else {
+                                        if (response.result === 'success') {
+                                            let forSale = response.myLand.forSale === "yes" ? true : false
+                                            grids[`${selectedPoint.gridX}-${selectedPoint.gridY}`].forSale = forSale
+                                            grids[`${selectedPoint.gridX}-${selectedPoint.gridY}`].setForSales(forSale)
+                                            grids[`${selectedPoint.gridX}-${selectedPoint.gridY}`].salePrice = response.myLand.salePrice
 
+                                            grids[`${selectedPoint.gridX}-${selectedPoint.gridY}`].setSelected(false)
+                                            unfoldInfo(false)
+                                            selectedAreaHandler({ exist: false })
+                                            selectedPoint.gridX = undefined
+                                            selectedPoint.gridY = undefined
+                                            window.alert('Update Success!')
+                                        }
+                                    }
+                                }
+                            })
                         }
                     }
                 >
-                    BUY
+                    UPDATE
                 </div>
             </div>
         </React.Fragment>
@@ -660,8 +792,6 @@ const BlockInfoBar = ({ setShowSPMap, showSPMap, points, setPoints, userUUID, se
     const [displayOthers, setDisplayOthers] = useState(true)
 
     let inforRows = []
-
-
 
     unfoldInfo = setShowDetail
     console.log(showDetail)
@@ -788,19 +918,19 @@ const BlockInfoBar = ({ setShowSPMap, showSPMap, points, setPoints, userUUID, se
                                                     className={classNames(Style['info-box'])}
                                                 >
                                                     {
-                                                        grids[`${selectedPoint.gridX}-${selectedPoint.gridY}`].myLand === 0 && !grids[`${selectedPoint.gridX}-${selectedPoint.gridY}`].others 
-                                                        ? 
-                                                        <BuyNewLand /> 
-                                                        :
-                                                            grids[`${selectedPoint.gridX}-${selectedPoint.gridY}`].myLand === 1
+                                                        grids[`${selectedPoint.gridX}-${selectedPoint.gridY}`].myLand === 0 && !grids[`${selectedPoint.gridX}-${selectedPoint.gridY}`].others
                                                             ?
-                                                            <MyLandState />
+                                                            <BuyNewLand userUUID={userUUID} />
                                                             :
-                                                                grids[`${selectedPoint.gridX}-${selectedPoint.gridY}`].others &&  grids[`${selectedPoint.gridX}-${selectedPoint.gridY}`].forSale
+                                                            grids[`${selectedPoint.gridX}-${selectedPoint.gridY}`].myLand === 1
                                                                 ?
-                                                                <BuyInMarket />
+                                                                <MyLandState userUUID={userUUID} />
                                                                 :
-                                                                <PurchaseProposal />
+                                                                grids[`${selectedPoint.gridX}-${selectedPoint.gridY}`].others && grids[`${selectedPoint.gridX}-${selectedPoint.gridY}`].forSale
+                                                                    ?
+                                                                    <BuyInMarket userUUID={userUUID} />
+                                                                    :
+                                                                    <PurchaseProposal userUUID={userUUID} />
                                                     }
                                                 </div>
                                             </div>
@@ -811,47 +941,47 @@ const BlockInfoBar = ({ setShowSPMap, showSPMap, points, setPoints, userUUID, se
                             <div style={{ width: '100%', height: '100%', display: 'flex', justifyContent: 'flex-end', alignItems: "center", gap: '20px' }}>
                                 <div>
                                     MyLand
-                                    <div 
-                                    style={{ 
-                                        display: 'inline-block', 
-                                        width: '13px', 
-                                        height: '13px', 
-                                        backgroundColor: displayMyLand ? 'rgba(255,0,0,1)' : 'white', 
-                                        borderRadius: '2px', 
-                                        marginLeft: '4px', 
-                                        marginRight: '4px' ,
-                                        border:'1px solid gray'
-                                    }}
-                                    onClick={
-                                        (e) => {
-                                            let newDisplayMyLand = !displayMyLand
-                                            setDisplayMyLand(newDisplayMyLand)
-                                            dpMyLand(newDisplayMyLand)
+                                    <div
+                                        style={{
+                                            display: 'inline-block',
+                                            width: '13px',
+                                            height: '13px',
+                                            backgroundColor: displayMyLand ? 'rgba(255,0,0,1)' : 'white',
+                                            borderRadius: '2px',
+                                            marginLeft: '4px',
+                                            marginRight: '4px',
+                                            border: '1px solid gray'
+                                        }}
+                                        onClick={
+                                            (e) => {
+                                                let newDisplayMyLand = !displayMyLand
+                                                setDisplayMyLand(newDisplayMyLand)
+                                                dpMyLand(newDisplayMyLand)
+                                            }
                                         }
-                                    }
                                     ></div>
                                 </div>
                                 <div>
                                     Others'
-                                    <div 
-                                    style={{ 
-                                        display: 'inline-block', 
-                                        width: '13px', 
-                                        height: '13px', 
-                                        backgroundColor: displayOthers ? 'rgba(0,255,0,1)' : 'white',
-                                        borderRadius: '2px', 
-                                        marginLeft: '4px', 
-                                        marginRight: '4px',
-                                        border:'1px solid gray'
-                                    }}
+                                    <div
+                                        style={{
+                                            display: 'inline-block',
+                                            width: '13px',
+                                            height: '13px',
+                                            backgroundColor: displayOthers ? 'rgba(0,255,0,1)' : 'white',
+                                            borderRadius: '2px',
+                                            marginLeft: '4px',
+                                            marginRight: '4px',
+                                            border: '1px solid gray'
+                                        }}
 
-                                    onClick={
-                                        (e) => {
-                                            let newDisplayOthers = !displayOthers
-                                            setDisplayOthers(newDisplayOthers)
-                                            dpOthers(newDisplayOthers)
+                                        onClick={
+                                            (e) => {
+                                                let newDisplayOthers = !displayOthers
+                                                setDisplayOthers(newDisplayOthers)
+                                                dpOthers(newDisplayOthers)
+                                            }
                                         }
-                                    }
                                     >
 
                                     </div>
@@ -927,70 +1057,42 @@ const gridInit = (grid, userUUID) => {
 
 
     //set My Land
-    grids['160-60'].setMyLand(1)
-    grids['160-60'].myLand = 1
-    grids['160-61'].setMyLand(1)
-    grids['160-61'].myLand = 1
-    grids['160-62'].setMyLand(1)
-    grids['160-62'].myLand = 1
-    grids['161-60'].setMyLand(1)
-    grids['161-60'].myLand = 1
-    grids['161-61'].setMyLand(1)
-    grids['161-61'].myLand = 1
-    grids['161-62'].setMyLand(1)
-    grids['161-62'].myLand = 1
+    if (grid.available === 1) {
+        grids[`${grid.gridX}-${grid.gridY}`].available = true
+        if (grid.owner !== 'system') {
+            if (grid.owner === userUUID) {
+                grids[`${grid.gridX}-${grid.gridY}`].setMyLand(1)
+                grids[`${grid.gridX}-${grid.gridY}`].myLand = 1
+                grids[`${grid.gridX}-${grid.gridY}`].price = grid.price
 
+                grids[`${grid.gridX}-${grid.gridY}`].setOthers(false)
+                grids[`${grid.gridX}-${grid.gridY}`].others = false
+            } else {
+                grids[`${grid.gridX}-${grid.gridY}`].setMyLand(0)
+                grids[`${grid.gridX}-${grid.gridY}`].myLand = 0
+                grids[`${grid.gridX}-${grid.gridY}`].price = 0
 
-    grids['161-60'].setForSales(true)
-    grids['161-60'].forSale = true
-    grids['161-61'].setForSales(true)
-    grids['161-61'].forSale = true
-    grids['161-62'].setForSales(true)
-    grids['161-62'].forSale = true
+                grids[`${grid.gridX}-${grid.gridY}`].setOthers(true)
+                grids[`${grid.gridX}-${grid.gridY}`].others = true
+            }
+            if (grid.forSale === 'yes') {
+                grids[`${grid.gridX}-${grid.gridY}`].setForSales(true)
+                grids[`${grid.gridX}-${grid.gridY}`].forSale = true
+                grids[`${grid.gridX}-${grid.gridY}`].salePrice = grid.salePrice
 
-    grids['162-60'].setMyLand(1)
-    grids['162-60'].myLand = 1
-    grids['162-61'].setMyLand(1)
-    grids['162-61'].myLand = 1
-    grids['162-62'].setMyLand(1)
-    grids['162-62'].myLand = 1
-    grids['163-60'].setMyLand(1)
-    grids['163-60'].myLand = 1
-    grids['163-61'].setMyLand(1)
-    grids['163-61'].myLand = 1
-    grids['163-62'].setMyLand(1)
-    grids['163-62'].myLand = 1
+            } else {
+                grids[`${grid.gridX}-${grid.gridY}`].setForSales(false)
+                grids[`${grid.gridX}-${grid.gridY}`].forSale = false
+            }
+        }
+    } else {
+        grids[`${grid.gridX}-${grid.gridY}`].setAvailable(false)
+        grids[`${grid.gridX}-${grid.gridY}`].available = false
+    }
+    grids[`${grid.gridX}-${grid.gridY}`].tbIndex = grid.tbIndex
+    grids[`${grid.gridX}-${grid.gridY}`].defaultPrice = grid.defaultPrice
+    grids[`${grid.gridX}-${grid.gridY}`].owner = grid.owner
 
-    grids['164-60'].setOthers(true)
-    grids['164-61'].setOthers(true)
-    grids['164-62'].setOthers(true)
-    grids['165-60'].setOthers(true)
-    grids['165-61'].setOthers(true)
-    grids['165-62'].setOthers(true)
-    grids['164-60'].others = true
-    grids['164-61'].others = true
-    grids['164-62'].others = true
-    grids['165-60'].others = true
-    grids['165-61'].others = true
-    grids['165-62'].others = true
-
-    grids['165-60'].setForSales(true)
-    grids['165-61'].setForSales(true)
-    grids['165-62'].setForSales(true)
-    grids['165-60'].forSale = true
-    grids['165-61'].forSale = true
-    grids['165-62'].forSale = true
-
-    grids['160-63'].setOthers(true)
-    grids['161-63'].setOthers(true)
-    grids['162-63'].setOthers(true)
-    grids['163-63'].setOthers(true)
-    grids['164-63'].setOthers(true)
-    grids['160-63'].others = true
-    grids['161-63'].others = true
-    grids['162-63'].others = true
-    grids['163-63'].others = true
-    grids['164-63'].others = true
 }
 let myMap = getGrids({
     blockX: undefined,
@@ -1155,6 +1257,7 @@ const GridDom = ({ blockX, blockY, mapId, setLoading, setLoadingMsg, setShowSPMa
             className={Style['map-block']}
             style={{ width, height: '100%' }}
             onClick={() => {
+                /*
                 dataDownload({
                     mapId,
                     blockX,
@@ -1164,6 +1267,58 @@ const GridDom = ({ blockX, blockY, mapId, setLoading, setLoadingMsg, setShowSPMa
                     mapPath: `/images/map-sp-${blockX}${blockY}.jpeg`,
                     setShowSPMap, userUUID
                 })
+                */
+                setLoading(true)
+                getMinBid({
+                    callback: (err, minBid) => {
+                        if (err) {
+                            console.log(err)
+                        } else {
+                            console.log('minBid : ', minBid)
+
+                            getMapBlockData({
+                                mapId, blockX, blockY,
+                                callback: (err, res) => {
+                                    if (err) {
+                                        console.log(err)
+                                    } else {
+                                        res.result.forEach((grid, idx) => {
+                                            if (idx === 0) {
+                                                console.log(grid)
+                                            }
+                                            grid.defaultPrice = minBid.minBid
+                                            gridInit(grid, userUUID)
+                                        })
+                                        gridBackground.changeMap(`/images/map-sp-${blockX}${blockY}.jpeg`)
+                                        setLoading(false)
+                                        setShowSPMap(true)
+                                    }
+                                }
+                            })
+                        }
+                    }
+                })
+                /*
+                getOwnedLandList({
+                    userUUID: userUUID,
+                    mapId: mapId,
+                    blockX: blockX,
+                    blockY: blockY,
+                    callback: (err, response) => {
+                        console.log(`userUUID : ${userUUID}`)
+                        if (err) {
+                            console.log(err)
+                        } else {
+                            response.myLandList.forEach((land, idx) => {
+                                gridInit(land, userUUID)
+                            })
+                            gridBackground.changeMap(`/images/map-sp-${blockX}${blockY}.jpeg`)
+                            setLoading(false)
+                            setShowSPMap(true)
+                        }
+                    }
+                })
+                */
             }}
         >
 
@@ -1235,7 +1390,125 @@ const LandStatePage = ({ menubar, footer, MapUrl, setLoadingMsg, setLoading, poi
     const [size, setSize] = useState({ height: 0, width: 0 })
     userUUID_g = userUUID
     useEffect(() => {
+        const sizeSetting = () => {
+            let height = window.innerHeight - 60 - window.innerWidth * 0.05
+            let width = window.innerWidth
+            if (width * 4.995 > height * 9) {
+                setSize({
+                    height, width: (height / 4.995) * 9
+                })
+            } else {
+                setSize({
+                    height: 4.995 * (width / 9), width
+                })
+            }
+        }
 
+        for (let gridIdx in grids) {
+            grids[gridIdx].info = undefined
+        }
+        initMapId()
+        gridsState.myGrid = {}
+        gridsState.idx = {}
+        initSelectPoint()
+        setShowSPMap(false)
+
+        window.addEventListener('resize', () => {
+            setTimeout(() => {
+                sizeSetting()
+            }, 400)
+        }, false)
+        sizeSetting()
+
+
+        let data = queryString.parse(window.location.search)
+        if (data.blockX && data.blockY && data.gridX && data.gridY) {
+            setLoading(true)
+            getMinBid({
+                callback: (err, minBid) => {
+                    if (err) {
+                        console.log(err)
+                    } else {
+                        console.log('minBid : ', minBid)
+
+                        getMapBlockData({
+                            mapId: 0, blockX: data.blockX, blockY: data.blockY,
+                            callback: (err, res) => {
+                                if (err) {
+                                    console.log(err)
+                                } else {
+                                    res.result.forEach((grid, idx) => {
+                                        if (idx === 0) {
+                                            console.log(grid)
+                                        }
+                                        grid.defaultPrice = minBid.minBid
+                                        gridInit(grid, userUUID)
+                                    })
+                                    gridBackground.changeMap(`/images/map-sp-${data.blockX}${data.blockY}.jpeg`)
+
+
+                                    grids[`${data.gridX}-${data.gridY}`].setSelected(true)
+                                    selectedPoint = { ...data }
+                                    selectedAreaHandler({ exist: true })
+                                    unfoldInfo(true)
+
+
+                                    setLoading(false)
+                                    setShowSPMap(true)
+
+                                    let magnifyRate = 2
+                                    let windowWidth = window.innerWidth
+                                    let windowHeight = window.innerHeight - 120
+                                    let left = -15 * data.gridX * magnifyRate
+                                    let top = -15 * data.gridY * magnifyRate
+                                    if (left * -1 > windowWidth * 0.5 && left * -1 + windowWidth < map.mapWidth * magnifyRate) left = left + windowWidth * 0.5
+                                    else if (left * -1 <= windowWidth) left = 0
+                                    else left = -1 * map.mapWidth * magnifyRate + windowWidth
+
+                                    if (top * -1 > windowHeight * 0.5 && top * -1 + windowHeight < map.mapHeight * magnifyRate) top = top + windowHeight * 0.5
+                                    else if (top * -1 <= windowHeight) top = 0
+                                    else top = -1 * map.mapHeight * magnifyRate + windowHeight
+                                    toMove(left, top, magnifyRate, 2000, 'easeOut')
+                                }
+                            }
+                        })
+                    }
+                }
+            })
+        }
+        /*
+        let data = queryString.parse(window.location.search)
+        if (data.blockX && data.blockY && data.gridX && data.gridY) {
+            dataDownload({
+                mapId: 0,
+                blockX: data.blockX,
+                blockY: data.blockY,
+                setLoading,
+                setLoadingMsg,
+                mapPath: `/images/map-sp-${data.blockX}${data.blockY}.jpeg`,
+                setShowSPMap, userUUID,
+                pick: { gridX: data.gridX, gridY: data.gridY }
+            })
+        }
+        */
+        /*
+        getOwnedLandList({
+            userUUID: userUUID,
+            mapId: 0,
+            blockX: 0,
+            blockY: 0,
+            callback: (err, response) => {
+                console.log(`userUUID : ${userUUID}`)
+                if (err) {
+                    console.log(err)
+                } else {
+                    response.myLandList.forEach((land, idx) => {
+                        gridInit(land, userUUID)
+                    })
+                }
+            }
+        })
+        */
 
         /*
 
@@ -1287,10 +1560,10 @@ const LandStatePage = ({ menubar, footer, MapUrl, setLoadingMsg, setLoading, poi
         //MapId.mapId = mapId
         //MapId.blockX = blockX
         //MapId.blockY = blockY
-        gridInit()
-        gridBackground.changeMap(`/images/map-sp-${MapId.blockX}${MapId.blockY}.jpeg`)
-        setLoading(false)
-        setShowSPMap(true)
+        //gridInit()
+        //gridBackground.changeMap(`/images/map-sp-${MapId.blockX}${MapId.blockY}.jpeg`)
+        //setLoading(false)
+        //setShowSPMap(true)
     }, [])
     return (
         <React.Fragment>
@@ -1343,7 +1616,8 @@ const LandStatePage = ({ menubar, footer, MapUrl, setLoadingMsg, setLoading, poi
                     <Viewer />
                     <div
                         style={{
-                            width: '100%', height: '100%', display: !showSPMap ? 'flex' : 'none', justifyContent: "center", alignItems: "center", flexDirection: 'column', position: 'absolute', top: '0', left: '0', backgroundColor: 'white'
+                            width: '100%', height: '100%', display: !showSPMap ? 'flex' : 'none', justifyContent: "center", alignItems: "center", flexDirection: 'column', position: 'absolute', top: '0', left: '0',
+                            backgroundImage:'url(/images/blur-background.jpeg)', backgroundRepeat:'no-repeat', backgroundSize:''
                         }}
                     >
                         <RemoteMap

@@ -95,7 +95,7 @@ let Grid = ({ count, rowIdx, columnIdx, blockX, blockY, gridSize, onClickHandler
                                 :
                                 <div style={{ width: '100%', height: '100%', backgroundColor: selected ? 'rgba(255,255,255,0.8)' : 'rgba(255,255,255,0)' }}></div>
                             :
-                            <div style={{ width: '100%', height: '100%', backgroundColor: 'rgba(255,0,0,1)' }}></div>
+                            <div style={{ width: '100%', height: '100%', backgroundColor: 'rgba(0,0,0,0.8)' }}></div>
             }
         </div>
     )

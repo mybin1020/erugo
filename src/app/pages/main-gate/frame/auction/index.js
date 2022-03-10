@@ -1,31 +1,172 @@
-import React from "react";
+import {React, useEffect, useRef} from "react";
 import Style from './style.module.css'
 import { useHistory } from 'react-router-dom'
+import Slider from '../components/slide'
 
-/*
-1. css class는 Style['{css module 파일에서의 클래스 이름}'] 으로 사용합니다.
-2. 두개 이상의 클래스 사용은 className={`Style['classname1'] Style['classname2']`}로 정의 합니다.
-3. html은 반드시 react component의 return ({컴포넌트 위치}) 안쪽에 위치해야 합니다.
-4. css파일이 아닌 인라인 형식을 사용할 경우 style={}으로 표시되면 {} 오브젝트로 값을 넘겨주어야 합니다.
-5. 또한 style 오브젝트의 css 프로퍼티 이름은 카멜표기를 따릅니다. ex ) font-weight => fontWeight, font-size => fontSize
-6. img element에서 이미지를 불러올 때는 public 폴더에서 불러 오게 됩니다. 따라서 해당 public은 root 폴더가 되므로 /images, /assets등으로 시작합니다.
-7. 반면 css에서 background-image로 적용할 경우에는 css module에 의해 적용되므로 about폴더의 내부 images 폴더에서 이미지를 로드 합니다. 자세한 
-경로는 style.module.css를 확인합니다. 
-*/
+// Import css files
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
+// swiper bundle styles
+import 'swiper/swiper-bundle.min.css'
+import 'swiper/swiper.min.css'
+import 'swiper/components/navigation/navigation.min.css'
+import 'swiper/components/pagination/pagination.min.css'
+
+
+import {Swiper, SwiperSlide} from "swiper/react";
+import SwiperCore, {
+  Mousewheel,Pagination,Navigation
+} from 'swiper';
+
+// install Swiper modules
+SwiperCore.use([Mousewheel,Pagination,Navigation]);
+
+
+
+
 const Auction = () => {
     const history = useHistory()
+
     return (
-        <div className={Style['ground']} style={{padding:'0 0 1% 0'}}>
+        <>
             <div 
-            className="pointer"
-            style={{backgroundImage:'url(/images/login-bg.jpeg)', width:'100%', height:'100%', backgroundRepeat:'no-repeat', backgroundPosition:'center', backgroundSize:'cover'}}
+            className={Style["pointer"]}
             onClick={
                 () => {
                     history.push('/auction')
                 }
             }
-            ></div>
-        </div>
+            >
+                맵분양이동
+            </div>
+            <Swiper 
+                direction={"vertical"}
+                slidesPerView={0.5}
+                spaceBetween={30}
+                mousewheel={true}
+                updateOnWindowResize={true}
+                pagination={true}
+                colors={'white'}
+                onSwiper={(swiper) => console.log(swiper)}
+                onSlideChange={() => console.log('slide change')}
+                className={Style['mySwiper']}
+            >
+                <SwiperSlide className={Style['swiper-slide']}>
+                    <h2 className={Style["auction-title"]}>Auction 이용 방법</h2>
+                    <div className={Style["auctionBox"]}>
+                        <div className={Style['img1']}></div>
+                        <div className={Style['auction-content-text']}>
+                            <h3>step 1</h3>
+                            <p>‘이루고 월드’ 홈페이지 로그인 </p>
+                        </div>
+                    </div>
+                </SwiperSlide>
+                <SwiperSlide className={Style['swiper-slide']}>
+                    <h2 className={Style["auction-title"]}>Auction 이용 방법</h2>
+                    <div className={Style["auctionBox"]}>
+                        <div className={Style['img2']}></div>
+                        <div className={Style['auction-content-text']}>
+                            <div>
+                                <h3>step 2</h3>
+                                <p>맵 분양 페이지 접속</p>
+                            </div>
+                        </div>
+                    </div>
+                </SwiperSlide>
+                <SwiperSlide className={Style['swiper-slide']}>
+                    <h2 className={Style["auction-title"]}>Auction 이용 방법</h2>
+                    <div className={Style["auctionBox"]}>
+                        <div className={Style['img3']}></div>
+                        <div className={Style['auction-content-text']}>
+                            <div>
+                                <h3>step 3</h3>
+                                <p>구역 및 위치, 땅 수량 선택</p>
+                            </div>
+                        </div>
+                    </div>
+                </SwiperSlide>
+                <SwiperSlide className={Style['swiper-slide']}>
+                    <h2 className={Style["auction-title"]}>Auction 이용 방법</h2>
+                    <div className={`${Style.auctionBox} ${Style.auctionImgbox}`}>
+                        <div className={Style['auction-img']}>
+                            <div className={Style['img5']}></div>
+                            <div className={Style['auction-img-text']}>구매가능</div>
+                        </div>
+                        <div className={Style['auction-img']}>
+                            <div className={Style['img6']}></div>
+                            <div className={Style['auction-img-text']}>선택한 범위내 특정 셀 확인</div>
+                        </div>
+                        <div className={Style['auction-img']}>
+                            <div className={Style['img7']}></div>
+                            <div className={Style['auction-img-text']}>기존 입찰자 존재</div>
+                        </div>
+                        <div className={Style['auction-img']}>
+                            <div className={Style['img8']}></div>
+                            <div className={Style['auction-img-text']}>기존 입찰 범위 선택</div>
+                        </div>
+                        <div className={Style['auction-img']}>
+                            <div className={Style['img9']}></div>
+                            <div className={Style['auction-img-text']}>구매 불가 지역</div>
+                        </div>
+                        <div className={Style['map-content']}>※ 맵 선택 : 최소 1개 ~ 최대 4,096개</div>
+                    </div>
+                </SwiperSlide>
+                <SwiperSlide className={Style['swiper-slide']}>
+                    <h2 className={Style["auction-title"]}>Auction 이용 방법</h2>
+                    <div className={Style['auctionBox']}>
+                        <div className={Style['img4']}></div>
+                        <div className={Style['auction-content-text']}>
+                            <div>
+                                <h3>step 4</h3>
+                                <p>우측 상단 입찰가 기입 후 경매 참가</p>
+                            </div>
+                            <div className={Style['auction-content-text-font']}>
+                                <p>PositionX : 선택 땅의 X축 좌표</p>
+                                <p>PositionY : 선택 땅의 Y축 좌표</p>
+                                <p>Max Bid : 현재 최고 입찰가</p>
+                                <p>Bid Price : 입찰 희망가</p>
+                                <p>Bid Price 입찰 희망가 입력 후 하단의 Apply 클릭하여 경매 참여</p>
+                            </div>
+                        </div>
+                    </div>
+                </SwiperSlide>
+                <SwiperSlide className={Style['swiper-slide']}>
+                <h2 className={Style["auction-title"]}>Auction 이용 방법</h2>
+                    <div className={Style["auctionBox"]}>
+                        <div className={Style['step5-img']}></div>
+                        <div className={Style['auction-content-text']}>
+                            <div>
+                                <h3>step 5</h3>
+                                <p>Auction 관리자 메시지 확인</p>
+                            </div>
+                        </div>
+                    </div>
+                </SwiperSlide>
+                <SwiperSlide className={Style['swiper-slide']}>
+                    <h2 className={Style["auction-title"]}>Auction 이용 방법</h2>
+                    <div className={Style["auctionBox"]}>
+                        <div className={Style['auction-howto-content']}>
+                            <div>
+                                <p>※ 경매 진행 기간</p>
+                                <p>‘이루고 월드’의 땅 분양 경매는 22.xx.xx(00시) ~ 22.xx.xx(00시)까지 2주간 진행됩니다.</p>
+                            </div>
+                            <div>
+                                <h4>※ 주의 사항</h4>
+                                <ul>
+                                    <li>① 맵 분양은 경매 형식으로 진행되며, 낙찰 받지 못한 EWC는 계정 지갑으로 환급됩니다.</li>
+                                    <li>② 경매 입찰 취소는 My Bid에서 가능합니다.</li>
+                                    <li>③ 검은색 픽셀은 구매가 불가합니다.</li>
+                                    <li>④ 개인 하우징은 최소 10개의 토지를 소유해야 건설 가능합니다.</li>
+                                    <li>⑤ 사업용 건물은 최소 100개 이상의 토지를 소유해야 건설 가능합니다.(3계위 이상)</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </SwiperSlide>
+                
+            </Swiper>
+        </>
     )
 }
 

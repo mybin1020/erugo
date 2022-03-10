@@ -59,7 +59,6 @@ const LoginPage = ({ setUserUUID, setLoading, setWallet, setPoints, setCurrentFr
                                             backgroundPosition: 'center'
                                         }}
                                     >
-
                                     </div>
                                 </div>
                             </div>

@@ -2,7 +2,7 @@
 .about-box{
     position: relative;
     width: 100%;
-    height:100%;
+    height:95%;
 }
 .about-content-text,.img1,.img2,.img3,.img4,.img5,.img6,.img7,.img8,.img9{
     position: absolute;

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import classNames from "classnames";
 import queryString from 'query-string'
 import Style from './map.module.css'
-
+import ReactTooltip from "react-tooltip";
 import { useHistory } from 'react-router-dom'
 import { TiArrowRightThick, TiDelete } from 'react-icons/ti'
 import { AiOutlineLeft } from 'react-icons/ai'
@@ -549,7 +549,7 @@ const BlockInfoBar = ({ setShowSPMap, showSPMap, points, setPoints, userUUID, se
                                                     height: '200px',
                                                     position: 'absolute',
                                                     right: '0',
-                                                    top: '120px',
+                                                    top: '20vh',
                                                     zIndex: '100000',
                                                     display: 'flex',
                                                     justifyContent: "center",
@@ -958,6 +958,7 @@ const dataDownload = ({ mapId, blockX, blockY, setLoading, setLoadingMsg, mapPat
 const GridDom = ({ blockX, blockY, mapId, setLoading, setLoadingMsg, setShowSPMap, userUUID, width }) => {
 
     return (
+        
         <div
             className={Style['map-block']}
             style={{ width, height: '100%' }}
@@ -973,7 +974,7 @@ const GridDom = ({ blockX, blockY, mapId, setLoading, setLoadingMsg, setShowSPMa
                 })
             }}
         >
-
+            
         </div>
     )
 }
@@ -1041,6 +1042,39 @@ const AuctionPage = ({ menubar, footer, MapUrl, setLoadingMsg, setLoading, point
     const [showSPMap, setShowSPMap] = useState(false)
     const [size, setSize] = useState({ height: 0, width: 0 })
     userUUID_g = userUUID
+
+    
+    const [displayMyLand, setDisplayMyLand] = useState(true)
+    const [displayOthers, setDisplayOthers] = useState(true)
+    const dpMyLand = (display) => {
+    grids['160-60'].setDisplayMyLand(display)
+    grids['160-61'].setDisplayMyLand(display)
+    grids['160-62'].setDisplayMyLand(display)
+    grids['161-60'].setDisplayMyLand(display)
+    grids['161-61'].setDisplayMyLand(display)
+    grids['161-62'].setDisplayMyLand(display)
+    grids['162-60'].setDisplayMyLand(display)
+    grids['162-61'].setDisplayMyLand(display)
+    grids['162-62'].setDisplayMyLand(display)
+    grids['163-60'].setDisplayMyLand(display)
+    grids['163-61'].setDisplayMyLand(display)
+    grids['163-62'].setDisplayMyLand(display)
+}
+const dpOthers = (display) => {
+
+    grids['164-60'].setDisplayOthers(display)
+    grids['164-61'].setDisplayOthers(display)
+    grids['164-62'].setDisplayOthers(display)
+    grids['165-60'].setDisplayOthers(display)
+    grids['165-61'].setDisplayOthers(display)
+    grids['165-62'].setDisplayOthers(display)
+
+    grids['160-63'].setDisplayOthers(display)
+    grids['161-63'].setDisplayOthers(display)
+    grids['162-63'].setDisplayOthers(display)
+    grids['163-63'].setDisplayOthers(display)
+    grids['164-63'].setDisplayOthers(display)
+}
     useEffect(() => {
 
 
@@ -1092,8 +1126,78 @@ const AuctionPage = ({ menubar, footer, MapUrl, setLoadingMsg, setLoading, point
     }, [])
     return (
         <React.Fragment>
+            
             <div className={classNames(Style['background'])}>
                 {menubar}
+                <div style={{ width: '89%', transform: 'translateY(150%)', display: 'flex', justifyContent: 'flex-end', alignItems: "center", gap: '20px' }}>
+                                <div data-tip
+              data-for="myland">
+                                    최고 입찰가입니다
+                                    <ReactTooltip id="myland" place="top" effect="solid" backgroundColor="rgba(225, 122, 24, 0.7)">
+                <span>최고 입찰가입니다</span>
+              </ReactTooltip>
+                                    <div 
+                                    style={{ 
+                                        display: 'inline-block', 
+                                        width: '13px', 
+                                        height: '13px', 
+                                        backgroundColor: displayMyLand ? 'rgba(255,0,0,1)' : 'white', 
+                                        borderRadius: '2px', 
+                                        marginLeft: '4px', 
+                                        marginRight: '4px' ,
+                                        border:'1px solid gray'
+                                    }}
+                                    onClick={
+                                        (e) => {
+                                            let newDisplayMyLand = !displayMyLand
+                                            setDisplayMyLand(newDisplayMyLand)
+                                            dpMyLand(newDisplayMyLand)
+                                        }
+                                    }
+                                    ></div>
+                                </div>
+                                <div data-tip
+              data-for="selectedrange">
+                                    현재 선택된 땅
+                                    <ReactTooltip id="selectedrange" place="top" effect="solid" backgroundColor="rgba(225, 122, 24, 0.7)">
+                <span>옥션에 참여하기 위해 클릭한 땅입니다</span>
+              </ReactTooltip>
+                                
+                                <div style={{display: 'inline-block', width: '13px', height: '13px', backgroundColor: 'rgba(255,255,0,1)',
+                            borderRadius: '2px', marginLeft: '4px', marginRight: '4px', border: '1px solid gray' }}></div>
+                            </div>
+
+
+                            <div data-tip
+              data-for="abletopurchase">
+                                    선택된 땅
+                                    <ReactTooltip id="abletopurchase" place="top" effect="solid" backgroundColor="rgba(225, 122, 24, 0.7)">
+                <span>옥션에 참여하기 위해 선택한 땅입니다</span>
+              </ReactTooltip>
+                                
+                                <div style={{display: 'inline-block', width: '13px', height: '13px', backgroundColor: 'rgba(255,255,255,1)',
+                            borderRadius: '2px', marginLeft: '4px', marginRight: '4px', border: '1px solid gray' }}></div>
+                            </div>
+
+                                <div data-tip
+              data-for="posterior">
+                                    후순위 입찰가
+                                    <ReactTooltip id="posterior" place="top" effect="solid" backgroundColor="rgba(225, 122, 24, 0.7)">
+                <span>후순위 입찰가 입니다</span>
+              </ReactTooltip>
+                                    <div style={{ display: 'inline-block', width: '13px', height: '13px', backgroundColor: 'rgba(0,0,255,1)', borderRadius: '2px', marginLeft: '4px', marginRight: '4px', border: '1px solid gray' }}></div>
+                                </div>
+                                {/* <div>선택된 영역이 없습니다.</div> */}
+                            </div>
+
+
+                                
+                                
+
+
+
+                                
+                
                 <BlockInfoBar
                     setShowSPMap={setShowSPMap}
                     showSPMap={showSPMap}
@@ -1138,6 +1242,7 @@ const AuctionPage = ({ menubar, footer, MapUrl, setLoadingMsg, setLoading, point
                         }
                     }
                 >
+                    
                     <Viewer />
                     <div
                         style={{

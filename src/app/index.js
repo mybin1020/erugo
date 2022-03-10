@@ -178,6 +178,8 @@ const App = () => {
     const [userUUID, setUserUUID] = useState(undefined)
 
     const [language, setLanguage] = useState({})
+    const [languageCode, setLanguageCode] = useState(localStorage.getItem('language-code') || 'ko')
+
     const [myLandOpen, setMyLandOpen] = useState(false)
 
     const [isWhiteList, setIsWhiteList] = useState(true)
@@ -231,7 +233,7 @@ const App = () => {
                                 console.log(err)
                             } else {
                                 console.log(res)
-                                setLanguage(res.language.ko)
+                                setLanguage(res.language)
                             }
                         }
                     })
@@ -452,6 +454,11 @@ const App = () => {
                                 setEther={setPhone}
                                 setCoin={setCoin}
                                 setExchangeRate={setExchangeRate}
+
+                                language={language}
+                                setLanguage={setLanguage}
+                                languageCode={languageCode}
+                                setLanguageCode={setLanguageCode}
                             />
                             :
                             <HomePage2 />
