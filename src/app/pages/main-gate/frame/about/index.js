@@ -28,7 +28,7 @@ const About = ({ language }) => {
             <Swiper 
                 direction={"vertical"}
                 slidesPerView={1}
-                spaceBetween={30}
+                spaceBetween={50}
                 mousewheel={true}
                 pagination={{clickable: true}}
                 className={Style['mySwiper']}

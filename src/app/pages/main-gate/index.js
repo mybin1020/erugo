@@ -123,10 +123,10 @@ const TopMenu = ({
         ></div>
 
         {/* userUUID가 있으면 ? log-in 버튼 : log-out 버튼*/}
-        {setUserUUID ? (
+        {sessionStorage.getItem('userUUID') ? (
           <div
             style={{
-              backgroundImage: "url(/images/frame/top-button/log-in.png)",
+              backgroundImage: "url(/images/frame/top-button/about.png)",
             }}
             className={`${Style["top-menu-button"]} ${Style["log-in-button"]} pointer`}
             onClick={() => {
@@ -136,7 +136,7 @@ const TopMenu = ({
         ) : (
           <div
             style={{
-              backgroundImage: "url(/images/frame/top-button/log-out.png)",
+              backgroundImage: "url(/images/frame/top-button/log-in.png)",
             }}
             className={`${Style["top-menu-button"]} ${Style["log-in-button"]} pointer`}
             onClick={() => {
@@ -145,12 +145,13 @@ const TopMenu = ({
           ></div>
         )}
 
+
         {/* Language code가 ? KR이면 KR : ENG  */}
         {languageCode === "ko" ? (
           <div
             style={{
               color: "white",
-              backgroundImage: "url(/images/frame/top-button/kr.png)",
+              backgroundImage: "url(/images/frame/top-button/about.png)",
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
@@ -171,7 +172,7 @@ const TopMenu = ({
           <div
             style={{
               color: "white",
-              backgroundImage: "url(/images/frame/top-button/eng.png)",
+              backgroundImage: "url(/images/frame/top-button/market.png)",
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
@@ -193,6 +194,7 @@ const TopMenu = ({
     </div>
   );
 };
+
 const Frame = ({
   onCloseBunttonClick,
   onClick,
@@ -436,6 +438,23 @@ const MainGate = ({
       setCurrentFrame(undefined);
     }, 200);
   }, []);
+
+
+//  홈버튼 눌렀을 때 이동
+const el = useRef();
+const [isOpen, setOpen] = useState(false);
+const handleCloseWindow = e => {
+    if(isOpen && (!el.current || !el.current.contains(e.target))) setOpen(false);
+}
+useEffect(() => {
+    window.addEventListener('click', handleCloseWindow);
+    return () => {
+        window.removeEventListener('click', handleCloseWindow);
+    };
+}, []);
+
+
+
   return (
     <div
       className={Style["page-background"]}
@@ -576,6 +595,7 @@ const MainGate = ({
             }
           >
             <Frame
+                ref={el}
               first={currentFrame ? false : true}
               frameEle={aboutFrame}
               frameName={"about"}

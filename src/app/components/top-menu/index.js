@@ -41,8 +41,10 @@ const Menu = ({ onClick, hideButton = false }) => {
                                 }
                             }
                         ></div>
-                        {/*
-                <div 
+
+                        
+                        
+                {/* <div 
                 className={`${Style['top-menu-button']} ${Style['about-button']} pointer`}
                 onClick={
                     () => {
@@ -83,18 +85,18 @@ const Menu = ({ onClick, hideButton = false }) => {
                         }, 200)
                     }
                 }
-                ></div>
+                ></div> */}
                 <div className={`${Style['top-menu-button']} ${Style['my-page-button']} pointer`}
                 onClick={
                     () => {
                         onClick('mypage')
                         setTimeout(() => {
-                            history.push('/main-entrance')
+                            history.push('/mypage')
                         }, 200)
                     }
                 }
                 ></div>
-                <div className={`${Style['top-menu-button']} ${Style['sign-up-button']} pointer`}
+                {/* <div className={`${Style['top-menu-button']} ${Style['sign-up-button']} pointer`}
                 onClick={
                     () => {
                         onClick('signup')
@@ -113,11 +115,9 @@ const Menu = ({ onClick, hideButton = false }) => {
                         }, 200)
                     }
                 }
-                ></div>
-                <div className={`${Style['lang-button']} pointer`}>
-
-                </div>
-            */}
+                ></div> */}
+                {/* <div className={`${Style['lang-button']} pointer`}></div> */}
+           
                     </div>
                     :
                     undefined
