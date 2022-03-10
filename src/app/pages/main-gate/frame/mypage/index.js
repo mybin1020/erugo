@@ -336,7 +336,6 @@ const MyPage = ({
                     <span className={Style["num-box"]}>{points}</span>
                   </div>
                 </div>
-                
               </div>
             </div>
           </Col>
@@ -440,7 +439,6 @@ const MyPage = ({
               </div>
             </div>
           </Col>
-          
         </Row>
       </Container>
     </>
