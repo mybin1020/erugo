@@ -970,7 +970,7 @@ const MainGate = ({
             {/* 0311 Sign-up 자리인데 안뜹니다 */}
             <Frame
               first={currentFrame ? false : true}
-              frameName={"signup"}
+              frameName={"message"}
               // 왜 메세지인데 signup이 뜨나요?
               frameIdx={6}
               frameOrder={frameOrder[6]}
