@@ -96,12 +96,8 @@
     background-image: url(./images/top-button/market.png);
 }
 .lang-button {
-    width:6.2vw;
-    height:2.8vw;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain;
     background-image: url(./images/top-button/kr.png);
+    background-image: url(./images/top-button/eng.png);
 }
 .main-contents {
     width:'100%';

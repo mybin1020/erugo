@@ -9,18 +9,19 @@
 }
 .buyland-btn{
     position: absolute;
-    top:10%;
+    top:7%;
     right:5%;
-    width: 8vw;
-    height: 3vh;
-    background-color: yellowgreen;
-    border-radius: 1vh;
+    width:7vw;
+    height: 5vh;
+    background-image: url(./images/buyland-btn.png);
+    background-size: cover;
+    background-repeat: no-repeat;
     line-height: 3vh;
     text-align: center;
-    box-shadow: 5px 5px 5px rgba(0,0,0,0.3);
-    color: white;
+    color: black;
     font-size: 1vw;
     cursor: pointer;
+    text-indent: -9999px;
 }
 .buyland-content-text,.img1,.img2,.img3,.img4,.img5,.img6,.img7,.img8{
     position: absolute;

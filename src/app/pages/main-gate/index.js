@@ -119,7 +119,7 @@ const TopMenu = ({
           style={{
             backgroundImage: "url(/images/frame/top-button/message.png)",
           }}
-          className={`${Style["top-menu-button"]} ${Style["sign-up-button"]} pointer`}
+          className={`${Style["top-menu-button"]} ${Style["message-button"]} pointer`}
           onClick={() => {
             if (!isLogin) {
               onClick("login");
@@ -133,7 +133,7 @@ const TopMenu = ({
         {sessionStorage.getItem("userUUID") ? (
           <div
             style={{
-              backgroundImage: "url(/images/frame/top-button/about.png)",
+              backgroundImage: "url(/images/frame/top-button/log-in.png)",
             }}
             className={`${Style["top-menu-button"]} ${Style["log-in-button"]} pointer`}
             onClick={() => {
@@ -143,7 +143,7 @@ const TopMenu = ({
         ) : (
           <div
             style={{
-              backgroundImage: "url(/images/frame/top-button/log-in.png)",
+              backgroundImage: "url(/images/frame/top-button/sign-up.png)",
             }}
             className={`${Style["top-menu-button"]} ${Style["log-in-button"]} pointer`}
             onClick={() => {
@@ -157,7 +157,7 @@ const TopMenu = ({
           <div
             style={{
               color: "white",
-              backgroundImage: "url(/images/frame/top-button/about.png)",
+              backgroundImage: "url(/images/frame/top-button/kr.png)",
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
@@ -177,12 +177,11 @@ const TopMenu = ({
         ) : (
           <div
             style={{
-              color: "white",
-              backgroundImage: "url(/images/frame/top-button/market.png)",
+              color: "transparent",
+              backgroundImage: "url(/images/frame/top-button/eng.png)",
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
-              fontWeight: "bold",
             }}
             className={`${Style["lang-button"]} pointer`}
             onClick={() => {

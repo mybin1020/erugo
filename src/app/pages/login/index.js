@@ -9,6 +9,58 @@ const LoginPage = ({ setUserUUID, setLoading, setWallet, setPoints, setCurrentFr
     const history = useHistory()
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const onKeyPress = (e) => {
+        if(e.key === 'Enter'){
+            onSignup();
+        }
+    }
+    const onSignup =  () => {
+        if (email === undefined || email === '') {
+            window.alert('이메일을 입력해 주세요')
+            return
+        }
+        if (password === undefined || password === '') {
+            window.alert('비밀번호를 입력해 주세요')
+            return
+        }
+        setLoading(true)
+        console.log({ email, password })
+        requestLogin({
+            email,
+            password,
+            callback: (err, response) => {
+                setEmail('')
+                setPassword('')
+                if (err) {
+                    setLoading(false)
+                    console.log(err)
+                } else {
+                    if (response.result !== 'success') {
+                        setLoading(false)
+                        window.alert('로그인에 실패하였습니다.')
+                    } else {
+                        let d = response.userInfo
+                        console.log('로그인 성공')
+                        console.log(d)
+                        setPoints(d.point)
+                        setUserUUID(d.uuid)
+                        setWallet(d.wallet)
+                        sessionStorage.setItem('userUUID', d.uuid)
+                        sessionStorage.setItem('wallet', d.wallet)
+                        setLoading(false)
+                        onClose()
+                        /*
+                        setTimeout(() => {
+                            history.push('/main-entrance')
+                            setCurrentFrame('mypage')
+                        }, 200)
+                        */
+                        //history.push('/my')
+                    }
+                }
+            }
+        })
+    }
     return (
         <React.Fragment>
             <div
@@ -82,6 +134,7 @@ const LoginPage = ({ setUserUUID, setLoading, setWallet, setPoints, setCurrentFr
                                         style={{ width: 'calc(100% - 80px)', textAlign: 'center', height: '100%', borderWidth: '0', color: '#E27A17', borderRadius: '10px', fontSize: '12px' }}
                                         type="password"
                                         value={password}
+                                        onKeyPress={onKeyPress}
                                         onChange={
                                             (e) => {
                                                 setPassword(e.target.value)
@@ -93,58 +146,10 @@ const LoginPage = ({ setUserUUID, setLoading, setWallet, setPoints, setCurrentFr
                                     className="pointer"
                                     style={{
                                         width: '100px',
-                                        height: '30px', display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundColor: 'white', fontSize: '12px', borderRadius: '10px',
+                                        height: '30px', display: 'flex', justifyContent: 'center', alignItems: 'center', fontSize: '12px', borderRadius: '10px',
                                         backgroundColor: '#E27A17', color: 'white'
                                     }}
-                                    onClick={
-                                        () => {
-                                            if (email === undefined || email === '') {
-                                                window.alert('이메일을 입력해 주세요')
-                                                return
-                                            }
-                                            if (password === undefined || password === '') {
-                                                window.alert('비밀번호를 입력해 주세요')
-                                                return
-                                            }
-                                            setLoading(true)
-                                            console.log({ email, password })
-                                            requestLogin({
-                                                email,
-                                                password,
-                                                callback: (err, response) => {
-                                                    setEmail('')
-                                                    setPassword('')
-                                                    if (err) {
-                                                        setLoading(false)
-                                                        console.log(err)
-                                                    } else {
-                                                        if (response.result !== 'success') {
-                                                            setLoading(false)
-                                                            window.alert('로그인에 실패하였습니다.')
-                                                        } else {
-                                                            let d = response.userInfo
-                                                            console.log('로그인 성공')
-                                                            console.log(d)
-                                                            setPoints(d.point)
-                                                            setUserUUID(d.uuid)
-                                                            setWallet(d.wallet)
-                                                            sessionStorage.setItem('userUUID', d.uuid)
-                                                            sessionStorage.setItem('wallet', d.wallet)
-                                                            setLoading(false)
-                                                            onClose()
-                                                            /*
-                                                            setTimeout(() => {
-                                                                history.push('/main-entrance')
-                                                                setCurrentFrame('mypage')
-                                                            }, 200)
-                                                            */
-                                                            //history.push('/my')
-                                                        }
-                                                    }
-                                                }
-                                            })
-                                        }
-                                    }
+                                    onClick={onSignup}
                                 >SIGN IN</div>
                             </div>
                             <div style={{ width: '100%', height: '30px', display: 'flex', justifyContent: 'center', alignItems: 'center', fontSize: '12px', backgroundColor: 'white' }}>
