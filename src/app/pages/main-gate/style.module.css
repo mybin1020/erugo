@@ -1,6 +1,13 @@
 .page-background {
     width: 100%;
     height: 100%;
+    z-index: 0;
+    background-color: rgba(0,0,0,0.50);
+    position: fixed;
+    top:0;
+    left: 0;
+    bottom: 0;
+    right: 0;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -111,7 +118,7 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
-    background-image: url(./images/top-button/button0.png);
+    background-image: url(./images/top-button/kr.png);
 }
 .main-contents {
     width:'100%';

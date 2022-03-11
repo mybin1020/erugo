@@ -1,4 +1,4 @@
-import {React, useEffect, useRef} from "react";
+import {React, useEffect, useRef, useState} from "react";
 import Style from './style.module.css'
 
 // swiper bundle styles
@@ -15,7 +15,7 @@ import SwiperCore, {
 // install Swiper modules
 SwiperCore.use([Mousewheel,Pagination]);
 const About = ({ language }) => {
-    
+   
     console.log(language)
     useEffect(() => {
         
@@ -25,7 +25,7 @@ const About = ({ language }) => {
     return (
         <>
           
-            <Swiper 
+        <Swiper 
                 direction={"vertical"}
                 slidesPerView={1}
                 spaceBetween={50}
@@ -211,6 +211,8 @@ const About = ({ language }) => {
                     </div>
                 </SwiperSlide>
             </Swiper>
+  
+            
         </>
     )
 }

@@ -13,7 +13,9 @@ import Market from "./frame/market";
 import { useHistory } from "react-router-dom";
 import { readInfo } from "../../api";
 import Message from "./frame/message";
-
+const BgFrame = () => {
+  <div className={Style['page-background']}/>
+}
 const animationOrderList = [
   "frame-1st",
   "frame-2nd",
@@ -47,10 +49,15 @@ const TopMenu = ({
       className={Style["top-menu-background"]}
       style={{ backgroundImage: "url(/images/frame/top-menu.png)" }}
     >
-      <div
-        className={Style["logo"]}
-        style={{ backgroundImage: "url(/images/frame/logo.png)" }}
-      ></div>
+     <div
+          style={{
+            backgroundImage: "url(/images/frame/logo.png)",
+          }}
+          className={`${Style["logo"]} pointer`}
+          // onClick={() => {
+          //   onClick("about");
+          // }}
+        ></div>
       <div className={Style["top-menu-button-wrapper"]}>
         <div
           style={{ backgroundImage: "url(/images/frame/top-button/about.png)" }}
@@ -123,7 +130,7 @@ const TopMenu = ({
         ></div>
 
         {/* userUUID가 있으면 ? log-in 버튼 : log-out 버튼*/}
-        {sessionStorage.getItem('userUUID') ? (
+        {sessionStorage.getItem("userUUID") ? (
           <div
             style={{
               backgroundImage: "url(/images/frame/top-button/about.png)",
@@ -144,7 +151,6 @@ const TopMenu = ({
             }}
           ></div>
         )}
-
 
         {/* Language code가 ? KR이면 KR : ENG  */}
         {languageCode === "ko" ? (
@@ -315,7 +321,17 @@ const MainGate = ({
   languageCode,
   setLanguageCode,
 }) => {
+  const history2 = useHistory();
   const aboutFrame = useRef(undefined);
+  const outSection = useRef();
+  const [homeBtnClick, setHomeBtnClick] = useState(false);
+  const openFrame = () => {
+    window.addEventListener("click", () => {
+      setHomeBtnClick(!homeBtnClick);
+    });
+  };
+
+
   const [frameOrder, setFrameOrderList] = useState(animationOrderList);
   const [detailFrameState, setDetailFrameState] = useState(undefined);
   const [wrapperSlide, setWrapperSlide] = useState(-10);
@@ -438,22 +454,6 @@ const MainGate = ({
       setCurrentFrame(undefined);
     }, 200);
   }, []);
-
-
-//  홈버튼 눌렀을 때 이동
-const el = useRef();
-const [isOpen, setOpen] = useState(false);
-const handleCloseWindow = e => {
-    if(isOpen && (!el.current || !el.current.contains(e.target))) setOpen(false);
-}
-useEffect(() => {
-    window.addEventListener('click', handleCloseWindow);
-    return () => {
-        window.removeEventListener('click', handleCloseWindow);
-    };
-}, []);
-
-
 
   return (
     <div
@@ -594,8 +594,24 @@ useEffect(() => {
               wrapperSlide === -10 ? Style["wrapper-10"] : Style["wrapper-0"]
             }
           >
+            {/* 0311 Frame 바깥의 영역을 클릭했을 때, 닫히게 만든다, */}
+            {setHomeBtnClick && (
+              <Frame
+                ref={outSection}
+                onClick={(e) => {
+                  if (
+                    outSection.current === e ||
+                    outSection === setWrapperSlide(0)
+                  ) {
+                    openFrame(!homeBtnClick);
+                    setHomeBtnClick(false);
+                    //window.open().window.close()
+                    history2.goBack();
+                  }
+                }}
+              />
+            )}
             <Frame
-                ref={el}
               first={currentFrame ? false : true}
               frameEle={aboutFrame}
               frameName={"about"}

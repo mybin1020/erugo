@@ -1,12 +1,13 @@
 import classNames from "classnames";
-import React from "react";
+import {React, useEffect} from "react";
 import { useHistory } from 'react-router-dom'
 import Style from './home2.module.css'
 const HomePage2 = ({ menubar, footer }) => {
+ 
     const history = useHistory()
     return (
         <div className={classNames(Style['background'])} onClick={() => { history.push('/main-entrance') }}>
-            <video autoPlay muted loop>
+           <video autoPlay muted loop>
                 <source src="/video/main_new.mp4" type="video/mp4"></source>
             </video>
             <div className={classNames(Style['image-inner-box'])}>
