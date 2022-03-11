@@ -13,6 +13,7 @@ import Market from "./frame/market";
 import { useHistory } from "react-router-dom";
 import { readInfo } from "../../api";
 import Message from "./frame/message";
+import { GrCursor } from "react-icons/gr";
 
 const animationOrderList = [
   "frame-1st",
@@ -49,7 +50,10 @@ const TopMenu = ({
     >
       <div
         className={Style["logo"]}
-        style={{ backgroundImage: "url(/images/frame/logo.png)" }}
+        style={{ backgroundImage: "url(/images/frame/logo.png)"}}
+        onClick={() => {
+          history.push('/main-entrance')
+        }}
       ></div>
       <div className={Style["top-menu-button-wrapper"]}>
         <div
@@ -60,7 +64,7 @@ const TopMenu = ({
           }}
         ></div>
         <div
-          style={{ backgroundImage: "url(/images/frame/top-button/home.png)" }}
+          style={{ backgroundImage: "url(/images/frame/top-button/citizenship.png)" }}
           className={`${Style["top-menu-button"]} ${Style["home-button"]} pointer`}
           onClick={() => {
             onClick("home");
@@ -136,7 +140,7 @@ const TopMenu = ({
         ) : (
           <div
             style={{
-              backgroundImage: "url(/images/frame/top-button/sign-up.png)",
+              backgroundImage: "url(/images/frame/top-button/log-out.png)",
             }}
             className={`${Style["top-menu-button"]} ${Style["log-in-button"]} pointer`}
             onClick={() => {
@@ -150,12 +154,11 @@ const TopMenu = ({
         {languageCode === "ko" ? (
           <div
             style={{
-              color: "white",
+              color: "transparent",
               backgroundImage: "url(/images/frame/top-button/kr.png)",
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
-              fontWeight: "bold",
             }}
             className={`${Style["lang-button"]} pointer`}
             onClick={() => {
@@ -179,10 +182,10 @@ const TopMenu = ({
             }}
             className={`${Style["lang-button"]} pointer`}
             onClick={() => {
-              if (languageCode === "ko") {
-                setLanguageCode("eng");
-              } else {
+              if (languageCode === "eng") {
                 setLanguageCode("ko");
+              } else {
+                setLanguageCode("eng");
               }
             }}
           >

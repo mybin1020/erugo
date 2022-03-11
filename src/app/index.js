@@ -488,7 +488,7 @@ const App = () => {
 
                 <div style={{ backgroundImage: 'url(/images/top-button/about.png)' }}></div>
                 <div style={{ backgroundImage: 'url(/images/top-button/auction.png)' }}></div>
-                <div style={{ backgroundImage: 'url(/images/top-button/button0.png)' }}></div>
+                <div style={{ backgroundImage: 'url(/images/top-button/kr.png)' }}></div>
                 <div style={{ backgroundImage: 'url(/images/top-button/buyland.png)' }}></div>
                 <div style={{ backgroundImage: 'url(/images/top-button/home.png)' }}></div>
                 <div style={{ backgroundImage: 'url(/images/top-button/log-in.png)' }}></div>
