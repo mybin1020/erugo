@@ -9,7 +9,6 @@ import "swiper/components/pagination/pagination.min.css";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Mousewheel, Pagination, Navigation } from "swiper";
-import Slide from '../components/slide'
 // install Swiper modules
 SwiperCore.use([Mousewheel, Pagination, Navigation]);
 

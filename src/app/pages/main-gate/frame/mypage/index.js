@@ -421,7 +421,8 @@ const MyPage = ({
                       <span>EWC를 RUGO로 변환시켜드립니다.</span>{/*언어변수값 들어갈곳*/}
                     </ReactTooltip>
                     <ExchangeRugo/>
-                    <p>CURRENT EXCHANGE RATE : 1 Erugo Coin = 3000 Point </p>
+                    <p>CURRENT EXCHANGE RATE : 1 Erugo Coin = 3,000 Point </p> 
+                    {/* 3000 변수 */}
                   </div>
                 </div>
                 <button className={
@@ -431,7 +432,7 @@ const MyPage = ({
                           setUserUUID(undefined)
                           sessionStorage.removeItem('userUUID')
                           sessionStorage.removeItem('walletAddress')
-                          history.push('/main-enterance')
+                          history.push('/main-entrance')
                       }
                   }>
                   로그아웃

@@ -1,4 +1,4 @@
-import {React, useEffect, useRef} from "react";
+import {React, useEffect, useRef, useState} from "react";
 import Style from './style.module.css'
 import { useHistory } from "react-router-dom";
 
@@ -15,16 +15,19 @@ import SwiperCore, {
 
 // install Swiper modules
 SwiperCore.use([Mousewheel,Pagination]);
+
 const About = ({ language }) => {
-    const history = useHistory();
+    const [menuBtnClick, setMenuBtnClick] = useState(false);
+    const outSection = useRef();
+    
     console.log(language)
     useEffect(() => {
         
         console.log('componentDidMount[Function]');
     }, []);
-    onclick = () => {
-        history.push('/main-enterance')
-    }
+    
+    
+    
     return (
         <>
           
