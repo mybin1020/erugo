@@ -49,15 +49,13 @@ const TopMenu = ({
       className={Style["top-menu-background"]}
       style={{ backgroundImage: "url(/images/frame/top-menu.png)" }}
     >
-     <div
-          style={{
-            backgroundImage: "url(/images/frame/logo.png)",
-          }}
-          className={`${Style["logo"]} pointer`}
-          // onClick={() => {
-          //   onClick("about");
-          // }}
-        ></div>
+      <div
+        className={Style["logo"]}
+        style={{ backgroundImage: "url(/images/frame/logo.png)"}}
+        onClick={() => {
+          history.push('/main-entrance')
+        }}
+      ></div>
       <div className={Style["top-menu-button-wrapper"]}>
         <div
           style={{ backgroundImage: "url(/images/frame/top-button/about.png)" }}
@@ -67,7 +65,7 @@ const TopMenu = ({
           }}
         ></div>
         <div
-          style={{ backgroundImage: "url(/images/frame/top-button/home.png)" }}
+          style={{ backgroundImage: "url(/images/frame/top-button/citizenship.png)" }}
           className={`${Style["top-menu-button"]} ${Style["home-button"]} pointer`}
           onClick={() => {
             onClick("home");
@@ -143,7 +141,7 @@ const TopMenu = ({
         ) : (
           <div
             style={{
-              backgroundImage: "url(/images/frame/top-button/sign-up.png)",
+              backgroundImage: "url(/images/frame/top-button/log-out.png)",
             }}
             className={`${Style["top-menu-button"]} ${Style["log-in-button"]} pointer`}
             onClick={() => {
@@ -156,12 +154,11 @@ const TopMenu = ({
         {languageCode === "ko" ? (
           <div
             style={{
-              color: "white",
+              color: "transparent",
               backgroundImage: "url(/images/frame/top-button/kr.png)",
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
-              fontWeight: "bold",
             }}
             className={`${Style["lang-button"]} pointer`}
             onClick={() => {
@@ -185,10 +182,10 @@ const TopMenu = ({
             }}
             className={`${Style["lang-button"]} pointer`}
             onClick={() => {
-              if (languageCode === "ko") {
-                setLanguageCode("eng");
-              } else {
+              if (languageCode === "eng") {
                 setLanguageCode("ko");
+              } else {
+                setLanguageCode("eng");
               }
             }}
           >
@@ -970,9 +967,11 @@ const MainGate = ({
                 tempCoin={tempCoin}
               />
             </Frame>
+            {/* 0311 Sign-up 자리인데 안뜹니다 */}
             <Frame
               first={currentFrame ? false : true}
-              frameName={"message"}
+              frameName={"signup"}
+              // 왜 메세지인데 signup이 뜨나요?
               frameIdx={6}
               frameOrder={frameOrder[6]}
               detailFrameState={detailFrameState}
@@ -1026,8 +1025,10 @@ const MainGate = ({
               frameShowIdx={12}
               frameHideIdx={13}
             >
-              <Message userUUID={userUUID} isLogin={isLogin} />
+              <SignUp userUUID={userUUID} isLogin={isLogin} />
             </Frame>
+
+
             <Frame
               first={currentFrame ? false : true}
               frameName={"market"}

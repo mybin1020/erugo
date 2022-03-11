@@ -15,8 +15,12 @@ import SwiperCore, {
 
 // install Swiper modules
 SwiperCore.use([Mousewheel,Pagination]);
+
 const About = ({ language }) => {
+    const [menuBtnClick, setMenuBtnClick] = useState(false);
+    const outSection = useRef();
     const history = useHistory();
+    
     console.log(language)
     useEffect(() => {
         
@@ -33,6 +37,7 @@ const About = ({ language }) => {
                 slidesPerView={1}
                 spaceBetween={50}
                 mousewheel={true}
+                resizeObserver={true}
                 pagination={{clickable: true}}
                 className={Style['mySwiper']}
             >

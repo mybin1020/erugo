@@ -94,6 +94,7 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
+    cursor: pointer;
 }
 .top-menu-button-wrapper {
     width: 86vw;
