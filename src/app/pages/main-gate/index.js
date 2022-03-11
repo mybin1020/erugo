@@ -955,9 +955,11 @@ useEffect(() => {
                 tempCoin={tempCoin}
               />
             </Frame>
+            {/* 0311 Sign-up 자리인데 안뜹니다 */}
             <Frame
               first={currentFrame ? false : true}
-              frameName={"message"}
+              frameName={"signup"}
+              // 왜 메세지인데 signup이 뜨나요?
               frameIdx={6}
               frameOrder={frameOrder[6]}
               detailFrameState={detailFrameState}
@@ -1011,8 +1013,10 @@ useEffect(() => {
               frameShowIdx={12}
               frameHideIdx={13}
             >
-              <Message userUUID={userUUID} isLogin={isLogin} />
+              <SignUp userUUID={userUUID} isLogin={isLogin} />
             </Frame>
+
+
             <Frame
               first={currentFrame ? false : true}
               frameName={"market"}

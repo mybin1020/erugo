@@ -1,39 +1,51 @@
-
-.mypage-box{
-    /* position: relative; */
-    width:100%;
-    height:100%;
+.mypage-bg{
+    position: relative;
+    width: 100%;
+    height: 100%;
     overflow: hidden;
-    overflow-y: scroll;
+    /* overflow-y: scroll; */
 }
 .character{
     position:absolute;
     top:50%;
-    left:4%;
+    left:0;
     width:20%;
     height: 20vh;
     transform: translateY(-50%);
 }
+.container{
+    display: flex;
+    position: absolute;
+    top:50%;
+    transform: translateY(-50%);
+    right:0;
+    width: 80%;
+    height:95%;
+    background-color: rgba(255,255,255,0.5);
+}
+.mypageBox1{
+    position: absolute;
+    left: 0;
+    width:40%;
+    height:100%;
+}
+.mypageBox2{
+    position: absolute;
+    right:0;
+    width:60%;
+    height: 100%;
+}
+
+
 .character-img{
     width: 100%;
 }
-.bg-white{
-    position: absolute;
-    top:17%;
-    right:4%;
-    z-index: -1;
-    width: 73%;
-    height: 72%;
-    background-color: rgba(255,255,255,0.5);
+
+.pageBox1{
+    /* background-color: pink; */
 }
-.big-bg{
-    position: absolute;
-    top:18%;
-    z-index: 0;
-    width: 35.5%;
-    height:46vh;
-    background-color:rgb(241, 241, 241);
-    margin-left:1vw;
+.pageBox2{
+    background-color: skyblue;
 }
 
 .big-bg > p {
@@ -70,23 +82,34 @@
 
 /* left */
 .address>table{
-    width:100%;
+    width:90%;
+    margin: 0 1vw;
+    /* background-color: #505050; */
     height: 15vh;
     margin-top:4vh; 
     font-size: 0.7vw;
+    
 }
 .address tr{
     margin-bottom: 5vh;
 }
 .address tr:last-child>td{
-    font-size: 0.6vw;
+    font-size: 0.5vw;
+    text-overflow: ellipsis;
 }
 
 .address th{
     color:#64c9dc;
     font-weight: 500;
-    text-align: center;
-    padding:0 1vw;
+    text-align: left;
+    padding:0 0.6vw;
+    width: 20%;
+}
+.address td{
+    width: 80%;
+}
+.wallet-width{
+    text-overflow: ellipsis;
 }
 .boxs{
     position: absolute;
@@ -110,7 +133,7 @@
     display: block;
     color: #505050;
     padding-bottom: 1vh;
-    text-align: center;
+    text-align: left;
 }
 .info-title{
     padding:0.5vh 0;
@@ -145,7 +168,22 @@
 
 
 /* right */
-
+.help-btn{
+    position: absolute;
+    top:10%;
+    left:36%;
+    display: inline-block;
+    width: 1vw;
+    height: 1.5vh;
+    background-image: url('./images/help.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+.bg-down .help-btn{
+    top:5%;
+    left:26%;
+}
 .input-left{
     left:0;
 }
@@ -177,10 +215,11 @@
     position: absolute;
     top:65%;
     right:32%;
-    width: 1vw;
-    height: 1.8vh;
+    width: 1.2vw;
+    height: 2vh;
     background-image: url('./images/help.png');
     background-repeat: no-repeat;
+    background-size: contain;
     border: none;
     background-color: transparent;
     cursor: pointer;
@@ -245,6 +284,7 @@
 
 
 .exRugoInput {
+    display: inline-block;
     background-color: #fff;
     text-align: center;
     font-size: 0.55vw;
@@ -252,6 +292,7 @@
     line-height: 3vh;
     width: 15%;
     border: none;
+    color:black
 }
 .exErugoCoin>input {
     width: 55%;

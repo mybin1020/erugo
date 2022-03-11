@@ -43,12 +43,12 @@ const LoginPage = ({ setUserUUID, setLoading, setWallet, setPoints, setCurrentFr
                         :
                         <div
                             style={{
-                                width: '350px', height: '200px', backgroundColor: 'yellow', display: 'flex', justifyContent: "center", alignItems: 'center', flexDirection: 'column',
-                                background: "rgba( 255, 255, 255, 0.4 )", boxShadow: "0 8px 32px 0 rgba( 31, 38, 135, 0.37 )", backdropFilter: "blur( 8px )",
+                                width: '400px', height: '300px', backgroundColor: 'yellow', display: 'flex', justifyContent: "center", alignItems: 'center', flexDirection: 'column',
+                                background: "rgba( 255, 255, 255, 0.4 )", boxShadow: "0 8px 32px 0 rgba( 31, 38, 135, 0.37 )", backdropFilter: "blur( 9px )",
                                 WebkitBackdropFilter: "blur( 8px )", borderRadius: "10px", border: "1px solid rgba( 255, 255, 255, 0.18 )", overflow: 'hidden'
                             }}
                         >
-                            <div style={{ width: '100%', height: '40px' }}>
+                            <div style={{ width: '100%', height: '40px', backgroundColor:'black' }}>
                                 <div style={{ fontSize: '12px', display: 'flex', justifyContent: 'flex-start', alignItems: 'center', backgroundColor: 'white', padding: '10px', height: '100%' }}>
                                     ERUGO WORLD
                                     <div
@@ -62,13 +62,21 @@ const LoginPage = ({ setUserUUID, setLoading, setWallet, setPoints, setCurrentFr
                                     </div>
                                 </div>
                             </div>
-                            <div style={{ width: '250px', height: '130px', display: 'flex', justifyContent: 'center', alignItems: "center", flexDirection: 'column', gap: '10px' }}>
+                            <div className={Style['sw-btn']}
+                                onClick={() => {
+                                    history.push("https://www.securitywallet.co.kr/auth/login?gourl=%2Foverview");
+                                  }}
+                            >
+                                Security Wallet 회원가입이 되어있다면 Security Wallet ID로 접속해주세요
+                            </div>
+                            <div style={{ width: '330px', height: '250px', display: 'flex', justifyContent: 'center', alignItems: "center", flexDirection: 'column', gap: '20px'}}>
                                 <div style={{ width: '100%', display: 'flex', justifyContent: 'space-evenly', alignItems: 'center', height: '30px', backgroundColor: 'white', borderRadius: '10px', overflow: 'hidden' }}>
-                                    <div style={{ width: '80px', display: 'flex', alignItems: 'center', justifyContent: 'flex-end', fontSize: '12px', color: 'white', height: '100%', backgroundColor: '#E27A17', paddingRight: '20px' }}>Email</div>
+                                    <div style={{ width: '100px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '15px', color: 'white', height: '100%', backgroundColor: '#E27A17', paddingRight: '0' }}>Email</div>
                                     <input
                                         style={{ width: 'calc(100% - 80px)', textAlign: 'center', height: '100%', borderWidth: '0', color: '#E27A17', borderRadius: '10px', fontSize: '12px' }}
                                         type="text"
                                         value={email}
+                                        // placeholder={'Security Wallet Email과 연동되어 있습니다'}
                                         onChange={
                                             (e) => {
                                                 setEmail(e.target.value)
@@ -77,7 +85,7 @@ const LoginPage = ({ setUserUUID, setLoading, setWallet, setPoints, setCurrentFr
                                     />
                                 </div>
                                 <div style={{ width: '100%', display: 'flex', justifyContent: 'space-evenly', alignItems: 'center', height: '30px', backgroundColor: 'white', borderRadius: '10px', overflow: 'hidden' }}>
-                                    <div style={{ width: '80px', display: 'flex', alignItems: 'center', justifyContent: 'flex-end', fontSize: '12px', color: 'white', height: '100%', backgroundColor: '#E27A17', paddingRight: '20px' }}>Password</div>
+                                    <div style={{ width: '100px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '15px', color: 'white', height: '100%', backgroundColor: '#E27A17', paddingRight: '0' }}>Password</div>
                                     <input
                                         style={{ width: 'calc(100% - 80px)', textAlign: 'center', height: '100%', borderWidth: '0', color: '#E27A17', borderRadius: '10px', fontSize: '12px' }}
                                         type="password"
@@ -93,7 +101,7 @@ const LoginPage = ({ setUserUUID, setLoading, setWallet, setPoints, setCurrentFr
                                     className="pointer"
                                     style={{
                                         width: '100px',
-                                        height: '30px', display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundColor: 'white', fontSize: '12px', borderRadius: '10px',
+                                        height: '30px', display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundColor: 'white', fontSize: '15px', borderRadius: '10px',
                                         backgroundColor: '#E27A17', color: 'white'
                                     }}
                                     onClick={
@@ -147,11 +155,11 @@ const LoginPage = ({ setUserUUID, setLoading, setWallet, setPoints, setCurrentFr
                                     }
                                 >SIGN IN</div>
                             </div>
-                            <div style={{ width: '100%', height: '30px', display: 'flex', justifyContent: 'center', alignItems: 'center', fontSize: '12px', backgroundColor: 'white' }}>
+                            <div style={{ width: '100%', height: '40px', display: 'flex', justifyContent: 'center', alignItems: 'center', fontSize: '12px', backgroundColor: 'white' }}>
                                 <div
                                     className={Style["sign-in"]}
                                     style={{
-                                        width: '50%', display: 'flex', justifyContent: 'center', alignItems: 'center', fontSize: '10px', height: '100%'
+                                        width: '50%', display: 'flex', justifyContent: 'center', alignItems: 'center', fontSize: '15px', height: '100%'
                                     }}
                                     onClick={
                                         () => {
@@ -164,7 +172,7 @@ const LoginPage = ({ setUserUUID, setLoading, setWallet, setPoints, setCurrentFr
                                 <div
                                     className={Style["reset-password"]}
                                     style={{
-                                        width: '50%', display: 'flex', justifyContent: "center", alignItems: 'center', fontSize: '10px', height: '100%'
+                                        width: '50%', display: 'flex', justifyContent: "center", alignItems: 'center', fontSize: '15px', height: '100%'
                                     }}
                                     onClick={
                                         () => {
