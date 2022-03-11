@@ -564,7 +564,7 @@ const MyPage = ({
                         setUserUUID(undefined)
                         sessionStorage.removeItem('userUUID')
                         sessionStorage.removeItem('walletAddress')
-                        history.push('/main-enterance')
+                        history.push('/main-entrance')
                     }
                 }>
                 로그아웃

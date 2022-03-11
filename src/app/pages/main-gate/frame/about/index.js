@@ -23,7 +23,7 @@ const About = ({ language }) => {
         console.log('componentDidMount[Function]');
     }, []);
     onclick = () => {
-        history.push('/main-enterance')
+        history.push('/main-entrance')
     }
     return (
         <>
