@@ -30,7 +30,8 @@ const Home = () => {
 
         <SwiperSlide className={Style["swiper-slide"]}>
           <div className={Style["cityzenship-swiper-text"]}>
-            <div className={Style["cityzenship-text"]}>
+            <div className={Style["grap1"]}></div>
+            <div className={Style["cityzenship-content-text"]}>
               <p>
                 ‘이루고 월드’에서 시민권은 세계의 근간을 이루는 중요한 역할을
                 합니다.
@@ -45,7 +46,7 @@ const Home = () => {
                 올라가면 그에 따른 혜택과 권리가 추가됩니다.
               </p>
             </div>
-            <div className={Style["grap1"]}></div>
+            
           </div>
         </SwiperSlide>
         <SwiperSlide className={Style["swiper-slide"]}>
