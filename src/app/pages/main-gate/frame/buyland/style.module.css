@@ -49,13 +49,21 @@
     margin-bottom: 2vh;
 }
 .img1,.img2,.img3,.img4,.img5,.img6,.img7,.img8{
-    left:0vw;
+    /* left:0vw;
+    border-radius: 5vw;
     width:48%;
     height:100%;
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;
-    margin-left:0.3vw;
+    margin-left:0.3vw; */
+    border-radius: 30px;
+    left:0vw;
+    width:50%;
+    height:80%;
+    background-position: center;
+    background-size:contain;
+    background-repeat: no-repeat;
 }
 .grap1,.grap2{
     background-position: center;
