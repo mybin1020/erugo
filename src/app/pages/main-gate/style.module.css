@@ -107,22 +107,24 @@
     align-items: flex-start;
 }
 .top-menu-button {
-    width:8.6vw;
+    width:7vw;
     height:2.8vw;
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
 }
 .message-button{
-    height: 3vw;
+    width: 9.5vw;
+    height: 3.2vw;
 }
 .lang-button {
-    width:8vw;
-    height:2.8vw;
+    width:7vw;
+    height: 2.8vw;
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
     background-image: url(./images/top-button/kr.png);
+    text-indent: -9999px;
 }
 .main-contents {
     width:'100%';

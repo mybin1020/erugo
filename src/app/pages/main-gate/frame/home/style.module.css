@@ -17,7 +17,7 @@
     font-weight: 400;
     padding-bottom:2vh;
 }
-.cityzenship-content-text,.img1,.img2,.img3,.img4,.img5{
+.cityzenship-content-text,.img1,.img2,.img3,.img4,.img5,.grap1{
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;
@@ -35,7 +35,7 @@
     overflow: hidden;
     padding-right:2vw;
 }
-.img1,.img2,.img3,.img4,.img5{
+.img1,.img2,.img3,.img4,.img5,.grap1{
     left:0vw;
     width:48%;
     height:100%;
@@ -44,16 +44,13 @@
     background-repeat: no-repeat;
     margin-left:0.3vw;
 }
-.grap1,.grap2{
+.grap2{
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;
-    width: 100%;
-    height:30vh;
-}
-.grap2{
-    margin-top: 5vh;
-    height: 40vh;
+    width: 90%;
+    height: 100%;
+    margin: 0 auto;
 }
 .img1 {
     background-image: url(./images/character01.png);

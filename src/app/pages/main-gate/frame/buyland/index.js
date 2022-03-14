@@ -25,7 +25,7 @@ const BuyLand = () => {
     const history = useHistory()
     return (
         <>
-            <div 
+            {/* <div 
             className={Style['buyland-btn']}
             onClick={
                 () => {
@@ -34,7 +34,8 @@ const BuyLand = () => {
             }
             >
                 land-state버튼
-            </div>
+            </div> */}
+            {/*나중에 오픈*/}
             
             <Swiper 
                 direction={"vertical"}
