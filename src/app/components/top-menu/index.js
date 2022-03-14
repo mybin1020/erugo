@@ -60,7 +60,7 @@ const Menu = ({ onClick, hideButton = false }) => {
                     () => {
                         onClick('home')
                         setTimeout(() => {
-                            history.push('/main-entrance')
+                            ('/main-entrance')
                         }, 200)
                     }
                 }
