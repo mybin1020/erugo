@@ -26,9 +26,6 @@ const About = ({ language }) => {
         
         console.log('componentDidMount[Function]');
     }, []);
-    onclick = () => {
-        history.push('/main-entrance')
-    }
     return (
         <>
           
@@ -188,11 +185,14 @@ const About = ({ language }) => {
                                 
                             </div>
                             <div>
-                                <p>{language['about-mean-25']}</p>
+                                <p>{language['about-mean-25']}
+                                {language['about-mean-26']}
+                                
+                                </p>
                                 
                             </div>
                             <div>
-                                <p>{language['about-mean-26']}</p>
+                                
                                 
                             </div>
                         </div>

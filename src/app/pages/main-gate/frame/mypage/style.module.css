@@ -183,6 +183,7 @@
 .bg-down .help-btn{
     top:5%;
     left:26%;
+    cursor: pointer;
 }
 .input-left{
     left:0;

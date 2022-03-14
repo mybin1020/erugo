@@ -76,8 +76,8 @@ const TopMenu = ({
           }}
           className={`${Style["top-menu-button"]} ${Style["auction-button"]} pointer`}
           onClick={() => {
-            // history.push("/auction");
-            onClick("auction");
+            history.push("/auction");
+            // onClick("auction");
           }}
         ></div>
         <div
@@ -92,6 +92,16 @@ const TopMenu = ({
         ></div>
         <div
           style={{
+            backgroundImage: "url(/images/frame/top-button/market.png)",
+          }}
+          className={`${Style["top-menu-button"]} ${Style["market-button"]} pointer`}
+          onClick={() => {
+            //history.push("/land-state");
+            onClick('market')
+          }}
+        ></div>
+        <div
+          style={{
             backgroundImage: "url(/images/frame/top-button/my-page.png)",
           }}
           className={`${Style["top-menu-button"]} ${Style["my-page-button"]} pointer`}
@@ -101,16 +111,6 @@ const TopMenu = ({
               return;
             }
             onClick("mypage");
-          }}
-        ></div>
-        <div
-          style={{
-            backgroundImage: "url(/images/frame/top-button/market.png)",
-          }}
-          className={`${Style["top-menu-button"]} ${Style["market-button"]} pointer`}
-          onClick={() => {
-            //history.push("/land-state");
-            onClick('market')
           }}
         ></div>
         <div
@@ -131,7 +131,7 @@ const TopMenu = ({
         {sessionStorage.getItem("userUUID") ? (
           <div
             style={{
-              backgroundImage: "url(/images/frame/top-button/log-in.png)",
+              backgroundImage: "url(/images/frame/top-button/log-out.png)",
             }}
             className={`${Style["top-menu-button"]} ${Style["log-in-button"]} pointer`}
             onClick={() => {
@@ -141,7 +141,7 @@ const TopMenu = ({
         ) : (
           <div
             style={{
-              backgroundImage: "url(/images/frame/top-button/log-out.png)",
+              backgroundImage: "url(/images/frame/top-button/log-in.png)",
             }}
             className={`${Style["top-menu-button"]} ${Style["log-in-button"]} pointer`}
             onClick={() => {
@@ -321,11 +321,11 @@ const MainGate = ({
   const aboutFrame = useRef(undefined);
   const outSection = useRef();
   const [homeBtnClick, setHomeBtnClick] = useState(false);
-  const openFrame = () => {
-    window.addEventListener("click", () => {
-      setHomeBtnClick(!homeBtnClick);
-    });
-  };
+  // const openFrame = () => {
+  //   window.addEventListener("click", () => {
+  //     setHomeBtnClick(!homeBtnClick);
+  //   });
+  // };
 
 
   const [frameOrder, setFrameOrderList] = useState(animationOrderList);

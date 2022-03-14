@@ -89,6 +89,9 @@
 .my-page-button {
     background-image: url(./images/top-button/my-page.png);
 }
+/* .my-page-button {
+    background-image: url(./images/frame/top-button/my-page.png);
+} */
 .sign-up-button {
     background-image: url(./images/top-button/sign-up.png);
 }

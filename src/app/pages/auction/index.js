@@ -1132,9 +1132,9 @@ const dpOthers = (display) => {
                 <div style={{ width: '89%', transform: 'translateY(150%)', display: 'flex', justifyContent: 'flex-end', alignItems: "center", gap: '20px' }}>
                                 <div data-tip
               data-for="myland">
-                                    최고 입찰가입니다
+                                    최고 입찰가
                                     <ReactTooltip id="myland" place="top" effect="solid" backgroundColor="rgba(225, 122, 24, 0.7)">
-                <span>최고 입찰가입니다</span>
+                <span>최고 입찰가</span>
               </ReactTooltip>
                                     <div 
                                     style={{ 

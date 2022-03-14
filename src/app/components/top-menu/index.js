@@ -93,6 +93,7 @@ const Menu = ({ onClick, hideButton = false }) => {
                         setTimeout(() => {
                             history.push('/mypage')
                         }, 200)
+                       
                     }
                 }
                 ></div>
