@@ -52,7 +52,9 @@ const TopMenu = ({
       <div
         className={Style["logo"]}
         style={{ backgroundImage: "url(/images/frame/logo.png)"}}
-        
+        onClick={() => {
+          history.push('/main-entrance')
+        }}
       ></div>
       <div className={Style["top-menu-button-wrapper"]}>
         <div
@@ -60,7 +62,6 @@ const TopMenu = ({
           className={`${Style["top-menu-button"]} ${Style["about-button"]} pointer`}
           onClick={() => {
             onClick("about");
-            
           }}
         ></div>
         <div
@@ -76,8 +77,7 @@ const TopMenu = ({
           }}
           className={`${Style["top-menu-button"]} ${Style["auction-button"]} pointer`}
           onClick={() => {
-            // history.push("/auction");
-            onClick("auction");
+            history.push("/auction");
           }}
         ></div>
         <div
@@ -86,8 +86,8 @@ const TopMenu = ({
           }}
           className={`${Style["top-menu-button"]} ${Style["buy-land-button"]} pointer`}
           onClick={() => {
-            //history.push("/land-state");
-            onClick('buyland')
+            history.push("/land-state");
+            //onClick('buyland')
           }}
         ></div>
         <div
@@ -109,8 +109,8 @@ const TopMenu = ({
           }}
           className={`${Style["top-menu-button"]} ${Style["market-button"]} pointer`}
           onClick={() => {
-            //history.push("/land-state");
-            onClick('market')
+            history.push("/land-state");
+            //onClick('market')
           }}
         ></div>
         <div
@@ -970,7 +970,7 @@ const MainGate = ({
             {/* 0311 Sign-up 자리인데 안뜹니다 */}
             <Frame
               first={currentFrame ? false : true}
-              frameName={"signup"}
+              frameName={"message"}
               // 왜 메세지인데 signup이 뜨나요?
               frameIdx={6}
               frameOrder={frameOrder[6]}

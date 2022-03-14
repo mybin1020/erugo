@@ -11,6 +11,8 @@ import { Container, Row, Col } from "react-bootstrap";
 import NumberFormat from "react-number-format";
 // import styles from './OtherNumberFormat.module.scss'
 import { GiConfirmed } from "react-icons/gi";
+// react-responsive 설치했습니다
+import { useMediaQuery } from 'react-responsive'
 
 const MyPage2 = ({
   menubar,
@@ -192,6 +194,12 @@ const ExchangeRugo = (props) => {
   );
 };
 
+const Desktop = ({ children }) => {
+  const isDesktop = useMediaQuery({ minWidth: 992 })
+  return isDesktop ? children : null
+}
+
+
 // page
 const MyPage = ({
   menubar,
@@ -305,7 +313,7 @@ const MyPage = ({
               </div>
               <div className={Style["line"]}></div>
               <div className={Style["boxs"]}>
-                <div className={Style["box1"]}>
+                <div className={`${Style.box1} ${Style.boxLeft}`}>
                   <div className={Style["info-title"]}>SecurityWallet 정보</div>
                   {/*언어변수값 들어갈곳*/}
                   <span
@@ -335,7 +343,7 @@ const MyPage = ({
                     />
                   </span>
                 </div>
-                <div className={Style["box1"]}>
+                <div className={`${Style.box1} ${Style.boxLeft}`}>
                   <span
                     className={Style["text-box"]}
                     data-tip
@@ -363,7 +371,7 @@ const MyPage = ({
                     />
                   </span>
                 </div>
-                <div className={Style["box1"]}>
+                <div className={`${Style.box1} ${Style.boxRight}`}>
                   <div className={Style["info-title"]}>ErugoWorld 정보</div>
                   {/*언어변수값 들어갈곳*/}
                   <span
@@ -393,7 +401,7 @@ const MyPage = ({
                     />
                   </span>
                 </div>
-                <div className={Style["box1"]}>
+                <div className={`${Style.box1} ${Style.boxRight}`}>
                   <span
                     className={Style["text-box"]}
                     data-tip
@@ -492,7 +500,7 @@ const MyPage = ({
                       customEle={<GiConfirmed style={{ marginRight: '10px' }} fontSize={'22px'} color={coin === setTempCoin && coin !== '' ? 'rgba(0,150,0,1)' : 'rgba(250,0,0, 1)'} />}
                   /> */}
                 </div>
-                <div style={{ position: "relative" }}>
+                <div className={Style["sw-content"]}>
                   <span
                     className={Style["title"]}
                     data-tip
