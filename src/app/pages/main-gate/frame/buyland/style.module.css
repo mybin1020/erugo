@@ -30,12 +30,14 @@
     right: 0;
 }
 .buyland-content-text{
-    right:1vh;
-    width: 100%;
+    right:1vw;
+    width: 95%;
     height:100%;
     padding: 5px;
-    font-size:1vw;
+    font-size:.95vw;
     overflow: hidden;
+    text-align: justify;
+    overflow-y: auto;
 }
 .buyland-content-text>div{
     position: absolute;
@@ -49,14 +51,6 @@
     margin-bottom: 2vh;
 }
 .img1,.img2,.img3,.img4,.img5,.img6,.img7,.img8{
-    /* left:0vw;
-    border-radius: 5vw;
-    width:48%;
-    height:100%;
-    background-position: center;
-    background-size: contain;
-    background-repeat: no-repeat;
-    margin-left:0.3vw; */
     border-radius: 30px;
     left:0vw;
     width:50%;
@@ -116,8 +110,9 @@
 }
 .buyland-swiper-text{
     position: absolute;
-    top: 10%;
-    right:1vh;
+    text-align: justify;
+    top: 2vw;
+    right:1vw;
     height:100%;
     padding: 5px;
     font-size:1vw;
@@ -125,12 +120,14 @@
     
 }
 .buyland-swiper-text p{
-    margin-bottom: 1.5vh;
+    font-size: .95vw;
+    margin-bottom: .95vw;
+    margin: 20px;
+    text-align: justify;
+
 }
 .buyland-swiper-text-font{
-    margin-top: 3vh;
     text-align: center;
-    font-size: 0.7vw;
     color:rgb(223, 107, 24);
 }
 .swiper-slide:last-child .buyland-swiper-text{
@@ -141,7 +138,8 @@
     height: 100%;
 }
 
-
-
+:root .swiper-button-next,.swiper-button-prev {--swiper-navigation-size:40px; position:absolute; top:50%; left: 10% }
+.swiper-button-prev,.swiper-container-rtl .swiper-button-next{left:5px;right:auto}
+.swiper-button-next,.swiper-container-rtl .swiper-button-prev{right:5px;left:auto}
 
 /* buyland */

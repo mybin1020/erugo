@@ -591,7 +591,7 @@ const MainGate = ({
             }
           >
             {/* 0311 Frame 바깥의 영역을 클릭했을 때, 닫히게 만든다, */}
-            {setHomeBtnClick && (
+            {/* {setHomeBtnClick && (
               <Frame
                 ref={outSection}
                 onClick={(e) => {
@@ -602,11 +602,11 @@ const MainGate = ({
                     openFrame(!homeBtnClick);
                     setHomeBtnClick(false);
                     //window.open().window.close()
-                    history2.goBack();
+                    history2.push('/main-entrance')
                   }
                 }}
               />
-            )}
+            )} */}
             <Frame
               first={currentFrame ? false : true}
               frameEle={aboutFrame}
@@ -967,11 +967,10 @@ const MainGate = ({
                 tempCoin={tempCoin}
               />
             </Frame>
-            {/* 0311 Sign-up 자리인데 안뜹니다 */}
+
             <Frame
               first={currentFrame ? false : true}
-              frameName={"signup"}
-              // 왜 메세지인데 signup이 뜨나요?
+              frameName={"message"}
               frameIdx={6}
               frameOrder={frameOrder[6]}
               detailFrameState={detailFrameState}
@@ -1025,7 +1024,7 @@ const MainGate = ({
               frameShowIdx={12}
               frameHideIdx={13}
             >
-              <SignUp userUUID={userUUID} isLogin={isLogin} />
+              <Message userUUID={userUUID} isLogin={isLogin} />
             </Frame>
 
 

@@ -92,6 +92,9 @@
 .sign-up-button {
     background-image: url(./images/top-button/sign-up.png);
 }
+.message-button {
+    background-image: url(./images/top-button/message.png);
+}
 .market-button {
     background-image: url(./images/top-button/market.png);
 }
