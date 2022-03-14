@@ -526,18 +526,6 @@ const MyPage = ({
                     >
                   </div>
                 </div>
-                <button className={
-                  Style["logout-btn"]} 
-                  onClick={
-                      () => {
-                          setUserUUID(undefined)
-                          sessionStorage.removeItem('userUUID')
-                          sessionStorage.removeItem('walletAddress')
-                          history.push('/main-entrance')
-                      }
-                  }>
-                  로그아웃
-                </button>{/*언어변수값 들어갈곳*/}
               </div>
               <div className={Style["bg-down"]}>
                 <div className={Style["box-bottom"]}>

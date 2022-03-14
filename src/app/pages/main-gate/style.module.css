@@ -113,6 +113,9 @@
     background-repeat: no-repeat;
     background-size: contain;
 }
+.message-button{
+    height: 3vw;
+}
 .lang-button {
     width:6.2vw;
     height:2.8vw;
