@@ -86,8 +86,8 @@ const TopMenu = ({
           }}
           className={`${Style["top-menu-button"]} ${Style["buy-land-button"]} pointer`}
           onClick={() => {
-            history.push("/land-state");
-            //onClick('buyland')
+            //history.push("/land-state");
+            onClick('buyland')
           }}
         ></div>
         <div
@@ -109,8 +109,8 @@ const TopMenu = ({
           }}
           className={`${Style["top-menu-button"]} ${Style["market-button"]} pointer`}
           onClick={() => {
-            history.push("/land-state");
-            //onClick('market')
+            //history.push("/land-state");
+            onClick('market')
           }}
         ></div>
         <div
