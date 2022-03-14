@@ -1,3 +1,16 @@
 node_modules
 public/video/main_new.mp4
 public/video/result.mp4
+### react ###
+.DS_*
+*.log
+logs
+**/*.backup.*
+**/*.back.*
+bower_components
+
+*.sublime*
+
+psd
+thumb
+sketch
