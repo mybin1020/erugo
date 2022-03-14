@@ -52,7 +52,9 @@ const TopMenu = ({
       <div
         className={Style["logo"]}
         style={{ backgroundImage: "url(/images/frame/logo.png)"}}
-        
+        onClick={() => {
+          history.push('/main-entrance')
+        }}
       ></div>
       <div className={Style["top-menu-button-wrapper"]}>
         <div
@@ -60,7 +62,6 @@ const TopMenu = ({
           className={`${Style["top-menu-button"]} ${Style["about-button"]} pointer`}
           onClick={() => {
             onClick("about");
-            
           }}
         ></div>
         <div
@@ -86,8 +87,8 @@ const TopMenu = ({
           }}
           className={`${Style["top-menu-button"]} ${Style["buy-land-button"]} pointer`}
           onClick={() => {
-            //history.push("/land-state");
-            onClick('buyland')
+            history.push("/land-state");
+            //onClick('buyland')
           }}
         ></div>
         <div

@@ -191,6 +191,12 @@ const ExchangeRugo = (props) => {
   );
 };
 
+// const Desktop = ({ children }) => {
+//   const isDesktop = useMediaQuery({ minWidth: 992 })
+//   return isDesktop ? children : null
+// }
+
+
 // page
 const MyPage = ({
   menubar,
@@ -322,7 +328,7 @@ setTxValue(txValue)
               </div>
               <div className={Style["line"]}></div>
               <div className={Style["boxs"]}>
-                <div className={Style["box1"]}>
+                <div className={`${Style.box1} ${Style.boxLeft}`}>
                   <div className={Style["info-title"]}>SecurityWallet 정보</div>
                   {/*언어변수값 들어갈곳*/}
                   <span
@@ -352,7 +358,7 @@ setTxValue(txValue)
                     />
                   </span>
                 </div>
-                <div className={Style["box1"]}>
+                <div className={`${Style.box1} ${Style.boxLeft}`}>
                   <span
                     className={Style["text-box"]}
                     data-tip
@@ -380,7 +386,7 @@ setTxValue(txValue)
                     />
                   </span>
                 </div>
-                <div className={Style["box1"]}>
+                <div className={`${Style.box1} ${Style.boxRight}`}>
                   <div className={Style["info-title"]}>ErugoWorld 정보</div>
                   {/*언어변수값 들어갈곳*/}
                   <span
@@ -410,7 +416,7 @@ setTxValue(txValue)
                     />
                   </span>
                 </div>
-                <div className={Style["box1"]}>
+                <div className={`${Style.box1} ${Style.boxRight}`}>
                   <span
                     className={Style["text-box"]}
                     data-tip
