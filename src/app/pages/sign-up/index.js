@@ -275,7 +275,7 @@ const SignUp = ({ setLoading, setLoadingMsg, currentFrame, setCurrentFrame }) =>
                                         window.alert('Pin number must consist of 4 numbers!')
                                         return
                                     }
-                                    setLoadingMsg('')
+                                    setLoadingMsg('지갑이 생성될 때까지 잠시만 기다려 주세요.')
                                     setLoading(true)
 
                                     //socketHandler.sendMsg({command:'log', log : 'request join', name, password, phone:phone.slice(countryCode.length, phone.length), pin:pinNumber, email})

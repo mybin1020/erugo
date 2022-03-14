@@ -5,14 +5,11 @@ import { useHistory, Link } from "react-router-dom";
 import Home from "../home/index";
 // 툴팁 라이브러리 설치했습니다
 import ReactTooltip from "react-tooltip";
-import "bootstrap/dist/css/bootstrap.min.css";
 // 부트스트랩 라이브러리 설치했습니다.
-import { Container, Row, Col } from "react-bootstrap";
 import NumberFormat from "react-number-format";
 // import styles from './OtherNumberFormat.module.scss'
 import { GiConfirmed } from "react-icons/gi";
-// react-responsive 설치했습니다
-import { useMediaQuery } from 'react-responsive'
+import {CopyToClipboard} from 'react-copy-to-clipboard';
 
 const MyPage2 = ({
   menubar,
@@ -194,10 +191,10 @@ const ExchangeRugo = (props) => {
   );
 };
 
-const Desktop = ({ children }) => {
-  const isDesktop = useMediaQuery({ minWidth: 992 })
-  return isDesktop ? children : null
-}
+// const Desktop = ({ children }) => {
+//   const isDesktop = useMediaQuery({ minWidth: 992 })
+//   return isDesktop ? children : null
+// }
 
 
 // page
@@ -239,13 +236,13 @@ const MyPage = ({
     }
   };
   // console.log(`email : ${email}`);
-  const todayVal = () => {
-    var randomVal = Math.ramdom
-    for(let i = 2500; i < 3000; i++) {
-      var randomVal2 = Math.floor(randomVal*10 + i)
-    }
-    return randomVal2
-  }
+  // const todayVal = () => {
+  //   var randomVal = Math.ramdom
+  //   for(let i = 2500; i < 3000; i++) {
+  //     var randomVal2 = Math.floor(randomVal*10 + i)
+  //   }
+  //   return randomVal2
+  // }
   //   const Input = ({ type='text', inputElement = null, style = {}, value, onChange, customEle }) => {
   //     return (
   //         <div style={{ width: '10%', height: '80px', display: 'flex', justifyContent: 'center', flexDirection: 'column', fontSize: '12px' }}>
@@ -274,7 +271,11 @@ const MyPage = ({
   //         </div>
   //     )
   // }
-
+const [txValue, setTxValue] = useState('');
+const txHandler = (e) => {
+let txValue= e.target.value
+setTxValue(txValue)
+}
   return (
     <>
       <div style={{ overflowY: "auto" }} className={Style["mypage-bg"]}>
@@ -306,8 +307,22 @@ const MyPage = ({
                     <td>{name}</td>
                   </tr>
                   <tr>
+                  
                     <th>Wallet</th>
                     <td className={Style["wallet-width"]}>{walletAddress}</td>
+                    <CopyToClipboard text={walletAddress}>
+  <img src={require('./images/copy.png').default} alt="" data-tip
+                    data-for="copy" style={{cursor: "pointer", width: "25px"}}/>
+</CopyToClipboard>
+<ReactTooltip
+                    id="copy"
+                    place="left"
+                    effect="solid"
+                    backgroundColor="rgba(0,0,0,0.7)"
+                  >
+                    <span>copy</span>
+                    {/*언어변수값 들어갈곳*/}
+                  </ReactTooltip>
                   </tr>
                 </table>
               </div>
@@ -444,7 +459,15 @@ const MyPage = ({
                   data-for="xtcom"
                 >
                   XT.COM
-                </span>
+                </span>            
+                <div
+                    className={Style["help-btn"]}
+                    onClick={() => {
+                      history.push(
+                        "https://blog.naver.com/erugocoin_official/222663552969"
+                      );
+                    }}
+                  ></div>
                 <ReactTooltip
                   id="xtcom"
                   place="left"
@@ -454,13 +477,20 @@ const MyPage = ({
                   <span>거래소 XT.COM</span>
                   {/*언어변수값 들어갈곳*/}
                 </ReactTooltip>
+                
                 <input
                   type="text"
                   className={Style["input-box"]}
                   placeholder={" TX(transaction hash)값"}
+                  value={txValue}
+                  onChange={txHandler}
                 />
+                {
+                  txValue && txValue !== "" ? <img src={require('./images/checked.png').default} alt="" style={{width: "30px"}}/> : 
+                  <img src={require('./images/unchecked.png').default} alt="" style={{width: "30px"}}/>
+                }
                
-                <div className={Style["xtScale"]}>
+                {/* <div className={Style["xtScale"]}>
                   <button
                     data-tip
                     data-for="info"
@@ -474,33 +504,12 @@ const MyPage = ({
                   >
                     <ReactTooltip id="info" place="left" effect="solid" backgroundColor="rgba(100,201,200,0.7)">
                       <span>자세한 설명은 클릭</span>
-                      {/*언어변수값 들어갈곳*/}
+           
                     </ReactTooltip>
                   </button>
-                  <input
-                    type="checkbox"
-                    className={Style["amountCheck"]}
-                    onClick={accountCheckHandler}
-                    customEle={
-                      <GiConfirmed
-                        style={{ marginRight: "10px" }}
-                        fontSize={"22px"}
-                        // color={password === passwordConfirm && password !== '' ? 'rgba(0,150,0,1)' : 'rgba(250,0,0, 1)'}
-                        color={"green"}
-                      />
-                    }
-                  />
-                  {/* <Input
-                      style={{ backgroundColor: coin === setTempCoin ? 'white' : 'rgba(250,200,200, 0.4)' }}
-                      // onChange={
-                      //     (passwordConfirm) => {
-                      //         setPasswordConfirm(passwordConfirm)
-                      //     }
-                      // }
-                      customEle={<GiConfirmed style={{ marginRight: '10px' }} fontSize={'22px'} color={coin === setTempCoin && coin !== '' ? 'rgba(0,150,0,1)' : 'rgba(250,0,0, 1)'} />}
-                  /> */}
-                </div>
-                <div className={Style["sw-content"]}>
+                </div> */}
+                <div style={{height: "5vh"}}/>
+                <div style={{ position: "relative" }}>
                   <span
                     className={Style["title"]}
                     data-tip
@@ -532,6 +541,7 @@ const MyPage = ({
                   ></div>
                 </div>
               </div>
+              
               <div className={Style["bg-down"]}>
                 <div className={Style["box-bottom"]}>
                   <span
@@ -560,7 +570,7 @@ const MyPage = ({
                     }}
                   ></div>
                   <ExchangeRugo SW={'EW EWC'} EW={'EW Rugo'}/>
-                  <p>CURRENT EXCHANGE RATE : 1 Erugo Coin = {todayVal()} Point </p>
+                  <p>CURRENT EXCHANGE RATE : 1 Erugo Coin = 3000 Point </p>
                 </div>
               </div>
               <button
