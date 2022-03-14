@@ -9,6 +9,7 @@ import BuyLand from "./frame/buyland"
 import LogIn from "./frame/login"
 import MyPage from "./frame/mypage"
 import SignUp from "./frame/signup"
+import Message from"./frame/message"
 import Market from "./frame/market"
 
 const animationOrderList = ['frame-1st', 'frame-2nd', 'frame-3rd', 'frame-4th', 'frame-5th', 'frame-6th', 'frame-7th', 'frame-8th']
@@ -33,8 +34,9 @@ const TopMenu = () => {
                 <div className={`${Style['top-menu-button']} ${Style['buy-land-button']} pointer`}></div>
                 <div className={`${Style['top-menu-button']} ${Style['log-in-button']} pointer`}></div>
                 <div className={`${Style['top-menu-button']} ${Style['my-page-button']} pointer`}></div>
-                <div className={`${Style['top-menu-button']} ${Style['sign-up-button']} pointer`}></div>
+                
                 <div className={`${Style['top-menu-button']} ${Style['market-button']} pointer`}></div>
+                <div className={`${Style['top-menu-button']} ${Style['message-button']} pointer`}></div>
                 <div className={`${Style['top-menu-button']}${Style['lang-button']} pointer`}></div>
             </div>
         </div>
@@ -306,13 +308,13 @@ const MainGate = () => {
                             frameHideIdx={11}
                         ><MyPage /></Frame>
                         <Frame
-                            frameName={'signup'}
+                            frameName={'message'}
                             frameIdx={6}
                             frameOrder={frameOrder[6]}
                             detailFrameState={detailFrameState}
                             onClick={
                                 () => {
-                                    setWrapperSlide(0)
+                                    // setWrapperSlide(0)
                                     setDetailFrameState(12)
                                     setTimeout(() => {
                                         setFrameOrderList([
@@ -334,7 +336,7 @@ const MainGate = () => {
                             }
                             frameShowIdx={12}
                             frameHideIdx={13}
-                        ><SignUp /></Frame>
+                        ><Message /></Frame>
                         <Frame
                             frameName={'market'}
                             frameIdx={7}

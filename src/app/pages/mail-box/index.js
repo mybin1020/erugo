@@ -67,7 +67,7 @@ const ViewDetail = ({ title, sender, registerTime, msg, onCloseHandler, msgType,
                 </div>
                 <div style={{ width: '100%', height: '50px', display: 'flex', justifyContent: "center", alignItems: 'center', borderBottom: '1px solid #e17a18' }}>
                     <div style={{ width: '50%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: "flex-start", paddingLeft: '20px' }}>{sender}</div>
-                    <div style={{ width: '50%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: "flex-start", paddingLeft: '20px' }}>{registerTime}</div>
+                    <div style={{ width: '50%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: "flex-start", paddingLeft: '20px' }}>{registerTime}(UTC)</div>
                 </div>
                 <div style={{ width: '100%', height: 'calc(100% - 180px)', padding: '20px' }}>
 

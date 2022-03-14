@@ -504,6 +504,7 @@ const App = () => {
                 <div style={{ backgroundImage: 'url(/images/frame/frame/market.png)' }}></div>
                 <div style={{ backgroundImage: 'url(/images/frame/frame/mypage.png)' }}></div>
                 <div style={{ backgroundImage: 'url(/images/frame/frame/signup.png)' }}></div>
+                <div style={{ backgroundImage: 'url(/images/frame/frame/message.png)' }}></div>
 
                 <div style={{ backgroundImage: 'url(/images/detail-frame/about.png)' }}></div>
                 <div style={{ backgroundImage: 'url(/images/detail-frame/auction.png)' }}></div>
@@ -511,7 +512,7 @@ const App = () => {
                 <div style={{ backgroundImage: 'url(/images/detail-frame/citizenship.png)' }}></div>
                 <div style={{ backgroundImage: 'url(/images/detail-frame/login.png)' }}></div>
                 <div style={{ backgroundImage: 'url(/images/detail-frame/market.png)' }}></div>
-                <div style={{ backgroundImage: 'url(/images/detail-frame/signup.png)' }}></div>
+                {/* <div style={{ backgroundImage: 'url(/images/detail-frame/signup.png)' }}></div> */}
                 <div style={{ backgroundImage: 'url(/images/detail-frame/mypage.png)' }}></div>
             </div>
         </div>
