@@ -971,10 +971,6 @@ const MainGate = ({
             <Frame
               first={currentFrame ? false : true}
               frameName={"message"}
-<<<<<<< HEAD
-              // 왜 메세지인데 signup이 뜨나요?
-=======
->>>>>>> 5391a602a4f951fc482b97eaa840a5bd7ddbdeee
               frameIdx={6}
               frameOrder={frameOrder[6]}
               detailFrameState={detailFrameState}
