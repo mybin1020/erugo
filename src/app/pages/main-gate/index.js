@@ -137,7 +137,11 @@ const TopMenu = ({
             }}
             className={`${Style["top-menu-button"]} ${Style["log-in-button"]} pointer`}
             onClick={() => {
-              onClick("logout");
+              //onClick("logout");
+              setUserUUID(undefined);
+              sessionStorage.removeItem("userUUID");
+              sessionStorage.removeItem("walletAddress");
+              history.push("/main-entrance");
             }}
           ></div>
         ) : (
