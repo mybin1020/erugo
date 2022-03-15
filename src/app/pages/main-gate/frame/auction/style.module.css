@@ -33,7 +33,7 @@ div,ul,li,ol,p,h1,h2,h3,h4,*{
     background-color: rgba(255, 255, 255, 0.5);
 
 }
-.img1,.img2,.img3,.img4{
+.img1,.img2,.img3,.img4,.img10{
     position: absolute;
     top:5%;
     right: 0;
@@ -85,12 +85,12 @@ div,ul,li,ol,p,h1,h2,h3,h4,*{
     margin-bottom: 0.6vh;
 }
 
-.img1,.img2,.img3,.img4,.img5,.img6,.img7,.img8,.img9{
+.img1,.img2,.img3,.img4,.img5,.img6,.img7,.img8,.img9,.img10{
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;
 }
-.img1,.img2,.img3,.img4{
+.img1,.img2,.img3,.img4,.img10{
     left:2%;
     width:45%;
     height:100%;
@@ -125,15 +125,10 @@ div,ul,li,ol,p,h1,h2,h3,h4,*{
 .img9{
     background-image: url(./images/9.png);
 }
-.step5-img{
-    position: absolute;
-    top:50%;
-    transform: translateY(-50%);
-    left:3%;
-    width: 45%;
-    height: 25vh;
-    background-color:#060606 ;
+.img10{
+    background-image: url(./images/10.png);
 }
+
 .auctionImgbox{
     display: flex;
     width:100%;
@@ -185,8 +180,29 @@ div,ul,li,ol,p,h1,h2,h3,h4,*{
 }
 
 
+/* auction 반응형*/
+/* 1920 1080 */
+@media (max-width:1920px) {
+    .pointer{
+        position: absolute;
+        top:8%;
+        right:0;
+        width:9vw;
+        height:4vh;
+    }
+    .auction-content-text-font{
+        margin-top: 1vh;
+        font-size: 0.7vw;
+    }
+    .auction-content-text-font p{
+        margin-bottom: 0;
+    }
+}
+/* 1280  720*/
+@media (max-width:1280px) {
 
-
-
-
-/* buyland */
+}
+/* 900px 400px */
+@media (max-width:900px){
+    
+}

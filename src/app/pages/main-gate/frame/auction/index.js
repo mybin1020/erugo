@@ -101,7 +101,7 @@ const Auction = () => {
                             <div className={Style['img9']}></div>
                             <div className={Style['auction-img-text']}>구매 불가 지역</div>
                         </div>
-                        <div className={Style['map-content']}>※ 맵 선택 : 최소 1개 ~ 최대 4,096개</div>
+                        <div className={Style['map-content']}>※ 맵 선택 : 최소 1개 ~ 최대 36개</div>
                     </div>
                 </SwiperSlide>
                 <SwiperSlide className={Style['swiper-slide']}>
@@ -126,7 +126,7 @@ const Auction = () => {
                 <SwiperSlide className={Style['swiper-slide']}>
                 <h2 className={Style["auction-title"]}>Auction 이용 방법</h2>
                     <div className={Style["auctionBox"]}>
-                        <div className={Style['step5-img']}></div>
+                        <div className={Style['img10']}></div>
                         <div className={Style['auction-content-text']}>
                             <div>
                                 <h3>step 5</h3>

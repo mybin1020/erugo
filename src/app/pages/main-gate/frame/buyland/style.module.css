@@ -67,7 +67,7 @@
     background-repeat: no-repeat;
     width: 100%;
     height:25vh;
-    margin-top: .95vw;
+    margin-top: 5vw;
 }
 /* .grap2{
     height:22vh;
@@ -146,4 +146,16 @@
 .swiper-button-prev,.swiper-container-rtl .swiper-button-next{left:5px;right:auto}
 .swiper-button-next,.swiper-container-rtl .swiper-button-prev{right:5px;left:auto}
 
-/* buyland */
+/* buyland 반응형*/
+/* 1920 1080 */
+@media (max-width:1920px) {
+    
+}
+/* 1280  720*/
+@media (max-width:1280px) {
+
+}
+/* 900px 400px */
+@media (max-width:900px){
+    
+}

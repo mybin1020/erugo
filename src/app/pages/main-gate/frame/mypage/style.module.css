@@ -23,6 +23,19 @@
     height:90%;
     background-color: rgba(255,255,255,0.5);
 }
+.container::before{
+    content: '';
+    display: block;
+    width: 98%;
+    height: 97%;
+    position: absolute;
+    top:1.5%;
+    left:50%;
+    z-index: -5;
+    transform: translateX(-50%);
+    background-color: rgb(233, 233, 233);
+}
+
 .mypageBox1{
     position: absolute;
     left: 0;
@@ -37,16 +50,12 @@
 }
 
 
+
 .character-img{
     width: 100%;
 }
 
-.pageBox1{
-    /* background-color: pink; */
-}
-.pageBox2{
-    /* background-color: skyblue; */
-}
+
 
 .big-bg > p {
     display: inline-block;
@@ -57,14 +66,7 @@
     color:#64c9dc;
     border: 3px solid #64c9dc;
 }
-.change-icon{
-    display: inline-block;
-    width: 1.5vw;
-    background-repeat: no-repeat;
-    background-size: contain;
-    margin-left:0.5vw;
-    margin-right: 0.5vw;
-}
+
 .right{
     right: 0;
     width:100%;
@@ -136,7 +138,19 @@
     text-align: left;
 }
 .info-title{
+    font-size: 0.7vw;
     padding:0.5vh 0;
+}
+.sw-link{
+    border:none;
+    width:15%;
+    margin-left:0.3vw;
+    color:white;
+    background-color: #64c9dc;
+    border-radius:5px;
+    height: 2vh;
+    cursor: pointer;
+    font-size: 0.5vw;
 }
 .exchange-xt{
     color:white;
@@ -175,7 +189,8 @@
     display: inline-block;
     width: 1vw;
     height: 1.5vh;
-    background-image: url('./images/help.png');
+    /* 기능구현하면 이미지 추가 */
+    /* background-image: url('./images/help.png'); */
     background-size: contain;
     background-repeat: no-repeat;
     cursor: pointer;
@@ -244,6 +259,7 @@
 }
 .sw-content{
     position: relative;
+    top:2vh;
 }
 /*right bottom */
 .bg-down {
@@ -257,9 +273,8 @@
     left:50%;
     transform: translateX(-50%);
     width: 90%;
-    /* background-color: #505050; */
     color:white;
-    height: 5vh;
+    height:50%;
     margin: 0 auto;
 }
 
@@ -271,17 +286,37 @@
     color: #64c9dc;
 }
 
-
-.exchange-box{
-    display: flex;
+.ex-rugo-content{
+    position: relative;
+    width: 100%;
 }
+.content-left, .content-right{
+    position: absolute;
+    width: 50%;
+}
+.content-left{
+    left:0;
+}
+.content-right{
+    right: 1%;
+}
+.change-icon{
+    position: absolute;
+    transform: translateY(10%);
+    left: 38%;
+    display: inline-block;
+    width: 1.5vw;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
 .exRugo,.exErugoCoin{
     display: inline-block;
     text-align: center;
     background-color: #64c9dc;
     font-size: 0.6vw;
     line-height: 3vh;
-    width:16%;
+    width:30%;
     color: white;
 }
 
@@ -294,7 +329,7 @@
     font-size: 0.55vw;
     height: 3vh;
     line-height: 3vh;
-    width: 15%;
+    width:35%;
     border: none;
     color:black
 }
@@ -303,10 +338,9 @@
     height: 2vh;
     margin-left: 0.5vw;
 }
-
-
 .exchange{
-    margin-top:0.5vh;
+    position: absolute;
+    right: 0;
     width: 4vw;
     height:3vh;
     background-color: #64c9dc;
@@ -315,6 +349,11 @@
     color: white;
     font-size: 0.7vw;
     margin-left: 0.5vw;
+}
+.rugo-change-info{
+    position: absolute;
+    bottom:0;
+    left:10%;
 }
 
 .logout-btn{
@@ -332,43 +371,109 @@
     text-align: center;
     line-height: 1.2vh;
 }
-@media  (max-width:1250px) {
-    .character{
-        top:65%;
-        transform: translateY(-50%);
-    }
+/* 1920 1080 */
+@media (max-width:1920px) {
     .container{
-        display: block;
-        height: 100%;
-        background-color: rgba(255,255,255,0);
+        height:90%;
     }
     .mypageBox1, .mypageBox2{
         position: relative;
     }
+    .address>table{
+        height: 10vh;
+        margin-top:3vh; 
+        font-size: 0.7vw;
+    }
+    .address tr:last-child>td{
+        font-size: 0.4vw;
+    }
+    .sw-link{
+        width: 20%;
+    }
+    .rugo-change-info{
+        position: absolute;
+        bottom:-45%;
+        left:0%;
+        font-size:0.5vw;
+    }
+}
+/* 1280  720*/
+@media (max-width:1280px) {
+    .address>table{
+        height: 5vh;
+        margin-top:2vh; 
+        font-size: 0.7vw;
+    }
+
+    .rugo-change-info{
+        width: 100%;
+        left:-10%;
+        font-size: 5px;
+    }
+    .box-bottom>p{
+        font-size: 0.8vw;
+    }
+    .title{
+        font-size: 0.8vw;
+    }
+    .logout-btn{
+        top:85%;
+        height: 3vh;
+    }
+    
+}
+/* 900px 400px */
+@media (max-width:900px){
+    .container{
+        display: block;
+        height: 95%;
+        background-color: rgba(255,255,255,0);
+    }
+    .container::before{
+        display: none;
+    }
     .mypageBox1{
-        z-index: 99;
+        z-index: -55;
         width: 100%;
         height: 100%;
         background-color: rgba(255,255,255,0.7);
     }
+    .mypageBox1::before, .mypageBox2::before{
+        content: '';
+        display: block;
+        width: 95%;
+        height: 97%;
+        position: absolute;
+        top:0;
+        left:50%;
+        z-index: -5;
+        transform: translateX(-50%);
+        background-color: rgb(233, 233, 233);
+    }
+    .mypageBox1::before{
+        top:1vh;
+    }
+    .line{
+        width: 100%;
+    }
     .address>table{
-        height: 10vh;
-        margin-top:1vh; 
+        height: 27vh;
+        margin-top:0vh;
+        padding-top:1vh; 
         font-size: 1vw;
-        
     }
     .address tr:last-child>td{
         font-size: 1vw;
     }
     .address th{
         text-align: center;
-        width: 30%;
+        width: 25%;
     }
     .line{
         margin: 1vh;
     }
     .info-title{
-        font-size: 1vw;
+        font-size: 0.5vw;
     }
     .boxs{
         position: none;
@@ -392,13 +497,18 @@
         display: inline-block;
     }
     .text-box,.num-box{
-        height: 2.5vh;
-        line-height: 2.5vh;
+        height: 5vh;
+        line-height: 5vh;
+    }
+    .sw-link{
+        width: 30%;
+        height: 4vh;
     }
     .mypageBox2{
+        z-index: 0;
         top:0;
-        left:-25%;
-        width: 125%;
+        left:0;
+        width: 100%;
         background-color:rgba(255,255,255,0.7);
     }
     .pageBox2{
@@ -415,13 +525,16 @@
     }
     .title{
         font-size: 1vw;
-        padding-bottom: 0.5vh;
+        padding-bottom:0;
     }
     .input-content{
         margin-bottom:0;
+        height: 5vh;
+        line-height: 5vh;
     }
     .input-box{
         width: 50%;
+        height: 5vh;
     }
     .xtScale{
         position: absolute;
@@ -430,37 +543,52 @@
         height:4.4vh;
     }
     .sw-content{
-        position: absolute;
-        top:150%;
-        width: 50%;
+        top:50%;
+        width: 100%;
         height: 120%;
     }
     .bg-down{
         position: absolute;
-        right:0;
-        top:57%;
+        left:0;
+        top:75%;
         transform: translateY(-50%);
-        width: 50%;
+        width: 100%;
     }
     .box-bottom p{
         font-size: 1vw;
     }
+    .exRugo,.exErugoCoin{
+        height: 4vh;
+        line-height: 4vh;
+    }
+    .exRugoInput{
+        height: 4vh;
+    }
+    .exchange{
+        top:2vh;
+        width: 6vw;
+        height: 4vh;
+    }
     .change-icon{
-        width:2.5vw;
-        background-size: cover;
+        width:2vw;
         margin-left:0.1vw;
     }
-    .help-btn{
+    /* .help-btn{
         position: absolute;
         top:5%;
         left:50%;
-    }
+    } */
     .bg-down .help-btn{
         top:5%;
         left:35%;
     }
+    .rugo-change-info{
+        width: 100%;
+        left:-10%;
+        bottom:-65%;
+    }
     .logout-btn{
-
-        height: 3vh;
+        top:85%;
+        height: 5vh;
     }
 }
