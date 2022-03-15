@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import classNames from 'classnames'
 import { Route, Switch } from 'react-router-dom'
-import { useHistory } from "react-router-dom";
 import Style from './style.module.css'
 
 import Loader from "react-spinners/PacmanLoader";
@@ -9,7 +8,6 @@ import Loader from "react-spinners/PacmanLoader";
 import LoginPage from './pages/login'
 import HomePage from './pages/home'
 import HomePage2 from './pages/home2';
-//import MapPage from './pages/map'
 import MyLandPage from './pages/my-land';
 import AuctionPage from './pages/auction';
 import MyPage from './pages/my';

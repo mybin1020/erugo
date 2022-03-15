@@ -13,7 +13,13 @@ const HomePage2 = ({ menubar, footer }) => {
             <div className={classNames(Style['image-inner-box'])}>
                 <div className={classNames(Style['menu-button-wrapper'])}>
                     <div className={classNames(Style['company-name'])}>
+                    <img src={require('./images/logo.png').default} alt="" style={{width: "20%"}} onClick={(e) => {
+                        e.preventDefault()
+                        e.stopPropagation()
+                        history.push('/main-entrance')
+                    }}/>
                         <h2>ERUGO WORLD</h2>
+                        
                     </div>
                     <div className={classNames(Style['menu-button-area'])}>
                         {/*

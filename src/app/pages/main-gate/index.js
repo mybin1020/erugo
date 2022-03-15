@@ -137,7 +137,7 @@ const TopMenu = ({
             }}
             className={`${Style["top-menu-button"]} ${Style["log-in-button"]} pointer`}
             onClick={() => {
-              onClick("login");
+              onClick("logout");
             }}
           ></div>
         ) : (
@@ -147,7 +147,7 @@ const TopMenu = ({
             }}
             className={`${Style["top-menu-button"]} ${Style["log-in-button"]} pointer`}
             onClick={() => {
-              onClick("logout");
+              onClick("login");
             }}
           ></div>
         )}

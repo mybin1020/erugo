@@ -18,6 +18,10 @@
     background-color: rgba(180, 180, 180, 1);
 }
 
+.background:hover {
+    cursor: pointer;
+}
+
 .map-wrapper {
     width: 100%;
     height: calc(100% - 60px - 5vw);

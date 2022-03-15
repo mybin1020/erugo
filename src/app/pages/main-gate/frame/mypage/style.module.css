@@ -110,6 +110,7 @@
 }
 .wallet-width{
     text-overflow: ellipsis;
+    cursor: pointer;
 }
 .boxs{
     position: absolute;

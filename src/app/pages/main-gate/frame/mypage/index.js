@@ -9,7 +9,7 @@ import ReactTooltip from "react-tooltip";
 import NumberFormat from "react-number-format";
 // import styles from './OtherNumberFormat.module.scss'
 import { GiConfirmed } from "react-icons/gi";
-import {CopyToClipboard} from 'react-copy-to-clipboard';
+import { CopyToClipboard } from "react-copy-to-clipboard";
 
 const MyPage2 = ({
   menubar,
@@ -154,7 +154,7 @@ const ExchangeRugo = (props) => {
   return (
     <>
       <span className={Style["exRugo"]} data-tip data-for="swewc3">
-      {props.SW}
+        {props.SW}
       </span>
       {/* <ReactTooltip
         id="swewc3"
@@ -195,7 +195,6 @@ const ExchangeRugo = (props) => {
 //   const isDesktop = useMediaQuery({ minWidth: 992 })
 //   return isDesktop ? children : null
 // }
-
 
 // page
 const MyPage = ({
@@ -271,11 +270,11 @@ const MyPage = ({
   //         </div>
   //     )
   // }
-const [txValue, setTxValue] = useState('');
-const txHandler = (e) => {
-let txValue= e.target.value
-setTxValue(txValue)
-}
+  const [txValue, setTxValue] = useState("");
+  const txHandler = (e) => {
+    let txValue = e.target.value;
+    setTxValue(txValue);
+  };
   return (
     <>
       <div style={{ overflowY: "auto" }} className={Style["mypage-bg"]}>
@@ -291,46 +290,41 @@ setTxValue(txValue)
             <div className={Style["pageBox1"]}>
               <div className={Style["address"]}>
                 <table>
+                  <tbody>
                   <tr>
                     <th>Email</th>
-                    {/*언어변수값 들어갈곳*/}
                     <td>{email}</td>
                   </tr>
                   <tr>
                     <th>Phone</th>
-                    {/*언어변수값 들어갈곳*/}
                     <td>{phone}</td>
                   </tr>
                   <tr>
                     <th>Name</th>
-                    {/*언어변수값 들어갈곳*/}
                     <td>{name}</td>
                   </tr>
                   <tr>
-                  
                     <th>Wallet</th>
-                    <td className={Style["wallet-width"]}>{walletAddress}</td>
                     <CopyToClipboard text={walletAddress}>
-  <img src={require('./images/copy.png').default} alt="" data-tip
-                    data-for="copy" style={{cursor: "pointer", width: "25px"}}/>
-</CopyToClipboard>
-<ReactTooltip
-                    id="copy"
-                    place="left"
-                    effect="solid"
-                    backgroundColor="rgba(0,0,0,0.7)"
-                  >
-                    <span>copy</span>
-                    {/*언어변수값 들어갈곳*/}
-                  </ReactTooltip>
+                      <td className={Style["wallet-width"]} onClick={() => {alert('복사되었습니다')}}>{walletAddress}</td>
+
+                    </CopyToClipboard>
+                    <ReactTooltip
+                      id="copy"
+                      place="left"
+                      effect="solid"
+                      backgroundColor="rgba(0,0,0,0.7)"
+                    >
+                      <span>copy</span>
+                    </ReactTooltip>
                   </tr>
+                  </tbody>
                 </table>
               </div>
               <div className={Style["line"]}></div>
               <div className={Style["boxs"]}>
                 <div className={`${Style.box1} ${Style.boxLeft}`}>
                   <div className={Style["info-title"]}>SecurityWallet 정보</div>
-                  {/*언어변수값 들어갈곳*/}
                   <span
                     className={Style["text-box"]}
                     data-tip
@@ -345,7 +339,6 @@ setTxValue(txValue)
                     backgroundColor="rgba(100,201,200,0.7)"
                   >
                     <span>SecurityWallet의 이더리움 개수</span>
-                    {/*언어변수값 들어갈곳*/}
                   </ReactTooltip>
                   <span className={Style["num-box"]}>
                     <NumberFormat
@@ -373,7 +366,6 @@ setTxValue(txValue)
                     backgroundColor="rgba(100,201,200,0.7)"
                   >
                     <span>SecurityWallet의 EWC개수</span>
-                    {/*언어변수값 들어갈곳*/}
                   </ReactTooltip>
                   <span className={Style["num-box"]}>
                     <NumberFormat
@@ -459,15 +451,15 @@ setTxValue(txValue)
                   data-for="xtcom"
                 >
                   XT.COM
-                </span>            
+                </span>
                 <div
-                    className={Style["help-btn"]}
-                    onClick={() => {
-                      history.push(
-                        "https://blog.naver.com/erugocoin_official/222663552969"
-                      );
-                    }}
-                  ></div>
+                  className={Style["help-btn"]}
+                  onClick={() => {
+                    history.push(
+                      "https://blog.naver.com/erugocoin_official/222663552969"
+                    );
+                  }}
+                ></div>
                 <ReactTooltip
                   id="xtcom"
                   place="left"
@@ -477,7 +469,7 @@ setTxValue(txValue)
                   <span>거래소 XT.COM</span>
                   {/*언어변수값 들어갈곳*/}
                 </ReactTooltip>
-                
+
                 <input
                   type="text"
                   className={Style["input-box"]}
@@ -485,11 +477,20 @@ setTxValue(txValue)
                   value={txValue}
                   onChange={txHandler}
                 />
-                {
-                  txValue && txValue !== "" ? <img src={require('./images/checked.png').default} alt="" style={{width: "30px"}}/> : 
-                  <img src={require('./images/unchecked.png').default} alt="" style={{width: "30px"}}/>
-                }
-               
+                {txValue && txValue !== "" ? (
+                  <img
+                    src={require("./images/checked.png").default}
+                    alt=""
+                    style={{ width: "30px" }}
+                  />
+                ) : (
+                  <img
+                    src={require("./images/unchecked.png").default}
+                    alt=""
+                    style={{ width: "30px" }}
+                  />
+                )}
+
                 {/* <div className={Style["xtScale"]}>
                   <button
                     data-tip
@@ -508,7 +509,7 @@ setTxValue(txValue)
                     </ReactTooltip>
                   </button>
                 </div> */}
-                <div style={{height: "5vh"}}/>
+                <div style={{ height: "5vh" }} />
                 <div style={{ position: "relative" }}>
                   <span
                     className={Style["title"]}
@@ -517,8 +518,7 @@ setTxValue(txValue)
                   >
                     SecurityWallet 충전하기
                   </span>
-                  <ExchangeRugo SW={'SW EWC'} EW={'EW EWC'}/>
-
+                  <ExchangeRugo SW={"SW EWC"} EW={"EW EWC"} />
 
                   <ReactTooltip
                     id="sw-change"
@@ -541,7 +541,7 @@ setTxValue(txValue)
                   ></div>
                 </div>
               </div>
-              
+
               <div className={Style["bg-down"]}>
                 <div className={Style["box-bottom"]}>
                   <span
@@ -569,7 +569,7 @@ setTxValue(txValue)
                       );
                     }}
                   ></div>
-                  <ExchangeRugo SW={'EW EWC'} EW={'EW Rugo'}/>
+                  <ExchangeRugo SW={"EW EWC"} EW={"EW Rugo"} />
                   <p>CURRENT EXCHANGE RATE : 1 Erugo Coin = 3000 Point </p>
                 </div>
               </div>

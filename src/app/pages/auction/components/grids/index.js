@@ -32,7 +32,7 @@ let Grid = ({ count, rowIdx, columnIdx, blockX, blockY, gridSize, onClickHandler
     return (
         < div
             style={{
-                width: gridSize, height: '100%', border: '1px solid rgba(0,0,0,0.2)', ...style
+                width: gridSize, height: '100%', ...style
             }}
             onClick={(e) => {
                 e.preventDefault()
@@ -49,11 +49,10 @@ let Grid = ({ count, rowIdx, columnIdx, blockX, blockY, gridSize, onClickHandler
                     </div>
                     :
                     myLand !== 0 ?
-                        <div style={{ width: '100%', height: '100%', backgroundColor: myLand === 1 ? (selected ? 'rgba(0,255,0,0.8)' : 'rgba(255,0,0,0.8)') : (selected ? 'rgba(255,255,255,1)' : 'rgba(0,0,255,0.8)') }}>
-
+                        <div style={{ width: '100%', height: '100%', backgroundColor: myLand === 1 ? (selected ? 'rgba(0,255,0,0.8)' : 'rgba(215,112,49,0.8)') : (selected ? 'rgba(145,241,224,0.8)' : 'rgba(70,175,193,0.8)'), border: '1px solid rgba(0, 0,0, 0.3)' }}>
                         </div>
                         :
-                        <div style={{ width: '100%', height: '100%', backgroundColor: available ? (selected ? 'rgba(255,255,255,1)' : 'rgba(255,255,255,0)') : 'rgba(0,0,0,0.8)' }}>
+                        <div style={{ width: '100%', height: '100%', backgroundColor: available ? (selected ? 'rgba(255,255,255,1)' : 'rgba(255,255,255,0.2)') : 'rgba(255,255,255,0)' , border: available ? (pick? '1px solid rgba(0, 0,0, 0.3)' : '1px solid rgba(0, 0, 0, 0.3)') : 'none'}}>
 
                         </div>
             }

@@ -11,6 +11,11 @@
     width:5vw;
     right: 0;
 }
+.about-content-text{
+    position: absolute;
+    transform: translateY(-55%);
+    text-align: justify;
+}
 .swiper-slide:nth-child(6) .about-content-text{
     padding-top:3vh;
 }

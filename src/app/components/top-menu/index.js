@@ -40,10 +40,7 @@ const Menu = ({ onClick, hideButton = false }) => {
                                     }, 200)
                                 }
                             }
-                        ></div>
-
-                        
-                        
+                        ></div>                        
                 {/* <div 
                 className={`${Style['top-menu-button']} ${Style['about-button']} pointer`}
                 onClick={
@@ -89,9 +86,9 @@ const Menu = ({ onClick, hideButton = false }) => {
                 <div className={`${Style['top-menu-button']} ${Style['my-page-button']} pointer`}
                 onClick={
                     () => {
-                        onClick('mypage')
+                        onClick("mypage");
                         setTimeout(() => {
-                            history.push('/mypage')
+                            history.goBack()
                         }, 200)
                        
                     }
