@@ -1,0 +1,149 @@
+
+.buyland-box{
+    position: relative;
+    width: 100%;
+    height:95%;
+    border-top:0.5vh solid white;
+    border-bottom: 0.5vh solid white;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+.buyland-btn{
+    position: absolute;
+    top:7%;
+    right:5%;
+    width:7vw;
+    height: 5vh;
+    background-image: url(./images/buyland-btn.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    line-height: 3vh;
+    text-align: center;
+    color: white;
+    font-size: 1vw;
+    cursor: pointer;
+    text-indent: -9999px;
+}
+.buyland-content-text,.img1,.img2,.img3,.img4,.img5,.img6,.img7,.img8{
+    position: absolute;
+    top:50%;
+    transform: translateY(-50%);
+    right: 0;
+}
+.buyland-content-text{
+    right:1vw;
+    width: 95%;
+    height:100%;
+    padding: 5px;
+    font-size:.95vw;
+    overflow: hidden;
+    text-align: justify;
+    overflow-y: auto;
+
+    
+}
+.buyland-content-text>div{
+    position: absolute;
+    top: 10%;
+    right: 0;
+    padding:20px;
+    width: 50%;
+    white-space: normal;
+}
+.buyland-content-text p{
+    margin-bottom: 2vh;
+}
+.img1,.img2,.img3,.img4,.img5,.img6,.img7,.img8{
+    border-radius: 30px;
+    left:0vw;
+    width:50%;
+    height:80%;
+    background-position: center;
+    background-size:contain;
+    background-repeat: no-repeat;
+}
+.grap1,.grap2{
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 100%;
+    height:25vh;
+    margin-top: .95vw;
+}
+/* .grap2{
+    height:22vh;
+} */
+.img1 {
+    background-image: url(./images/1.png);
+}
+.img2{
+    background-image: url(./images/2.png);
+}
+.img3{
+    background-image: url(./images/3.png);
+}
+.img4{
+    background-image: url(./images/4.jpg);
+}
+.img5{
+    background-image: url(./images/5.jpg);
+}
+.img6{
+    background-image: url(./images/6.jpg);
+}
+.img7{
+    background-image: url(./images/7.jpg);
+}
+.grap1{
+    background-image: url(./images/grap1.png);
+}
+.grap2{
+    background-image: url(./images/grap2.png);
+}
+.mySwiper{
+    width: 100%;
+    height:100%;
+}
+.swiperBuyland{
+    position: absolute;
+    right: 0;
+    width:50%;
+}
+.swiperland{
+    width: 10vw;
+}
+.buyland-swiper-text{
+    position: absolute;
+    text-align: justify;
+    top: 2vw;
+    right:1vw;
+    height:100%;
+    padding: 20px;
+    font-size:.85vw;
+    overflow: hidden;
+    
+    
+}
+.buyland-swiper-text p{
+    font-size: .9vw;
+    margin-bottom: .95vw;
+    margin: 20px;
+    text-align: justify;
+
+}
+.buyland-swiper-text-font{
+    text-align: center;
+    color:rgb(223, 107, 24);
+}
+.swiper-slide:last-child .buyland-swiper-text{
+    top:10%;
+}
+.swiper-slide{
+    width: 100%;
+    height: 100%;
+}
+
+:root .swiper-button-next,.swiper-button-prev {--swiper-navigation-size:40px; position:absolute; top:50%; left: 10% }
+.swiper-button-prev,.swiper-container-rtl .swiper-button-next{left:5px;right:auto}
+.swiper-button-next,.swiper-container-rtl .swiper-button-prev{right:5px;left:auto}
+
+/* buyland */
