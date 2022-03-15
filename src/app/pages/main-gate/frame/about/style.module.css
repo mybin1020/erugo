@@ -4,7 +4,7 @@
     width: 100%;
     height:95%;
 }
-.about-content-text,.img1,.img2,.img3,.img4,.img5,.img6,.img7,.img8,.img9{
+.img1,.img2,.img3,.img4,.img5,.img6,.img7,.img8,.img9{
     position: absolute;
     top:50%;
     transform: translateY(-50%);
@@ -18,13 +18,17 @@
 }
 .swiper-slide:nth-child(6) .about-content-text{
     padding-top:3vh;
+    top:5%;
 }
 .swiper-slide:nth-child(8) .about-content-text{
     height: 100%;
+    top:5%;
 }
 .about-content-text{
+    position: absolute;
+    top:10%;
+    right:0;
     width: 50%;
-    height:80%;
     padding:1vw;
     color:#000;
     font-size:1vw;
@@ -94,4 +98,75 @@
 .swiper-pagination-bullet-active {
     background-color: #000;
 }
-/* about */
+/* about 반응형*/
+
+/* 1920 1080 */
+@media (max-width:1920px) {
+    .swiper-slide:nth-child(6) .about-content-text{
+        padding-top:0;
+        top:15%;
+    }
+    .swiper-slide:nth-child(8) .about-content-text{
+        top:10%;
+    }
+    .about-content-text{
+        top:15%;
+    }
+    .about-content-text p{
+        margin:1vh;
+    }
+}
+/* 1280  720*/
+@media (max-width:1280px) {
+    .swiper-slide:nth-child(6) .about-content-text{
+        top:50%;
+        transform: translateY(-50%);
+        height: 100%;
+    }
+    .swiper-slide:nth-child(8) .about-content-text{
+        top:50%;
+        transform: translateY(-50%);
+        height: 100%;
+    }
+    .about-content-text{
+        top:0;
+    }
+    .about-content-text{
+        top:50%;
+        transform: translateY(-50%);
+        font-size: 10px;
+    }
+    .about-content-text>div{
+        margin:0 1vh;
+    }
+    .about-content-text p{
+        margin:1vh;
+        font-size: 1vw;
+    }
+
+}
+/* 900px 400px */
+@media (max-width:900px){
+    .swiper-slide:nth-child(8) .about-content-text{
+        height: 100%;
+    }
+    .about-content-text{
+        top:50%;
+        transform: translateY(-50%);
+        font-size: 10px;
+        width: 58%;
+    }
+    .about-content-text>div{
+        margin:0 1vh;
+        margin-right: 5vh;
+
+    }
+    .about-content-text p{
+        margin:0;
+        
+    }
+    .img1,.img2,.img3,.img4,.img5,.img6,.img7,.img8,.img9{
+        width: 42%;
+    }
+    
+}

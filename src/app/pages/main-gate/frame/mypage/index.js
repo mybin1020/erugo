@@ -153,40 +153,46 @@ const ExchangeEwcCoin = ({ ether, coin, points }) => {
 const ExchangeRugo = (props) => {
   return (
     <>
-      <span className={Style["exRugo"]} data-tip data-for="swewc3">
-        {props.SW}
-      </span>
-      {/* <ReactTooltip
-        id="swewc3"
-        place="left"
-        effect="solid"
-        backgroundColor="rgba(100,201,200,0.7)"
-      >
-        <span>Erugo World의 EWC(Point)개수 </span>
-      </ReactTooltip> */}
-      <input type={Text} className={Style["exRugoInput"]} placeholder={" 0 "} />
-
-      <span className={Style["change-icon"]}>
-        <img
-          src={require("./images/icon3.png").default}
-          alt=""
-          width={"35px"}
-        ></img>
-      </span>
-
-      <span className={Style["exRugo"]} data-tip data-for="ewewc4">
-        {props.EW}
-      </span>
-      {/* <ReactTooltip
-        id="ewewc4"
-        place="left"
-        effect="solid"
-        backgroundColor="rgba(100,201,200,0.7)"
-      >
-        <span>Erugo World의 RUGO(Point)개수 </span>
-      </ReactTooltip> */}
-      <input type={Text} className={Style["exRugoInput"]} placeholder={" 0 "} />
-      <button className={Style["exchange"]}>Exchange</button>
+      <div className={Style["ex-rugo-content"]}>
+        <div className={Style["content-left"]}>
+          <span className={Style["exRugo"]} data-tip data-for="swewc3">
+          {props.SW}
+          </span>
+          {/* <ReactTooltip
+            id="swewc3"
+            place="left"
+            effect="solid"
+            backgroundColor="rgba(100,201,200,0.7)"
+          >
+            <span>Erugo World의 EWC(Point)개수 </span>
+          </ReactTooltip> */}
+          <input type={Text} className={Style["exRugoInput"]} placeholder={" 0 "} />
+        </div>
+        <span className={Style["change-icon"]}>
+          <img
+            src={require("./images/icon3.png").default}
+            alt="change-icon"
+            width={"80%"}
+          ></img>
+        </span>
+        
+        <div className={Style["content-right"]}>
+          <span className={Style["exRugo"]} data-tip data-for="ewewc4">
+            {props.EW}
+          </span>
+          {/* <ReactTooltip
+            id="ewewc4"
+            place="left"
+            effect="solid"
+            backgroundColor="rgba(100,201,200,0.7)"
+          >
+            <span>Erugo World의 RUGO(Point)개수 </span>
+          </ReactTooltip> */}
+          <input type={Text} className={Style["exRugoInput"]} placeholder={" 0 "} />
+        </div>
+        <button className={Style["exchange"]}>Exchange</button>
+      </div>
+      
     </>
   );
 };
@@ -305,17 +311,27 @@ const MyPage = ({
                   </tr>
                   <tr>
                     <th>Wallet</th>
-                    <CopyToClipboard text={walletAddress}>
-                      <td className={Style["wallet-width"]} onClick={() => {alert('복사되었습니다')}}>{walletAddress}</td>
-
-                    </CopyToClipboard>
+                    <td className={Style["wallet-width"]}>
+                      <NumberFormat 
+                        value={walletAddress}
+                        type="text"
+                        displayType="text"
+                        allowedDecimalSeparators={true}
+                        format={true}
+                      />
+                    </td>
+                    {/* <CopyToClipboard text={walletAddress} data-for="copy">
+                      <img src={require('./images/copy.png').default} alt="" data-tip
+                      data-for="copy" style={{cursor: "pointer", width: "25px"}}/>
+                    </CopyToClipboard> */}
                     <ReactTooltip
-                      id="copy"
-                      place="left"
-                      effect="solid"
-                      backgroundColor="rgba(0,0,0,0.7)"
-                    >
-                      <span>copy</span>
+                    id="copy"
+                    place="left"
+                    effect="solid"
+                    backgroundColor="rgba(0,0,0,0.7)"
+                  >
+                    <span>copy</span>
+                    {/*언어변수값 들어갈곳*/}
                     </ReactTooltip>
                   </tr>
                   </tbody>
@@ -324,7 +340,11 @@ const MyPage = ({
               <div className={Style["line"]}></div>
               <div className={Style["boxs"]}>
                 <div className={`${Style.box1} ${Style.boxLeft}`}>
-                  <div className={Style["info-title"]}>SecurityWallet 정보</div>
+                  <div className={Style["info-title"]}>
+                    SecurityWallet 정보
+                    <button className={Style['sw-link']}>바로가기</button>
+                  </div>
+                  {/*언어변수값 들어갈곳*/}
                   <span
                     className={Style["text-box"]}
                     data-tip
@@ -477,20 +497,11 @@ const MyPage = ({
                   value={txValue}
                   onChange={txHandler}
                 />
-                {txValue && txValue !== "" ? (
-                  <img
-                    src={require("./images/checked.png").default}
-                    alt=""
-                    style={{ width: "30px" }}
-                  />
-                ) : (
-                  <img
-                    src={require("./images/unchecked.png").default}
-                    alt=""
-                    style={{ width: "30px" }}
-                  />
-                )}
-
+                {/* {
+                  txValue && txValue !== "" ? <img src={require('./images/checked.png').default} alt="" style={{width: "30px"}}/> : 
+                  <img src={require('./images/unchecked.png').default} alt="" style={{width: "30px"}}/>
+                } */}
+               
                 {/* <div className={Style["xtScale"]}>
                   <button
                     data-tip
@@ -509,8 +520,7 @@ const MyPage = ({
                     </ReactTooltip>
                   </button>
                 </div> */}
-                <div style={{ height: "5vh" }} />
-                <div style={{ position: "relative" }}>
+                <div className={Style["sw-content"]}>
                   <span
                     className={Style["title"]}
                     data-tip
@@ -569,8 +579,8 @@ const MyPage = ({
                       );
                     }}
                   ></div>
-                  <ExchangeRugo SW={"EW EWC"} EW={"EW Rugo"} />
-                  <p>CURRENT EXCHANGE RATE : 1 Erugo Coin = 3000 Point </p>
+                  <ExchangeRugo SW={'EW EWC'} EW={'EW Rugo'}/>
+                  <p className={Style['rugo-change-info']}>CURRENT EXCHANGE RATE : 1 Erugo Coin = 3000 Point </p>
                 </div>
               </div>
               <button
