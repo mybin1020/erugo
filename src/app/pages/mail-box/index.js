@@ -9,8 +9,8 @@ const TableItem = ({ index, type, title, date, sender, onClickHandler }) => {
         <div
             className='pointer'
             style={{
-                width: '100%', height: '50px', display: 'flex', justifyContent: "flex-start", alignItems: "center", fontSize: '12px',
-                borderBottom: '1px solid gray'
+                width: '100%', height: '45px', display: 'flex', justifyContent: "center", alignItems: "center", fontSize: '15px', 
+                borderBottom: '1px solid rgba(150, 150, 150, 0.7)', backgroundColor: 'transparent'
             }}
             onClick={
                 () => {
@@ -32,7 +32,7 @@ const TableHeader = () => {
     return (
         <div
             style={{
-                width: '100%', height: '40px', display: 'flex', justifyContent: "flex-start", alignItems: "center", fontSize: '12px',
+                width: '100%', height: '40px', display: 'flex', justifyContent: "flex-start", alignItems: "center", fontSize: '15px',
                 backgroundColor: '#e17a18', color: 'white'
             }}
         >
@@ -58,7 +58,7 @@ const ViewDetail = ({ title, sender, registerTime, msg, onCloseHandler, msgType,
                 width: '100%',
                 height: '100%',
                 backgroundColor: 'rgba(255,255,255, 0.4)', position: 'absolute', top: '0', left: "0", display: showDetail ? 'flex' : 'none', justifyContent: 'center',
-                alignItems: 'center', fontSize: '12px'
+                alignItems: 'center', fontSize: '15px'
             }}
         >
             <div style={{ width: '600px', height: 'calc(100% - 200px)', backgroundColor: 'white', border: '1px solid #e17a18' }}>
@@ -76,7 +76,7 @@ const ViewDetail = ({ title, sender, registerTime, msg, onCloseHandler, msgType,
                     {msgType === 'receive proposal' ?
                         <div
                             className='pointer'
-                            style={{ width: '100px', heigh: '40px', display: 'flex', justifyContent: 'center', alignItems: 'center', color: 'white', backgroundColor: '#e17a18', marginTop: '4px' }}
+                            style={{ width: '100px', heigh: '40px', display: 'flex', justifyContent: 'center', alignItems: 'center', color: 'white', backgroundColor: '#e17a18', marginTop: '4px'}}
                             onClick={
                                 () => {
 
@@ -107,7 +107,7 @@ const ViewDetail = ({ title, sender, registerTime, msg, onCloseHandler, msgType,
                         </div> : undefined}
                     {msgType === 'receive proposal' ?
                         <div
-                            className='pointer' style={{ width: '100px', heigh: '40px', display: 'flex', justifyContent: 'center', alignItems: 'center', color: 'white', backgroundColor: '#e17a18', marginTop: '4px' }}
+                            className='pointer' style={{ width: '100px', heigh: '40px', display: 'flex', justifyContent: 'center', alignItems: 'center', color: 'white', backgroundColor: '#e17a18', marginTop: '4px'}}
                             onClick={
                                 () => {
                                     proposalAccept({
@@ -133,7 +133,7 @@ const ViewDetail = ({ title, sender, registerTime, msg, onCloseHandler, msgType,
                     <div
                         className='pointer'
                         style={{
-                            width: '120px', height: '25px', backgroundColor: '#e17a18', borderRadius: '10px', color: 'white', fontSize: '12px', display: 'flex',
+                            width: '120px', height: '25px', backgroundColor: '#e17a18', borderRadius: '10px', color: 'white', fontSize: '15px', display: 'flex',
                             justifyContent: 'center', alignItems: 'center'
                         }}
                         onClick={
@@ -187,9 +187,9 @@ const MailBox = ({ menubar, footer, userUUID }) => {
         <React.Fragment>
             <div className={classNames(Style['view-box'])} style={{ height: '100%' }}>
                 {menubar}
-                <div className={classNames(Style['body'])} style={{ height: '100%' }}>
-                    <div style={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
-                        <div style={{ height: '100%', overflowY: 'auto', width: '100%', padding: '15px', backgroundColor: 'white' }}>
+                <div className={classNames(Style['body'])} style={{ height: '100%' }} >
+                    <div style={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
+                        <div style={{ height: '100%', overflowY: 'auto', width: '100%', padding: '15px', backgroundColor: 'rgba(255, 255, 255, 0.5)' }}>
                             <TableHeader />
                             {mailTable}
                         </div>

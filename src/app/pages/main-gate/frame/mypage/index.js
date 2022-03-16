@@ -4,8 +4,14 @@ import MyPageContent from "../../../my";
 import { useHistory, Link } from "react-router-dom";
 import ReactTooltip from "react-tooltip";
 import NumberFormat from "react-number-format";
+<<<<<<< HEAD
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import { changePointEWC, readInfo, reqWithdrawCoin } from "../../../../api";
+=======
+// import styles from './OtherNumberFormat.module.scss'
+import { GiConfirmed } from "react-icons/gi";
+import { CopyToClipboard } from "react-copy-to-clipboard";
+>>>>>>> 830c22047c9a7b0c62381cebb86dfeb0804b39a2
 
 const MyPage2 = ({
   menubar,
@@ -293,6 +299,14 @@ const ExchangeRugo = ({ SW, EW, ewc, exchangeRate, onClick }) => {
   );
 };
 
+<<<<<<< HEAD
+=======
+// const Desktop = ({ children }) => {
+//   const isDesktop = useMediaQuery({ minWidth: 992 })
+//   return isDesktop ? children : null
+// }
+
+>>>>>>> 830c22047c9a7b0c62381cebb86dfeb0804b39a2
 // page
 const MyPage = ({
   menubar,
@@ -394,6 +408,7 @@ const MyPage = ({
               <div className={Style["address"]}>
                 <table>
                   <tbody>
+<<<<<<< HEAD
                     <tr>
                       <th>Email</th>
                       <td>{email}</td>
@@ -421,6 +436,45 @@ const MyPage = ({
                       </td>
                      
                     </tr>
+=======
+                  <tr>
+                    <th>Email</th>
+                    <td>{email}</td>
+                  </tr>
+                  <tr>
+                    <th>Phone</th>
+                    <td>{phone}</td>
+                  </tr>
+                  <tr>
+                    <th>Name</th>
+                    <td>{name}</td>
+                  </tr>
+                  <tr>
+                    <th>Wallet</th>
+                    <td className={Style["wallet-width"]}>
+                      <NumberFormat 
+                        value={walletAddress}
+                        type="text"
+                        displayType="text"
+                        allowedDecimalSeparators={true}
+                        format={true}
+                      />
+                    </td>
+                    {/* <CopyToClipboard text={walletAddress} data-for="copy">
+                      <img src={require('./images/copy.png').default} alt="" data-tip
+                      data-for="copy" style={{cursor: "pointer", width: "25px"}}/>
+                    </CopyToClipboard> */}
+                    <ReactTooltip
+                    id="copy"
+                    place="left"
+                    effect="solid"
+                    backgroundColor="rgba(0,0,0,0.7)"
+                  >
+                    <span>copy</span>
+                    {/*언어변수값 들어갈곳*/}
+                    </ReactTooltip>
+                  </tr>
+>>>>>>> 830c22047c9a7b0c62381cebb86dfeb0804b39a2
                   </tbody>
                 </table>
               </div>
@@ -568,8 +622,14 @@ const MyPage = ({
                 <div
                   className={Style["help-btn"]}
                   onClick={() => {
+<<<<<<< HEAD
                     window.open().location.href =
                       "https://blog.naver.com/erugocoin_official/222663552969";
+=======
+                    history.push(
+                      "https://blog.naver.com/erugocoin_official/222663552969"
+                    );
+>>>>>>> 830c22047c9a7b0c62381cebb86dfeb0804b39a2
                   }}
                 ></div>
                 <ReactTooltip
@@ -597,6 +657,7 @@ const MyPage = ({
                     data-for="sw-change"
                   >
                     SecurityWallet 충전하기
+<<<<<<< HEAD
                   </span> */}
                   <ExchangCoin
                     SW={"SW EWC"}
@@ -666,6 +727,10 @@ const MyPage = ({
                       }
                     }}
                   />
+=======
+                  </span>
+                  <ExchangeRugo SW={"SW EWC"} EW={"EW EWC"} />
+>>>>>>> 830c22047c9a7b0c62381cebb86dfeb0804b39a2
 
                   <ReactTooltip
                     id="sw-change"

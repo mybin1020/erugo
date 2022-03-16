@@ -88,6 +88,7 @@
 }
 .my-page-button {
     background-image: url(./images/top-button/my-page.png);
+
 }
 /* .my-page-button {
     background-image: url(./images/frame/top-button/my-page.png);
@@ -100,13 +101,15 @@
 }
 .my-bid-button {
     background-image: url(./images/top-button/my-bid.png);
+
 }
-.my-bid-button {
+/* .my-bid-button {
     background-image: url(./images/top-button/my-bid.png);
-}
+} */
 .highest-bid-button {
     background-image: url(./images/top-button/highest-bid.png);
-}
+
+}  
 .lang-button {
     width:6.2vw;
     height:2.8vw;
