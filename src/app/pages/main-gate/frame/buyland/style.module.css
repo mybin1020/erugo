@@ -38,8 +38,12 @@
     overflow: hidden;
     text-align: justify;
     overflow-y: auto;
-
-    
+}
+.buyland-content-text p{
+    margin: 0;
+}
+.buyland-swiper-text p{
+    margin: 0;
 }
 .buyland-content-text>div{
     position: absolute;
@@ -53,10 +57,10 @@
     margin-bottom: 2vh;
 }
 .img1,.img2,.img3,.img4,.img5,.img6,.img7,.img8{
-    border-radius: 30px;
-    left:0vw;
+    border-radius: 15px;
+    left:0.5vw;
     width:50%;
-    height:80%;
+    height:81%;
     background-position: center;
     background-size:contain;
     background-repeat: no-repeat;
@@ -67,11 +71,13 @@
     background-repeat: no-repeat;
     width: 100%;
     height:25vh;
-    margin-top: 5vw;
 }
-/* .grap2{
-    height:22vh;
-} */
+.grap1{
+    margin-top: 5%;
+}
+.grap2{
+    margin-top: 0;
+}
 .img1 {
     background-image: url(./images/1.png);
 }
@@ -108,10 +114,16 @@
     right: 0;
     width:50%;
 }
+
 .swiperland{
     width: 10vw;
 }
-.buyland-swiper-text{
+.swiperland>.buyland-swiper-text{
+    margin-top:5%;
+    margin-left:1vw;
+}
+
+.buyland-swiper-text, .buylandSwiperText{
     position: absolute;
     text-align: justify;
     top: 2vw;
@@ -120,15 +132,15 @@
     padding: 20px;
     font-size:.85vw;
     overflow: hidden;
-    
-    
 }
-.buyland-swiper-text p{
+.buylandSwiperText p{
     font-size: .9vw;
     margin-bottom: .95vw;
     margin: 20px;
     text-align: justify;
-
+}
+.buylandHight{
+    top:5%;
 }
 .buyland-swiper-text-font{
     text-align: center;
@@ -149,7 +161,30 @@
 /* buyland 반응형*/
 /* 1920 1080 */
 @media (max-width:1920px) {
-    
+    .buyland-swiper-text{
+        top:0;
+    }
+    .swiperland>.buyland-swiper-text{
+        margin-top:10%;
+        margin-left:1vw;
+    }
+    .buylandHight{
+        top:1%;
+        left:1vw;
+    }
+    .buylandHight p{
+        margin:0vh;
+    }
+    .buyland-swiper-text p{
+        margin:1vw 0.8vw;
+    }
+    .lastContent>p{
+        margin:0 0.8vw;
+    }
+    .lastHeight{
+        margin-top:5%;
+    }
+
 }
 /* 1280  720*/
 @media (max-width:1280px) {
@@ -157,5 +192,24 @@
 }
 /* 900px 400px */
 @media (max-width:900px){
-    
+    .buylandHight{
+        top:-5%;
+        margin: 0;
+        overflow-y: scroll;
+    }
+    .buyland-swiper-text{
+        padding:0 1vw;
+    }
+    .buyland-content-text{
+        margin:0;
+    }
+    .buyland-content-text>div{
+        padding:0 1vw;
+    }
+    .lastContent{
+        margin: 0;
+    }
+    .lastHeight{
+        margin-top:5%;
+    }
 }

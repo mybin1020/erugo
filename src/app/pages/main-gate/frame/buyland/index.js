@@ -154,7 +154,7 @@ const BuyLand = () => {
                                     </div>
                                 </div>
                             </SwiperSlide>
-                            <SwiperSlide className={Style['swiper-slide']}>
+                            <SwiperSlide className={`${Style.swiper_slide} ${Style.swiperland}`}>
                                 <div className={Style['buyland-swiper-text']}>
                                     <p>
                                         하나의 땅과 한 장의 투표권을 가지고 있더라도 이루고 월드의 시민입니다. 
@@ -168,7 +168,7 @@ const BuyLand = () => {
                                 </div>
                             </SwiperSlide>
                             <SwiperSlide className={Style['swiper-slide']}>
-                                <div className={Style['buyland-swiper-text']}>
+                                <div className={`${Style.buylandSwiperText} ${Style.buylandHight}`}>
                                     <p>
                                         1계위는 이루고 월드의 시민권을 확보하여 이루고 월드에서의 생활이 가능합니다.
                                         
@@ -189,7 +189,7 @@ const BuyLand = () => {
                                 </div>
                             </SwiperSlide>
                             <SwiperSlide className={Style['swiper-slide']}>
-                                <div className={Style['buyland-swiper-text']}>
+                                <div className={`${Style.buylandSwiperText} ${Style.buylandHight}`}>
                                     <div>
                                         <p>
                                             5계위는 앞서 나열된 모든 권리를 포함하여 새로운 세계로의 진출 여부에 대해 투표를 개최할 권리가 생기게 됩니다. 물론, 가장 먼저 새로운 세계로 나아간다면 그에 따른 보상이 지급됩니다.
@@ -230,7 +230,7 @@ const BuyLand = () => {
                         >
                             <SwiperSlide className={Style['swiper-slide']}>
                                 <div className={Style['buyland-swiper-text']}>
-                                    <div>
+                                    <div className={Style['lastContent']}>
                                         <p>
                                         3계위 이상의 계급은 이루고 월드를 지키기 위한 최소한의 의무가 존재합니다.
                                         자신의 권리를 지키기 위하여 EWC를 최소 보유 수량 이상 소지하고 있어야 하며 수량은 다음과 같습니다.
@@ -242,7 +242,7 @@ const BuyLand = () => {
                             </SwiperSlide>
                             <SwiperSlide className={Style['swiper-slide']}>
                                 <div className={Style['buyland-swiper-text']}>
-                                    <div>
+                                    <div className={Style['lastHeight']}>
                                         <p>
                                         만약 계급에 맞는 최소한의 EWC를 보유하지 않았다면, 자신의 현재 계급과 상관없이 2계위의 권리만을 누릴 수 있게 됩니다.
                                         </p>

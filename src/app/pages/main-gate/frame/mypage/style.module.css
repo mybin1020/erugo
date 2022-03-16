@@ -319,10 +319,11 @@
     width:30%;
     color: white;
 }
+.exErugoCoin{
+    width: 20%;
+}
 
-
-
-.exRugoInput {
+.exRugoInput, .exErugoInput {
     display: inline-block;
     background-color: #fff;
     text-align: center;
@@ -333,14 +334,16 @@
     border: none;
     color:black
 }
+.exErugoInput{
+    width: 50%;
+}
 .exErugoCoin>input {
     width: 55%;
     height: 2vh;
     margin-left: 0.5vw;
 }
-.exchange{
+.exchange, .swExchange{
     position: absolute;
-    right: 0;
     width: 4vw;
     height:3vh;
     background-color: #64c9dc;
@@ -349,6 +352,12 @@
     color: white;
     font-size: 0.7vw;
     margin-left: 0.5vw;
+}
+.exchange{
+    right: 0;
+}
+.swExchange{
+    right:5%;
 }
 .rugo-change-info{
     position: absolute;
@@ -561,10 +570,10 @@
         height: 4vh;
         line-height: 4vh;
     }
-    .exRugoInput{
+    .exRugoInput, .exErugoInput{
         height: 4vh;
     }
-    .exchange{
+    .exchange,.swExchange{
         top:2vh;
         width: 6vw;
         height: 4vh;
