@@ -2,9 +2,14 @@ import React, { useEffect, useState } from "react";
 import Style from "./style.module.css";
 import MyPageContent from "../../../my";
 import { useHistory, Link } from "react-router-dom";
+import Home from "../home/index";
+// 툴팁 라이브러리 설치했습니다
 import ReactTooltip from "react-tooltip";
+// 부트스트랩 라이브러리 설치했습니다.
 import NumberFormat from "react-number-format";
-import { CopyToClipboard } from "react-copy-to-clipboard";
+// import styles from './OtherNumberFormat.module.scss'
+import { GiConfirmed } from "react-icons/gi";
+import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { changePointEWC, readInfo, reqWithdrawCoin } from "../../../../api";
 
 const MyPage2 = ({
@@ -71,7 +76,7 @@ const MyPage2 = ({
     </div>
   );
 };
-const characterName = ["dei", "ego", "el", "going"];
+const characterName = ["ORBIT", "ETHER", "AMORA", "ASLAN", "AXIOM", "GOING"];
 function ExchangeCharacter(inputNum) {
   if (inputNum >= 1 && inputNum < 10) {
     return characterName[0];
@@ -81,78 +86,83 @@ function ExchangeCharacter(inputNum) {
   }
   if (inputNum >= 100 && inputNum < 1000) {
     return characterName[2];
-  } else return characterName[3];
+  } 
+  if (inputNum >= 1000 && inputNum < 9999) {
+    return characterName[3];
+  }
+  if(inputNum >= 10000) {
+    return characterName[4];
+  } else {
+    return characterName[5];
+  }
 }
-
-// const ExchangeEwcCoin = ({ ether, coin, points }) => {
-//   return (
-//     <>
-//       <span className={Style["exRugo"]} data-tip data-for="swewc1">
-//         SW EWC
-//       </span>
-//       <ReactTooltip
-//         id="swewc1"
-//         place="left"
-//         effect="solid"
-//         backgroundColor="rgba(100,201,200,0.7)"
-//       >
-//         <span>SecurityWallet의 EWC개수 </span>
-//         {/*언어변수값 들어갈곳*/}
-//       </ReactTooltip>
-//       <span className={Style["exRugoInput"]}>
-//         <NumberFormat
-//           value={ether}
-//           thousandsGroupStyle="thousand"
-//           type="text"
-//           displayType="text"
-//           thousandSeparator={true}
-//           allowNegative={true}
-//         />
-//       </span>
-
-//       <span className={Style["change-icon"]}>
-//         <img
-//           src={require("./images/icon3.png").default}
-//           alt=""
-//           width={"35px"}
-//         ></img>
-//       </span>
-
-//       <span className={Style["exRugo"]} data-tip data-for="ewewc2">
-//         EW EWC
-//       </span>
-//       <ReactTooltip
-//         id="ewewc2"
-//         place="left"
-//         effect="solid"
-//         backgroundColor="rgba(100,201,200,0.7)"
-//       >
-//         <span>Erugo World의 EWC(Point)개수 </span>
-//         {/*언어변수값 들어갈곳*/}
-//       </ReactTooltip>
-//       <div type={Text} className={Style["exRugoInput"]}>
-//         <NumberFormat
-//           value={ether}
-//           thousandsGroupStyle="thousand"
-//           type="text"
-//           displayType="text"
-//           thousandSeparator={true}
-//           allowNegative={true}
-//         />
-//       </div>
-//       <button className={Style["exchange"]}>Exchange</button>
-//       {/*언어변수값 들어갈곳*/}
-//     </>
-//   );
-// };
-
-// 충전
-// 충전
-const ExchangCoin = ({ SW, EW, coin, onClick }) => {
-  const [tempCoin, setTempCoin] = useState(0);
+/*
+const ExchangeEwcCoin = ({ ether, coin, points }) => {
   return (
     <>
-      <span className={Style["exRugo"]} data-tip data-for="swewc3">
+      <span className={Style["exRugo"]} data-tip data-for="swewc1">
+        SW EWC
+      </span>
+      <ReactTooltip
+        id="swewc1"
+        place="left"
+        effect="solid"
+        backgroundColor="rgba(100,201,200,0.7)"
+      >
+        <span>SecurityWallet의 EWC개수 </span>
+        {/*언어변수값 들어갈곳*
+      </ReactTooltip>
+      <span className={Style["exRugoInput"]}>
+        <NumberFormat
+          value={ether}
+          thousandsGroupStyle="thousand"
+          type="text"
+          displayType="text"
+          thousandSeparator={true}
+          allowNegative={true}
+        />
+      </span>
+
+      <span className={Style["change-icon"]}>
+        <img
+          src={require("./images/icon3.png").default}
+          alt=""
+          width={"35px"}
+        ></img>
+      </span>
+
+      <span className={Style["exRugo"]} data-tip data-for="ewewc2">
+        EW EWC
+      </span>
+      <ReactTooltip
+        id="ewewc2"
+        place="left"
+        effect="solid"
+        backgroundColor="rgba(100,201,200,0.7)"
+      >
+        <span>Erugo World의 EWC(Point)개수 </span>
+      </ReactTooltip>
+      <div type={Text} className={Style["exRugoInput"]}>
+        <NumberFormat
+          value={ether}
+          thousandsGroupStyle="thousand"
+          type="text"
+          displayType="text"
+          thousandSeparator={true}
+          allowNegative={true}
+        />
+      </div>
+      <button className={Style["exchange"]}>Exchange</button>
+    </>
+  );
+};*/
+
+// 충전
+const ExchangCoin = ({ SW, EW, coin, onClick }) => {
+  const [tempCoin, setTempCoin] = useState(0)
+  return (
+    <>
+      <span className={Style["exErugoCoin"]} data-tip data-for="swewc3">
         {SW}
       </span>
       {/* <ReactTooltip
@@ -165,55 +175,34 @@ const ExchangCoin = ({ SW, EW, coin, onClick }) => {
       </ReactTooltip> */}
       <input
         type={Text}
-        className={Style["exRugoInput"]}
+        className={Style["exErugoInput"]}
         value={tempCoin}
-        onChange={(e) => {
-          let withdrawCoin =
-            e.target.value === "" ? 0 : parseInt(e.target.value);
-          if (isNaN(withdrawCoin)) {
-            return;
+        onChange={
+          (e) => {
+            let withdrawCoin = e.target.value === '' ? 0 : parseInt(e.target.value)
+            if (isNaN(withdrawCoin)) {
+              return
+            }
+            if (withdrawCoin > coin) {
+              return
+            }
+            setTempCoin(withdrawCoin)
           }
-          if (withdrawCoin > coin) {
-            return;
-          }
-          setTempCoin(withdrawCoin);
-        }}
+        }
       />
-      {/* 
-      <span className={Style["change-icon"]}>
-        <img
-          src={require("./images/icon3.png").default}
-          alt=""
-          width={"35px"}
-        ></img>
-      </span>
-
-      <span className={Style["exRugo"]} data-tip data-for="ewewc4">
-        {EW}
-      </span>
-      <ReactTooltip
-        id="ewewc4"
-        place="left"
-        effect="solid"
-        backgroundColor="rgba(100,201,200,0.7)"
-      >
-        <span>Erugo World의 RUGO(Point)개수 </span>
-      </ReactTooltip>
-      <input 
-      type={Text} 
-      className={Style["exRugoInput"]} 
-      placeholder={ewc} 
-      /> */}
+      
       <button
-        className={Style["exchange"]}
-        onClick={(e) => {
-          e.stopPropagation();
-          e.preventDefault();
-          if (onClick && typeof onClick === "function") {
-            setTempCoin(0);
-            onClick({ withdrawCoin: tempCoin });
+        className={Style["swExchange"]}
+        onClick={
+          (e) => {
+            e.stopPropagation()
+            e.preventDefault()
+            if (onClick && typeof onClick === 'function') {
+              setTempCoin(0)
+              onClick({ withdrawCoin: tempCoin })
+            }
           }
-        }}
+        }
       >
         Exchange
       </button>
@@ -221,10 +210,12 @@ const ExchangCoin = ({ SW, EW, coin, onClick }) => {
   );
 };
 const ExchangeRugo = ({ SW, EW, ewc, exchangeRate, onClick }) => {
-  const [tempEWC, setTempEWC] = useState(0);
-  const [tempRugo, setTempRugo] = useState(0);
+  const [tempEWC, setTempEWC] = useState(0)
+  const [tempRugo, setTempRugo] = useState(0)
   return (
     <>
+      <div className={Style['ex-rugo-content']}>
+        <div className={Style['content-left']}>
       <span className={Style["exRugo"]} data-tip data-for="swewc3">
         {SW}
       </span>
@@ -240,18 +231,21 @@ const ExchangeRugo = ({ SW, EW, ewc, exchangeRate, onClick }) => {
         type={Text}
         className={Style["exRugoInput"]}
         value={tempEWC}
-        onChange={(e) => {
-          let newTempEWC = e.target.value === "" ? 0 : parseInt(e.target.value);
-          if (isNaN(newTempEWC)) {
-            return;
+        onChange={
+          (e) => {
+            let newTempEWC = e.target.value === '' ? 0 : parseInt(e.target.value)
+            if (isNaN(newTempEWC)) {
+              return
+            }
+            if (newTempEWC > ewc) {
+              return
+            }
+            setTempEWC(newTempEWC)
+            setTempRugo(exchangeRate * newTempEWC)
           }
-          if (newTempEWC > ewc) {
-            return;
-          }
-          setTempEWC(newTempEWC);
-          setTempRugo(exchangeRate * newTempEWC);
-        }}
+        }
       />
+      </div>
 
       <span className={Style["change-icon"]}>
         <img
@@ -261,6 +255,7 @@ const ExchangeRugo = ({ SW, EW, ewc, exchangeRate, onClick }) => {
         ></img>
       </span>
 
+        <div className={Style['content-right']}>
       <span className={Style["exRugo"]} data-tip data-for="ewewc4">
         {EW}
       </span>
@@ -276,24 +271,38 @@ const ExchangeRugo = ({ SW, EW, ewc, exchangeRate, onClick }) => {
         type={Text}
         className={Style["exRugoInput"]}
         value={tempRugo}
-        onChange={(e) => {}}
+        onChange={
+          (e) => {
+
+          }
+        }
         disabled
       />
+      </div>
       <button
         className={Style["exchange"]}
-        onClick={(e) => {
-          if (onClick && typeof onClick === "function") {
-            onClick({ ewc: tempEWC, rugo: tempRugo });
-            setTempEWC(0);
-            setTempRugo(0);
+        onClick={
+          (e) => {
+            if (onClick && typeof onClick === 'function') {
+              onClick({ ewc: tempEWC, rugo: tempRugo })
+              setTempEWC(0)
+              setTempRugo(0)
+            }
           }
-        }}
+        }
       >
         Exchange
       </button>
+      </div>
     </>
   );
 };
+
+// const Desktop = ({ children }) => {
+//   const isDesktop = useMediaQuery({ minWidth: 992 })
+//   return isDesktop ? children : null
+// }
+
 
 // page
 const MyPage = ({
@@ -326,7 +335,7 @@ const MyPage = ({
   ewc,
   swId,
   fees,
-  setFees,
+  setFees
 }) => {
   const history = useHistory();
   const [accountCheck, setAccountCheck] = useState(new Set());
@@ -375,72 +384,69 @@ const MyPage = ({
   //         </div>
   //     )
   // }
-  const [txValue, setTxValue] = useState("");
+  const [txValue, setTxValue] = useState('');
   const txHandler = (e) => {
-    let txValue = e.target.value;
-    setTxValue(txValue);
-  };
+    let txValue = e.target.value
+    setTxValue(txValue)
+  }
   return (
     <>
-      <div style={{ overflowY: "auto" }} className={Style["mypage-bg"]}>
+      <div
+        style={{ overflowY: "auto" }} className={Style["mypage-bg"]}
+        
+      >
         <div className={Style["character"]}>
           <img
             className={Style["character-img"]}
             src={require(`./images/${ExchangeCharacter(coin)}.png`).default}
             alt=""
           />
+          <h1 className={Style['characterName']}> {ExchangeCharacter(coin)} </h1>
         </div>
         <div className={Style["container"]}>
           <div className={Style["mypageBox1"]}>
             <div className={Style["pageBox1"]}>
               <div className={Style["address"]}>
                 <table>
-                  <tbody>
-                    <tr>
-                      <th>Email</th>
-                      <td>{email}</td>
-                    </tr>
-                    <tr>
-                      <th>Phone</th>
-                      <td>{phone}</td>
-                    </tr>
-                    <tr>
-                      <th>Name</th>
-                      <td>{name}</td>
-                    </tr>
-                    <tr>
-                      <th>Wallet</th>
-                      <td className={Style["wallet-width"]}>
-                        <NumberFormat
-                          value={walletAddress}
-                          type="text"
-                          displayType="text"
-                          allowedDecimalSeparators={true}
-                          format={true}>
-                            
-                          </NumberFormat>
-                         {/* <CopyToClipboard text={walletAddress} /> */}
-                      </td>
-                     
-                    </tr>
-                  </tbody>
+                  <tr>
+                    <th>Email</th>
+                    {/*언어변수값 들어갈곳*/}
+                    <td>{email}</td>
+                  </tr>
+                  <tr>
+                    <th>Phone</th>
+                    {/*언어변수값 들어갈곳*/}
+                    <td>{phone}</td>
+                  </tr>
+                  <tr>
+                    <th>Name</th>
+                    {/*언어변수값 들어갈곳*/}
+                    <td>{name}</td>
+                  </tr>
+                  <tr>
+
+                    <th>Wallet</th>
+                    <td className={Style["wallet-width"]}>{walletAddress}</td>
+                    {/* <CopyToClipboard text={walletAddress}>
+                      <img src={require('./images/copy.png').default} alt="" data-tip
+                        data-for="copy" style={{ cursor: "pointer", width: "25px" }} />
+                    </CopyToClipboard> */}
+                    <ReactTooltip
+                      id="copy"
+                      place="left"
+                      effect="solid"
+                      backgroundColor="rgba(0,0,0,0.7)"
+                    >
+                      <span>copy</span>
+                      {/*언어변수값 들어갈곳*/}
+                    </ReactTooltip>
+                  </tr>
                 </table>
               </div>
               <div className={Style["line"]}></div>
               <div className={Style["boxs"]}>
                 <div className={`${Style.box1} ${Style.boxLeft}`}>
-                  <div className={Style["info-title"]}>
-                    SecurityWallet 정보
-                    <button
-                      className={Style["sw-link"]}
-                      onClick={() => {
-                        window.open().location.href =
-                          "https://blog.naver.com/erugocoin_official/222663552969";
-                      }}
-                    >
-                      바로가기
-                    </button>
-                  </div>
+                  <div className={Style["info-title"]}>SecurityWallet 정보</div>
                   {/*언어변수값 들어갈곳*/}
                   <span
                     className={Style["text-box"]}
@@ -456,6 +462,7 @@ const MyPage = ({
                     backgroundColor="rgba(100,201,200,0.7)"
                   >
                     <span>SecurityWallet의 이더리움 개수</span>
+                    {/*언어변수값 들어갈곳*/}
                   </ReactTooltip>
                   <span className={Style["num-box"]}>
                     <NumberFormat
@@ -483,10 +490,11 @@ const MyPage = ({
                     backgroundColor="rgba(100,201,200,0.7)"
                   >
                     <span>SecurityWallet의 EWC개수</span>
+                    {/*언어변수값 들어갈곳*/}
                   </ReactTooltip>
                   <span className={Style["num-box"]}>
                     <NumberFormat
-                      value={ether}
+                      value={coin}
                       thousandsGroupStyle="thousand"
                       type="text"
                       displayType="text"
@@ -511,12 +519,12 @@ const MyPage = ({
                     effect="solid"
                     backgroundColor="rgba(100,201,200,0.7)"
                   >
-                    <span>Erugo World의 EWC(Point)개수</span>
+                    <span>Erugo World의 EWC개수</span>
                     {/*언어변수값 들어갈곳*/}
                   </ReactTooltip>
                   <span className={Style["num-box"]}>
                     <NumberFormat
-                      value={coin}
+                      value={ewc}
                       thousandsGroupStyle="thousand"
                       type="text"
                       displayType="text"
@@ -540,6 +548,7 @@ const MyPage = ({
                     backgroundColor="rgba(100,201,200,0.7)"
                   >
                     <span>Erugo World의 Rugo 개수</span>
+                    {/*언어변수값 들어갈곳*/}
                   </ReactTooltip>
                   <span className={Style["num-box"]}>
                     <NumberFormat
@@ -560,6 +569,7 @@ const MyPage = ({
             <div className={Style["pageBox2"]}>
               <div className={Style["exchange-xt"]}>
                 <div className={Style["title"]}>거래소에서 충전하기</div>
+                {/*언어변수값 들어갈곳*/}
                 <span
                   className={Style["input-content"]}
                   data-tip
@@ -570,8 +580,9 @@ const MyPage = ({
                 <div
                   className={Style["help-btn"]}
                   onClick={() => {
-                    window.open().location.href =
-                      "https://blog.naver.com/erugocoin_official/222663552969";
+                    history.push(
+                      "https://blog.naver.com/erugocoin_official/222663552969"
+                    );
                   }}
                 ></div>
                 <ReactTooltip
@@ -587,87 +598,107 @@ const MyPage = ({
                 <input
                   type="text"
                   className={Style["input-box"]}
-                  placeholder={" 추후 지원예정 "}
+                  placeholder={" 추후 지원 예정 "}
                   value={txValue}
                   onChange={txHandler}
                 />
+                {/* {
+                  txValue && txValue !== "" ? <img src={require('./images/checked.png').default} alt="" style={{ width: "30px" }} /> :
+                    <img src={require('./images/unchecked.png').default} alt="" style={{ width: "30px" }} />
+                } */}
 
-                <div className={Style["sw-content"]}>
-                  {/* <span
+                {/* <div className={Style["xtScale"]}>
+                  <button
+                    data-tip
+                    data-for="info"
+                    id="xtComInfo"
+                    className={Style["xtComInfo"]}
+                    onClick={() => {
+                      history.push(
+                        "https://blog.naver.com/erugocoin_official/222663552969"
+                      );
+                    }}
+                  >
+                    <ReactTooltip id="info" place="left" effect="solid" backgroundColor="rgba(100,201,200,0.7)">
+                      <span>자세한 설명은 클릭</span>
+           
+                    </ReactTooltip>
+                  </button>
+                </div> */}
+                <div style={{ height: "5vh" }} />
+                <div style={{ position: "relative" }}>
+                  {
+                    /*
+                  <span
                     className={Style["title"]}
                     data-tip
                     data-for="sw-change"
                   >
                     SecurityWallet 충전하기
-                  </span> */}
+                  </span>
+                  */}
                   <ExchangCoin
-                    SW={"SW EWC"}
+                    SW={'SW EWC'}
                     coin={coin}
-                    onClick={({ withdrawCoin }) => {
-                      if (withdrawCoin > 0 && withdrawCoin <= coin) {
-                        if (!window.confirm("EWC를 가져오시겠습니까?")) {
-                          return;
-                        }
-                        reqWithdrawCoin({
-                          uuid: userUUID,
-                          coin: withdrawCoin,
-                          callback: (err, res) => {
-                            if (err) {
-                              console.log(err);
-                            } else {
-                              if (res.result === "success") {
-                                readInfo({
-                                  uuid: userUUID,
-                                  callback: (err, user) => {
-                                    if (err) {
-                                      console.log(err);
-                                    } else {
-                                      if (user.result === "success") {
-                                        console.log(user);
-                                        let coin = user.userInfo.coin;
-                                        let ether = user.userInfo.ethAmount;
-                                        let ewc = user.userInfo.ewc;
-                                        let phone = user.userInfo.phone;
-                                        let name = user.userInfo.name;
-                                        let email = user.userInfo.email;
-                                        let swId = user.userInfo.swId;
-                                        let point = user.userInfo.point;
-                                        let fees = user.userInfo.fees;
-                                        setCoin(coin);
-                                        setEther(ether);
-                                        setEWC(ewc);
-                                        setPhone(phone);
-                                        setName(name);
-                                        setEmail(email);
-                                        setSwId(swId);
-                                        setPoints(point);
-                                        setFees(fees);
-                                        window.alert(
-                                          "EWC를 Security Wallet으로 부터 가져오는 데 성공하였습니다."
-                                        );
+                    onClick={
+                      ({ withdrawCoin }) => {
+                        if (withdrawCoin > 0 && withdrawCoin <= coin) {
+                          if (!window.confirm('EWC를 가져오시겠습니까?')) {
+                            return
+                          }
+                          reqWithdrawCoin({
+                            uuid: userUUID,
+                            coin: withdrawCoin,
+                            callback: (err, res) => {
+                              if (err) {
+                                console.log(err)
+                              } else {
+                                if (res.result === 'success') {
+                                  readInfo({
+                                    uuid: userUUID,
+                                    callback: (err, user) => {
+                                      if (err) {
+                                        console.log(err)
+                                      } else {
+                                        if (user.result === 'success') {
+                                          console.log(user)
+                                          let coin = user.userInfo.coin
+                                          let ether = user.userInfo.ethAmount
+                                          let ewc = user.userInfo.ewc
+                                          let phone = user.userInfo.phone
+                                          let name = user.userInfo.name
+                                          let email = user.userInfo.email
+                                          let swId = user.userInfo.swId
+                                          let point = user.userInfo.point
+                                          let fees = user.userInfo.fees
+                                          setCoin(coin)
+                                          setEther(ether)
+                                          setEWC(ewc)
+                                          setPhone(phone)
+                                          setName(name)
+                                          setEmail(email)
+                                          setSwId(swId)
+                                          setPoints(point)
+                                          setFees(fees)
+                                          window.alert('EWC를 Security Wallet으로 부터 가져오는 데 성공하였습니다.')
+                                        }
                                       }
                                     }
-                                  },
-                                });
-                              } else {
-                                console.log(res);
-                                window.alert(
-                                  "EWC를 가져오는 데 실패하였습니다. Security Walle으로 부터의 Error Msg:" +
-                                    res.data.err
-                                );
+                                  })
+                                } else {
+                                  console.log(res)
+                                  window.alert('EWC를 가져오는 데 실패하였습니다. Security Walle으로 부터의 Error Msg:' + res.data.err)
+                                }
                               }
                             }
-                          },
-                        });
-                      } else {
-                        window.alert(
-                          `이루고 월드로 가져올 코인은 0보다 크고 ${Number(
-                            coin
-                          )}보다 작아야 합니다.`
-                        );
+                          })
+                        } else {
+                          window.alert(`이루고 월드로 가져올 코인은 0보다 크고 ${Number(coin)}보다 작아야 합니다.`)
+                        }
                       }
-                    }}
+                    }
                   />
+
 
                   <ReactTooltip
                     id="sw-change"
@@ -683,8 +714,9 @@ const MyPage = ({
                   <div
                     className={Style["help-btn"]}
                     onClick={() => {
-                      window.open().location.href =
-                        "https://blog.naver.com/erugocoin_official/222663552969";
+                      history.push(
+                        "https://blog.naver.com/erugocoin_official/222663552969"
+                      );
                     }}
                   ></div>
                 </div>
@@ -699,6 +731,7 @@ const MyPage = ({
                   >
                     RUGO로 변환하기
                   </span>
+                  {/*언어변수값 들어갈곳*/}
                   <ReactTooltip
                     id="rugo-change"
                     place="top"
@@ -706,76 +739,80 @@ const MyPage = ({
                     backgroundColor="rgba(70,201,200,0.7)"
                   >
                     <span>EWC를 RUGO로 변환시켜드립니다.</span>
+                    {/*언어변수값 들어갈곳*/}
                   </ReactTooltip>
-                
+                  <div
+                    className={Style["help-btn"]}
+                    onClick={() => {
+                      history.push(
+                        "https://blog.naver.com/erugocoin_official/222663552969"
+                      );
+                    }}
+                  ></div>
                   <ExchangeRugo
-                    SW={"EW EWC"}
-                    EW={"EW Rugo"}
+                    SW={'EW EWC'}
+                    EW={'EW Rugo'}
                     ewc={ewc}
                     exchangeRate={exchangeRate}
-                    onClick={(data) => {
-                      if (data.rugo > 0 && data.ewc > 0) {
-                        if (
-                          !window.confirm(
-                            `EWC ${data.ewc}개를 Rugo ${data.rugo}개로 전환하시겠습니까?`
-                          )
-                        ) {
-                          return;
-                        }
-                        changePointEWC({
-                          uuid: userUUID,
-                          ewc: data.ewc,
-                          point: data.rugo,
-                          callback: (err, res) => {
-                            if (err) {
-                              console.log(err);
-                            } else {
-                              if (res.result === "success") {
-                                readInfo({
-                                  uuid: userUUID,
-                                  callback: (err, user) => {
-                                    if (err) {
-                                      console.log(err);
-                                    } else {
-                                      if (user.result === "success") {
-                                        console.log(user);
-                                        let coin = user.userInfo.coin;
-                                        let ether = user.userInfo.ethAmount;
-                                        let ewc = user.userInfo.ewc;
-                                        let phone = user.userInfo.phone;
-                                        let name = user.userInfo.name;
-                                        let email = user.userInfo.email;
-                                        let swId = user.userInfo.swId;
-                                        let point = user.userInfo.point;
-                                        let fees = user.userInfo.fees;
-                                        setCoin(coin);
-                                        setEther(ether);
-                                        setEWC(ewc);
-                                        setPhone(phone);
-                                        setName(name);
-                                        setEmail(email);
-                                        setSwId(swId);
-                                        setPoints(point);
-                                        setFees(fees);
-                                        window.alert("전환에 성공하였습니다.");
+                    onClick={
+                      (data) => {
+                        if (data.rugo > 0 && data.ewc > 0) {
+                          if (!window.confirm(`EWC ${data.ewc}개를 Rugo ${data.rugo}개로 전환하시겠습니까?`)) {
+                            return
+                          }
+                          changePointEWC({
+                            uuid: userUUID,
+                            ewc: data.ewc,
+                            point: data.rugo,
+                            callback: (err, res) => {
+                              if (err) {
+                                console.log(err)
+                              } else {
+                                if (res.result === 'success') {
+                                  readInfo({
+                                    uuid: userUUID,
+                                    callback: (err, user) => {
+                                      if (err) {
+                                        console.log(err)
+                                      } else {
+                                        if (user.result === 'success') {
+                                          console.log(user)
+                                          let coin = user.userInfo.coin
+                                          let ether = user.userInfo.ethAmount
+                                          let ewc = user.userInfo.ewc
+                                          let phone = user.userInfo.phone
+                                          let name = user.userInfo.name
+                                          let email = user.userInfo.email
+                                          let swId = user.userInfo.swId
+                                          let point = user.userInfo.point
+                                          let fees = user.userInfo.fees
+                                          setCoin(coin)
+                                          setEther(ether)
+                                          setEWC(ewc)
+                                          setPhone(phone)
+                                          setName(name)
+                                          setEmail(email)
+                                          setSwId(swId)
+                                          setPoints(point)
+                                          setFees(fees)
+                                          window.alert('전환에 성공하였습니다.')
+                                        }
                                       }
                                     }
-                                  },
-                                });
-                              } else {
-                                console.log(res);
+                                  })
+                                } else {
+                                  console.log(res)
+                                }
                               }
                             }
-                          },
-                        });
-                      } else {
-                        window.alert("전환하려는 EWC은 0보다 커야 합니다.");
+                          })
+                        } else {
+                          window.alert('전환하려는 EWC은 0보다 커야 합니다.')
+                        }
                       }
-                    }}
+                    }
                   />
-                  <p className={Style["rugo-change-info"]}>
-                    CURRENT EXCHANGE RATE : 1 Erugo Coin = {exchangeRate} Point{" "}
-                  </p>
+                  <p className={Style['rugo-change-info']}>CURRENT EXCHANGE RATE : 1 Erugo Coin = {exchangeRate} Point </p>
                 </div>
               </div>
               <button
