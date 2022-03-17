@@ -1,4 +1,10 @@
 
+.sign-bg{
+    background-image: url('login-bg.jpeg');
+    background-repeat: no-repeat;
+    background-position: cover;
+}
+
 .input {
     color: rgb(225, 122, 24);
     border-style: solid;
