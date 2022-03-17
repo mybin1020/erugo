@@ -1,0 +1,87 @@
+.ground {
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.ground::-webkit-scrollbar {
+    width: 2px;
+}
+
+.ground:hover {
+    cursor: default;
+}
+.bg-white {
+    position: relative;
+    top: 5%;
+    margin:0 auto;
+    width: 95%;
+    height: 85%;
+    background-color: rgba(255, 255, 255, .5);
+    border-top: 5px solid white;
+    border-bottom: 5px solid white;
+}
+.imgSide {
+    position: absolute;
+    width: 50%;
+    left: 2vw;
+    bottom: 1vw;
+}
+
+.textSide{
+    position: absolute;
+    width: 50%;
+    left: 23vw;
+    line-height: 200%;
+}
+
+.h1Text {
+    font-size: 2vw;
+    font-weight: bold;
+    color: rgb(30, 61, 30);
+    text-align:center;
+    margin-bottom: 3vh;
+    margin-top: 3vh;
+}
+div > p {
+    font-size: .9vw;
+    margin: 8px;
+}
+/* buyland 반응형*/
+/* 1920 1080 */
+@media (max-width:1920px) {
+    .textSide {
+    width: 50%;
+    left: 23vw;
+    line-height: 100%;
+    margin: 0 auto;
+    }
+
+}
+/* 1280  720*/
+@media (max-width:1280px) {
+   
+}
+
+@media (max-width:960px){
+    .h1Text {
+        font-size: 2vw;
+        font-weight: bold;
+        color: rgb(30, 61, 30);
+        text-align:center;
+        margin-top: 1vh;
+        margin-bottom: 0%;
+    }
+    .textSide {
+        width: 50%;
+        left: 23vw;
+        line-height: 75%;
+        margin: 0 auto;
+        }
+}
+
+/* 900px 400px */
+@media (max-width:900px){
+   
+}

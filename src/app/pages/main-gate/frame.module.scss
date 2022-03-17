@@ -1,0 +1,1020 @@
+$zRotate : rotateZ(-10deg);
+$tan : translateZ(25vw);
+$aboutStartAngle : 0;
+.about-frame {
+    background-image: url(./images/frame/about.png);
+}
+.home-frame {
+    background-image: url(./images/frame/citizenship.png);
+}
+.auction-frame {
+    background-image: url(./images/frame/auction.png);
+}
+.buyland-frame {
+    background-image: url(./images/frame/buy-land.png);
+}
+.login-frame {
+    background-image: url(./images/frame/login.png);
+}
+.mypage-frame {
+    background-image: url(./images/frame/mypage.png);
+}
+.message-frame {
+    background-image: url(./images/frame/message.png);
+}
+.market-frame {
+    background-image: url(./images/frame/market.png);
+}
+@mixin frame-style-stop {
+    position: absolute;
+    left: calc(50vw - 7vw);
+    top: calc(50vh - 3.85vw);
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    width:14vw;
+    height: 7.7vw;
+}
+.frame-style-1st-stop {
+    @include frame-style-stop;
+    transform: rotateY(0deg) $tan $zRotate translateY(-20px) scaleX(1) scaleY(1);
+    opacity: 1;
+}
+.frame-style-2nd-stop {
+    @include frame-style-stop;
+    transform: rotateY(-45deg) $tan $zRotate translateY(20px) scaleX(0.9) scaleY(0.9);
+    opacity: 0.9;
+}
+.frame-style-3rd-stop {
+    @include frame-style-stop;
+    transform: rotateY(-90deg) $tan $zRotate translateY(-20px) scaleX(0.8) scaleY(0.8);
+    opacity: 0.8;
+}
+.frame-style-4th-stop {
+    @include frame-style-stop;
+    transform: rotateY(-135deg) $tan $zRotate translateY(20px) scaleX(0.7) scaleY(0.7);
+    opacity: 0.7;
+}
+.frame-style-5th-stop {
+    @include frame-style-stop;
+    transform: rotateY(-180deg) $tan $zRotate translateY(-20px) scaleX(0.6) scaleY(0.6);
+    opacity: 0.6;
+}
+.frame-style-6th-stop {
+    @include frame-style-stop;
+    transform: rotateY(-225deg) $tan $zRotate translateY(20px) scaleX(0.7) scaleY(0.7);
+    opacity: 0.7;
+}
+.frame-style-7th-stop {
+    position: absolute;
+    left: calc(50vw - 100px);
+    top: calc(50vh - 55px);
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    width:200px;
+    height: 110px;
+    transform: rotateY(-270deg) $tan $zRotate translateY(-20px) scaleX(0.8) scaleY(0.8);
+    opacity: 0.8;
+}
+.frame-style-8th-stop {
+    position: absolute;
+    left: calc(50vw - 100px);
+    top: calc(50vh - 55px);
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    width:200px;
+    height: 110px;
+    transform: rotateY(-315deg) $tan $zRotate translateY(20px) scaleX(0.9) scaleY(0.9);
+    opacity: 0.9;
+}
+@mixin frame-style ($animation){
+    position: absolute;
+    left: calc(50vw - 7vw);
+    top: calc(50vh - 3.85vw);
+    animation: $animation 80s infinite linear; 
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    width:14vw;
+    height: 7.7vw;
+}
+.frame-1st {
+    @include frame-style(frame-1st-circular);
+}
+@keyframes frame-1st-circular {
+    0% { 
+        transform: rotateY(0deg) $tan $zRotate translateY(-20px) scaleX(1) scaleY(1);
+        opacity: 1;
+    }
+    12.5% { 
+        transform: rotateY(-45deg) $tan $zRotate translateY(20px) scaleX(0.9) scaleY(0.9);
+        opacity: 0.9;
+    }
+    25% { 
+        transform: rotateY(-90deg) $tan $zRotate translateY(-20px) scaleX(0.8) scaleY(0.8);
+        opacity: 0.8;
+    }
+    37.5% { 
+        transform: rotateY(-135deg) $tan $zRotate translateY(20px) scaleX(0.7) scaleY(0.7);
+        opacity: 0.7;
+    }
+    50% { 
+        transform: rotateY(-180deg) $tan $zRotate translateY(-20px) scaleX(0.6) scaleY(0.6);
+        opacity: 0.6;
+    }
+    62.50% { 
+        transform: rotateY(-225deg) $tan $zRotate translateY(20px) scaleX(0.7) scaleY(0.7);
+        opacity: 0.7;
+    }
+    75% { 
+        transform: rotateY(-270deg) $tan $zRotate translateY(-20px) scaleX(0.8) scaleY(0.8);
+        opacity: 0.8;
+    }
+    87.5% { 
+        transform: rotateY(-315deg) $tan $zRotate translateY(20px) scaleX(0.9) scaleY(0.9);
+        opacity: 0.9;
+    }
+    100% { 
+        transform: rotateY(-360deg) $tan $zRotate translateY(-20px) scaleX(1) scaleY(1);
+        opacity: 1;
+    }
+}
+.frame-2nd {
+    @include frame-style(frame-2nd-circular)
+}
+@keyframes frame-2nd-circular {
+    0% { 
+        transform: rotateY(-45deg) $tan $zRotate translateY(20px) scaleX(0.9) scaleY(0.9);
+        opacity: 0.9;
+    }
+    12.5% { 
+        transform: rotateY(-90deg) $tan $zRotate translateY(-20px) scaleX(0.8) scaleY(0.8);
+        opacity: 0.8;
+    }
+    25% { 
+        transform: rotateY(-135deg) $tan $zRotate translateY(20px) scaleX(0.7) scaleY(0.7);
+        opacity: 0.7;
+    }
+    37.5% { 
+        transform: rotateY(-180deg) $tan $zRotate translateY(-20px) scaleX(0.6) scaleY(0.6);
+        opacity: 0.6;
+    }
+    50% { 
+        transform: rotateY(-225deg) $tan $zRotate translateY(20px) scaleX(0.7) scaleY(0.7);
+        opacity: 0.7;
+    }
+    62.50% { 
+        transform: rotateY(-270deg) $tan $zRotate translateY(-20px) scaleX(0.8) scaleY(0.8);
+        opacity: 0.8;
+    }
+    75% { 
+        transform: rotateY(-315deg) $tan $zRotate translateY(20px) scaleX(0.9) scaleY(0.9);
+        opacity: 0.9;
+    }
+    87.5% { 
+        transform: rotateY(-360deg) $tan $zRotate translateY(-20px) scaleX(1) scaleY(1);
+        opacity: 1;
+    }
+    100% { 
+        transform: rotateY(-405deg) $tan $zRotate translateY(20px) scaleX(1) scaleY(1);
+        opacity: 0.9;
+    }
+}
+.frame-3rd {
+    @include frame-style(frame-3rd-circular)
+}
+@keyframes frame-3rd-circular {
+    0% { 
+        transform: rotateY(-90deg) $tan $zRotate translateY(-20px) scaleX(0.8) scaleY(0.8);
+        opacity: 0.8;
+    }
+    12.5% { 
+        transform: rotateY(-135deg) $tan $zRotate translateY(20px) scaleX(0.7) scaleY(0.7);
+        opacity: 0.7;
+    }
+    25% { 
+        transform: rotateY(-180deg) $tan $zRotate translateY(-20px) scaleX(0.6) scaleY(0.6);
+        opacity: 0.6;
+    }
+    37.5% { 
+        transform: rotateY(-225deg) $tan $zRotate translateY(20px) scaleX(0.7) scaleY(0.7);
+        opacity: 0.7;
+    }
+    50% { 
+        transform: rotateY(-270deg) $tan $zRotate translateY(-20px) scaleX(0.8) scaleY(0.8);
+        opacity: 0.8;
+    }
+    62.50% { 
+        transform: rotateY(-315deg) $tan $zRotate translateY(20px) scaleX(0.9) scaleY(0.9);
+        opacity: 0.9;
+    }
+    75% { 
+        transform: rotateY(-360deg) $tan $zRotate translateY(-20px) scaleX(1) scaleY(1);
+        opacity: 1;
+    }
+    87.5% { 
+        transform: rotateY(-405deg) $tan $zRotate translateY(20px) scaleX(0.9) scaleY(0.9);
+        opacity: 0.9;
+    }
+    100% { 
+        transform: rotateY(-450deg) $tan $zRotate translateY(-20px) scaleX(0.8) scaleY(0.8);
+        opacity: 0.8;
+    }
+}
+.frame-4th {
+    @include frame-style(frame-4th-circular)
+}
+@keyframes frame-4th-circular {
+    0% { 
+        transform: rotateY(-135deg) $tan $zRotate translateY(20px) scaleX(0.7) scaleY(0.7);
+        opacity: 0.7;
+    }
+    12.5% { 
+        transform: rotateY(-180deg) $tan $zRotate translateY(-20px) scaleX(0.6) scaleY(0.6);
+        opacity: 0.6;
+    }
+    25% { 
+        transform: rotateY(-225deg) $tan $zRotate translateY(20px) scaleX(0.7) scaleY(0.7);
+        opacity: 0.7;
+    }
+    37.5% { 
+        transform: rotateY(-270deg) $tan $zRotate translateY(-20px) scaleX(0.8) scaleY(0.8);
+        opacity: 0.8;
+    }
+    50% { 
+        transform: rotateY(-315deg) $tan $zRotate translateY(20px) scaleX(0.9) scaleY(0.9);
+        opacity: 0.9;
+    }
+    62.50% { 
+        transform: rotateY(-360deg) $tan $zRotate translateY(-20px) scaleX(1) scaleY(1);
+        opacity: 1;
+    }
+    75% { 
+        transform: rotateY(-405deg) $tan $zRotate translateY(20px) scaleX(0.9) scaleY(0.9);
+        opacity: 0.9;
+    }
+    87.5% { 
+        transform: rotateY(-450deg) $tan $zRotate translateY(-20px) scaleX(0.8) scaleY(0.8);
+        opacity: 0.8;
+    }
+    100% { 
+        transform: rotateY(-495deg) $tan $zRotate translateY(20px) scaleX(0.7) scaleY(0.7);
+        opacity: 0.7;
+    }
+}
+.frame-5th {
+    @include frame-style(frame-5th-circular)
+}
+@keyframes frame-5th-circular {
+    0% { 
+        transform: rotateY(-180deg) $tan $zRotate translateY(-20px) scaleX(0.6) scaleY(0.6);
+        opacity: 0.6;
+    }
+    12.5% { 
+        transform: rotateY(-225deg) $tan $zRotate translateY(20px) scaleX(0.7) scaleY(0.7);
+        opacity: 0.7;
+    }
+    25% { 
+        transform: rotateY(-270deg) $tan $zRotate translateY(-20px) scaleX(0.8) scaleY(0.8);
+        opacity: 0.8;
+    }
+    37.5% { 
+        transform: rotateY(-315deg) $tan $zRotate translateY(20px) scaleX(0.9) scaleY(0.9);
+        opacity: 0.9;
+    }
+    50% { 
+        transform: rotateY(-360deg) $tan $zRotate translateY(-20px) scaleX(1) scaleY(1);
+        opacity: 1;
+    }
+    62.50% { 
+        transform: rotateY(-405deg) $tan $zRotate translateY(20px) scaleX(0.9) scaleY(0.9);
+        opacity: 0.9;
+    }
+    75% { 
+        transform: rotateY(-450deg) $tan $zRotate translateY(-20px) scaleX(0.8) scaleY(0.8);
+        opacity: 0.8;
+    }
+    87.5% { 
+        transform: rotateY(-495deg) $tan $zRotate translateY(20px) scaleX(0.7) scaleY(0.7);
+        opacity: 0.7;
+    }
+    100% { 
+        transform: rotateY(-540deg) $tan $zRotate translateY(-20px) scaleX(0.6) scaleY(0.6);
+        opacity: 0.6;
+    }
+}
+.frame-6th {
+    @include frame-style(frame-6th-circular)
+}
+@keyframes frame-6th-circular {
+    0% { 
+        transform: rotateY(-225deg) $tan $zRotate translateY(20px) scaleX(0.7) scaleY(0.7);
+        opacity: 0.7;
+    }
+    12.5% { 
+        transform: rotateY(-270deg) $tan $zRotate translateY(-20px) scaleX(0.8) scaleY(0.8);
+        opacity: 0.8;
+    }
+    25% { 
+        transform: rotateY(-315deg) $tan $zRotate translateY(20px) scaleX(0.9) scaleY(0.9);
+        opacity: 0.9;
+    }
+    37.5% { 
+        transform: rotateY(-360deg) $tan $zRotate translateY(-20px) scaleX(1) scaleY(1);
+        opacity: 1;
+    }
+    50% { 
+        transform: rotateY(-405deg) $tan $zRotate translateY(20px) scaleX(0.9) scaleY(0.9);
+        opacity: 0.9;
+    }
+    62.50% { 
+        transform: rotateY(-450deg) $tan $zRotate translateY(-20px) scaleX(0.8) scaleY(0.8);
+        opacity: 0.8;
+    }
+    75% { 
+        transform: rotateY(-495deg) $tan $zRotate translateY(20px) scaleX(0.7) scaleY(0.7);
+        opacity: 0.7;
+    }
+    87.5% { 
+        transform: rotateY(-540deg) $tan $zRotate translateY(-20px) scaleX(0.6) scaleY(0.6);
+        opacity: 0.6;
+    }
+    100% { 
+        transform: rotateY(-585deg) $tan $zRotate translateY(20px) scaleX(0.7) scaleY(0.7);
+        opacity: 0.7;
+    }
+}
+.frame-7th {
+    @include frame-style(frame-7th-circular)
+}
+@keyframes frame-7th-circular {
+    0% { 
+        transform: rotateY(-270deg) $tan $zRotate translateY(-20px) scaleX(0.8) scaleY(0.8);
+        opacity: 0.8;
+    }
+    12.5% { 
+        transform: rotateY(-315deg) $tan $zRotate translateY(20px) scaleX(0.9) scaleY(0.9);
+        opacity: 0.9;
+    }
+    25% { 
+        transform: rotateY(-360eg) $tan $zRotate translateY(-20px) scaleX(1) scaleY(1);
+        opacity: 1;
+    }
+    37.5% { 
+        transform: rotateY(-405deg) $tan $zRotate translateY(20px) scaleX(0.9) scaleY(0.9);
+        opacity: 0.9;
+    }
+    50% { 
+        transform: rotateY(-450deg) $tan $zRotate translateY(-20px) scaleX(0.8) scaleY(0.8);
+        opacity: 0.8;
+    }
+    62.50% { 
+        transform: rotateY(-495deg) $tan $zRotate translateY(20px) scaleX(0.7) scaleY(0.7);
+        opacity: 0.7;
+    }
+    75% { 
+        transform: rotateY(-540deg) $tan $zRotate translateY(-20px) scaleX(0.6) scaleY(0.6);
+        opacity: 0.6;
+    }
+    87.5% { 
+        transform: rotateY(-585deg) $tan $zRotate translateY(20px) scaleX(0.7) scaleY(0.7);
+        opacity: 0.7;
+    }
+    100% { 
+        transform: rotateY(-630deg) $tan $zRotate translateY(-20px) scaleX(0.8) scaleY(0.8);
+        opacity: 0.8;
+    }
+}
+.frame-8th {
+    @include frame-style(frame-8th-circular)
+}
+@keyframes frame-8th-circular {
+    0% { 
+        transform: rotateY(-315deg) $tan $zRotate translateY(20px) scaleX(0.9) scaleY(0.9);
+        opacity: 0.9;
+    }
+    12.5% { 
+        transform: rotateY(-360deg) $tan $zRotate translateY(-20px) scaleX(1) scaleY(1);
+        opacity: 1;
+    }
+    25% { 
+        transform: rotateY(-405deg) $tan $zRotate translateY(20px) scaleX(0.9) scaleY(0.9);
+        opacity: 0.9;
+    }
+    37.5% { 
+        transform: rotateY(-450deg) $tan $zRotate translateY(-20px) scaleX(0.8) scaleY(0.8);
+        opacity: 0.8;
+    }
+    50% { 
+        transform: rotateY(-495deg) $tan $zRotate translateY(20px) scaleX(0.7) scaleY(0.7);
+        opacity: 0.7;
+    }
+    62.50% { 
+        transform: rotateY(-540deg) $tan $zRotate translateY(-20px) scaleX(0.6) scaleY(0.6);
+        opacity: 0.6;
+    }
+    75% { 
+        transform: rotateY(-585deg) $tan $zRotate translateY(20px) scaleX(0.7) scaleY(0.7);
+        opacity: 0.7;
+    }
+    87.5% { 
+        transform: rotateY(-630deg) $tan $zRotate translateY(-20px) scaleX(0.8) scaleY(0.8);
+        opacity: 0.8;
+    }
+    100% { 
+        transform: rotateY(-675deg) $tan $zRotate translateY(20px) scaleX(0.9) scaleY(0.9);
+        opacity: 0.9;
+    }
+}
+@mixin detail-frame ($image) {
+    width: 100%;
+    height: 100%;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: none;
+}
+@mixin  detail-frame-show ($image, $animation) {
+    position: absolute;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 14vw;
+    height: 7.7vw;
+
+    
+    animation: $animation 0.25s linear; 
+    animation-fill-mode: forwards;
+}
+@mixin detail-frame-hide ($image, $animation) {
+    position: absolute;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 14vw;
+    height: 7.7vw;
+
+    
+    animation: $animation 0.25s linear; 
+    animation-fill-mode: forwards;
+}
+.about-detail-frame {
+    @include detail-frame('./images/detail-frame/about.png')
+}
+.about-detail-frame-show {
+    @include detail-frame-show('./images/detail-frame/about.png', about-detail-frame-show-animation)
+}
+.about-detail-frame-show:hover {
+    cursor: default;
+}
+.about-detail-frame-hide {
+    @include detail-frame-hide('./images/detail-frame/about.png', about-detail-frame-hide-animation)
+}
+@keyframes about-detail-frame-show-animation {
+    10% {
+        transform: rotateZ(8deg) translateY(-1vw) translateX(-18vw);
+        width: 28vw;
+        height:15.4vw;        
+        opacity: 0.2;
+    }
+    20% {
+        transform: rotateZ(8deg) translateY(-2vw) translateX(-18vw);
+        width: 28vw;
+        height:15.4vw;
+        opacity: 0.5;
+    }
+    100% {
+        transform: rotateZ(10deg) translateY(-13vw) translateX(-24.5vw);
+        width: 60.48vw;
+        height: 33.264vw;
+        opacity: 1;
+    }
+}
+@keyframes about-detail-frame-hide-animation {
+    0% {
+        transform: rotateZ(10deg) translateY(-13vw) translateX(-24.5vw);
+        width: 60.48vw;
+        height: 33.264vw;
+        opacity: 1;
+    }
+    50% {
+        transform: rotateZ(8deg) translateY(-2vw) translateX(-18vw);
+        width: 28vw;
+        height:15.4vw;
+        opacity: 0.5;    
+    }
+    100% {
+        transform: rotateZ(0) translateY(0) translateX(0);
+        width:14vw;
+        height: 7.7vw;
+        opacity: 0.0;   
+        display: none;     
+    }
+}
+
+.home-detail-frame {
+    @include detail-frame('./images/detail-frame/home.png')
+}
+.home-detail-frame-show {
+    @include detail-frame-show('./images/detail-frame/home.png', home-detail-frame-show-animation)
+}
+.home-detail-frame-show:hover {
+    cursor: default;
+}
+.home-detail-frame-hide {
+    @include detail-frame-hide('./images/detail-frame/home.png', home-detail-frame-hide-animation)
+}
+@keyframes home-detail-frame-show-animation {
+    10% {
+        transform: rotateZ(8deg) translateY(-1vw) translateX(-18vw);
+        width: 28vw;
+        height:15.4vw;        
+        opacity: 0.2;
+    }
+    20% {
+        transform: rotateZ(8deg) translateY(-2vw) translateX(-18vw);
+        width: 28vw;
+        height:15.4vw;
+        opacity: 0.5;
+    }
+    100% {
+        transform: rotateZ(10deg) translateY(-13vw) translateX(-24.5vw);
+        width: 60.48vw;
+        height: 33.264vw;
+        opacity: 1;
+    }
+}
+@keyframes home-detail-frame-hide-animation {
+    0% {
+        transform: rotateZ(10deg) translateY(-13vw) translateX(-24.5vw);
+        width: 60.48vw;
+        height: 33.264vw;
+        opacity: 1;
+    }
+    50% {
+        transform: rotateZ(8deg) translateY(-2vw) translateX(-18vw);
+        width: 28vw;
+        height:15.4vw;
+        opacity: 0.5;    
+    }
+    100% {
+        transform: rotateZ(0) translateY(0) translateX(0);
+        width:14vw;
+        height: 7.7vw;
+        opacity: 0;   
+        display: none;     
+    }
+}
+
+
+.auction-detail-frame {
+    @include detail-frame('./images/detail-frame/auction.png')
+}
+.auction-detail-frame-show {
+    @include detail-frame-show('./images/detail-frame/auction.png', auction-detail-frame-show-animation)
+}
+.auction-detail-frame-show:hover {
+    cursor: default;
+}
+.auction-detail-frame-hide {
+    @include detail-frame-hide('./images/detail-frame/auction.png', auction-detail-frame-hide-animation)
+}
+@keyframes auction-detail-frame-show-animation {
+    10% {
+        transform: rotateZ(8deg) translateY(-1vw) translateX(-18vw);
+        width: 28vw;
+        height:15.4vw;        
+        opacity: 0.2;
+    }
+    20% {
+        transform: rotateZ(8deg) translateY(-2vw) translateX(-18vw);
+        width: 28vw;
+        height:15.4vw;
+        opacity: 0.5;
+    }
+    100% {
+        transform: rotateZ(10deg) translateY(-13vw) translateX(-24.5vw);
+        width: 60.48vw;
+        height: 33.264vw;
+        opacity: 1;
+    }
+}
+@keyframes auction-detail-frame-hide-animation {
+    0% {
+        transform: rotateZ(10deg) translateY(-13vw) translateX(-24.5vw);
+        width: 60.48vw;
+        height: 33.264vw;
+        opacity: 1;
+    }
+    50% {
+        transform: rotateZ(8deg) translateY(-2vw) translateX(-18vw);
+        width: 28vw;
+        height:15.4vw;
+        opacity: 0.5;    
+    }
+    100% {
+        transform: rotateZ(0) translateY(0) translateX(0);
+        width:14vw;
+        height: 7.7vw;
+        opacity: 0;   
+        display: none;     
+    }
+}
+
+.buyland-detail-frame {
+    @include detail-frame('./images/detail-frame/buyland.png')
+}
+.buyland-detail-frame-show {
+    @include detail-frame-show('./images/detail-frame/buyland.png', buyland-detail-frame-show-animation)
+}
+.buyland-detail-frame-show:hover {
+    cursor: default;
+}
+.buyland-detail-frame-hide {
+    @include detail-frame-hide('./images/detail-frame/buyland.png', buyland-detail-frame-hide-animation)
+}
+@keyframes buyland-detail-frame-show-animation {
+    10% {
+        transform: rotateZ(8deg) translateY(-1vw) translateX(-18vw);
+        width: 28vw;
+        height:15.4vw;        
+        opacity: 0.2;
+    }
+    20% {
+        transform: rotateZ(8deg) translateY(-2vw) translateX(-18vw);
+        width: 28vw;
+        height:15.4vw;
+        opacity: 0.5;
+    }
+    100% {
+        transform: rotateZ(10deg) translateY(-13vw) translateX(-24.5vw);
+        width: 60.48vw;
+        height: 33.264vw;
+        opacity: 1;
+    }
+}
+@keyframes buyland-detail-frame-hide-animation {
+    0% {
+        transform: rotateZ(10deg) translateY(-13vw) translateX(-24.5vw);
+        width: 60.48vw;
+        height: 33.264vw;
+        opacity: 1;
+    }
+    50% {
+        transform: rotateZ(8deg) translateY(-2vw) translateX(-18vw);
+        width: 28vw;
+        height:15.4vw;
+        opacity: 0.5;    
+    }
+    100% {
+        transform: rotateZ(0) translateY(0) translateX(0);
+        width:14vw;
+        height: 7.7vw;
+        opacity: 0;   
+        display: none;     
+    }
+}
+
+.login-detail-frame {
+    @include detail-frame('./images/detail-frame/login.png')
+}
+.login-detail-frame-show {
+    @include detail-frame-show('./images/detail-frame/login.png', login-detail-frame-show-animation)
+}
+.login-detail-frame-show:hover {
+    cursor: default;
+}
+.login-detail-frame-hide {
+    @include detail-frame-hide('./images/detail-frame/login.png', login-detail-frame-hide-animation)
+}
+@keyframes login-detail-frame-show-animation {
+    10% {
+        transform: rotateZ(8deg) translateY(-1vw) translateX(-18vw);
+        width: 28vw;
+        height:15.4vw;        
+        opacity: 0.2;
+    }
+    20% {
+        transform: rotateZ(8deg) translateY(-2vw) translateX(-18vw);
+        width: 28vw;
+        height:15.4vw;
+        opacity: 0.5;
+    }
+    100% {
+        transform: rotateZ(10deg) translateY(-13vw) translateX(-24.5vw);
+        width: 60.48vw;
+        height: 33.264vw;
+        opacity: 1;
+    }
+}
+@keyframes login-detail-frame-hide-animation {
+    0% {
+        transform: rotateZ(10deg) translateY(-13vw) translateX(-24.5vw);
+        width: 60.48vw;
+        height: 33.264vw;
+        opacity: 1;
+    }
+    50% {
+        transform: rotateZ(8deg) translateY(-2vw) translateX(-18vw);
+        width: 28vw;
+        height:15.4vw;
+        opacity: 0.5;    
+    }
+    100% {
+        transform: rotateZ(0) translateY(0) translateX(0);
+        width:14vw;
+        height: 7.7vw;
+        opacity: 0;   
+        display: none;     
+    }
+}
+
+.mypage-detail-frame {
+    @include detail-frame('./images/detail-frame/mypage.png')
+}
+.mypage-detail-frame-show {
+    @include detail-frame-show('./images/detail-frame/mypage.png', mypage-detail-frame-show-animation)
+}
+.mypage-detail-frame-show:hover {
+    cursor: default;
+}
+.mypage-detail-frame-hide {
+    @include detail-frame-hide('./images/detail-frame/mypage.png', mypage-detail-frame-hide-animation)
+}
+@keyframes mypage-detail-frame-show-animation {
+    10% {
+        transform: rotateZ(8deg) translateY(-1vw) translateX(-18vw);
+        width: 28vw;
+        height:15.4vw;        
+        opacity: 0.2;
+    }
+    20% {
+        transform: rotateZ(8deg) translateY(-2vw) translateX(-18vw);
+        width: 28vw;
+        height:15.4vw;
+        opacity: 0.5;
+    }
+    100% {
+        transform: rotateZ(10deg) translateY(-13vw) translateX(-24.5vw);
+        width: 60.48vw;
+        height: 33.264vw;
+        opacity: 1;
+    }
+}
+@keyframes mypage-detail-frame-hide-animation {
+    0% {
+        transform: rotateZ(10deg) translateY(-13vw) translateX(-24.5vw);
+        width: 60.48vw;
+        height: 33.264vw;
+        opacity: 1;
+    }
+    50% {
+        transform: rotateZ(8deg) translateY(-2vw) translateX(-18vw);
+        width: 28vw;
+        height:15.4vw;
+        opacity: 0.5;    
+    }
+    100% {
+        transform: rotateZ(0) translateY(0) translateX(0);
+        width:14vw;
+        height: 7.7vw;
+        opacity: 0;   
+        display: none;     
+    }
+}
+
+.message-detail-frame {
+    @include detail-frame('./images/detail-frame/message.png')
+}
+.message-detail-frame-show {
+    @include detail-frame-show('./images/detail-frame/message.png', message-detail-frame-show-animation)
+}
+.message-detail-frame-show:hover {
+    cursor: default;
+}
+.message-detail-frame-hide {
+    @include detail-frame-hide('./images/detail-frame/message.png', message-detail-frame-hide-animation)
+}
+@keyframes message-detail-frame-show-animation {
+    10% {
+        transform: rotateZ(8deg) translateY(-1vw) translateX(-18vw);
+        width: 28vw;
+        height:15.4vw;        
+        opacity: 0.2;
+    }
+    20% {
+        transform: rotateZ(8deg) translateY(-2vw) translateX(-18vw);
+        width: 28vw;
+        height:15.4vw;
+        opacity: 0.5;
+    }
+    100% {
+        transform: rotateZ(10deg) translateY(-13vw) translateX(-24.5vw);
+        width: 60.48vw;
+        height: 33.264vw;
+        opacity: 1;
+    }
+}
+@keyframes message-detail-frame-hide-animation {
+    0% {
+        transform: rotateZ(10deg) translateY(-13vw) translateX(-24.5vw);
+        width: 60.48vw;
+        height: 33.264vw;
+        opacity: 1;
+    }
+    50% {
+        transform: rotateZ(8deg) translateY(-2vw) translateX(-18vw);
+        width: 28vw;
+        height:15.4vw;
+        opacity: 0.5;    
+    }
+    100% {
+        transform: rotateZ(0) translateY(0) translateX(0);
+        width:14vw;
+        height: 7.7vw;
+        opacity: 0;   
+        display: none;     
+    }
+}
+
+.market-detail-frame {
+    @include detail-frame('./images/detail-frame/market.png')
+}
+.market-detail-frame-show {
+    @include detail-frame-show('./images/detail-frame/market.png', market-detail-frame-show-animation)
+}
+.market-detail-frame-hide {
+    @include detail-frame-hide('./images/detail-frame/market.png', market-detail-frame-hide-animation)
+}
+.market-detail-frame-show:hover {
+    cursor: default;
+}
+@keyframes market-detail-frame-show-animation {
+    10% {
+        transform: rotateZ(8deg) translateY(-1vw) translateX(-18vw);
+        width: 28vw;
+        height:15.4vw;        
+        opacity: 0.2;
+    }
+    20% {
+        transform: rotateZ(8deg) translateY(-2vw) translateX(-18vw);
+        width: 28vw;
+        height:15.4vw;
+        opacity: 0.5;
+    }
+    100% {
+        transform: rotateZ(10deg) translateY(-13vw) translateX(-24.5vw);
+        width: 60.48vw;
+        height: 33.264vw;
+        opacity: 1;
+    }
+}
+@keyframes market-detail-frame-hide-animation {
+    0% {
+        transform: rotateZ(10deg) translateY(-13vw) translateX(-24.5vw);
+        width: 60.48vw;
+        height: 33.264vw;
+        opacity: 1;
+    }
+    50% {
+        transform: rotateZ(8deg) translateY(-2vw) translateX(-18vw);
+        width: 28vw;
+        height:15.4vw;
+        opacity: 0.5;    
+    }
+    100% {
+        transform: rotateZ(0) translateY(0) translateX(0);
+        width:14vw;
+        height: 7.7vw;
+        opacity: 0;   
+        display: none;     
+    }
+}
+
+@mixin init ($animation, $delay) {
+    position: absolute;
+    left: calc(43vw);
+    top: calc(50vh - 3.85vw);
+    animation: $animation 500ms linear; 
+    animation-fill-mode: forwards;
+    animation-delay: $delay+ms;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    width:14vw;
+    height: 7.7vw;
+    opacity: 0;
+}
+.init-1 {
+    @include init(init-1st-animation, 0);
+}
+@keyframes init-1st-animation {
+    0% {
+        transform: rotateY(20deg) translateZ(0) $zRotate translateY(-20vh) scaleX(5) scaleY(5);
+        opacity: 0;
+    }
+    100% {
+        transform: rotateY(0deg) $tan $zRotate translateY(-20px) scaleX(1) scaleY(1);
+        opacity: 1;
+    }
+}
+
+.init-2 {
+    @include init(init-2nd-animation, 200);
+}
+@keyframes init-2nd-animation {
+    0% {
+        transform: rotateY(-15deg) translateZ(0) $zRotate translateY(-20vh) scaleX(5) scaleY(5);
+        opacity: 0;
+    }
+    100% {
+        transform: rotateY(-45deg) $tan $zRotate translateY(20px) scaleX(0.9) scaleY(0.9);
+        opacity: 0.9;
+    }
+}
+
+.init-3 {
+    @include init(init-3rd-animation, 400);
+}
+@keyframes init-3rd-animation {
+    0% {
+        transform: rotateY(-50deg) translateZ(0) $zRotate translateY(-20vh) scaleX(5) scaleY(5);
+        opacity: 0;
+    }
+    100% {
+        transform: rotateY(-90deg) $tan $zRotate translateY(-20px) scaleX(0.8) scaleY(0.8);
+        opacity: 0.8;
+    }
+}
+
+.init-4 {
+    @include init(init-4th-animation, 600);
+}
+@keyframes init-4th-animation {
+    0% {
+        transform: rotateY(-85deg) translateZ(0) $zRotate translateY(-20vh) scaleX(5) scaleY(5);
+        opacity: 0;
+    }
+    100% {
+        transform: rotateY(-135deg) $tan $zRotate translateY(20px) scaleX(0.7) scaleY(0.7);
+        opacity: 0.7;
+    }
+}
+
+.init-5 {
+    @include init(init-5th-animation, 800);
+}
+@keyframes init-5th-animation {
+    0% {
+        transform: rotateY(-120deg) translateZ(0) $zRotate translateY(-20vh) scaleX(5) scaleY(5);
+        opacity: 0;
+    }
+    100% {
+        transform: rotateY(-180deg) $tan $zRotate translateY(-20px) scaleX(0.6) scaleY(0.6);
+        opacity: 0.6;
+    }
+}
+
+.init-6 {
+    @include init(init-6th-animation, 1000);
+}
+@keyframes init-6th-animation {
+    0% {
+        transform: rotateY(-155deg) translateZ(0) $zRotate translateY(-20vh) scaleX(5) scaleY(5);
+        opacity: 0;
+    }
+    100% {
+        transform: rotateY(-225deg) $tan $zRotate translateY(20px) scaleX(0.7) scaleY(0.7);
+        opacity: 0.7;
+    }
+}
+
+.init-7 {
+    @include init(init-7th-animation, 1200);
+}
+@keyframes init-7th-animation {
+    0% {
+        transform: rotateY(-190deg) translateZ(0) $zRotate translateY(-20vh) scaleX(5) scaleY(5);
+        opacity: 0;
+    }
+    100% {
+        transform: rotateY(-270deg) $tan $zRotate translateY(-20px) scaleX(0.8) scaleY(0.8);
+        opacity: 0.8;
+    }
+}
+
+.init-8 {
+    @include init(init-8th-animation, 1400);
+}
+@keyframes init-8th-animation {
+    0% {
+        transform: rotateY(-225deg) translateZ(0) $zRotate translateY(-20vh) scaleX(5) scaleY(5);
+        opacity: 0;
+    }
+    100% {
+        transform: rotateY(-315deg) $tan $zRotate translateY(20px) scaleX(0.9) scaleY(0.9);
+        opacity: 0.9;
+    }
+}

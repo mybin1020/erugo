@@ -1,0 +1,24 @@
+.ground {
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background-color: whitesmoke;
+}
+
+.ground::-webkit-scrollbar {
+    width: 2px;
+}
+
+.ground:hover {
+    cursor: default;
+}
+
+.image {
+    width: 100px;
+    height: 100px;
+    background-image: url(./images/test-01.png);
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}

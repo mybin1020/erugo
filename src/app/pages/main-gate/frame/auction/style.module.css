@@ -1,0 +1,242 @@
+div,ul,li,ol,p,h1,h2,h3,h4,*{
+    padding:0;
+    margin: 0;
+    list-style: none;
+}
+
+.pointer{
+    position: absolute;
+    top:8%;
+    right:0;
+    width:10vw;
+    height:5vh;
+    background-image: url(./images/land-state-btn.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    text-indent: -999999px;
+    cursor: pointer;
+}
+.auction-title{
+    position: absolute;
+    top:5%;
+    font-size: 1.5vw;
+    z-index: 99;
+    left:50%;
+    transform:translateX(-50%);
+}
+.auctionBox{
+    position: relative;
+    width: 100%;
+    height:95%;
+    border-top:1px solid white;
+    border-bottom: 1px solid white;
+    background-color: rgba(255, 255, 255, 0.5);
+
+}
+.img1,.img2,.img3,.img4,.img10{
+    position: absolute;
+    top:5%;
+    right: 0;
+}
+.auction-content-text{
+    position: absolute;
+    top:30%;
+    right: 0;
+    width:50%;
+    height:20vh;
+    font-size:1vw;
+    overflow: hidden;
+}
+.auction-content-text p{
+    margin:0;
+}
+.auction-howto-content{
+    width: 40vw;
+    margin: 10vh auto;
+    font-size: .95vw;
+}
+.auction-howto-content p{
+    margin:0;
+}
+.auction-howto-content>div:last-child{
+    padding-top: 2vh;
+}
+.auction-howto-content ul{
+    margin-top: 1vh;
+}
+.auction-howto-content li{
+    margin-bottom: 1.5vh;
+    font-size: 0.8vw;
+}
+
+.auction-content-text h3{
+    margin-bottom:1vh;
+}
+.auction-howto-content h4{
+    font-weight:400;
+}
+.auction-howto-content div:last-child{
+    margin-top: 1vh;
+}
+.swiper-slide:nth-child(5) .auction-content-text{
+    top:25%;
+    height: 50vh;
+    margin-right: 10px;
+}
+.auction-content-text-font{
+    margin-top: 2vh;
+    font-size: 0.7vw;
+}
+.auction-content-text-font>p{
+    margin-bottom: 0.6vh;
+}
+
+.img1,.img2,.img3,.img4,.img5,.img6,.img7,.img8,.img9,.img10{
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.img1,.img2,.img3,.img4,.img10{
+    left:2%;
+    width:45%;
+    height:100%;
+    margin-left:0.3vw;
+}
+
+
+.img1 {
+    background-image: url(./images/1.png);
+}
+.img2{
+    background-image: url(./images/2.png);
+}
+.img3{
+    background-image: url(./images/3.png);
+}
+.img4{
+    background-image: url(./images/4.png);
+}
+.img5{
+    background-image: url(./images/5.png);
+}
+.img6{
+    background-image: url(./images/6.png);
+}
+.img7{
+    background-image: url(./images/7.png);
+}
+.img8{
+    background-image: url(./images/8.png);
+}
+.img9{
+    background-image: url(./images/9.png);
+}
+.img10{
+    background-image: url(./images/10.png);
+}
+.step5-img{
+    background-image: url(./images/10.png);
+}
+
+.auctionImgbox{
+    display: flex;
+    width:100%;
+    height:100%;
+    margin:0 auto;
+}
+.auction-img{
+   width:100%;
+   position: relative;
+   top:30%;
+   height:15vh;
+   margin:0 0.5vw;
+}
+.img5,.img6,.img7,.img8,.img9{
+    position: absolute;
+    top:-3vh;
+    width: 100%;
+    height: 100%;
+}
+.auction-img-text{
+    position: absolute;
+    bottom: 0;
+    font-size: 0.8vw;
+    left:50%;
+    transform: translateX(-50%);
+}
+.auction-img:nth-child(2)>.auction-img-text{
+    width: 100%;
+    left:55%;
+}
+.auction-img:nth-child(3)>.auction-img-text{
+    width: 6vw;
+}
+.auction-img:nth-child(4)>.auction-img-text{
+    width: 6.5vw;
+}
+.map-content{
+    position: absolute;
+    font-size: 1vw;
+    font-weight: bold;
+    bottom:15%;
+    left:50%;
+    transform: translateX(-50%);
+}
+
+.mySwiper{
+    width: 100%;
+    height:100%;
+}
+
+
+/* auction 반응형*/
+/* 1920 1080 */
+@media (max-width:1920px) {
+    .pointer{
+        top:8%;
+        width:9vw;
+        height:4vh;
+    }
+    .auction-content-text-font{
+        margin-top: 1vh;
+        font-size: 0.7vw;
+    }
+    .auction-content-text-font>p{
+        margin: 1vh 0.5vw;
+    }
+    .auction-img-text{
+        bottom: 2vh;
+        font-size: 0.8vw;
+    }
+}
+/* 1280  720*/
+@media (max-width:1280px) {
+    .auction-content-text-font> div{
+        height: 100%;
+        margin: 0;
+        padding: 0;
+    }
+    .auction-content-text-font p{
+        height: 100%;
+        margin: 0;
+        padding: 0;
+    }
+}
+/* 900px 400px */
+@media (max-width:900px){
+    .pointer{
+        width:10vw;
+        height:6vh;
+    }
+    .auction-content-text-font>p{
+        margin:0;
+    }
+    .auction-img-text{
+        bottom: -5vh;
+        text-align: center;
+    }
+    .auction-img:nth-child(1)>.auction-img-text{
+        bottom: -1.5vh;
+    }
+    
+}
