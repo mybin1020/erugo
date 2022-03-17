@@ -33,6 +33,7 @@
     position: absolute;
     width: 50%;
     left: 23vw;
+    top: 20%;
 }
 
 .h1Text {
@@ -43,5 +44,5 @@
 }
 div > p {
     font-size: .8vw;
-    margin: 30px;
+    margin: 20px;
 }

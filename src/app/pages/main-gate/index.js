@@ -136,12 +136,15 @@ const TopMenu = ({
               backgroundImage: "url(/images/frame/top-button/log-out.png)",
             }}
             className={`${Style["top-menu-button"]} ${Style["log-in-button"]} pointer`}
-            onClick={() => {
-              //onClick("logout");
-              setUserUUID(undefined);
+            onClick={(e) => {
+              // onClick("logout")
+              // setUserUUID(undefined);
+              e.preventDefault()
+                e.stopPropagation()
               sessionStorage.removeItem("userUUID");
-              sessionStorage.removeItem("walletAddress");
-              history.push("/main-entrance");
+              sessionStorage.removeItem("wallet");
+              window.location.reload();
+              alert('로그아웃 되었습니다')
             }}
           ></div>
         ) : (
@@ -152,6 +155,11 @@ const TopMenu = ({
             className={`${Style["top-menu-button"]} ${Style["log-in-button"]} pointer`}
             onClick={() => {
               onClick("login");
+              // if (!isLogin) {
+              //   onClick("login");
+              //   return;
+              // }
+              // onClick("message");
             }}
           ></div>
         )}
