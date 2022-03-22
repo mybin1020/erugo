@@ -1,56 +1,57 @@
-
-.about-box{
-    position: relative;
+.about-box{   
     width: 100%;
-    height:95%;
+    height:100%;
+    display: table;
+    position: relative;
+    vertical-align: middle;
 }
-.img1,.img2,.img3,.img4,.img5,.img6,.img7,.img8,.img9{
-    position: absolute;
-    top:50%;
-    transform: translateY(-50%);
-    width:5vw;
-    right: 0;
-}
-.swiper-slide:nth-child(6) .about-content-text{
-    padding-top:3vh;
-    top:5%;
-}
-.swiper-slide:nth-child(8) .about-content-text{
-    height: 100%;
-    top:5%;
-}
-.about-content-text{
-    position: absolute;
-    top:10%;
-    right:0;
+.about-content-text{        
+    top: 15%;
+    left: 25vw;
     width: 50%;
     padding:1vw;
-    color:#000;
-    font-size:1vw;
+    font-size:1vw;     
+    position: absolute;
     overflow: hidden;
+    text-align: justify;
 }
 
-.about-content-text>div{
-    margin-bottom: 2vh;
+.about-content-text-pull{     
+    top: 15%;   
+    left: 25vw;  
+    width: 50%;
+    padding:1vw; 
+    font-size:1vw;
+    position: absolute; 
 }
-.img1,.img2,.img3,.img4,.img5,.img6,.img7,.img8,.img9{
-    border-radius: 30px;
-    left:0vw;
-    width:50%;
+
+.about-content-text>div{  /* 줄간격 */
+    margin-bottom: 1vh;
+}
+
+.img1,.img2,.img3,.img4,.img5,.img6,.img7,.img8,.img9{   
+    width:45%;
     height:80%;
-    background-position: center;
+    top:50%;
+    left:1vw;
+    border-radius: 30px;   
+    transform: translateY(-50%);     
+    position: absolute;
     background-size:cover;
+    background-position: center;    
     background-repeat: no-repeat;
 }
 .img10{
     border-radius: 30px;
-    left:0vw;
-    width:100%;
+    left:1vw;
+    margin: 0 auto;
+    width:90%;
     height:100%;
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
 }
+
 .img1 {
     background-image: url(./images/1.png);
 }
@@ -81,25 +82,23 @@
 .img10{
     background-image: url(./images/10.png);
 }
+
 .mySwiper{
     width: 100%;
     height:100%;
 }
 .swiper-slide{
     width: 100%;
-    height: 100vh;
+    height: 100%;
 }
 
-.swiper-pagination-bullet-active {
-    background-color: #000;
-}
 /* about 반응형*/
 
-/* 1920 1080 */
+/* 1920 x 1080 */
 @media (max-width:1920px) {
     .swiper-slide:nth-child(6) .about-content-text{
         padding-top:0;
-        top:15%;
+        top: 13%;
     }
     .swiper-slide:nth-child(8) .about-content-text{
         top:10%;
@@ -111,57 +110,125 @@
         margin:1vh;
     }
 }
-/* 1280  720*/
+/* 1280 x 720*/
 @media (max-width:1280px) {
-    .swiper-slide:nth-child(6) .about-content-text{
-        top:50%;
+    .swiper-slide:nth-child(6) .about-content-text {
+        top:60%;
         transform: translateY(-50%);
         height: 100%;
     }
     .swiper-slide:nth-child(8) .about-content-text{
-        top:50%;
+        top:40%;
         transform: translateY(-50%);
         height: 100%;
-    }
+    } 
     .about-content-text{
-        top:0;
-    }
-    .about-content-text{
-        top:50%;
-        transform: translateY(-50%);
-        font-size: 10px;
+        top:45%;
+        transform: translateY(-50%);       
     }
     .about-content-text>div{
-        margin:0 1vh;
+        margin:0 1vh; /* 자,우폭 */
     }
-    .about-content-text p{
-        margin:1vh;
-        font-size: 1vw;
+    .about-content-text p{  /* 글자간격 */
+        margin: 1vh;       
+        font-size: 14px; 
     }
 
 }
-/* 900px 400px */
-@media (max-width:900px){
-    .swiper-slide:nth-child(8) .about-content-text{
-        height: 100%;
+/* 920px 420px */
+@media (max-width:920px){
+
+    .swiper-slide:nth-child(8) .about-content-text {
+        height: 100vw;
     }
-    .about-content-text{
-        top:50%;
+    .about-content-text{      
+        top: 50%;  
+        width: 32vw;       
+        margin: 0 -2vw;
         transform: translateY(-50%);
-        font-size: 10px;
-        width: 58%;
+    }
+    .about-content-text-pull{  /* 글자기 길어서 가득채워야되는 경우 */
+        top: 50%;  /*글자가 많을때 가운데정렬하는 값 */   
+        width: 30vw;
+        margin: 0 -2vw;  
+        transform: translateY(-50%);       
     }
     .about-content-text>div{
-        margin:0 1vh;
-        margin-right: 5vh;
-
+        margin:0 0vh;
+        margin-right: 3vw;
     }
-    .about-content-text p{
-        margin:0;
-        
+    .about-content-text p{  /* 글자간격 */
+        margin: 1vh;   
+        font-size: 14px;     
     }
     .img1,.img2,.img3,.img4,.img5,.img6,.img7,.img8,.img9{
-        width: 42%;
-    }
+        width: 22vw;
+        border-radius: 15px;
+    }  
     
+}
+
+/* 740px 360px */
+@media (max-width:750px){
+    .swiper-slide:nth-child(8) .about-content-text{
+        height: 100vh;
+    }
+    .about-content-text{  
+        top: 50%;      
+        width: 36vw;
+        margin: 0 -6vw;            
+        transform: translateY(-50%);
+    }
+    .about-content-text-pull{  /* 내용이 많아서 화면을 가득 채워야되는 경우 */
+        top: 73%;
+        width: 34vw; 
+        margin: -6vw;        
+        transform: translateY(-50%);       
+    }
+    .about-content-text>div{
+        margin:1 0vh;
+        margin-right: 5vw;
+    }
+    .about-content-text p{  /* 글자크기 */        
+        font-size: 14px; 
+        margin-right: 1px;  
+    }
+    .img1,.img2,.img3,.img4,.img5,.img6,.img7,.img8,.img9{
+        width: 18vw;
+    }    
+
+}
+
+
+/* 700px 360px */
+@media (max-width:700px){
+    .swiper-slide:nth-child(8) .about-content-text{
+        height: 100vh;
+    }
+    .about-content-text{  
+        top: 50%;      
+        width: 41vmin;
+        margin: 0 -6vw;     
+        overflow-y: auto;     
+        transform: translateY(-50%);
+    }
+    .about-content-text-pull{  /* 내용이 많아서 화면을 가득 채워야되는 경우 */
+        top: 50%;
+        width: 33vw; 
+        margin: -6vw;    
+        overflow-y: auto;    
+        transform: translateY(-50%);       
+    }
+    .about-content-text>div{       
+        margin-right: 9vw;
+        overflow-y: auto;   
+    }
+    .about-content-text p{  /* 글자크기 */                
+        font-size: 1.5vw; 
+        margin: 1px;
+    }
+    .img1,.img2,.img3,.img4,.img5,.img6,.img7,.img8,.img9{
+        width: 18vw;
+    }    
+
 }

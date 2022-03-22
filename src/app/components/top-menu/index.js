@@ -1,9 +1,16 @@
-import React from 'react'
+import React, {useState} from 'react'
 import Style from './style.module.css'
 import { useHistory } from 'react-router-dom'
 
 const Menu = ({ onClick, hideButton = false }) => {
     const history = useHistory()
+    const [wrapperSlide, setWrapperSlide] = useState(-10);
+    const [leftButtonDown, setLeftButtonDown] = useState(false);
+    const [buttonDownStartPoint, setButtonDownStartPoint] = useState({
+      startPoint: undefined,
+    });
+    const [detailFrameState, setDetailFrameState] = useState(undefined);
+   
     return (
         <div className={Style['top-menu-background']}>
             <div
@@ -18,6 +25,19 @@ const Menu = ({ onClick, hideButton = false }) => {
                 !hideButton
                     ?
                     <div className={Style['top-menu-button-wrapper']}>
+                        {/* Auction 페이지 */}
+                        <div
+                            className={`${Style['top-menu-button']} ${Style['auction-button']} pointer`}
+                            onClick={
+                                () => {
+                                    onClick('auction')
+                                    setTimeout(() => {
+                                        history.push('/auction')
+                                    }, 200)
+                                }
+                            }
+                        ></div>
+                        {/* my bid */}
                         <div
                             className={`${Style['top-menu-button']} ${Style['my-bid-button']} pointer`}
                             onClick={
@@ -29,7 +49,7 @@ const Menu = ({ onClick, hideButton = false }) => {
                                 }
                             }
                         ></div>
-
+                        {/* highest bid */}
                         <div
                             className={`${Style['top-menu-button']} ${Style['highest-bid-button']} pointer`}
                             onClick={
@@ -40,81 +60,17 @@ const Menu = ({ onClick, hideButton = false }) => {
                                     }, 200)
                                 }
                             }
-                        ></div>                        
-                {/* <div 
-                className={`${Style['top-menu-button']} ${Style['about-button']} pointer`}
-                onClick={
-                    () => {
-                        onClick('about')
-                        setTimeout(() => {
-                            history.push('/main-entrance')
-                        }, 200)
-                    }
-                }
-                ></div>
-                <div className={`${Style['top-menu-button']} ${Style['home-button']} pointer`}
-                onClick={
-                    () => {
-                        onClick('home')
-                        setTimeout(() => {
-                            ('/main-entrance')
-                        }, 200)
-                    }
-                }
-                ></div>
-                <div className={`${Style['top-menu-button']} ${Style['auction-button']} pointer`}></div>
-                <div className={`${Style['top-menu-button']} ${Style['buy-land-button']} pointer`}
-                onClick={
-                    () => {
-                        onClick('buyland')
-                        setTimeout(() => {
-                            history.push('/main-entrance')
-                        }, 200)
-                    }
-                }
-                ></div>
-                <div className={`${Style['top-menu-button']} ${Style['log-in-button']} pointer`}
-                onClick={
-                    () => {
-                        onClick('login')
-                        setTimeout(() => {
-                            history.push('/main-entrance')
-                        }, 200)
-                    }
-                }
-                ></div> */}
+                        ></div>
+                        {/* my page */}
                 <div className={`${Style['top-menu-button']} ${Style['my-page-button']} pointer`}
                 onClick={
                     () => {
-                        onClick("mypage");
-                        setTimeout(() => {
-                            history.goBack()
-                        }, 200)
-                       
+                        history.push('/main-entrance')
+                        onClick('mypage')
                     }
                 }
                 ></div>
-                {/* <div className={`${Style['top-menu-button']} ${Style['sign-up-button']} pointer`}
-                onClick={
-                    () => {
-                        onClick('signup')
-                        setTimeout(() => {
-                            history.push('/main-entrance')
-                        }, 200)
-                    }
-                }
-                ></div>
-                <div className={`${Style['top-menu-button']} ${Style['market-button']} pointer`}
-                onClick={
-                    () => {
-                        onClick('market')
-                        setTimeout(() => {
-                            history.push('/main-entrance')
-                        }, 200)
-                    }
-                }
-                ></div> */}
-                {/* <div className={`${Style['lang-button']} pointer`}></div> */}
+               
            
                     </div>
                     :

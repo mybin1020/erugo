@@ -14,8 +14,8 @@ import { useHistory } from "react-router-dom";
 import { readInfo } from "../../api";
 import Message from "./frame/message";
 const BgFrame = () => {
-  <div className={Style['page-background']}/>
-}
+  <div className={Style["page-background"]} />;
+};
 const animationOrderList = [
   "frame-1st",
   "frame-2nd",
@@ -51,9 +51,9 @@ const TopMenu = ({
     >
       <div
         className={Style["logo"]}
-        style={{ backgroundImage: "url(/images/frame/logo.png)"}}
+        style={{ backgroundImage: "url(/images/frame/logo.png)" }}
         onClick={() => {
-          history.push('/main-entrance')
+          history.push("/main-entrance");
         }}
       ></div>
       <div className={Style["top-menu-button-wrapper"]}>
@@ -65,7 +65,9 @@ const TopMenu = ({
           }}
         ></div>
         <div
-          style={{ backgroundImage: "url(/images/frame/top-button/citizenship.png)" }}
+          style={{
+            backgroundImage: "url(/images/frame/top-button/citizenship.png)",
+          }}
           className={`${Style["top-menu-button"]} ${Style["home-button"]} pointer`}
           onClick={() => {
             onClick("home");
@@ -77,11 +79,11 @@ const TopMenu = ({
           }}
           className={`${Style["top-menu-button"]} ${Style["auction-button"]} pointer`}
           onClick={() => {
-            history.push("/auction");
-            //onClick("auction")
-            
+            //history.push("/auction");
+            onClick("auction");
           }}
         ></div>
+
         <div
           style={{
             backgroundImage: "url(/images/frame/top-button/buy-land.png)",
@@ -89,9 +91,10 @@ const TopMenu = ({
           className={`${Style["top-menu-button"]} ${Style["buy-land-button"]} pointer`}
           onClick={() => {
             //history.push("/land-state");
-            onClick('buyland')
+            onClick("buyland");
           }}
         ></div>
+
         <div
           style={{
             backgroundImage: "url(/images/frame/top-button/market.png)",
@@ -99,7 +102,7 @@ const TopMenu = ({
           className={`${Style["top-menu-button"]} ${Style["market-button"]} pointer`}
           onClick={() => {
             //history.push("/land-state");
-            onClick('market')
+            onClick("market");
           }}
         ></div>
         <div
@@ -136,12 +139,13 @@ const TopMenu = ({
               backgroundImage: "url(/images/frame/top-button/log-out.png)",
             }}
             className={`${Style["top-menu-button"]} ${Style["log-in-button"]} pointer`}
-            onClick={() => {
-              //onClick("logout");
-              setUserUUID(undefined);
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
               sessionStorage.removeItem("userUUID");
-              sessionStorage.removeItem("walletAddress");
-              history.push("/main-entrance");
+              sessionStorage.removeItem("wallet");
+              window.location.reload();
+              alert("로그아웃 되었습니다");
             }}
           ></div>
         ) : (
@@ -202,7 +206,6 @@ const TopMenu = ({
     </div>
   );
 };
-
 const Frame = ({
   onCloseBunttonClick,
   onClick,
@@ -237,16 +240,30 @@ const Frame = ({
       ref={frameEle}
     >
       {/* detail view frame  start*/}
+      {/*<div
+        className={`${detailFrameState === frameShowIdx
+          ? FrameCSS[`${frameName}-detail-frame-show`]
+          : detailFrameState === frameHideIdx
+            ? FrameCSS[`${frameName}-detail-frame-hide`]
+            : FrameCSS[`${frameName}-detail-frame`]
+          }`}
+        style={{
+          backgroundImage: `url(/images/detail-frame/${frameName}.png)`,
+        }}
+      >*/}
       <div
         className={`${
           detailFrameState === frameShowIdx
             ? FrameCSS[`${frameName}-detail-frame-show`]
-            : detailFrameState === frameHideIdx
-            ? FrameCSS[`${frameName}-detail-frame-hide`]
             : FrameCSS[`${frameName}-detail-frame`]
         }`}
         style={{
+          marginTop: '20px', 
           backgroundImage: `url(/images/detail-frame/${frameName}.png)`,
+        }}
+        onClick={(e) => {
+          e.preventDefault();
+          e.stopPropagation();
         }}
       >
         {/*  어떤 클래스를 적용할지 선택하는 방식 비교 연산 (비교) ? (참) : (거짓) */}
@@ -308,11 +325,15 @@ const MainGate = ({
   ether,
   coin,
   exchangeRate,
+  ewc,
+  swId,
   setEmail,
   setName,
   setPhone,
-  setEther,
   setCoin,
+  setEWC,
+  setEther,
+  setSwId,
   setExchangeRate,
   setTempCoin,
   setTempPoint,
@@ -322,16 +343,16 @@ const MainGate = ({
   setLanguage,
   languageCode,
   setLanguageCode,
+
+  fees,
+  setFees,
+
+  isLogin,
+  setIsLogin,
 }) => {
-  const history2 = useHistory();
+
   const aboutFrame = useRef(undefined);
-  const outSection = useRef();
-  const [homeBtnClick, setHomeBtnClick] = useState(false);
-  // const openFrame = () => {
-  //   window.addEventListener("click", () => {
-  //     setHomeBtnClick(!homeBtnClick);
-  //   });
-  // };
+
 
 
   const [frameOrder, setFrameOrderList] = useState(animationOrderList);
@@ -342,9 +363,6 @@ const MainGate = ({
     startPoint: undefined,
   });
 
-  const isLogin = sessionStorage.getItem("userUUID") ? true : false;
-  console.log(language);
-  console.log(languageCode);
   useEffect(() => {
     setTimeout(() => {
       if (currentFrame === "about") {
@@ -375,6 +393,21 @@ const MainGate = ({
             stopOrderList[4],
             stopOrderList[5],
             stopOrderList[6],
+          ]);
+        }, 50);
+      } else if (currentFrame === "auction") {
+        setWrapperSlide(0);
+        setDetailFrameState(4);
+        setTimeout(() => {
+          setFrameOrderList([
+            stopOrderList[6],
+            stopOrderList[7],
+            stopOrderList[0],
+            stopOrderList[1],
+            stopOrderList[2],
+            stopOrderList[3],
+            stopOrderList[4],
+            stopOrderList[5],
           ]);
         }, 50);
       } else if (currentFrame === "buyland") {
@@ -512,6 +545,21 @@ const MainGate = ({
                   stopOrderList[6],
                 ]);
               }, 50);
+            } else if (frame === "auction") {
+              setWrapperSlide(0);
+              setDetailFrameState(4);
+              setTimeout(() => {
+                setFrameOrderList([
+                  stopOrderList[6],
+                  stopOrderList[7],
+                  stopOrderList[0],
+                  stopOrderList[1],
+                  stopOrderList[2],
+                  stopOrderList[3],
+                  stopOrderList[4],
+                  stopOrderList[5],
+                ]);
+              }, 50);
             } else if (frame === "buyland") {
               setWrapperSlide(0);
               setDetailFrameState(6);
@@ -543,20 +591,52 @@ const MainGate = ({
                 ]);
               }, 50);
             } else if (frame === "mypage") {
-              setWrapperSlide(0);
-              setDetailFrameState(10);
-              setTimeout(() => {
-                setFrameOrderList([
-                  stopOrderList[3],
-                  stopOrderList[4],
-                  stopOrderList[5],
-                  stopOrderList[6],
-                  stopOrderList[7],
-                  stopOrderList[0],
-                  stopOrderList[1],
-                  stopOrderList[2],
-                ]);
-              }, 50);
+              readInfo({
+                uuid: userUUID,
+                callback: (err, user) => {
+                  if (err) {
+                    console.log(err);
+                  } else {
+                    if (user.result === "success") {
+                      console.log(user);
+                      let coin = user.userInfo.coin;
+                      let ether = user.userInfo.ethAmount;
+                      let ewc = user.userInfo.ewc;
+                      let phone = user.userInfo.phone;
+                      let name = user.userInfo.name;
+                      let email = user.userInfo.email;
+                      let swId = user.userInfo.swId;
+                      let point = user.userInfo.point;
+                      let fees = user.userInfo.fees;
+                      let exchangeRate = user.userInfo.exchangeRate;
+                      setCoin(coin);
+                      setEther(ether);
+                      setEWC(ewc);
+                      setPhone(phone);
+                      setName(name);
+                      setEmail(email);
+                      setSwId(swId);
+                      setPoints(point);
+                      setFees(fees);
+                      setExchangeRate(exchangeRate);
+                      setWrapperSlide(0);
+                      setDetailFrameState(10);
+                      setTimeout(() => {
+                        setFrameOrderList([
+                          stopOrderList[3],
+                          stopOrderList[4],
+                          stopOrderList[5],
+                          stopOrderList[6],
+                          stopOrderList[7],
+                          stopOrderList[0],
+                          stopOrderList[1],
+                          stopOrderList[2],
+                        ]);
+                      }, 50);
+                    }
+                  }
+                },
+              });
             } else if (frame === "message") {
               setWrapperSlide(0);
               setDetailFrameState(12);
@@ -596,23 +676,6 @@ const MainGate = ({
               wrapperSlide === -10 ? Style["wrapper-10"] : Style["wrapper-0"]
             }
           >
-            {/* 0311 Frame 바깥의 영역을 클릭했을 때, 닫히게 만든다, */}
-            {/* {setHomeBtnClick && (
-              <Frame
-                ref={outSection}
-                onClick={(e) => {
-                  if (
-                    outSection.current === e ||
-                    outSection === setWrapperSlide(0)
-                  ) {
-                    openFrame(!homeBtnClick);
-                    setHomeBtnClick(false);
-                    //window.open().window.close()
-                    history2.push('/main-entrance')
-                  }
-                }}
-              />
-            )} */}
             <Frame
               first={currentFrame ? false : true}
               frameEle={aboutFrame}
@@ -654,7 +717,7 @@ const MainGate = ({
               frameHideIdx={1}
             >
               <About language={language[languageCode] || {}} />
-            </Frame>
+            </Frame> 
             <Frame
               first={currentFrame ? false : true}
               frameName={"home"}
@@ -820,11 +883,19 @@ const MainGate = ({
               <LogIn
                 language={language[languageCode] || {}}
                 isLogin={isLogin}
+                setIsLogin={setIsLogin}
                 setPoints={setPoints}
                 setLoading={setLoading}
                 setWallet={setWallet}
                 setUserUUID={setUserUUID}
                 setCurrentFrame={setCurrentFrame}
+                setEmail={setEmail}
+                setName={setName}
+                setPhone={setPhone}
+                setCoin={setCoin}
+                setEWC={setEWC}
+                setSwId={setSwId}
+                setEther={setEther}
                 onClose={() => {
                   setTimeout(() => {
                     readInfo({
@@ -913,20 +984,52 @@ const MainGate = ({
                   }, 50);
                   return;
                 }
-                setWrapperSlide(0);
-                setDetailFrameState(10);
-                setTimeout(() => {
-                  setFrameOrderList([
-                    stopOrderList[3],
-                    stopOrderList[4],
-                    stopOrderList[5],
-                    stopOrderList[6],
-                    stopOrderList[7],
-                    stopOrderList[0],
-                    stopOrderList[1],
-                    stopOrderList[2],
-                  ]);
-                }, 50);
+                readInfo({
+                  uuid: userUUID,
+                  callback: (err, user) => {
+                    if (err) {
+                      console.log(err);
+                    } else {
+                      if (user.result === "success") {
+                        console.log(user);
+                        let coin = user.userInfo.coin;
+                        let ether = user.userInfo.ethAmount;
+                        let ewc = user.userInfo.ewc;
+                        let phone = user.userInfo.phone;
+                        let name = user.userInfo.name;
+                        let email = user.userInfo.email;
+                        let swId = user.userInfo.swId;
+                        let point = user.userInfo.point;
+                        let fees = user.userInfo.fees;
+                        let exchangeRate = user.userInfo.exchangeRate;
+                        setCoin(coin);
+                        setEther(ether);
+                        setEWC(ewc);
+                        setPhone(phone);
+                        setName(name);
+                        setEmail(email);
+                        setSwId(swId);
+                        setPoints(point);
+                        setFees(fees);
+                        setExchangeRate(exchangeRate);
+                        setWrapperSlide(0);
+                        setDetailFrameState(10);
+                        setTimeout(() => {
+                          setFrameOrderList([
+                            stopOrderList[3],
+                            stopOrderList[4],
+                            stopOrderList[5],
+                            stopOrderList[6],
+                            stopOrderList[7],
+                            stopOrderList[0],
+                            stopOrderList[1],
+                            stopOrderList[2],
+                          ]);
+                        }, 50);
+                      }
+                    }
+                  },
+                });
               }}
               onCloseBunttonClick={() => {
                 setDetailFrameState(11);
@@ -971,9 +1074,14 @@ const MainGate = ({
                 setTempCoin={setTempCoin}
                 tempPoint={tempPoint}
                 tempCoin={tempCoin}
+                ewc={ewc}
+                setEWC={setEWC}
+                swId={swId}
+                setSwId={setSwId}
+                fees={fees}
+                setFees={setFees}
               />
             </Frame>
-
             <Frame
               first={currentFrame ? false : true}
               frameName={"message"}
@@ -1032,8 +1140,6 @@ const MainGate = ({
             >
               <Message userUUID={userUUID} isLogin={isLogin} />
             </Frame>
-
-
             <Frame
               first={currentFrame ? false : true}
               frameName={"market"}

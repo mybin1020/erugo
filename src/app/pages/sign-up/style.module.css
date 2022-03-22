@@ -1,7 +1,11 @@
-body{
-    /* background-image: url(../main-gate/frame/signup/images/login-bg.jpg); */
+.out-bg{
+    background-image: url('blur-background.jpeg');
     background-repeat: no-repeat;
     background-size: cover;
+    height: 100%;
+}
+.topMenu {
+    background-color: url('top-menu.png');
 }
 .input {
     color: rgb(225, 122, 24);
@@ -16,10 +20,12 @@ body{
     border-width: 2px;
 }
 .sign-bg{
-    width: 50vw;
+    width: 40vw;
     margin : 0 auto;
-    height: 100vh;
-    background-color:white;
+    height: 85vh;
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 30px;
+    border: 5px solid rgb(225, 122, 24);
 }
 
 .sroll-none{
@@ -28,4 +34,45 @@ body{
 }
 .sroll-none::-webkit-scrollbar {
 	display:none; /* Chrome , Safari , Opera */
+}
+
+.top-menu-background {
+    width: 100vw;
+    height: 5vw;
+    background-image: url('top-menu.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.logo {
+    width: 14vw;
+    height: 4vw;
+    background-image: url('logobg.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+.top-menu-button-wrapper {
+    width: 86vw;
+    height: 5vw;
+    padding-top: 0.5vw;
+    padding-left: 1.5vw;
+    padding-right: 1.5vw;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+}
+.top-menu-button {
+    width:8.6vw;
+    height:2.8vw;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+.back-button {
+    background-image: url('back.png');
+    justify-items:baseline;
 }

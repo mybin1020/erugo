@@ -4,9 +4,11 @@ import classNames from 'classnames'
 import { getMyBidList, withdrawalBid } from '../../api'
 import { lang } from '../../data/lang'
 import { useHistory } from 'react-router-dom'
+import { Autoplay } from "swiper"
 
 const TableHeader = () => {
     return (
+       
         <div style={{ backgroundColor: 'rgb(226, 121, 22)', width: '800px', height: '40px', display: 'flex', justifyContent: 'flex-start', alignItems: 'center' }}>
             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', color: 'white', fontSize: '14px', width: '20%' }}>Register Time</div>
             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', color: 'white', fontSize: '14px', width: '20%' }}>Bid Price</div>
@@ -14,11 +16,13 @@ const TableHeader = () => {
             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', color: 'white', fontSize: '14px', width: '20%' }}>Go to Map</div>
             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', color: 'white', fontSize: '14px', width: '20%' }}>Bid Withdrawal</div>
         </div>
+       
     )
 }
 const TableRow = ({ bidPrice, registerTime, location, applicantIdx, withDrawalHandler, tbIdx, blockX, blockY, gridX, gridY }) => {
     const history = useHistory()
     return (
+        
         <div
             style={{
                 borderRight: '1px solid rgb(226, 121, 22)',
@@ -80,6 +84,7 @@ const TableRow = ({ bidPrice, registerTime, location, applicantIdx, withDrawalHa
                 </div>
             </div>
         </div>
+       
     )
 }
 const Table = ({ bidList = [], withDrawalHandler }) => {
@@ -102,7 +107,7 @@ const Table = ({ bidList = [], withDrawalHandler }) => {
         )
     })
     return (
-        <div style={{height:'700px', overflowY:'auto'}}>
+        <div style={{height:'700px', overflowY:'auto', backgroundColor: 'rgba(255, 255, 255, 0.8)'}}>
             <TableHeader />
             {bidRows}
         </div>
@@ -131,7 +136,7 @@ const BidList = ({ menubar, footer, userUUID, tbIdx }) => {
     return (
         <div className={classNames(Style['view-box'])}>
             {menubar}
-            <div className={classNames(Style['body'])}>
+            {/* <div className={classNames(Style['body'])}> */}
                 <div style={{ width: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
                     <Table
                         bidList={bidList}
@@ -159,7 +164,7 @@ const BidList = ({ menubar, footer, userUUID, tbIdx }) => {
                         }
                     />
                 </div>
-            </div>
+            {/* </div> */}
             {footer}
         </div>
     )

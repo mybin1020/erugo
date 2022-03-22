@@ -7,7 +7,7 @@ const Message = ({ menubar, footer, userUUID, isLogin }) => {
     
     return (
       <>
-        <div style={{width:'100%', height:'90%', justifyItems:'center', isLogin}}>
+        <div style={{width:'100%', height:'100%', isLogin}}>
           {
             isLogin ?
           <MailBox 

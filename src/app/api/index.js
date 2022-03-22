@@ -322,3 +322,38 @@ export const proposalAccept = ({ oldOwner, newOwner, tbIndex, price, callback })
         callback
     })
 }
+export const createConfirmRequest = ({ transactionHash, user, callback }) => {
+    getData({
+        path:'/users/xt-transaction/create',
+        data:{
+            transactionHash, user
+        },
+        callback
+    })
+}
+export const readConfirmRequestList = ({ user, callback }) => {
+    getData({
+        path:'/users/xt-transaction/read-list',
+        data:{
+            user
+        },
+        callback
+    })
+}
+export const readGridColorList = ({ callback }) => {
+    getData({
+        path:'/map/grid-color/read-list',
+        data:{},
+        callback
+    })
+}
+export const changePointEWC = ({ uuid, ewc, point, callback }) => {
+    getData({
+        path:'/users/change-ewc-point',
+        data:{
+            uuid, ewc, point
+        },
+        callback
+    })
+}
+

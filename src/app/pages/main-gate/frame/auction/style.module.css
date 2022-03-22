@@ -3,19 +3,44 @@ div,ul,li,ol,p,h1,h2,h3,h4,*{
     margin: 0;
     list-style: none;
 }
+.img1,.img2,.img3,.img4,.img5,.img6,.img7,.img8,.img9,.img9-2, .img10{
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    width: 90%;
+    height: 100%;
+    top: -00%;
+}
+.img1,.img2,.img3,.img4,.img10{
+    position: absolute;
+    background-position: center;
+    width: 48%;
+}
+.auctionBox{
+    position: relative;
+    width: 95%;
+    height:90%;
+    margin: 0 auto;
+    border-top:1px solid white;
+    border-bottom: 1px solid white;
+    background-color: rgba(255, 255, 255, 0.5);
+
+}
 
 .pointer{
     position: absolute;
-    top:6%;
+    top:8%;
     right:0;
-    width:11vw;
-    height:6vh;
+    width:10vw;
+    height:5vh;
     background-image: url(./images/land-state-btn.png);
     background-repeat: no-repeat;
     background-size: contain;
     text-indent: -999999px;
     cursor: pointer;
 }
+
 .auction-title{
     position: absolute;
     top:5%;
@@ -23,35 +48,29 @@ div,ul,li,ol,p,h1,h2,h3,h4,*{
     z-index: 99;
     left:50%;
     transform:translateX(-50%);
+    margin-bottom: 1vw;
 }
-.auctionBox{
-    position: relative;
-    width: 100%;
-    height:95%;
-    border-top:1px solid white;
-    border-bottom: 1px solid white;
-    background-color: rgba(255, 255, 255, 0.5);
 
-}
-.img1,.img2,.img3,.img4,.img10{
-    position: absolute;
-    top:5%;
-    right: 0;
-}
 .auction-content-text{
     position: absolute;
-    top:30%;
-    right: 0;
-    width:50%;
-    height:20vh;
-    padding: 5px;
-    font-size:1vw;
-    overflow: hidden;
+    text-align: justify;
+    margin: 5 auto;
+    top:20%;
+    right: 5%;
+    width:45%;
+    overflow: auto;
+}
+.auction-content-text > h3 {
+    font-size: 1.3vw;
+    margin-bottom: 1vw;
 }
 .auction-howto-content{
     width: 40vw;
     margin: 10vh auto;
-    font-size: 1vw;
+    font-size: .95vw;
+}
+.auction-howto-content p{
+    margin:0;
 }
 .auction-howto-content>div:last-child{
     padding-top: 2vh;
@@ -63,41 +82,51 @@ div,ul,li,ol,p,h1,h2,h3,h4,*{
     margin-bottom: 1.5vh;
     font-size: 0.8vw;
 }
-
-.auction-content-text h3{
-    margin-bottom:1vh;
-}
-.auction-howto-content h4{
-    font-weight:400;
-}
-.auction-howto-content div:last-child{
-    margin-top: 1vh;
-}
-.swiper-slide:nth-child(5) .auction-content-text{
-    top:28%;
-    height: 25vh;
-}
-.auction-content-text-font{
-    margin-top: 2vh;
-    font-size: 0.7vw;
-}
-.auction-content-text-font>p{
-    margin-bottom: 0.6vh;
-}
-
-.img1,.img2,.img3,.img4,.img5,.img6,.img7,.img8,.img9,.img10{
-    background-position: center;
-    background-size: contain;
-    background-repeat: no-repeat;
-}
-.img1,.img2,.img3,.img4,.img10{
-    left:2%;
-    width:45%;
+.auctionImgbox{
+    display: flex;
+    width:100%;
     height:100%;
-    margin-left:0.3vw;
+    margin:0 auto;
+}
+.auction-img{
+   width:100%;
+   position: relative;
+   top:30%;
+   height:15vh;
+   margin:0 0.5vw;
 }
 
+/* 구매가능 / 선택한 범위 내 특정 셀 확인 부분 */
+.auction-img-text{
+    position: absolute;
+    width: 100%;
+    top: 80%;
+    text-align: center;
+    font-size: 0.65vw;
+    font-weight: bold;
+    left:50%;
+    transform: translateX(-50%);
+}
+.map-content{
+    position: absolute;
+    font-size: 1vw;
+    font-weight: bold;
+    bottom:20%;
+    left:50%;
+    transform: translateX(-50%);
+}
 
+.mySwiper{
+    width: 100%;
+    height:100%;
+}
+
+.swiper-slide {
+    width: 100%;
+    height: 100%;
+}
+
+/* 이미지 삽입 */
 .img1 {
     background-image: url(./images/1.png);
 }
@@ -128,81 +157,58 @@ div,ul,li,ol,p,h1,h2,h3,h4,*{
 .img10{
     background-image: url(./images/10.png);
 }
-
-.auctionImgbox{
-    display: flex;
-    width:100%;
-    height:100%;
-    margin:0 auto;
+.img9-2{
+    background-image: url(./images/map_green.png);
 }
-.auction-img{
-   width:100%;
-   position: relative;
-   top:30%;
-   height:15vh;
-   margin:0 0.5vw;
+.step5-img{
+    background-image: url(./images/10.png);
 }
-.img5,.img6,.img7,.img8,.img9{
-    position: absolute;
-    top:-3vh;
-    width: 100%;
-    height: 100%;
-}
-.auction-img-text{
-    position: absolute;
-    bottom: 0;
-    font-size: 0.8vw;
-    left:50%;
-    transform: translateX(-50%);
-}
-.auction-img:nth-child(2)>.auction-img-text{
-    width: 100%;
-    left:55%;
-}
-.auction-img:nth-child(3)>.auction-img-text{
-    width: 6vw;
-}
-.auction-img:nth-child(4)>.auction-img-text{
-    width: 6.5vw;
-}
-.map-content{
-    position: absolute;
-    font-size: 1vw;
-    font-weight: bold;
-    bottom:15%;
-    left:50%;
-    transform: translateX(-50%);
-}
-
-.mySwiper{
-    width: 100%;
-    height:100%;
-}
-
-
-/* auction 반응형*/
-/* 1920 1080 */
+/* 1920 x 1080 */
 @media (max-width:1920px) {
-    .pointer{
-        position: absolute;
-        top:8%;
-        right:0;
-        width:9vw;
-        height:4vh;
-    }
-    .auction-content-text-font{
-        margin-top: 1vh;
-        font-size: 0.7vw;
-    }
-    .auction-content-text-font p{
-        margin-bottom: 0;
-    }
-}
-/* 1280  720*/
-@media (max-width:1280px) {
+    
 
 }
-/* 900px 400px */
-@media (max-width:900px){
-    
+/* 1280 x 720*/
+@media (max-width:1280px) {
+   
 }
+/* 960 x 540 */
+@media (max-width:960px){
+    .auction-content-text p{
+        margin: 0 auto;
+    }
+    .auction-content-text p{
+        margin: 0 auto;
+    }
+    .auction-howto-content li {
+        margin: 0 auto;
+    }
+}
+/* 920 x 420 */
+@media (max-width:920px){
+    .auction-img-text {
+        font-weight: 400;
+    }
+}
+/* 750 x 370 */
+@media (max-width:750px){
+    .img1,.img2,.img3,.img4,.img10{
+        width: 33%;
+    }
+    .auction-content-text{
+        width:60%;
+        overflow-y: auto;
+        height: 85%;
+        top: 16%;
+        margin-bottom: 1%;
+    }
+
+    .auction-howto-content{
+        width: 90%;
+        height: 78%;
+        overflow-y: auto;
+        font-size: 0.5vw;
+    }
+    .swiper-pagination-bullet{width:4px;height:4px;}
+}
+

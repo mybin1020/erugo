@@ -6,9 +6,25 @@ import 'react-phone-input-2/lib/style.css'
 import { GiConfirmed } from 'react-icons/gi'
 import { useHistory } from 'react-router-dom'
 
+const TopMenu = () => {
+    const history = useHistory();
+    return (
+        <div className={Style['top-menu-background']}>
+            <div className={Style['logo']} onClick={() => {
+          history.push("/main-entrance");
+        }}></div>
+            <div className={Style['top-menu-button-wrapper']}>
+                <div className={`${Style['top-menu-button']} ${Style['back-button']} pointer`} onClick={() => {
+          history.push("/main-entrance");
+        }}></div>
+
+            </div>
+        </div>
+    )
+}
 const Input = ({ tag, inputElement = null, type = "text", style = {}, value, onChange, customEle }) => {
     return (
-        <div style={{ width: '100%', height: '80px', display: 'flex', justifyContent: 'center', flexDirection: 'column', fontSize: '12px' }}>
+        <div style={{ width: '90%', height: '80px', display: 'flex', justifyContent: 'center', flexDirection: 'column', fontSize: '12px', margin:'0 auto' }}>
             <div style={{ width: '100%', height: '40px', display: 'flex', justifyContent: 'flex-start', alignItems: 'center' }}>
                 <div style={{ width: '50%', height: '100%', display: 'flex', justifyContent: 'flex-start', alignItems: 'center' }}>{tag}</div>
                 <div style={{ width: '50%', height: '100%', display: 'flex', justifyContent: 'flex-end', alignItems: 'center' }}>{customEle}</div>
@@ -51,21 +67,25 @@ const ResetPassword = ({ setLoading, setLoadingMsg }) => {
     const [showStep2, setShowStep2] = useState(false)
     const history = useHistory()
     return (
+        <div className={Style['out-bg']}>
+            <TopMenu/>
         <div
             style={{
-                width: '100vw', height: '100vh', display: 'flex', justifyContent: 'center', alignItems: "center"
+                width: '100vw', height: '45vh', display: 'flex', justifyContent: 'center', alignItems: "center",
             }}
         >
             <div
                 style={{
-                    width: '600px', height: '100%', overflowY: 'auto'
+                    width: '700px', height: '100%', overflowY: 'auto', backgroundColor: 'white'
                 }}
+                className={Style['resetPw-bg']}
             >
                 <div style={{ width: '100%', height: '200px', display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '10px' }}>
+                    <img src={require('./images/logo.png').default}  style={{width:'55px'}} alt=""/>
                     <div style={{ fontSize: '46px' }}>ERUGO WORLD</div>
                     <div
                         style={{
-                            width: '80px', height: '80px', backgroundImage: 'url(/images/logo.jpg)', backgroundSize: 'contain', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'
+                            width: '80px', height: '80px', backgroundImage: 'url(logo.png)', backgroundSize: 'contain', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'
                         }}
                     >
 
@@ -267,6 +287,7 @@ const ResetPassword = ({ setLoading, setLoadingMsg }) => {
                 }
 
             </div>
+        </div>
         </div>
     )
 }

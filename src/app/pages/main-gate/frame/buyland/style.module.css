@@ -32,18 +32,24 @@
 .buyland-content-text{
     right:1vw;
     width: 95%;
-    height:100%;
-    padding: 5px;
+    height:80%;
+    padding: 10px;
     font-size:.95vw;
-    overflow: hidden;
     text-align: justify;
     overflow-y: auto;
-
+}
+.buyland-content-text p{
+    margin: 0;
+    padding: 0;
     
+}
+
+.buyland-swiper-text p{
+    margin: 0;
+    padding: 0;
 }
 .buyland-content-text>div{
     position: absolute;
-    top: 10%;
     right: 0;
     padding:20px;
     width: 50%;
@@ -53,10 +59,10 @@
     margin-bottom: 2vh;
 }
 .img1,.img2,.img3,.img4,.img5,.img6,.img7,.img8{
-    border-radius: 30px;
-    left:0vw;
+    border-radius: 15px;
+    left:0.5vw;
     width:50%;
-    height:80%;
+    height:81%;
     background-position: center;
     background-size:contain;
     background-repeat: no-repeat;
@@ -67,11 +73,13 @@
     background-repeat: no-repeat;
     width: 100%;
     height:25vh;
-    margin-top: 5vw;
 }
-/* .grap2{
-    height:22vh;
-} */
+.grap1{
+    margin-top: 5%;
+}
+.grap2{
+    margin-top: 0;
+}
 .img1 {
     background-image: url(./images/1.png);
 }
@@ -108,54 +116,129 @@
     right: 0;
     width:50%;
 }
+
 .swiperland{
     width: 10vw;
 }
-.buyland-swiper-text{
+/* .swiperland>.buyland-swiper-text{
+    margin-top:5%;
+    margin-left:1vw;
+} */
+
+.buyland-swiper-text, .buylandSwiperText{
     position: absolute;
     text-align: justify;
     top: 2vw;
     right:1vw;
     height:100%;
-    padding: 20px;
-    font-size:.85vw;
+    padding: 30px;
+    font-size:.9vw;
     overflow: hidden;
-    
-    
 }
-.buyland-swiper-text p{
-    font-size: .9vw;
+.buylandSwiperText p{
+    font-size: .85vw;
     margin-bottom: .95vw;
     margin: 20px;
     text-align: justify;
-
+}
+.buylandHight{
+    top:5%;
 }
 .buyland-swiper-text-font{
     text-align: center;
     color:rgb(117, 184, 95);
-}
-.swiper-slide:last-child .buyland-swiper-text{
-    top:10%;
 }
 .swiper-slide{
     width: 100%;
     height: 100%;
 }
 
-:root .swiper-button-next,.swiper-button-prev {--swiper-navigation-size:40px; position:absolute; top:50%; left: 10% }
-.swiper-button-prev,.swiper-container-rtl .swiper-button-next{left:5px;right:auto}
-.swiper-button-next,.swiper-container-rtl .swiper-button-prev{right:5px;left:auto}
 
 /* buyland 반응형*/
 /* 1920 1080 */
 @media (max-width:1920px) {
-    
+    .buyland-swiper-text{
+        font-size: 0.95vw;
+        top:0;
+        margin: 0;
+        padding: 0;
+    }
+    .swiperland>.buyland-swiper-text{
+        margin-top:10%;
+        margin-left:1vw;
+    }
+    .buylandHight{
+        top:1%;
+        left:1vw;
+    }
+    .buylandHight p{
+        margin:0vh;
+    }
+    .buyland-swiper-text p{
+        margin:1vw 0.8vw;
+    }
+    .lastContent>p{
+        margin:0 0.8vw;
+    }
+    .lastHeight{
+        margin-top:5%;
+    }
+    .grap1, .grap2 {
+        margin-top: -10%;
+    }
+
 }
 /* 1280  720*/
 @media (max-width:1280px) {
-
+    :root{--swiper-navigation-size:25px}
+    .grap1, .grap2 {
+        margin: 0 auto;
+        width: 95%;
+        height:23vh;
+    }
+    .buyland-swiper-text>p{
+       margin: 10 auto;
+    }
 }
 /* 900px 400px */
 @media (max-width:900px){
-    
+    :root{--swiper-navigation-size:20px}
+    .grap1, .grap2 {
+        margin-top: 0%;
+    }
+    .swiper-slide:first-child .buyland-content-text{
+        height: 100%;
+    }
+    .buyland-content-text{
+        height: 80%;
+    }
+    .buyland-content-text p {
+        line-height: 120%;
+        padding: 0;
+        margin: 0;
+    }
+    .buyland-content-text > div {
+        margin: 0;
+        padding: 0;
+        padding-right : 15px;
+        padding-left: 5px;
+        
+    }
+    .buyland-swiper-text {
+        margin: 0;
+        padding: 0;
+        padding-right : 10px;
+        padding-left: 5px;
+        overflow-y: auto;
+        line-height: 90%;
+        
+    }
+    .buyland-swiper-text > div {
+        margin: 0;
+        padding: 0;
+
+    }
+    .swiper-slide:first-child .buyland-swiper-text{
+        height: 100%;
+    }
 }

@@ -88,11 +88,7 @@
 }
 .my-page-button {
     background-image: url(./images/top-button/my-page.png);
-
 }
-/* .my-page-button {
-    background-image: url(./images/frame/top-button/my-page.png);
-} */
 .sign-up-button {
     background-image: url(./images/top-button/sign-up.png);
 }
@@ -103,20 +99,16 @@
     background-image: url(./images/top-button/my-bid.png);
 
 }
-/* .my-bid-button {
-    background-image: url(./images/top-button/my-bid.png);
-} */
 .highest-bid-button {
     background-image: url(./images/top-button/highest-bid.png);
 
-}  
+}
 .lang-button {
     width:6.2vw;
     height:2.8vw;
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
-    background-image: url(./images/top-button/button0.png);
 }
 .main-contents {
     width:'100%';

@@ -21,7 +21,6 @@ const About = ({ language }) => {
     const outSection = useRef();
     const history = useHistory();
     
-    console.log(language)
     useEffect(() => {
         
         console.log('componentDidMount[Function]');
@@ -125,7 +124,7 @@ const About = ({ language }) => {
                 <SwiperSlide className={Style['swiper-slide']}>
                     <div className={Style["about-box"]}>
                         <div className={Style['img6']}></div>
-                        <div className={Style['about-content-text']}>
+                        <div className={Style['about-content-text-pull']}>
                             <div>
                                 <p>{language['about-mean-14']}</p>
                                 
@@ -142,17 +141,18 @@ const About = ({ language }) => {
                                 <p>{language['about-mean-17']}</p>
                                 
                             </div>
-                            <div>
-                                <p>{language['about-mean-18']}</p>
-                                
-                            </div>
+                           
                         </div>
                     </div>
                 </SwiperSlide>
                 <SwiperSlide className={Style['swiper-slide']}>
                     <div className={Style["about-box"]}>
                         <div className={Style['img7']}></div>
-                        <div className={Style['about-content-text']}>
+                        <div className={Style['about-content-text-pull']}>
+                        <div>
+                                <p>{language['about-mean-18']}</p>
+                                
+                            </div>
                             <div>
                                 <p>{language['about-mean-19']}</p>
                                 
@@ -169,13 +169,15 @@ const About = ({ language }) => {
                                 <p>{language['about-mean-22']}</p>
                                 
                             </div>
+                            
                         </div>
                     </div>
                 </SwiperSlide>
                 <SwiperSlide className={Style['swiper-slide']}>
                     <div className={Style["about-box"]}>
                         <div className={Style['img8']}></div>
-                        <div className={Style['about-content-text']}>
+                        <div className={Style['about-content-text-pull']}>
+                       
                             <div>
                                 <p>{language['about-mean-23']}</p>
                                 
@@ -184,25 +186,26 @@ const About = ({ language }) => {
                                 <p>{language['about-mean-24']}</p>
                                 
                             </div>
-                            <div>
-                                <p>{language['about-mean-25']}
-                                {language['about-mean-26']}
-                                
-                                </p>
-                                
-                            </div>
-                            <div>
-                                
-                                
-                            </div>
+                 
+        
                         </div>
                     </div>
                 </SwiperSlide>
                 <SwiperSlide className={Style['swiper-slide']}>
                     <div className={Style["about-box"]}>
                         <div className={Style['img9']}></div>
-                        <div className={Style['about-content-text']}>
+                        <div className={Style['about-content-text-pull']}>
                             <div>
+                            <div>
+                                <p>{language['about-mean-25']}
+                                
+                                
+                                </p>
+                                
+                            </div>
+                                <p>
+                                {language['about-mean-26']}
+                                </p>
                                 <p>{language['about-mean-27']}</p>
                                 
                             </div>

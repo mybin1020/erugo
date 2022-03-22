@@ -66,26 +66,12 @@ $aboutStartAngle : 0;
     opacity: 0.7;
 }
 .frame-style-7th-stop {
-    position: absolute;
-    left: calc(50vw - 100px);
-    top: calc(50vh - 55px);
-    background-position: center;
-    background-size: contain;
-    background-repeat: no-repeat;
-    width:200px;
-    height: 110px;
+    @include frame-style-stop;
     transform: rotateY(-270deg) $tan $zRotate translateY(-20px) scaleX(0.8) scaleY(0.8);
     opacity: 0.8;
 }
 .frame-style-8th-stop {
-    position: absolute;
-    left: calc(50vw - 100px);
-    top: calc(50vh - 55px);
-    background-position: center;
-    background-size: contain;
-    background-repeat: no-repeat;
-    width:200px;
-    height: 110px;
+    @include frame-style-stop;
     transform: rotateY(-315deg) $tan $zRotate translateY(20px) scaleX(0.9) scaleY(0.9);
     opacity: 0.9;
 }

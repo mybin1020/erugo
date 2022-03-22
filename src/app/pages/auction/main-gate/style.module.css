@@ -92,15 +92,16 @@
 .sign-up-button {
     background-image: url(./images/top-button/sign-up.png);
 }
-.message-button {
-    background-image: url(./images/top-button/message.png);
-}
 .market-button {
     background-image: url(./images/top-button/market.png);
 }
 .lang-button {
-    background-image: url(./images/top-button/kr.png);
-    background-image: url(./images/top-button/eng.png);
+    width:6.2vw;
+    height:2.8vw;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-image: url(./images/top-button/button0.png);
 }
 .main-contents {
     width:'100%';

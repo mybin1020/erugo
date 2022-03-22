@@ -73,7 +73,7 @@ const Table = ({ bidList = [], withDrawalHandler }) => {
         )
     })
     return (
-        <div style={{height:'700px', overflowY:'auto'}}>
+        <div style={{height:'700px', overflowY:'auto', backgroundColor: 'rgba(255, 255, 255, 0.7)'}}>
             <TableHeader />
             {bidRows}
         </div>
@@ -103,9 +103,9 @@ const HighestBid = ({ menubar, footer, userUUID }) => {
     return (
         <div className={classNames(Style['view-box'])}>
             {menubar}
-            <div className={classNames(Style['body'])}>
+            {/* <div className={classNames(Style['body'])}> */}
                 <div style={{ width: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
-                    <div style={{width:'800px', padding:'10px 0'}}>
+                    <div style={{width:'800px', padding:'10px 0', }}>
                         <select 
                         style={{height:'30px'}}
                         value={searchCondition}
@@ -137,7 +137,7 @@ const HighestBid = ({ menubar, footer, userUUID }) => {
                         bidList={bidList}
                     />
                 </div>
-            </div>
+            {/* </div> */}
             {footer}
         </div>
     )

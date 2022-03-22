@@ -1,17 +1,19 @@
 .mypage-bg{
     position: relative;
     width: 100%;
-    height: 100%;
-    overflow: hidden;
-    /* overflow-y: scroll; */
+    height: 95%;
 }
 .character{
     position:absolute;
-    top:50%;
-    left:0;
-    width:20%;
+    top:40%;
+    width:23%;
     height: 20vh;
+    left: -2%;
     transform: translateY(-50%);
+}
+.characterName {
+    text-align: center;
+    color: #fff;
 }
 .container{
     display: flex;
@@ -79,7 +81,7 @@
 }
 .line2{
     border-bottom: 0.5px solid #64c9dc;
-    margin: 2vh;
+    margin-top: 1.3vh;
 }
 
 /* left */
@@ -87,7 +89,7 @@
     width:90%;
     margin: 0 1vw;
     /* background-color: #505050; */
-    height: 15vh;
+    height: 13vh;
     margin-top:4vh; 
     font-size: 0.7vw;
     
@@ -118,10 +120,9 @@
     position: absolute;
     left:50%;
     transform: translateX(-50%);
-    height:40%;
+    height:100%;
     width: 90%;
     margin: 0 auto;
-    /* background-color: blanchedalmond;/ */
 }
 .box1{
     color:white;
@@ -190,8 +191,6 @@
     display: inline-block;
     width: 1vw;
     height: 1.5vh;
-    /* 기능구현하면 이미지 추가 */
-    /* background-image: url('./images/help.png'); */
     background-size: contain;
     background-repeat: no-repeat;
     cursor: pointer;
@@ -224,45 +223,8 @@
     border: none
 }
 
-.xtScale {
-    width: 100%;
-    height: 4.5vh;
-}
-.xtComInfo{
-    position: absolute;
-    top:65%;
-    right:32%;
-    width: 1.2vw;
-    height: 2vh;
-    background-image: url('./images/help.png');
-    background-repeat: no-repeat;
-    background-size: contain;
-    border: none;
-    background-color: transparent;
-    cursor: pointer;
 
-}
-.amountCheck{
-    position: absolute;
-    top: 60%;
-    left: 75%;
-    border: 3px solid #64c9dc;
-    width: 2.5vh;
-    height: 2.5vh;
-}
-.dotted-box {
-    width: 100%;
-    border-radius: 30px;
-    border: 3px dotted #64c9dc;
-    background-color: rgba(255,255,255,0.5);
-    padding: 5%;
-    resize: none;
-}
-.sw-content{
-    position: relative;
-    top:2vh;
-}
-/*right bottom */
+/*  rugo 변환하기 */
 .bg-down {
     position: absolute;
     top:50%;
@@ -304,6 +266,7 @@
 .change-icon{
     position: absolute;
     transform: translateY(10%);
+    width: 1vw;
     left: 38%;
     display: inline-block;
     width: 1.5vw;
@@ -320,10 +283,11 @@
     width:30%;
     color: white;
 }
+.exErugoCoin{
+    width: 20%;
+}
 
-
-
-.exRugoInput {
+.exRugoInput, .exErugoInput {
     display: inline-block;
     background-color: #fff;
     text-align: center;
@@ -334,14 +298,16 @@
     border: none;
     color:black
 }
+.exErugoInput{
+    width: 50%;
+}
 .exErugoCoin>input {
     width: 55%;
     height: 2vh;
     margin-left: 0.5vw;
 }
-.exchange{
+.exchange, .swExchange{
     position: absolute;
-    right: 0;
     width: 4vw;
     height:3vh;
     background-color: #64c9dc;
@@ -349,19 +315,32 @@
     border-radius: 0.1vw;
     color: white;
     font-size: 0.7vw;
-    margin-left: 0.5vw;
+   
 }
-.rugo-change-info{
+.exchange{
+    right: 0;
+}
+.swExchange{
+    right:0%;
+}
+.rugo-change-info {
     position: absolute;
+    text-align: center;
+    color: #64c9dc;
+    font-weight: bold;
     bottom:0;
-    left:10%;
+    top: 75%;
+    
 }
-
+.swChange {
+    color:rgb(70,70,70);
+    font-size: 12px;
+}
 .logout-btn{
     position: absolute;
     background-color: #64c9dc;
-    top: 80%;
-    width: 8vw;
+    top: 83%;
+    width: 15vw;
     height:4vh;
     bottom:0.3vh;
     left: 50%;
@@ -372,224 +351,61 @@
     text-align: center;
     line-height: 1.2vh;
 }
-/* 1920 1080 */
-@media (max-width:1920px) {
-    .container{
-        height:90%;
-    }
-    .mypageBox1, .mypageBox2{
-        position: relative;
-    }
+
+
+/* 1920 x 1080 */
+@media all and (max-width:1920px) {
     .address>table{
+        width:90%;
         height: 10vh;
-        margin-top:3vh; 
-        font-size: 0.7vw;
-    }
-    .address tr:last-child>td{
-        font-size: 0.4vw;
-    }
-    .sw-link{
-        width: 20%;
-    }
-    .rugo-change-info{
-        position: absolute;
-        bottom:-45%;
-        left:0%;
-        font-size:0.5vw;
-    }
-}
-/* 1280  720*/
-@media (max-width:1280px) {
-    .address>table{
-        height: 5vh;
         margin-top:2vh; 
         font-size: 0.7vw;
     }
-
-    .rugo-change-info{
-        width: 100%;
-        left:-10%;
-        font-size: 5px;
-    }
-    .box-bottom>p{
-        font-size: 0.8vw;
-    }
-    .title{
-        font-size: 0.8vw;
-    }
-    .logout-btn{
-        top:85%;
-        height: 3vh;
-    }
-    
 }
-/* 900px 400px */
-@media (max-width:900px){
-    .container{
-        display: block;
-        height: 95%;
-        background-color: rgba(255,255,255,0);
-    }
-    .container::before{
-        display: none;
-    }
-    .mypageBox1{
-        z-index: -55;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(255,255,255,0.7);
-    }
-    .mypageBox1::before, .mypageBox2::before{
-        content: '';
-        display: block;
-        width: 95%;
-        height: 97%;
-        position: absolute;
-        top:0;
-        left:50%;
-        z-index: -5;
-        transform: translateX(-50%);
-        background-color: rgb(233, 233, 233);
-    }
-    .mypageBox1::before{
-        top:1vh;
-    }
-    .line{
-        width: 100%;
-    }
-    .address>table{
-        height: 27vh;
-        margin-top:0vh;
-        padding-top:1vh; 
-        font-size: 1vw;
-    }
-    .address tr:last-child>td{
-        font-size: 1vw;
-    }
-    .address th{
-        text-align: center;
-        width: 25%;
-    }
-    .line{
-        margin: 1vh;
+/* 1280 x 720*/
+@media all and (max-width:1280px) {
+    .boxs{
+        top: 35%;
     }
     .info-title{
-        font-size: 0.5vw;
+        padding:0.15vh 0;
     }
-    .boxs{
-        position: none;
-        height:100%;
-        width: 80%;
-    }
-    .box1{
-        width: 50%;
-    }
-    .boxs>.box1:nth-child(1){
-        margin-top: 0vh;
-        display: inline-block;
-    }
-    .boxs>.box1:nth-child(2){
-        margin-bottom:0vh;
-    }
-    .boxLeft{
-        display: inline-block;
-    }
-    .boxRight{
-        display: inline-block;
-    }
-    .text-box,.num-box{
-        height: 5vh;
-        line-height: 5vh;
-    }
-    .sw-link{
-        width: 30%;
-        height: 4vh;
-    }
-    .mypageBox2{
-        z-index: 0;
-        top:0;
-        left:0;
-        width: 100%;
-        background-color:rgba(255,255,255,0.7);
-    }
-    .pageBox2{
-        position: absolute;
-        left:50%;
-        transform: translateX(-50%);
+    .address {
         width: 90%;
-        height: 100%;
+        overflow-x: auto;
     }
-    .exchange-xt{
-        top:1vh;
-        height: 5vh;
-        width: 90%;
+    ::-webkit-scrollbar {
+        height: 4px;
+        background-color: rgba(200, 200, 200, 0.8);
+        border-radius: 10px;
     }
-    .title{
-        font-size: 1vw;
-        padding-bottom:0;
+    .infoSWC {
+        font-size: small;
     }
-    .input-content{
-        margin-bottom:0;
-        height: 5vh;
-        line-height: 5vh;
+    .swExchange{
+        top: 27%;
     }
-    .input-box{
-        width: 50%;
-        height: 5vh;
+    .change-icon > img {
+        width: 20px;
     }
-    .xtScale{
-        position: absolute;
-        top:0;
-        width: 100%;
-        height:4.4vh;
+    .rugo-change-info {
+        font-size: 10px;
     }
-    .sw-content{
-        top:50%;
-        width: 100%;
-        height: 120%;
+    .swChange {
+        font-size: 10px;
     }
-    .bg-down{
-        position: absolute;
-        left:0;
-        top:75%;
-        transform: translateY(-50%);
-        width: 100%;
-    }
-    .box-bottom p{
-        font-size: 1vw;
-    }
-    .exRugo,.exErugoCoin{
-        height: 4vh;
-        line-height: 4vh;
-    }
-    .exRugoInput{
-        height: 4vh;
-    }
-    .exchange{
-        top:2vh;
-        width: 6vw;
-        height: 4vh;
-    }
-    .change-icon{
-        width:2vw;
-        margin-left:0.1vw;
-    }
-    /* .help-btn{
-        position: absolute;
-        top:5%;
-        left:50%;
-    } */
-    .bg-down .help-btn{
-        top:5%;
-        left:35%;
-    }
-    .rugo-change-info{
-        width: 100%;
-        left:-10%;
-        bottom:-65%;
-    }
-    .logout-btn{
-        top:85%;
-        height: 5vh;
-    }
+}
+/* 960 x 540 */
+@media all and (max-width:960px){
+    
+}
+
+/* 920 x 420 */
+@media all and (max-width:920px){
+  
+}
+
+/* 750 x 370 */
+@media all and (max-width:750px){
+  
 }

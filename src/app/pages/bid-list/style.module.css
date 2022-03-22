@@ -1,12 +1,23 @@
-.body {
-    width: 100%;
-    height: 800px;
+.view-box{
+width: 100%;
+height: 100%;
+background-image: url(blur-background.jpeg);
+background-repeat: no-repeat;
 }
-
+/* .body {
+    width: 100%;
+    height: 100vh;
+    background-image: url(blur-background.jpeg);
+    
+} */
 .list-wrapper {
     width: 800px;
     padding: 20px 0;
-    margin: auto;
+    margin: 10 auto;
+}
+.map-wrapper {
+    width: 100%;
+    height: calc(100% - 60px - 5vw);
 }
 
 .table-header {
@@ -78,3 +89,20 @@
     font-size: 12px;
 }
 
+@media (max-width:1024px) {
+    .view-box{
+        width: 100%;
+        height: 120%;
+        background-image: url(blur-background.jpeg);
+        background-repeat: no-repeat;
+        }
+}
+
+@media (max-width:960px) {
+    .view-box{
+        width: 100%;
+        height: 150%;
+        background-image: url(blur-background.jpeg);
+        background-repeat: no-repeat;
+        }
+}

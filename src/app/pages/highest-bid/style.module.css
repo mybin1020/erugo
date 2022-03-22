@@ -1,6 +1,14 @@
+.view-box{
+    width: 100%;
+    height: 100%;
+    background-image: url(blur-background.jpeg);
+    background-repeat: no-repeat;
+    }
+
 .body {
     width: 100%;
     height: 800px;
+    
 }
 
 .list-wrapper {

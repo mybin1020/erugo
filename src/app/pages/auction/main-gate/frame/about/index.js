@@ -16,7 +16,7 @@ const About = () => {
     return (
         <div className={Style['ground']}>
             <div style={{color:'blue', fontWeight:'800', fontSize:'30px'}}>About</div>
-            {/* <img src="/images/frame/test-01.jpeg" width="40%" /> */}
+            <img src="/images/frame/test-01.jpeg" width="40%" />
             <div className={Style['image']}></div>
         </div>
     )

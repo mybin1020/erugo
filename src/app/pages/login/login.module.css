@@ -46,17 +46,3 @@
     background-color: #E27A17;
     color: white;
 }
-.sw-btn{
-    color: white;
-    text-align: center;
-    margin-top: 5px;
-    font-size: 12px;
-    border-radius: 5px;
-    cursor: pointer;
-    background-color: #E27A17;
-    padding: 8px;
-}
-.sw-btn:hover{
-    background-color: white;
-    color: #E27A17;
-}

@@ -12,6 +12,9 @@
     background-position: center;
     background-repeat: no-repeat;
 }
+.top-margin{
+    margin-top: 10px;
+}
 .main-wrapper {
     position: absolute;
     top: 0;
@@ -95,6 +98,7 @@
     background-repeat: no-repeat;
     background-size: contain;
     cursor: pointer;
+    margin-top: 10px;
 }
 .top-menu-button-wrapper {
     width: 86vw;
@@ -113,10 +117,10 @@
     background-repeat: no-repeat;
     background-size: contain;
 }
-.message-button{
+/* .message-button{
     width: 9.5vw;
     height: 3.2vw;
-}
+} */
 .lang-button {
     width:7vw;
     height: 2.8vw;

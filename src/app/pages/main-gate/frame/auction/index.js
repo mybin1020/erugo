@@ -20,7 +20,7 @@ SwiperCore.use([Mousewheel,Pagination,Navigation]);
 
 
 
-const Auction = () => {
+const Auction = ({language}) => {
     const history = useHistory()
 
     return (
@@ -45,112 +45,119 @@ const Auction = () => {
                 className={Style['mySwiper']}
             >
                 <SwiperSlide className={Style['swiper-slide']}>
-                    <h2 className={Style["auction-title"]}>Auction 이용 방법</h2>
+                    <h2 className={Style["auction-title"]}>{language['auction-mean-01']}</h2>
                     <div className={Style["auctionBox"]}>
                         <div className={Style['img1']}></div>
                         <div className={Style['auction-content-text']}>
-                            <h3>step 1</h3>
-                            <p>‘이루고 월드’ 홈페이지 로그인 </p>
+                            <h3>{language['auction-mean-02']}</h3>
+                            <p>{language['auction-mean-03']}</p>
+                            <p>{language['auction-mean-03_1']}</p>
+                            <p>{language['auction-mean-03_2']}</p>
                         </div>
                     </div>
                 </SwiperSlide>
                 <SwiperSlide className={Style['swiper-slide']}>
-                    <h2 className={Style["auction-title"]}>Auction 이용 방법</h2>
+                    <h2 className={Style["auction-title"]}>{language['auction-mean-01']}</h2>
                     <div className={Style["auctionBox"]}>
                         <div className={Style['img2']}></div>
                         <div className={Style['auction-content-text']}>
-                            <div>
-                                <h3>step 2</h3>
-                                <p>맵 분양 페이지 접속</p>
-                            </div>
+                 
+                                <h3>{language['auction-mean-04']}</h3>
+                                <p>{language['auction-mean-05']}</p>
+                            
                         </div>
                     </div>
                 </SwiperSlide>
                 <SwiperSlide className={Style['swiper-slide']}>
-                    <h2 className={Style["auction-title"]}>Auction 이용 방법</h2>
+                    <h2 className={Style["auction-title"]}>{language['auction-mean-01']}</h2>
                     <div className={Style["auctionBox"]}>
                         <div className={Style['img3']}></div>
                         <div className={Style['auction-content-text']}>
-                            <div>
-                                <h3>step 3</h3>
-                                <p>구역 및 위치, 땅 수량 선택</p>
-                            </div>
+                       
+                                <h3>{language['auction-mean-06']}</h3>
+                                <p>{language['auction-mean-07']}</p>
+                       
                         </div>
                     </div>
                 </SwiperSlide>
                 <SwiperSlide className={Style['swiper-slide']}>
-                    <h2 className={Style["auction-title"]}>Auction 이용 방법</h2>
+                    <h2 className={Style["auction-title"]}>{language['auction-mean-01']}</h2>
                     <div className={`${Style.auctionBox} ${Style.auctionImgbox}`}>
                         <div className={Style['auction-img']}>
                             <div className={Style['img5']}></div>
-                            <div className={Style['auction-img-text']}>구매가능</div>
+                            <div className={Style['auction-img-text']}>{language['auction-mean-08']}</div>
                         </div>
                         <div className={Style['auction-img']}>
                             <div className={Style['img6']}></div>
-                            <div className={Style['auction-img-text']}>선택한 범위내 특정 셀 확인</div>
+                            <div className={Style['auction-img-text']}>{language['auction-mean-09']}</div>
                         </div>
                         <div className={Style['auction-img']}>
                             <div className={Style['img7']}></div>
-                            <div className={Style['auction-img-text']}>기존 입찰자 존재</div>
+                            <div className={Style['auction-img-text']}>{language['auction-mean-10']}</div>
                         </div>
                         <div className={Style['auction-img']}>
                             <div className={Style['img8']}></div>
-                            <div className={Style['auction-img-text']}>기존 입찰 범위 선택</div>
+                            <div className={Style['auction-img-text']}>{language['auction-mean-11']}</div>
                         </div>
                         <div className={Style['auction-img']}>
                             <div className={Style['img9']}></div>
-                            <div className={Style['auction-img-text']}>구매 불가 지역</div>
+                            <div className={Style['auction-img-text']}>{language['auction-mean-12']}</div>
                         </div>
-                        <div className={Style['map-content']}>※ 맵 선택 : 최소 1개 ~ 최대 36개</div>
+                        <div className={Style['auction-img']}>
+                            <div className={Style['img9-2']}></div>
+                            <div className={Style['auction-img-text']}>{language['auction-mean-12']}</div>
+                        </div>
+                        <div className={Style['map-content']}>{language['auction-mean-13']}</div>
                     </div>
                 </SwiperSlide>
+
+
                 <SwiperSlide className={Style['swiper-slide']}>
-                    <h2 className={Style["auction-title"]}>Auction 이용 방법</h2>
+                    <h2 className={Style["auction-title"]}>{language['auction-mean-01']}</h2>
                     <div className={Style['auctionBox']}>
                         <div className={Style['img4']}></div>
                         <div className={Style['auction-content-text']}>
-                            <div>
-                                <h3>step 4</h3>
-                                <p>우측 상단 입찰가 기입 후 경매 참가</p>
-                            </div>
-                            <div className={Style['auction-content-text-font']}>
-                                <p>PositionX : 선택 땅의 X축 좌표</p>
-                                <p>PositionY : 선택 땅의 Y축 좌표</p>
-                                <p>Max Bid : 현재 최고 입찰가</p>
-                                <p>Bid Price : 입찰 희망가</p>
-                                <p>Bid Price 입찰 희망가 입력 후 하단의 Apply 클릭하여 경매 참여</p>
-                            </div>
+                                <h3>{language['auction-mean-14']}</h3>
+                                <p>{language['auction-mean-15']}</p>
+                           
+                                <p>{language['auction-mean-16']}</p>
+                                <p>{language['auction-mean-17']}</p>
+                                <p>{language['auction-mean-18']}</p>
+                                <p>{language['auction-mean-19']}</p>
+                                <p>{language['auction-mean-20']}</p>
+                           
                         </div>
                     </div>
                 </SwiperSlide>
+
                 <SwiperSlide className={Style['swiper-slide']}>
-                <h2 className={Style["auction-title"]}>Auction 이용 방법</h2>
+                <h2 className={Style["auction-title"]}>{language['auction-mean-01']}</h2>
                     <div className={Style["auctionBox"]}>
                         <div className={Style['img10']}></div>
                         <div className={Style['auction-content-text']}>
-                            <div>
-                                <h3>step 5</h3>
-                                <p>Auction 관리자 메시지 확인</p>
-                            </div>
+                          
+                                <h3>{language['auction-mean-21']}</h3>
+                                <p>{language['auction-mean-22']}</p>
+                          
                         </div>
                     </div>
                 </SwiperSlide>
                 <SwiperSlide className={Style['swiper-slide']}>
-                    <h2 className={Style["auction-title"]}>Auction 이용 방법</h2>
+                    <h2 className={Style["auction-title"]}>{language['auction-mean-01']}</h2>
                     <div className={Style["auctionBox"]}>
                         <div className={Style['auction-howto-content']}>
+                     
+                                <h4>{language['auction-mean-23']}</h4>
+                                <p>{language['auction-mean-24']}</p>
+                            
                             <div>
-                                <p>※ 경매 진행 기간</p>
-                                <p>‘이루고 월드’의 땅 분양 경매는 22.xx.xx(00시) ~ 22.xx.xx(00시)까지 2주간 진행됩니다.</p>
-                            </div>
-                            <div>
-                                <h4>※ 주의 사항</h4>
+                                <h4>{language['auction-mean-25']}</h4>
                                 <ul>
-                                    <li>① 맵 분양은 경매 형식으로 진행되며, 낙찰 받지 못한 EWC는 계정 지갑으로 환급됩니다.</li>
-                                    <li>② 경매 입찰 취소는 My Bid에서 가능합니다.</li>
-                                    <li>③ 검은색 픽셀은 구매가 불가합니다.</li>
-                                    <li>④ 개인 하우징은 최소 10개의 토지를 소유해야 건설 가능합니다.</li>
-                                    <li>⑤ 사업용 건물은 최소 100개 이상의 토지를 소유해야 건설 가능합니다.(3계위 이상)</li>
+                                    <li>{language['auction-mean-26']}</li>
+                                    <li>{language['auction-mean-27']}</li>
+                                    <li>③ 검은색 픽셀은 구매가 불가합니다...</li>
+                                    <li>④ 개인 하우징은 최소 10개의 토지를 소유해야 건설 가능합니다...</li>
+                                    <li>{language['auction-mean-28']}</li>
                                 </ul>
                             </div>
                         </div>

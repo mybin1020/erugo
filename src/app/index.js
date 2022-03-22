@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import classNames from 'classnames'
 import { Route, Switch } from 'react-router-dom'
+import { useHistory } from "react-router-dom";
 import Style from './style.module.css'
 
 import Loader from "react-spinners/PacmanLoader";
@@ -8,6 +9,7 @@ import Loader from "react-spinners/PacmanLoader";
 import LoginPage from './pages/login'
 import HomePage from './pages/home'
 import HomePage2 from './pages/home2';
+//import MapPage from './pages/map'
 import MyLandPage from './pages/my-land';
 import AuctionPage from './pages/auction';
 import MyPage from './pages/my';
@@ -19,163 +21,21 @@ import Land from './pages/land';
 import MainEntrance from './pages/main-gate';
 import ResetPassword from './pages/reset-password';
 import SignUp from './pages/sign-up';
-import { allowedIp, checkMyIp, getLanguageData, getMyLandOpen, getPointAmount } from './api'
+import { allowedIp, checkMyIp, downloadGridImage, getLanguageData, getMyLandOpen, getPointAmount, readGridColorList, readInfo, requestLogin } from './api'
 import BidList from './pages/bid-list';
 import HighestBid from './pages/highest-bid';
 
 import Menu from './components/top-menu';
 import LandStatePage from './pages/land-state';
+import XTTest from './pages/xt-test';
 
-/*
-const Menu = ({ myLandOpen, language = {} }) => {
-    const history = useHistory()
-    const isLogin = (sessionStorage.getItem('userUUID') ? true : false)
-    return (
-        <div style={{ width: '100%', height: '60px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-            <div className={`pointer ${Style['company']}`} onClick={() => { history.push('/main-entrance') }} style={{ width: '350px', height: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                <div style={{ fontSize: '18px' }}>ERUGO WORLD</div>
-                <div className={Style['logo']} style={{ width: '40px', height: '30px' }}></div>
-            </div>
-            <div style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center', gap: '30px', paddingRight: '100px', width: 'calc(100% - 350px)', height: '100%' }}>
-                {/*
-                <div
-                    className={'pointer'}
-                    key={'buy'}
-                    onClick={() => {
-                        history.push('/map')
-                    }}
-                    style={{ width: '122px', height: '40px', display: 'flex', justifyContent: 'center', alignItems: 'center', fontSize: '16px', border: '1px solid rgba(112,112,112,1)', borderRadius: '20px' }}
-                >
-                    BUY LAND
-                </div>
-                <div
-                    className={'pointer'}
-                    key={'market'}
-                    onClick={() => { history.push('/market') }}
-                    style={{ width: '122px', height: '40px', display: 'flex', justifyContent: 'center', alignItems: 'center', fontSize: '16px', border: '1px solid rgba(112,112,112,1)', borderRadius: '20px' }}
-                >
-                    MARKET
-                </div>
-                *//*
-{
-!myLandOpen ?
-<div
-className={'pointer'}
-key={'auction'}
-onClick={() => { history.push('/auction') }}
-style={{ width: '122px', height: '30px', display: 'flex', justifyContent: 'center', alignItems: 'center', fontSize: '12px', border: '1px solid rgba(112,112,112,1)', borderRadius: '20px' }}
->
-{language['header-auction']}
-</div>
-: undefined
-}
-{
-!myLandOpen ?
-<div
-className={'pointer'}
-key={'auction'}
-onClick={() => { history.push('/highest-bid') }}
-style={{ width: '122px', height: '30px', display: 'flex', justifyContent: 'center', alignItems: 'center', fontSize: '12px', border: '1px solid rgba(112,112,112,1)', borderRadius: '20px' }}
->
-{language['header-highest-bid']}
-</div>
-: undefined
-}
-{
-isLogin && !myLandOpen ?
-<div
-className={'pointer'}
-key={'auction'}
-onClick={() => { history.push('/bid-list') }}
-style={{ width: '122px', height: '30px', display: 'flex', justifyContent: 'center', alignItems: 'center', fontSize: '12px', border: '1px solid rgba(112,112,112,1)', borderRadius: '20px' }}
->
-{language['header-my-bid']}
-</div>
-: undefined
-}
-{/*
-<div
-className={'pointer'}
-key={'my-land'}
-style={{
-width: '32px',
-height: '30px'
-}}
-onClick={
-() => {
-history.push('/land')
-}
-}
->
-<img src="/images/map-marked-alt-solid.svg" style={{ width: '32px', height: '30px' }} />
-</div>
-*/
-/*
-<div
-    className={'pointer'}
-    key={'mail-box'}
-    style={{
-        width: '36px',
-        height: '30px'
-    }}
-    onClick={
-        () => {
-            history.push('/mail-box')
-        }
-    }
->
-    <img src="/images/envelope-regular.svg" style={{ width: '36px', height: '30px' }} />
-</div>
-{
-    myLandOpen && isLogin ?
-        <div
-            className={'pointer'}
-            key={'multi-language-support-icon'}
-            style={{
-                width: '32px',
-                height: '32px'
-            }}
-            onClick={
-                () => {
-                    history.push('/my-land')
-                }
-            }
-        >
-            <img src="/images/globe-americas-solid.svg" style={{ width: '32px', height: '30px' }} />
-        </div>
-        : undefined
-}
-<div
-    className={'pointer'}
-    key={'account-icon'}
-    style={{
-        width: '33px',
-        height: '33px'
-    }}
-    onClick={() => {
-        if (sessionStorage.getItem('userUUID')) {
-            history.push('/my')
-        } else {
-            history.push('/login')
-        }
-    }}
->
-    <img src={window.sessionStorage.getItem('userUUID') ? "/images/user-circle-solid.svg" : "/images/user-circle-regular.svg"} style={{ width: '33px', height: '33px' }} />
-</div>
-</div>
-</div>
-)
-}*/
 const App = () => {
 
     const [loading, setLoading] = useState(false);
     const [loadingMsg, setLoadingMsg] = useState('')
 
-    const [points, setPoints] = useState(400)
-    const [wallet, setWallet] = useState('')
-    const [userUUID, setUserUUID] = useState(undefined)
 
-    const [language, setLanguage] = useState({})
+    const [language, setLanguage] = useState({ ko: {}, eng: {} })
     const [languageCode, setLanguageCode] = useState(localStorage.getItem('language-code') || 'ko')
 
     const [myLandOpen, setMyLandOpen] = useState(false)
@@ -185,17 +45,191 @@ const App = () => {
     const [currentFrame, setCurrentFrame] = useState(undefined)
 
 
-
+    const [points, setPoints] = useState(400)
+    const [wallet, setWallet] = useState('')
+    const [userUUID, setUserUUID] = useState(undefined)
     const [email, setEmail] = useState('')
     const [name, setName] = useState('')
     const [phone, setPhone] = useState('')
     const [ether, setEther] = useState(0)
     const [coin, setCoin] = useState(0)
+    const [ewc, setEWC] = useState(0)
+    const [swId, setSwId] = useState('')
+    const [fees, setFees] = useState(0)
+
     const [exchangeRate, setExchangeRate] = useState(1)
     const [tempCoin, setTempCoin] = useState(0)
     const [tempPoint, setTempPoint] = useState(0)
+    
 
+    const [isLogin, setIsLogin] = useState(false)
+
+    const [map, setMap] = useState({url : undefined})
     useEffect(() => {
+
+        setTimeout(() => {
+            fetch('https://erugo-world-api.appzero.services/map/download', {
+                method:'get',
+            })
+            .then((res) => { return res.blob() })
+            .then((blob) => {
+                console.log(blob)
+                setMap({
+                    url : window.URL.createObjectURL(blob)
+                })
+            })
+            .catch((e) => {
+                console.log(e)
+            })
+        }, 1500)
+
+        readGridColorList({
+            callback: (err, res) => {
+                if (err) {
+                    console.log(err)
+                } else {
+                    console.log(res.data)
+                    res.data.forEach((d, i) => {
+                        if (d.idx === 0) {
+                            if (d.image) {
+
+                                fetch('https://erugo-world-api.appzero.services/map/grid-color/download-image', {
+                                    method: 'post',
+                                    headers: {
+                                        'content-type': 'application/json'
+                                    },
+                                    body: JSON.stringify({ name: d.image })
+                                })
+                                    .then((res) => {
+                                        return res.blob()
+                                    })
+                                    .then((blob) => {
+                                        console.log(blob)
+                                        window.notAvailable = {
+                                            color: d.color, image: window.URL.createObjectURL(blob)
+                                        }
+                                    })
+                                    .catch((e) => {
+                                        console.log(e)
+                                    })
+                            } else {
+                                window.notAvailable = {
+                                    color: d.color, image: d.image
+                                }
+                            }
+                        } else if (d.idx === 1) {
+                            if (d.image) {
+
+                                fetch('https://erugo-world-api.appzero.services/map/grid-color/download-image', {
+                                    method: 'post',
+                                    headers: {
+                                        'content-type': 'application/json'
+                                    },
+                                    body: JSON.stringify({ name: d.image })
+                                })
+                                    .then((res) => {
+                                        return res.blob()
+                                    })
+                                    .then((blob) => {
+                                        console.log(blob)
+                                        window.selectedGrid = {
+                                            color: d.color, image: window.URL.createObjectURL(blob)
+                                        }
+                                    })
+                                    .catch((e) => {
+                                        console.log(e)
+                                    })
+                            } else {
+                                window.selectedGrid = {
+                                    color: d.color, image: d.image
+                                }
+                            }
+                        } else if (d.idx === 2) {
+                            if (d.image) {
+
+                                fetch('https://erugo-world-api.appzero.services/map/grid-color/download-image', {
+                                    method: 'post',
+                                    headers: {
+                                        'content-type': 'application/json'
+                                    },
+                                    body: JSON.stringify({ name: d.image })
+                                })
+                                    .then((res) => {
+                                        return res.blob()
+                                    })
+                                    .then((blob) => {
+                                        console.log(blob)
+                                        window.myHighestBid = {
+                                            color: d.color, image: window.URL.createObjectURL(blob)
+                                        }
+                                    })
+                                    .catch((e) => {
+                                        console.log(e)
+                                    })
+                            } else {
+                                window.myHighestBid = {
+                                    color: d.color, image: d.image
+                                }
+                            }
+                        } else if (d.idx === 3) {
+                            if (d.image) {
+
+                                fetch('https://erugo-world-api.appzero.services/map/grid-color/download-image', {
+                                    method: 'post',
+                                    headers: {
+                                        'content-type': 'application/json'
+                                    },
+                                    body: JSON.stringify({ name: d.image })
+                                })
+                                    .then((res) => {
+                                        return res.blob()
+                                    })
+                                    .then((blob) => {
+                                        console.log(blob)
+                                        window.myNotHighestBid = {
+                                            color: d.color, image: window.URL.createObjectURL(blob)
+                                        }
+                                    })
+                                    .catch((e) => {
+                                        console.log(e)
+                                    })
+                            } else {
+                                window.myNotHighestBid = {
+                                    color: d.color, image: d.image
+                                }
+                            }
+                        } else if (d.idx === 4) {
+                            if (d.image) {
+
+                                fetch('https://erugo-world-api.appzero.services/map/grid-color/download-image', {
+                                    method: 'post',
+                                    headers: {
+                                        'content-type': 'application/json'
+                                    },
+                                    body: JSON.stringify({ name: d.image })
+                                })
+                                    .then((res) => {
+                                        return res.blob()
+                                    })
+                                    .then((blob) => {
+                                        console.log(blob)
+                                        window.pickOnList = {
+                                            color: d.color, image: window.URL.createObjectURL(blob)
+                                        }
+                                    })
+                                    .catch((e) => {
+                                        console.log(e)
+                                    })
+                            } else {
+                                window.pickOnList = {
+                                    color: d.color, image: d.image
+                                }
+                            }
+                        }
+                    })
+                }
+            }
+        })
 
         checkMyIp({
             callback: (err, myIp) => {
@@ -238,21 +272,42 @@ const App = () => {
                 }
             }
         })
+
         if (sessionStorage.getItem('userUUID')) {
             console.log('기존 세션 스토리지를 업데이트 합니다.')
             let uuid = sessionStorage.getItem('userUUID')
             let wallet = sessionStorage.getItem('wallet')
             setUserUUID(uuid)
             setWallet(wallet)
-            getPointAmount({
-                uuid,
-                callback: (err, response) => {
-                    if (err) {
+            
+            readInfo({
+                uuid : uuid,
+                callback : (err, user) => {
+                    if(err) {
                         console.log(err)
                     } else {
-                        if (response.result === 'success') {
-                            setPoints(response.point)
-
+                        if(user.result === 'success') {
+                            let coin = user.userInfo.coin
+                            let ether = user.userInfo.ethAmount
+                            let ewc = user.userInfo.ewc
+                            let phone = user.userInfo.phone
+                            let name = user.userInfo.name
+                            let email = user.userInfo.email
+                            let swId = user.userInfo.swId
+                            let point = user.userInfo.point
+                            let fees = user.userInfo.fees
+                            let exchangeRate = user.userInfo.exchangeRate
+                            setCoin(coin)
+                            setEther(ether)
+                            setEWC(ewc)
+                            setPhone(phone)
+                            setName(name)
+                            setEmail(email)
+                            setSwId(swId)
+                            setPoints(point)
+                            setFees(fees)
+                            setExchangeRate(exchangeRate)
+                            setIsLogin(true)
                         }
                     }
                 }
@@ -312,6 +367,7 @@ const App = () => {
                                 points={points}
                                 setPoints={setPoints}
                                 userUUID={userUUID}
+                                map={map}
                             />
                             :
                             <HomePage2 />
@@ -342,7 +398,7 @@ const App = () => {
                             setEmail={setEmail}
                             setName={setName}
                             setPhone={setPhone}
-                            setEther={setPhone}
+                            setEther={setEther}
                             setCoin={setCoin}
                             setExchangeRate={setExchangeRate}
                         />
@@ -439,6 +495,8 @@ const App = () => {
                                 phone={phone}
                                 ether={ether}
                                 coin={coin}
+                                ewc={ewc}
+                                swId={swId}
                                 exchangeRate={exchangeRate}
                                 tempCoin={tempCoin}
                                 tempPoint={tempPoint}
@@ -450,20 +508,32 @@ const App = () => {
                                 setPhone={setPhone}
                                 setEther={setPhone}
                                 setCoin={setCoin}
+                                setEWC={setEWC}
+                                setSwId={setSwId}
                                 setExchangeRate={setExchangeRate}
 
                                 language={language}
                                 setLanguage={setLanguage}
                                 languageCode={languageCode}
                                 setLanguageCode={setLanguageCode}
+
+                                fees={fees}
+                                setFees={setFees}
+
+                                setIsLogin={setIsLogin}
+                                isLogin={isLogin}
                             />
                             :
                             <HomePage2 />
                     }
                 </Route>
+                <Route path="/xt-test">
+                    <XTTest />
+                </Route>
                 <Route path="/" >
                     <HomePage2 />
                 </Route>
+                
             </Switch>
             <div
                 style={{
@@ -484,15 +554,15 @@ const App = () => {
                 <div style={{ backgroundImage: 'url(/images/frame/top-menu.png)' }}></div>
                 <div style={{ backgroundImage: 'url(/images/frame/logo.png)' }}></div>
 
-                <div style={{ backgroundImage: 'url(/images/top-button/about.png)' }}></div>
-                <div style={{ backgroundImage: 'url(/images/top-button/auction.png)' }}></div>
-                <div style={{ backgroundImage: 'url(/images/top-button/kr.png)' }}></div>
-                <div style={{ backgroundImage: 'url(/images/top-button/buyland.png)' }}></div>
-                <div style={{ backgroundImage: 'url(/images/top-button/home.png)' }}></div>
-                <div style={{ backgroundImage: 'url(/images/top-button/log-in.png)' }}></div>
-                <div style={{ backgroundImage: 'url(/images/top-button/market.png)' }}></div>
-                <div style={{ backgroundImage: 'url(/images/top-button/my-page.png)' }}></div>
-                <div style={{ backgroundImage: 'url(/images/top-button/sign-up.png)' }}></div>
+                <div style={{ backgroundImage: 'url(/images/frame/top-button/about.png)' }}></div>
+                <div style={{ backgroundImage: 'url(/images/frame/top-button/auction.png)' }}></div>
+                <div style={{ backgroundImage: 'url(/images/frame/top-button/button0.png)' }}></div>
+                <div style={{ backgroundImage: 'url(/images/frame/top-button/buyland.png)' }}></div>
+                <div style={{ backgroundImage: 'url(/images/frame/top-button/home.png)' }}></div>
+                <div style={{ backgroundImage: 'url(/images/frame/top-button/log-in.png)' }}></div>
+                <div style={{ backgroundImage: 'url(/images/frame/top-button/market.png)' }}></div>
+                <div style={{ backgroundImage: 'url(/images/frame/top-button/my-page.png)' }}></div>
+                <div style={{ backgroundImage: 'url(/images/frame/top-button/sign-up.png)' }}></div>
 
                 <div style={{ backgroundImage: 'url(/images/frame/frame/about.png)' }}></div>
                 <div style={{ backgroundImage: 'url(/images/frame/frame/auction.png)' }}></div>
@@ -502,15 +572,14 @@ const App = () => {
                 <div style={{ backgroundImage: 'url(/images/frame/frame/market.png)' }}></div>
                 <div style={{ backgroundImage: 'url(/images/frame/frame/mypage.png)' }}></div>
                 <div style={{ backgroundImage: 'url(/images/frame/frame/signup.png)' }}></div>
-                <div style={{ backgroundImage: 'url(/images/frame/frame/message.png)' }}></div>
 
                 <div style={{ backgroundImage: 'url(/images/detail-frame/about.png)' }}></div>
                 <div style={{ backgroundImage: 'url(/images/detail-frame/auction.png)' }}></div>
                 <div style={{ backgroundImage: 'url(/images/detail-frame/buyland.png)' }}></div>
-                <div style={{ backgroundImage: 'url(/images/detail-frame/citizenship.png)' }}></div>
+                <div style={{ backgroundImage: 'url(/images/detail-frame/home.png)' }}></div>
                 <div style={{ backgroundImage: 'url(/images/detail-frame/login.png)' }}></div>
                 <div style={{ backgroundImage: 'url(/images/detail-frame/market.png)' }}></div>
-                {/* <div style={{ backgroundImage: 'url(/images/detail-frame/signup.png)' }}></div> */}
+                <div style={{ backgroundImage: 'url(/images/detail-frame/signup.png)' }}></div>
                 <div style={{ backgroundImage: 'url(/images/detail-frame/mypage.png)' }}></div>
             </div>
         </div>

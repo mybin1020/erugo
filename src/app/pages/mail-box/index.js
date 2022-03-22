@@ -3,6 +3,7 @@ import Style from './style.module.css'
 import classNames from 'classnames'
 import { useHistory } from 'react-router-dom'
 import { getGridInfo, getMailList, proposalAccept } from '../../api'
+import NumberFormat from 'react-number-format'
 
 const TableItem = ({ index, type, title, date, sender, onClickHandler }) => {
     return (
@@ -22,7 +23,11 @@ const TableItem = ({ index, type, title, date, sender, onClickHandler }) => {
         >
             <div style={{ width: '10%', height: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>{index}</div>
             <div style={{ width: '50%', height: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>{title}</div>
-            <div style={{ width: '30%', height: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>{date}</div>
+            <div style={{ width: '30%', height: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                <NumberFormat format="####/##/## ##:##:##" placeholder="YYYY/MM/DD HH/mm/ss" mask={['Y', 'Y', 'Y', 'Y', 'M', 'M', 'D', 'D', 'H', 'H', 'm', 'm', 'S', 'S']}
+                value={date}
+                displayType="text"/>
+                </div>
             <div style={{ width: '10%', height: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>{sender}</div>
         </div>
     )
@@ -38,12 +43,13 @@ const TableHeader = () => {
         >
             <div style={{ width: '10%', height: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center', color: 'white' }}>순서</div>
             <div style={{ width: '50%', height: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center', color: 'white' }}>제목</div>
-            <div style={{ width: '30%', height: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center', color: 'white' }}>날짜</div>
+            <div style={{ width: '30%', height: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center', color: 'white' }}>날짜 ( UTC ) </div>
             <div style={{ width: '10%', height: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center', color: 'white' }}>보낸이</div>
         </div>
     )
 }
-const ViewDetail = ({ title, sender, registerTime, msg, onCloseHandler, msgType, msgRef, showDetail, userUUID }) => {
+const ViewDetail = ({ title, sender, registerTime, msg, onCloseHandler, msgType, msgRef = '', showDetail, userUUID }) => {
+    if(msgRef === null) msgRef = ''
     const tbIndex = msgRef.split(':')[0]
     const proposal = `${msgRef.split(':')[1]}:${msgRef.split(':')[2]}`
     const price = msgRef.split(':')[3]
@@ -57,7 +63,7 @@ const ViewDetail = ({ title, sender, registerTime, msg, onCloseHandler, msgType,
             style={{
                 width: '100%',
                 height: '100%',
-                backgroundColor: 'rgba(255,255,255, 0.4)', position: 'absolute', top: '0', left: "0", display: showDetail ? 'flex' : 'none', justifyContent: 'center',
+                backgroundColor: 'rgba(255,255,255, 0.5)', position: 'absolute', top: '0', left: "0", display: showDetail ? 'flex' : 'none', justifyContent: 'center',
                 alignItems: 'center', fontSize: '15px'
             }}
         >
@@ -169,6 +175,7 @@ const MailBox = ({ menubar, footer, userUUID }) => {
             />
         )
     })
+    console.log(list[detailMsgIdx])
     useEffect(() => {
         if (window.sessionStorage.getItem('userUUID')) {
             getMailList({
@@ -188,8 +195,8 @@ const MailBox = ({ menubar, footer, userUUID }) => {
             <div className={classNames(Style['view-box'])} style={{ height: '100%' }}>
                 {menubar}
                 <div className={classNames(Style['body'])} style={{ height: '100%' }} >
-                    <div style={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
-                        <div style={{ height: '100%', overflowY: 'auto', width: '100%', padding: '15px', backgroundColor: 'rgba(255, 255, 255, 0.5)' }}>
+                    <div style={{ width: '95%', height: '90%', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', margin: '0 auto', marginTop: '15px'}}>
+                        <div style={{ height: '100%', overflowY: 'auto', width: '100%', padding: '15px', backgroundColor: 'rgba(255, 255, 255, 0.55)' }}>
                             <TableHeader />
                             {mailTable}
                         </div>
