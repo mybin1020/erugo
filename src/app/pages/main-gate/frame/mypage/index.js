@@ -289,14 +289,17 @@ const MyPage = ({
   //         </div>
   //     )
   // }
-  const [txValue, setTxValue] = useState("");
+  const [txValue, setTxValue] = useState('');
   const txHandler = (e) => {
-    let txValue = e.target.value;
-    setTxValue(txValue);
-  };
+    let txValue = e.target.value
+    setTxValue(txValue)
+  }
   return (
     <>
-      <div style={{ overflowY: "auto" }} className={Style["mypage-bg"]}>
+      <div
+        style={{ overflowY: "auto" }} className={Style["mypage-bg"]}
+        
+      >
         <div className={Style["character"]}>
           <img
             className={Style["character-img"]}
@@ -314,7 +317,6 @@ const MyPage = ({
                 <table>
                   <tr>
                     <th>Email</th>
-
                     <td>{email}</td>
                   </tr>
                   <tr>
@@ -336,6 +338,7 @@ const MyPage = ({
                     <td>{name}</td>
                   </tr>
                   <tr>
+
                     <th>Wallet</th>
                     <td className={Style["wallet-width"]}>{walletAddress}</td>
                     {/* <CopyToClipboard key={walletAddress}>

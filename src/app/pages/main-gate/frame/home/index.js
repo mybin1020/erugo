@@ -56,7 +56,7 @@ const Home = ({language}) => {
               {language['citizenship-mean-05']}
               </p>
               <p>
-             <small> {language['citizenship-mean-06']} </small>
+              {language['citizenship-mean-06']}
               </p>
             </div>
           </div>
@@ -70,7 +70,7 @@ const Home = ({language}) => {
               {language['citizenship-mean-07']}
               </p>
               <p>
-              <small>{language['citizenship-mean-08']}</small>
+              {language['citizenship-mean-08']}
               </p>
             </div>
           </div>
@@ -119,8 +119,9 @@ const Home = ({language}) => {
                 {language['citizenship-mean-15']}
                   
                 </p>
+                <p>{language['citizenship-mean-16']}</p>
               <p>
-              <small> {language['citizenship-mean-16']}
+              <small> {language['citizenship-mean-17']}
               </small>
               </p>
             </div>

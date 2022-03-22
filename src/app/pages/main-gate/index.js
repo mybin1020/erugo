@@ -140,12 +140,14 @@ const TopMenu = ({
             }}
             className={`${Style["top-menu-button"]} ${Style["log-in-button"]} pointer`}
             onClick={(e) => {
-              e.preventDefault();
-              e.stopPropagation();
+              // onClick("logout")
+              // setUserUUID(undefined);
+              e.preventDefault()
+                e.stopPropagation()
               sessionStorage.removeItem("userUUID");
               sessionStorage.removeItem("wallet");
               window.location.reload();
-              alert("로그아웃 되었습니다");
+              alert('로그아웃 되었습니다')
             }}
           ></div>
         ) : (
@@ -156,6 +158,11 @@ const TopMenu = ({
             className={`${Style["top-menu-button"]} ${Style["log-in-button"]} pointer`}
             onClick={() => {
               onClick("login");
+              // if (!isLogin) {
+              //   onClick("login");
+              //   return;
+              // }
+              // onClick("message");
             }}
           ></div>
         )}

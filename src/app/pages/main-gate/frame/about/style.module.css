@@ -109,6 +109,15 @@
     .about-content-text p{
         margin:1vh;
     }
+    .auction-content-text-font{
+        margin-top: 1vh;
+        font-size: 0.7vw;
+    }
+    .auction-content-text-font>p{
+        margin-bottom: 0.5vh;
+        background-color: violet;
+    }
+    
 }
 /* 1280 x 720*/
 @media (max-width:1280px) {

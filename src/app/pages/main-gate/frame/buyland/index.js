@@ -153,7 +153,7 @@ const BuyLand = ({language}) => {
                                     </div>
                                 </div>
                             </SwiperSlide>
-                            <SwiperSlide className={Style['swiper-slide']}>
+                            <SwiperSlide className={`${Style.swiper_slide} ${Style.swiperland}`}>
                                 <div className={Style['buyland-swiper-text']}>
                                     <p>
                                     {language['buyland-mean-14']}
@@ -167,7 +167,7 @@ const BuyLand = ({language}) => {
                                 </div>
                             </SwiperSlide>
                             <SwiperSlide className={Style['swiper-slide']}>
-                                <div className={Style['buyland-swiper-text']}>
+                                <div className={`${Style.buylandSwiperText} ${Style.buylandHight}`}>
                                     <p>
                                     {language['buyland-mean-17']}
                                         
@@ -188,7 +188,7 @@ const BuyLand = ({language}) => {
                                 </div>
                             </SwiperSlide>
                             <SwiperSlide className={Style['swiper-slide']}>
-                                <div className={Style['buyland-swiper-text']}>
+                                <div className={`${Style.buylandSwiperText} ${Style.buylandHight}`}>
                                     <div>
                                         <p>
                                         {language['buyland-mean-22']}
@@ -233,7 +233,7 @@ const BuyLand = ({language}) => {
                         >
                             <SwiperSlide className={Style['swiper-slide']}>
                                 <div className={Style['buyland-swiper-text']}>
-                                    <div>
+                                    <div className={Style['lastContent']}>
                                         <p>
                                         {language['buyland-mean-27']}
                                         </p>
@@ -247,7 +247,7 @@ const BuyLand = ({language}) => {
                             </SwiperSlide>
                             <SwiperSlide className={Style['swiper-slide']}>
                                 <div className={Style['buyland-swiper-text']}>
-                                    <div>
+                                    <div className={Style['lastHeight']}>
                                         <p>
                                         {language['buyland-mean-29']}
                                         </p>

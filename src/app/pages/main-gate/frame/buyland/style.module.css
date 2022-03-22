@@ -40,8 +40,9 @@
 }
 .buyland-content-text p{
     margin: 0;
-    padding: 0;
-    
+}
+.buyland-swiper-text p{
+    margin: 0;
 }
 
 .buyland-swiper-text p{
@@ -158,10 +159,7 @@
 /* 1920 1080 */
 @media (max-width:1920px) {
     .buyland-swiper-text{
-        font-size: 0.95vw;
         top:0;
-        margin: 0;
-        padding: 0;
     }
     .swiperland>.buyland-swiper-text{
         margin-top:10%;
@@ -182,9 +180,6 @@
     }
     .lastHeight{
         margin-top:5%;
-    }
-    .grap1, .grap2 {
-        margin-top: -10%;
     }
 
 }
