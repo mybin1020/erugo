@@ -96,47 +96,47 @@ const ExchangCoin = ({ SW, EW, coin, onClick }) => {
   const [tempCoin, setTempCoin] = useState(0);
   return (
     <>
-      <h4 className={Style["info-title"]}>SecurityWallet에서 충전하기</h4>
-      <div>
-      <span className={Style["exErugoCoin"]} data-tip data-for="swewc3">
-        {SW}
-      </span>
-
-      <input
-        type={Text}
-        className={Style["exErugoInput"]}
-        value={tempCoin}
-        onChange={(e) => {
-          let withdrawCoin =
-            e.target.value === "" ? 0 : parseInt(e.target.value);
-          if (isNaN(withdrawCoin)) {
-            return;
-          }
-          if (withdrawCoin > coin) {
-            return;
-          }
-          setTempCoin(withdrawCoin);
-        }}
-      />
-
-      <button
-        className={Style["swExchange"]}
-        onClick={(e) => {
-          e.stopPropagation();
-          e.preventDefault();
-          if (onClick && typeof onClick === "function") {
-            setTempCoin(0);
-            onClick({ withdrawCoin: tempCoin });
-          }
-        }}
-      >
-        Exchange
-      </button>
+      <div className={`${Style["info-title"]} ${Style["info-right"]}`}>
+        SecurityWallet에서 가져오기
       </div>
-      <span className={Style['swChange']}>
-        ※ SecurityWallet EWC 개수는 
+      <div className={Style["input-content"]}>
+        <span>{SW}</span>
+
+        <input
+          type={Text}
+          className={Style["exErugoInput"]}
+          value={tempCoin}
+          onChange={(e) => {
+            let withdrawCoin =
+              e.target.value === "" ? 0 : parseInt(e.target.value);
+            if (isNaN(withdrawCoin)) {
+              return;
+            }
+            if (withdrawCoin > coin) {
+              return;
+            }
+            setTempCoin(withdrawCoin);
+          }}
+        />
+
+        <button
+          className={`${Style["swExchange"]} ${Style["smallExchangeButton"]}`}
+          onClick={(e) => {
+            e.stopPropagation();
+            e.preventDefault();
+            if (onClick && typeof onClick === "function") {
+              setTempCoin(0);
+              onClick({ withdrawCoin: tempCoin });
+            }
+          }}
+        >
+          Exchange
+        </button>
+      </div>
+      <div className={Style["swChange"]}>
+        ※ SecurityWallet EWC 개수는
         <span style={{ color: "#64c9dc" }}>{coin}</span> 개 입니다
-      </span>
+      </div>
       <div className={Style["line2"]}></div>
     </>
   );
@@ -144,17 +144,16 @@ const ExchangCoin = ({ SW, EW, coin, onClick }) => {
 const ExchangeRugo = ({ SW, EW, ewc, exchangeRate, onClick }) => {
   const [tempEWC, setTempEWC] = useState(0);
   const [tempRugo, setTempRugo] = useState(0);
+
   return (
     <>
       <div className={Style["ex-rugo-content"]}>
         <div className={Style["content-left"]}>
-          <span className={Style["exRugo"]}>
-            {SW}
-          </span>
+          <div className={`${Style["text-box"]} ${Style["input-text-box"]}`}>{SW}</div>
 
           <input
             type={Text}
-            className={Style["exRugoInput"]}
+            className={`${Style["num-box"]} ${Style["input-num-box"]}`}
             value={tempEWC}
             onChange={(e) => {
               let newTempEWC =
@@ -172,28 +171,22 @@ const ExchangeRugo = ({ SW, EW, ewc, exchangeRate, onClick }) => {
         </div>
 
         <span className={Style["change-icon"]}>
-          <img
-            src={require("./images/icon3.png").default}
-            alt=""
-            width={"30px"}
-          ></img>
+          <img src={require("./images/icon3.png").default} alt=""></img>
         </span>
 
         <div className={Style["content-right"]}>
-          <span className={Style["exRugo"]} data-tip data-for="ewewc4">
-            {EW}
-          </span>
+          <div className={`${Style["text-box"]} ${Style["input-text-box"]}`}>{EW}</div>
 
           <input
             type={Text}
-            className={Style["exRugoInput"]}
+            className={`${Style["num-box"]} ${Style["input-num-box"]}`}
             value={tempRugo}
             onChange={(e) => {}}
             disabled
           />
         </div>
         <button
-          className={Style["swExchange"]}
+          className={`${Style["swExchange"]} ${Style["smallExchangeButton"]}`}
           onClick={(e) => {
             if (onClick && typeof onClick === "function") {
               onClick({ ewc: tempEWC, rugo: tempRugo });
@@ -289,171 +282,150 @@ const MyPage = ({
   //         </div>
   //     )
   // }
-  const [txValue, setTxValue] = useState('');
+  const [txValue, setTxValue] = useState("");
   const txHandler = (e) => {
-    let txValue = e.target.value
-    setTxValue(txValue)
-  }
+    let txValue = e.target.value;
+    setTxValue(txValue);
+  };
+  // useEffect(() => {
+  //   let screenWidth = window.innerWidth
+  //   let screenHeight = window.innerHeight
+  //   console.log(`화면크기 ${screenWidth} ${screenHeight}`)
+  // }, [])
+  console.log("화면크기");
+
   return (
     <>
-      <div
-        style={{ overflowY: "auto" }} className={Style["mypage-bg"]}
-        
-      >
+      <div style={{ overflowY: "auto" }} className={Style["mypage-bg"]}>
         <div className={Style["character"]}>
           <img
             className={Style["character-img"]}
             src={require(`./images/${ExchangeCharacter(coin)}.png`).default}
             alt=""
           />
-          <h1 className={Style["characterName"]}>
-            {ExchangeCharacter(coin)}
-          </h1>
+          <h1 className={Style["characterName"]}>{ExchangeCharacter(coin)}</h1>
         </div>
         <div className={Style["container"]}>
-          <div className={Style["mypageBox1"]}>
-            {/* <div className={Style["pageBox1"]}> */}
-              <div className={Style["address"]}>
-                <table>
-                  <tr>
-                    <th>Email</th>
-                    <td>{email}</td>
-                  </tr>
-                  <tr>
-                    <th>Phone</th>
+          <div className={`${Style["mypageBox1"]} ${Style["pagebox"]}`}>
+            <div className={Style["pageBox1"]}>
+            <div className={Style["address"]}>
+              <table>
+                <tr>
+                  <th>Email</th>
+                  <td>{email}</td>
+                </tr>
+                <tr>
+                  <th>Phone</th>
 
-                    <td>
+                  <td>
                     <NumberFormat
-                      value= {phone}
+                      value={phone}
                       displayType="text"
-                     format="### - #### - ####"
-                     mask="_"
+                      format="### - #### - ####"
+                      mask="_"
                     />
-                      
-                    </td>
-                  </tr>
-                  <tr>
-                    <th>Name</th>
+                  </td>
+                </tr>
+                <tr>
+                  <th>Name</th>
 
-                    <td>{name}</td>
-                  </tr>
-                  <tr>
-
-                    <th>Wallet</th>
-                    <td className={Style["wallet-width"]}>{walletAddress}</td>
-                    {/* <CopyToClipboard key={walletAddress}>
+                  <td>{name}</td>
+                </tr>
+                <tr>
+                  <th>Wallet</th>
+                  <td className={Style["wallet-width"]}>{walletAddress}</td>
+                  {/* <CopyToClipboard key={walletAddress}>
                       <img src={require('./images/copy.png').default} alt="" data-tip
                         data-for="copy" style={{ cursor: "pointer", width: "25px" }} />
                     </CopyToClipboard> */}
-                  </tr>
-                </table>
-              </div>
-              <div className={Style["line"]}></div>
-              <div className={Style["boxs"]}>
-                <div className={`${Style.box1}`}>
-                  <h4 className={Style["info-title"]}>SecurityWallet 정보</h4>
+                </tr>
+              </table>
+            </div>
+            <div className={Style["line"]}></div>
+            <div className={Style["boxs"]}>
+              <div className={`${Style.box1}`}>
+                <div className={`${Style["info-title"]} ${Style["info-left"]}`}>
+                  SecurityWallet 정보
+                </div>
 
-                  <span
-                    className={Style["text-box"]}
-                  
-                  >
-                    SW ETH
-                  </span>
-                 
-                  <span className={Style["num-box"]}>
-                    <NumberFormat
-                      value={ether}
-                      thousandsGroupStyle="thousand"
-                      type="text"
-                      displayType="text"
-                      thousandSeparator={true}
-                      allowNegative={true}
-                    />
-                  </span>
-                </div>
-                <div className={`${Style.box1} ${Style.boxLeft}`}>
-                  <span
-                    className={Style["text-box"]}
-                   
-                  >
-                    SW EWC
-                  </span>
-                 
-                  <span className={Style["num-box"]}>
-                    <NumberFormat
-                      value={coin}
-                      thousandsGroupStyle="thousand"
-                      type="text"
-                      displayType="text"
-                      thousandSeparator={true}
-                      allowNegative={true}
-                    />
-                  </span>
-                </div>
-                <div className={`${Style.box1}`}>
-                  <h4 className={Style["info-title"]}>ErugoWorld 정보</h4>
+                <span className={Style["text-box"]}>SW ETH</span>
 
-                  <span
-                    className={Style["text-box"]}
-                    data-tip
-                    data-for="ew-ewc3"
-                  >
-                    EW EWC
-                  </span>
-                  <span className={Style["num-box"]}>
-                    <NumberFormat
-                      value={ewc}
-                      thousandsGroupStyle="thousand"
-                      type="text"
-                      displayType="text"
-                      thousandSeparator={true}
-                      allowNegative={true}
-                    />
-                  </span>
-                </div>
-                <div className={`${Style.box1} ${Style.boxRight}`}>
-                  <span
-                    className={Style["text-box"]}
-                    data-tip
-                    data-for="ew-rugo"
-                  >
-                    EW Rugo
-                  </span>
-                  <span className={Style["num-box"]}>
-                    <NumberFormat
-                      value={points}
-                      thousandsGroupStyle="thousand"
-                      type="text"
-                      displayType="text"
-                      thousandSeparator={true}
-                      allowNegative={true}
-                    />
-                  </span>
-                </div>
+                <span className={Style["num-box"]}>
+                  <NumberFormat
+                    value={ether}
+                    thousandsGroupStyle="thousand"
+                    type="text"
+                    displayType="text"
+                    thousandSeparator={true}
+                    allowNegative={true}
+                  />
+                </span>
               </div>
-            {/* </div> */}
+              <div className={`${Style.box1}`}>
+                <span className={Style["text-box"]}>SW EWC</span>
+
+                <span className={Style["num-box"]}>
+                  <NumberFormat
+                    value={coin}
+                    thousandsGroupStyle="thousand"
+                    type="text"
+                    displayType="text"
+                    thousandSeparator={true}
+                    allowNegative={true}
+                  />
+                </span>
+              </div>
+              <div className={`${Style.box1}`}>
+                <div className={`${Style["info-title"]} ${Style["info-left2"]}`}>
+                  ErugoWorld 정보
+                </div>
+
+                <span className={Style["text-box"]}>EW EWC</span>
+                <span className={Style["num-box"]}>
+                  <NumberFormat
+                    value={ewc}
+                    thousandsGroupStyle="thousand"
+                    type="text"
+                    displayType="text"
+                    thousandSeparator={true}
+                    allowNegative={true}
+                  />
+                </span>
+              </div>
+              <div className={`${Style.box1} ${Style.boxRight}`}>
+                <span className={Style["text-box"]}>EW Rugo</span>
+                <span className={Style["num-box"]}>
+                  <NumberFormat
+                    value={points}
+                    thousandsGroupStyle="thousand"
+                    type="text"
+                    displayType="text"
+                    thousandSeparator={true}
+                    allowNegative={true}
+                  />
+                </span>
+              </div>
+            </div>
+            </div>
           </div>
 
           <div className={Style["mypageBox2"]}>
-            {/* <div className={Style["pageBox2"]}> */}
-              <div className={Style["exchange-xt"]}>
-                <h4 className={Style["info-title"]}>거래소에서 충전하기</h4>
+            <div className={Style["pageBox2"]}>
+            <div className={Style["exchange-xt"]}>
+              <div className={`${Style["info-title"]} ${Style["info-right"]}`}>
+                거래소에서 가져오기
+              </div>
 
-                <span
-                  className={Style["input-content"]}
-                  data-tip
-                  data-for="xtcom"
-                >
-                  LBank
-                </span>
-                <div
+              <div className={Style["input-content"]}>
+                {" "}
+                <span>LBank</span>
+                {/* <div
                   className={Style["help-btn"]}
                   onClick={() => {
                     window.open().location.href =
                       "https://blog.naver.com/erugocoin_official/222663552969";
                   }}
-                ></div>
-               
+                ></div> */}
                 <input
                   type="text"
                   className={Style["input-box"]}
@@ -461,197 +433,191 @@ const MyPage = ({
                   value={txValue}
                   onChange={txHandler}
                 />
-                <div style={{ height: "1vh" }} />
+              </div>
+              <div style={{ height: "1vh" }} />
 
-                <div style={{ position: "relative" }}>
-                  <ExchangCoin
-                    SW={"SW EWC"}
-                    coin={coin}
-                    onClick={({ withdrawCoin }) => {
-                      if (withdrawCoin > 0 && withdrawCoin <= coin) {
-                        if (!window.confirm("EWC를 가져오시겠습니까?")) {
-                          return;
-                        }
-                        reqWithdrawCoin({
-                          uuid: userUUID,
-                          coin: withdrawCoin,
-                          callback: (err, res) => {
-                            if (err) {
-                              console.log(err);
-                            } else {
-                              if (res.result === "success") {
-                                readInfo({
-                                  uuid: userUUID,
-                                  callback: (err, user) => {
-                                    if (err) {
-                                      console.log(err);
-                                    } else {
-                                      if (user.result === "success") {
-                                        console.log(user);
-                                        let coin = user.userInfo.coin;
-                                        let ether = user.userInfo.ethAmount;
-                                        let ewc = user.userInfo.ewc;
-                                        let phone = user.userInfo.phone;
-                                        let name = user.userInfo.name;
-                                        let email = user.userInfo.email;
-                                        let swId = user.userInfo.swId;
-                                        let point = user.userInfo.point;
-                                        let fees = user.userInfo.fees;
-                                        setCoin(coin);
-                                        setEther(ether);
-                                        setEWC(ewc);
-                                        setPhone(phone);
-                                        setName(name);
-                                        setEmail(email);
-                                        setSwId(swId);
-                                        setPoints(point);
-                                        setFees(fees);
-                                        window.alert(
-                                          "EWC를 Security Wallet으로 부터 가져오는 데 성공하였습니다."
-                                        );
-                                      }
-                                    }
-                                  },
-                                });
-                              } else {
-                                console.log(res);
-                                window.alert(
-                                  "EWC를 가져오는 데 실패하였습니다. Security Walle으로 부터의 Error Msg:" +
-                                    res.data.err
-                                );
-                              }
-                            }
-                          },
-                        });
-                      } else {
-                        window.alert(
-                          `이루고 월드로 가져올 코인은 0보다 크고 ${Number(
-                            coin
-                          )}보다 작아야 합니다.`
-                        );
+              <div style={{ position: "relative" }}>
+                <ExchangCoin
+                  SW={"SW EWC"}
+                  coin={coin}
+                  onClick={({ withdrawCoin }) => {
+                    if (withdrawCoin > 0 && withdrawCoin <= coin) {
+                      if (!window.confirm("EWC를 가져오시겠습니까?")) {
+                        return;
                       }
-                    }}
-                  />
-
-                 
-                  <div
-                    className={Style["help-btn"]}
-                    onClick={() => {
-                      history.push(
-                        "https://blog.naver.com/erugocoin_official/222663552969"
+                      reqWithdrawCoin({
+                        uuid: userUUID,
+                        coin: withdrawCoin,
+                        callback: (err, res) => {
+                          if (err) {
+                            console.log(err);
+                          } else {
+                            if (res.result === "success") {
+                              readInfo({
+                                uuid: userUUID,
+                                callback: (err, user) => {
+                                  if (err) {
+                                    console.log(err);
+                                  } else {
+                                    if (user.result === "success") {
+                                      console.log(user);
+                                      let coin = user.userInfo.coin;
+                                      let ether = user.userInfo.ethAmount;
+                                      let ewc = user.userInfo.ewc;
+                                      let phone = user.userInfo.phone;
+                                      let name = user.userInfo.name;
+                                      let email = user.userInfo.email;
+                                      let swId = user.userInfo.swId;
+                                      let point = user.userInfo.point;
+                                      let fees = user.userInfo.fees;
+                                      setCoin(coin);
+                                      setEther(ether);
+                                      setEWC(ewc);
+                                      setPhone(phone);
+                                      setName(name);
+                                      setEmail(email);
+                                      setSwId(swId);
+                                      setPoints(point);
+                                      setFees(fees);
+                                      window.alert(
+                                        "EWC를 Security Wallet으로 부터 가져오는 데 성공하였습니다."
+                                      );
+                                    }
+                                  }
+                                },
+                              });
+                            } else {
+                              console.log(res);
+                              window.alert(
+                                "EWC를 가져오는 데 실패하였습니다. Security Walle으로 부터의 Error Msg:" +
+                                  res.data.err
+                              );
+                            }
+                          }
+                        },
+                      });
+                    } else {
+                      window.alert(
+                        `이루고 월드로 가져올 코인은 0보다 크고 ${Number(
+                          coin
+                        )}보다 작아야 합니다.`
                       );
-                    }}
-                  ></div>
-                </div>
+                    }
+                  }}
+                />
+
+                <div
+                  className={Style["help-btn"]}
+                  onClick={() => {
+                    history.push(
+                      "https://blog.naver.com/erugocoin_official/222663552969"
+                    );
+                  }}
+                ></div>
               </div>
+            </div>
 
-              <div className={Style["bg-down"]}>
-                <div className={Style["box-bottom"]}>
-                  <h4
-                    className={Style["info-title"]}
-                    data-tip
-                    data-for="rugo-change"
-                  >
-                    <div style={{ height: "1vh" }} />
-                    RUGO로 변환하기
-                  </h4>
+            <div className={Style["bg-down"]}>
+              <div className={Style["box-bottom"]}>
+                <div className={Style["info-title"]}>
+                  <div style={{ height: "1vh" }} />
+                  RUGO로 변환하기
+                </div>
 
-                  <ExchangeRugo
-                    SW={"EW EWC"}
-                    EW={"EW Rugo"}
-                    ewc={ewc}
-                    exchangeRate={exchangeRate}
-                    onClick={(data) => {
-                      if (data.rugo > 0 && data.ewc > 0) {
-                        if (
-                          !window.confirm(
-                            `EWC ${data.ewc}개를 Rugo ${data.rugo}개로 전환하시겠습니까?`
-                          )
-                        ) {
-                          return;
-                        }
-                        changePointEWC({
-                          uuid: userUUID,
-                          ewc: data.ewc,
-                          point: data.rugo,
-                          callback: (err, res) => {
-                            if (err) {
-                              console.log(err);
-                            } else {
-                              if (res.result === "success") {
-                                readInfo({
-                                  uuid: userUUID,
-                                  callback: (err, user) => {
-                                    if (err) {
-                                      console.log(err);
-                                    } else {
-                                      if (user.result === "success") {
-                                        console.log(user);
-                                        let coin = user.userInfo.coin;
-                                        let ether = user.userInfo.ethAmount;
-                                        let ewc = user.userInfo.ewc;
-                                        let phone = user.userInfo.phone;
-                                        let name = user.userInfo.name;
-                                        let email = user.userInfo.email;
-                                        let swId = user.userInfo.swId;
-                                        let point = user.userInfo.point;
-                                        let fees = user.userInfo.fees;
-                                        setCoin(coin);
-                                        setEther(ether);
-                                        setEWC(ewc);
-                                        setPhone(phone);
-                                        setName(name);
-                                        setEmail(email);
-                                        setSwId(swId);
-                                        setPoints(point);
-                                        setFees(fees);
-                                        window.alert("전환에 성공하였습니다.");
-                                      }
-                                    }
-                                  },
-                                });
-                              } else {
-                                console.log(res);
-                              }
-                            }
-                          },
-                        });
-                      } else {
-                        window.alert("전환하려는 EWC은 0보다 커야 합니다.");
+                <ExchangeRugo
+                  SW={"EW EWC"}
+                  EW={"EW Rugo"}
+                  ewc={ewc}
+                  exchangeRate={exchangeRate}
+                  onClick={(data) => {
+                    if (data.rugo > 0 && data.ewc > 0) {
+                      if (
+                        !window.confirm(
+                          `EWC ${data.ewc}개를 Rugo ${data.rugo}개로 전환하시겠습니까?`
+                        )
+                      ) {
+                        return;
                       }
-                    }}
-                  />
-                  <div
-                    className={Style["rugo-change-info"]}
-                   
-                  >
-
-                    CURRENT EXCHANGE RATE : 1 Erugo Coin = <span style={{color: "blue"}}>
+                      changePointEWC({
+                        uuid: userUUID,
+                        ewc: data.ewc,
+                        point: data.rugo,
+                        callback: (err, res) => {
+                          if (err) {
+                            console.log(err);
+                          } else {
+                            if (res.result === "success") {
+                              readInfo({
+                                uuid: userUUID,
+                                callback: (err, user) => {
+                                  if (err) {
+                                    console.log(err);
+                                  } else {
+                                    if (user.result === "success") {
+                                      console.log(user);
+                                      let coin = user.userInfo.coin;
+                                      let ether = user.userInfo.ethAmount;
+                                      let ewc = user.userInfo.ewc;
+                                      let phone = user.userInfo.phone;
+                                      let name = user.userInfo.name;
+                                      let email = user.userInfo.email;
+                                      let swId = user.userInfo.swId;
+                                      let point = user.userInfo.point;
+                                      let fees = user.userInfo.fees;
+                                      setCoin(coin);
+                                      setEther(ether);
+                                      setEWC(ewc);
+                                      setPhone(phone);
+                                      setName(name);
+                                      setEmail(email);
+                                      setSwId(swId);
+                                      setPoints(point);
+                                      setFees(fees);
+                                      window.alert("전환에 성공하였습니다.");
+                                    }
+                                  }
+                                },
+                              });
+                            } else {
+                              console.log(res);
+                            }
+                          }
+                        },
+                      });
+                    } else {
+                      window.alert("전환하려는 EWC은 0보다 커야 합니다.");
+                    }
+                  }}
+                />
+                <div className={Style["rugo-change-info"]}>
+                  CURRENT EXCHANGE RATE : 1 Erugo Coin ={" "}
+                  <span style={{ color: "blue" }}>
                     <NumberFormat
-                      value= {exchangeRate}
+                      value={exchangeRate}
                       displayType="text"
-                      thousandSeparator={true} 
+                      thousandSeparator={true}
                     />
-                      </span> Point
-                  </div>
+                  </span>{" "}
+                  Point
                 </div>
               </div>
-              <button
-                className={Style["logout-btn"]}
-                onClick={(e) => {
-                  e.preventDefault();
-                  e.stopPropagation();
-                  setUserUUID(undefined);
-                  sessionStorage.removeItem("userUUID");
-                  sessionStorage.removeItem("wallet");
-                  // history.push("/main-entrance");
-                  alert("로그아웃 되었습니다");
-                  window.location.reload();
-                }}
-              >
-                로그아웃
-              </button>
-            {/* </div> */}
+            </div>
+            <button
+              className={Style["logout-btn"]}
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                setUserUUID(undefined);
+                sessionStorage.removeItem("userUUID");
+                sessionStorage.removeItem("wallet");
+                // history.push("/main-entrance");
+                alert("로그아웃 되었습니다");
+                window.location.reload();
+              }}
+            >
+              로그아웃
+            </button>
+            </div>
           </div>
         </div>
       </div>

@@ -51,7 +51,7 @@ const Input = ({ tag, inputElement = null, type = "text", style = {}, value, onC
     )
 }
 
-const ResetPassword = ({ setLoading, setLoadingMsg }) => {
+const ResetPassword = ({ setLoading, setLoadingMsg, language }) => {
     const [email, setEmail] = useState('')
     const [onFocus, setOnFocus] = useState(false)
     const [phone, setPhone] = useState('')
@@ -66,6 +66,7 @@ const ResetPassword = ({ setLoading, setLoadingMsg }) => {
 
     const [showStep2, setShowStep2] = useState(false)
     const history = useHistory()
+    console.log(`password ${language}`)
     return (
         <div className={Style['out-bg']}>
             <TopMenu/>

@@ -417,13 +417,14 @@ const App = () => {
                                 setPoints={setPoints}
                                 setWallet={setWallet}
                                 setLoading={setLoading}
+                                language={language[languageCode] || ''}
                             />
                             :
                             <HomePage2 />
                     }
                 </Route>
                 <Route path="/reset-password">
-                    {isWhiteList ? <ResetPassword setLoading={setLoading} setLoadingMsg={setLoadingMsg} /> : <HomePage2 />}
+                    {isWhiteList ? <ResetPassword setLoading={setLoading} setLoadingMsg={setLoadingMsg} language={language[languageCode] || ''}/> : <HomePage2 />}
                 </Route>
                 <Route path="/sign-up">
                     {
@@ -432,6 +433,7 @@ const App = () => {
                                 setLoading={setLoading}
                                 setLoadingMsg={setLoadingMsg}
                                 setCurrentFrame={setCurrentFrame}
+                                language={language[languageCode] || ''}
                             />
                             :
                             <HomePage2 />

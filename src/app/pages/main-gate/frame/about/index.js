@@ -22,7 +22,7 @@ const About = ({ language }) => {
     const history = useHistory();
     
     useEffect(() => {
-        
+        console.log(`language 변수 ${language}`)
         console.log('componentDidMount[Function]');
     }, []);
     return (

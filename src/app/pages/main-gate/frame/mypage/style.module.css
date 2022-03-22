@@ -88,7 +88,6 @@
 .address>table{
     width:90%;
     margin: 0 1vw;
-    /* background-color: #505050; */
     height: 13vh;
     margin-top:4vh; 
     font-size: 0.7vw;
@@ -131,7 +130,7 @@
     margin-top: 1vh;
 }
 .boxs>.box1:nth-child(2){
-    margin-bottom:2vh;
+    margin-bottom: 1vh;
 }
 .title{
     display: block;
@@ -143,7 +142,7 @@
     font-size: 0.7vw;
     padding:0.5vh 0;
 }
-.sw-link{
+/* .sw-link{
     border:none;
     width:15%;
     margin-left:0.3vw;
@@ -153,7 +152,7 @@
     height: 2vh;
     cursor: pointer;
     font-size: 0.5vw;
-}
+} */
 .exchange-xt{
     color:white;
     position: absolute;
@@ -171,6 +170,8 @@
     font-size: 0.7vw;
     height: 3vh;
     line-height: 3vh;
+    border: none;
+    color: #fff;
 }
 .text-box{
     width:30%;
@@ -203,7 +204,7 @@
 .input-left{
     left:0;
 }
-.input-content{
+.input-content > span{
     display: inline-block;
     text-align: center;
     background-color: #64c9dc;
@@ -213,6 +214,7 @@
     width:20%;
     margin-right: 1px;
     margin-bottom: 2px;
+    color: #fff;
 }
 .input-box{
     background-color: #fff;
@@ -235,9 +237,9 @@
     position: absolute;
     left:50%;
     transform: translateX(-50%);
-    width: 90%;
+    width: 95%;
     color:white;
-    height:50%;
+    height:60%;
     margin: 0 auto;
 }
 
@@ -267,7 +269,7 @@
     position: absolute;
     transform: translateY(10%);
     width: 1vw;
-    left: 38%;
+    left: 33%;
     display: inline-block;
     width: 1.5vw;
     background-repeat: no-repeat;
@@ -282,9 +284,6 @@
     line-height: 3vh;
     width:30%;
     color: white;
-}
-.exErugoCoin{
-    width: 20%;
 }
 
 .exRugoInput, .exErugoInput {
@@ -301,10 +300,17 @@
 .exErugoInput{
     width: 50%;
 }
-.exErugoCoin>input {
-    width: 55%;
-    height: 2vh;
-    margin-left: 0.5vw;
+.content-right{
+    left: 40%;
+}
+.input-num-box{
+    width: 30%;
+    border: 1px dotted #64c9dc;
+}
+.input-text-box{
+    width: 35%;
+    border: none;
+
 }
 .exchange, .swExchange{
     position: absolute;
@@ -317,11 +323,11 @@
     font-size: 0.7vw;
    
 }
-.exchange{
+/* .exchange{
     right: 0;
-}
+} */
 .swExchange{
-    right:0%;
+    right:5%;
 }
 .rugo-change-info {
     position: absolute;
@@ -351,10 +357,16 @@
     text-align: center;
     line-height: 1.2vh;
 }
+.change-icon > img {
+    width: 35px;
+}
 
 
 /* 1920 x 1080 */
 @media all and (max-width:1920px) {
+    .change-icon > img {
+        width: 30px;
+    }
     .address>table{
         width:90%;
         height: 10vh;
@@ -383,7 +395,9 @@
         font-size: small;
     }
     .swExchange{
-        top: 27%;
+        top: 30%;
+        right:5%;
+        margin: 1% auto;
     }
     .change-icon > img {
         width: 20px;
@@ -397,12 +411,291 @@
 }
 /* 960 x 540 */
 @media all and (max-width:960px){
-    
+
+    .mypageBox1{
+
+        width:35%;
+
+    }
+    .mypageBox2{
+
+        width:65%;
+
+    }
+    .characterName{
+        font-size: 20px;
+    }
+    .address>table{
+        width:90%;
+        margin: 0.5vw;
+    }
+    .line{
+        margin: 0;
+        padding: 0;
+    }
+    .info-left {
+        margin-top: 1.7vh;
+    }
+    .info-left2, .info-right{
+        margin-top: -1.5vh;
+        margin-bottom: -1vh;
+    }
+
+
+    .text-box,.num-box{
+        padding: 0;
+        margin-bottom: 0;
+        margin-top: 0;
+    }
+    .text-box {
+        width: 35%;
+    }
+    .num-box {
+        width: 50%;
+    }
+    .box1 {
+       height: 17%;
+    }
+    .boxs>.box1:nth-child(2){
+        padding: 0;
+        margin: 0;
+    }
+    .swChange{
+        margin-left: -1%;
+    }
+    .swExchange{
+        top: 30%;
+        right:0%;
+        margin: 1% auto;
+    }
+    .rugo-change-info {
+        margin-top: 3%;
+        left: -5%;
+    }
+    .logout-btn {
+        width: 50%;
+        height: 3vh;
+        margin: 0 auto;
+        top: 88%;
+    }
+    .line2{
+        margin-top: 3%;
+    }
+    .change-icon {
+        padding: 0;
+        margin: 0;
+        left: 35%;
+    }
+
+    .input-content > span{
+        margin-top: 0%;
+    }
+    .content-right, .content-left {
+        width: 90%;
+        margin-top: -1%;
+    }
+
+    .content-right {
+        left: 45%;
+    }
+    .input-num-box{
+        width: 15%;
+    }
+    .input-text-box{
+        width: 20%;
+        border: 1px solid #64c9dc;
+    }
+    .smallExchangeButton {
+        width: 20%;
+        margin: 3px auto;
+    }
+    .info-title{
+        top: 30%;
+        font-weight: 400;
+    }
+
 }
 
 /* 920 x 420 */
 @media all and (max-width:920px){
-  
+    .container{
+        display: block;
+        height: 95%;
+        background-color: rgba(255,255,255,0);
+        overflow: auto;
+    }
+    .container::before{
+        display: none;
+    }
+    .mypageBox1{
+        position: absolute;
+        z-index: -55;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(255,255,255,0.7);
+    }
+    .mypageBox1::before, .mypageBox2::before{
+        content: '';
+        display: block;
+        width: 97%;
+        height: 97%;
+        position: absolute;
+        top:0;
+        left:50%;
+        z-index: -5;
+        transform: translateX(-50%);
+        background-color: rgb(233, 233, 233);
+    }
+    .mypageBox1::after{
+        top:1vh;
+    }
+    .mypageBox2::after {
+        bottom: 1vh;
+    }
+    .pagebox{
+        z-index: -100;
+        background-color: pink;
+    }
+    .line{
+        width: 100%;
+    }
+    .address>table{
+        height: 27vh;
+        margin-top:0vh;
+        padding-top:1vh; 
+        font-size: 1vw;
+    }
+    .address tr:last-child>td{
+        font-size: 1vw;
+    }
+    .address th{
+        text-align: center;
+        width: 25%;
+    }
+    .line{
+        margin: 1vh;
+    }
+    .info-title{
+        font-size: 0.5vw;
+    }
+    .boxs{
+        position: none;
+        height:100%;
+        width: 80%;
+    }
+    .box1{
+        width: 50%;
+    }
+    .boxs>.box1:nth-child(1){
+        margin-top: 0vh;
+        display: inline-block;
+    }
+    .boxs>.box1:nth-child(2){
+        margin-bottom:0vh;
+    }
+    .boxLeft{
+        display: inline-block;
+    }
+    .boxRight{
+        display: inline-block;
+    }
+    .text-box,.num-box{
+        height: 5vh;
+        line-height: 5vh;
+    }
+    .sw-link{
+        width: 30%;
+        height: 4vh;
+    }
+    .mypageBox2{
+        position: absolute;
+        z-index: -100;
+        top:0;
+        left:0;
+        width: 100%;
+        background-color:rgba(255,255,255,0.7);
+    }
+    .pageBox2{
+        position: absolute;
+        left:50%;
+        transform: translateX(-50%);
+        width: 90%;
+        height: 100%;
+    }
+    .exchange-xt{
+        top:1vh;
+        height: 5vh;
+        width: 90%;
+    }
+    .title{
+        font-size: 1vw;
+        padding-bottom:0;
+    }
+    .input-content{
+        margin-bottom:0;
+        height: 5vh;
+        line-height: 5vh;
+    }
+    .input-box{
+        width: 50%;
+        height: 5vh;
+    }
+    .xtScale{
+        position: absolute;
+        top:0;
+        width: 100%;
+        height:4.4vh;
+    }
+    .sw-content{
+        top:50%;
+        width: 100%;
+        height: 120%;
+    }
+    .bg-down{
+        position: absolute;
+        left:0;
+        top:75%;
+        transform: translateY(-50%);
+        width: 100%;
+    }
+    .box-bottom p{
+        font-size: 1vw;
+    }
+    .exRugo,.exErugoCoin{
+        height: 4vh;
+        line-height: 4vh;
+    }
+    .exRugoInput{
+        height: 4vh;
+    }
+    .exchange{
+        top:2vh;
+        width: 6vw;
+        height: 4vh;
+    }
+    .change-icon{
+        width:2vw;
+        margin-left:0.1vw;
+    }
+    /* .help-btn{
+        position: absolute;
+        top:5%;
+        left:50%;
+    } */
+    .bg-down .help-btn{
+        top:5%;
+        left:35%;
+    }
+    .rugo-change-info{
+        width: 100%;
+        left:-10%;
+        bottom:-65%;
+    }
+    .logout-btn{
+        top:85%;
+        height: 5vh;
+    }
+    
 }
 
 /* 750 x 370 */

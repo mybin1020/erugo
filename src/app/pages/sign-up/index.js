@@ -7,21 +7,26 @@ import { reqSMSAuthCode, reqJoin } from "../../api";
 import { useHistory } from "react-router-dom";
 
 const TopMenu = () => {
-    const history = useHistory();
-    return (
-        <div className={Style['top-menu-background']}>
-            <div className={Style['logo']} onClick={() => {
+  const history = useHistory();
+  return (
+    <div className={Style["top-menu-background"]}>
+      <div
+        className={Style["logo"]}
+        onClick={() => {
           history.push("/main-entrance");
-        }}></div>
-            <div className={Style['top-menu-button-wrapper']}>
-                <div className={`${Style['top-menu-button']} ${Style['back-button']} pointer`} onClick={() => {
-          history.push("/main-entrance");
-        }}></div>
-
-            </div>
-        </div>
-    )
-}
+        }}
+      ></div>
+      <div className={Style["top-menu-button-wrapper"]}>
+        <div
+          className={`${Style["top-menu-button"]} ${Style["back-button"]} pointer`}
+          onClick={() => {
+            history.push("/main-entrance");
+          }}
+        ></div>
+      </div>
+    </div>
+  );
+};
 
 const Input = ({
   tag,
@@ -115,9 +120,11 @@ const SignUp = ({
   setLoadingMsg,
   currentFrame,
   setCurrentFrame,
+  language,
 }) => {
-  const history = useHistory();
+  console.log(`language 변수 ${language}`);
 
+  const history = useHistory();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirm, setPasswordConfirm] = useState("");
@@ -128,7 +135,6 @@ const SignUp = ({
   const [pinNumber, setPinNumber] = useState("");
   const [authKey, setAuthKey] = useState("");
   const [recomCode, setRecomCode] = useState("");
-
   const [onFocus, setOnFocus] = useState(false);
 
   //const [socketHandler, setSocketHandler] = useState({ sendMsg: () => { } })
@@ -158,7 +164,7 @@ const SignUp = ({
   }, []);
   return (
     <div className={Style["out-bg"]}>
-        <TopMenu/>
+      <TopMenu />
       <div
         style={{
           display: "flex",
@@ -181,7 +187,11 @@ const SignUp = ({
               gap: "10px",
             }}
           >
-            <img src={require('./images/logo.png').default}  style={{width:'55px'}} alt=""/>
+            <img
+              src={require("./images/logo.png").default}
+              style={{ width: "55px" }}
+              alt=""
+            />
             <div style={{ fontSize: "46px" }}>ERUGO WORLD</div>
             <div
               style={{
@@ -388,6 +398,41 @@ const SignUp = ({
                 }
               }}
             />
+            {/* 약관 */}
+            <div>
+              <div className={Style["radioButton"]}>
+              
+              <span style={{fontSize: "1.6vh"}}> 이루고월드 이용 약관 동의 <span style={{color: "red"}}>*</span> </span>
+              <input id="동의" value="동의" type="checkbox" className={Style['inputCheck']} />
+              
+              </div>
+
+              <div
+                className={Style["policy"]}
+                dangerouslySetInnerHTML={
+                  { __html: language["policy-01"] }}
+              ></div>
+               
+            </div>
+
+            {/* 개인정보수집동의서 */}
+            <div>
+              <div className={Style["radioButton"]}>
+              
+              <span style={{fontSize: "1.6vh"}}> 개인 정보 수집 동의 <span style={{color: "red"}}>*</span> </span>
+              <input id="동의" value="동의" type="checkbox" className={Style['inputCheck']} />
+              
+              </div>
+
+              <div
+                className={Style["policy"]}
+                dangerouslySetInnerHTML={
+                  { __html: language["policy-02"] }}
+              ></div>
+               
+            </div>
+
+
             <div
               style={{
                 width: "100%",

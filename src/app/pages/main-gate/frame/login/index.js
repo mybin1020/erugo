@@ -29,9 +29,10 @@ const LogIn = ({
     setCurrentFrame, 
     onClose, 
     isLogin,
-    setIsLogin
-
+    setIsLogin,
+    language,
 }) => {
+    console.log(`로그인 ${language}`);
     return (
         <div className={Style['ground']} >
             <LoginPage 
@@ -50,6 +51,7 @@ const LogIn = ({
                 setEWC={setEWC}
                 setSwId={setSwId}
                 setEther={setEther}
+                language={language}
             />
         </div>
     )

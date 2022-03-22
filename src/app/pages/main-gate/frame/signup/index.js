@@ -11,7 +11,8 @@ import Style from './style.module.css'
 7. 반면 css에서 background-image로 적용할 경우에는 css module에 의해 적용되므로 about폴더의 내부 images 폴더에서 이미지를 로드 합니다. 자세한 
 경로는 style.module.css를 확인합니다. 
 */
-const SignUp = () => {
+const SignUp = ({}) => {
+
     return (
         <div className={Style['ground']}>
             

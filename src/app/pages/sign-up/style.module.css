@@ -76,3 +76,26 @@
     background-image: url('back.png');
     justify-items:baseline;
 }
+.policy {
+    width: 100%;
+    height: 9vh;
+    overflow-y: scroll;
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 10px;
+    padding: 5%;
+    border: 1px solid grey;
+    margin-top: 1vh;
+}
+.radioButton:first-of-type {
+    display: flex;
+  align-items: flex-start;
+  margin-bottom: 1px;
+}
+.radioButton > input {
+    margin-top: 1%;
+    margin-left: 3%;
+}
+.inputCheck{
+    padding: 0;
+    margin: 0;
+}

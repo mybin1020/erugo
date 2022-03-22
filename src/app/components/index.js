@@ -148,7 +148,9 @@ export const Footer = () => {
                 Address : 129, Seochojungang-ro 8-gil, Gangnam-gu, Seoul, Republic of Korea
                 </div>
                 <div className={classNames(Style['footer-contact'])}>
-                Phone : +82 2 545 0265 Email : 0265erugo@gmail.com
+                Phone : +82 2 545 0265 Email : erugo@erugoworld.com 
+                Business Registration Number : 672 88 01781
+                CEO : Jungsu Kim
                 </div>
                 <div className={classNames(Style['footer-sns-link'])}>
                     <GrYoutube 
